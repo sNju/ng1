@@ -1,0 +1,29 @@
+	<div class="main-content-header page-header" has-search-filter-widget >
+		
+		<nav id="secondary-navigation" class="secondary-navigation has-horizontal-scrollbar pull-left" has-custom-horizontal-scrollbar >
+			<ul class="sub-menu clearfix">
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/myLaunchedWork/all'}"><a ui-sref="myLaunchedWork({category:'all'})">All<span class="badge">{{recordsCount.allCount}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/myLaunchedWork/audio'}"><a ui-sref="myLaunchedWork({category:'audio'})">Audio <span class="badge">{{recordsCount.audioCount}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/myLaunchedWork/video'}"><a ui-sref="myLaunchedWork({category:'video'})">Video <span class="badge">{{recordsCount.videoCount}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/myLaunchedWork/image'}"><a ui-sref="myLaunchedWork({category:'image'})">Image <span class="badge">{{recordsCount.photoCount}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/myLaunchedWork/album'}"><a ui-sref="myLaunchedWork({category:'album'})">Album <span class="badge">{{recordsCount.albumCount}}</span></a></li>
+			</ul>
+		</nav>
+
+		<form>
+			<button class="search-filter-toggle" data-blur="gp-search-filter-control" role="button"><i class="fa fa-search"></i></button>
+
+			<div class="form-group view-specific-search">
+				<input class="gp-search-control" type="text" placeholder="Search Your Work" ng-model="textSearch">
+				<button type="button" class="close hidden" data-blur="gp-search-filter-control" aria-label="Close"><span aria-hidden="true">×</span></button>
+			</div>	
+
+		</form>
+
+				
+		
+
+		
+		
+		
+	</div>

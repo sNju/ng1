@@ -1,0 +1,25 @@
+<md-dialog class="gp-modal-sm" aria-label="Mango (Fruit)"  ng-cloak layout="row">
+    <form>
+        <div class="gp-modal-header-sm">
+            <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+            <h2 class="modal-title">Share</h2>
+        </div>
+        
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="share-widget">
+                   <ul class="clearfix">
+                      <li class="hidden"><a class="gp-share" data-toggle="tooltip" target="_blank" href="#"><i>&nbsp;</i> <span class="appName">GoParties</span></a> </li>
+
+                      <li><a class="fb-share" data-toggle="tooltip" target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.goparties.com/{{param}}"><i class="fa fa-facebook"></i> <span class="appName">Facebook</span></a></li>
+                      <li><a class="twt-share" data-toggle="tooltip" target="_blank" href="https://twitter.com/intent/tweet?url=http://www.goparties.com/{{param}}"><i class="fa fa-twitter"></i> <span class="appName">Twitter<span></a></li>
+                      <li><a class="instagram-share" data-toggle="tooltip" target="_blank" href="#"><i class="fa fa-instagram"></i> <span class="appName">Instagram<span></a></li>
+                      <li class="hidden"><a class="gplus-share" data-toggle="tooltip" target="_blank" href="http://plus.google.com/share?url=http://www.goparties.com/{{param}}"><i class="fa fa-google-plus"></i> <span class="appName">Google Plus<span></a></li>
+                      <li><a class="mail-share" data-toggle="tooltip" target="_blank" href="#"><i class="fa fa-envelope"></i> <span class="appName">Email<span></a></li>
+                   </ul>
+                </div>        
+            </div>
+        </md-dialog-content>
+
+    </form>
+</md-dialog>

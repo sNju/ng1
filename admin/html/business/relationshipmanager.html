@@ -1,0 +1,53 @@
+<form method="POST" id="form_validation" name="queryform" add-user-directive validation-directive relationship-manager>
+	<!-- add-user-directive -->
+	<div class="container-fluid">
+		<div class=" sec-heading">
+         	<h2 class="heading-type">Relationship Manager Detail</h2>
+        </div>			
+		<!-- Input -->
+		<div class="row clearfix">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="card manager-profile">
+					<div class="profile-section">
+						<div class="user-details">
+							<div class="user-figure">
+								<img src="{{manager.profile_pic!=undefined?manager.profile_pic:'images/profile2.jpg'}}">
+							</div>
+							<div class="user-content">
+								<p>{{manager.name}}</p>
+								<p>Relationship Manager</p>
+							</div>								
+						</div>
+					</div>
+					<div class="content-section">
+						<h3 class="heading-m">Let's Get In Touch!</h3>
+						<p class="content-type">Give us a call or send us an email and we will get back to you as soon as possible!</p>
+						<div class="profile-form">
+							<div>
+								<div class="row">
+									<div class="col-lg-4">
+										<p><i class="fa fa-user " aria-hidden="true"></i></p>
+										<p>{{manager.name}}</p>
+									</div>
+									<div class="col-lg-4">
+										<p><i class="fa fa-envelope " aria-hidden="true"></i></p>
+										<p>{{manager.email}}</p>
+									</div>
+									<div class="col-lg-4">
+										<p><i class="fa fa-phone " aria-hidden="true"></i></p>
+										<p>{{manager.phone}}</p>
+									</div>
+									<div class="col-lg-12">
+										<textarea id="textareaId" ng-model="query" rows="6" placeholder="Enter Your Comments"  class="form-control" required></textarea>
+									</div>
+									<button  type="submit" ng-click="postquery(query,queryform.$valid)" class="btn btn-send waves-effect">Send</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #END# Input -->
+	</div>
+</form>

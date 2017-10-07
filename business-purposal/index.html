@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html ng-app="mainModule">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Purposal</title>
+  <!--Css-->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/common.css"/>
+  
+
+</head>
+<body ng-controller="mainCtrl">
+
+<!--Navigation start-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" id="navbarLogo" href="#">
+            <div class="logo-img"><img src="images/go-parties-business-logo.png"></div>
+            <div class="logo-text">
+              <p class="text-uppercase text-brend">GOPARTIES <sup>&reg;</sup></p>
+              <p class="text-capitalize">Your Party App</p>
+            </div>
+          </a>      
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right" scroll-page>
+          <li class="navLinks activate"><a href="#Banner" class="topLink">Home</a></li>
+          <li class="navLinks" ><a href="#who-we-are" class="topLink">Who we are</a></li>
+          <li class="navLinks"><a href="#whatWeDo" class="topLink">What we do</a></li>
+          <li class="navLinks"><a href="#appBenifits" class="topLink">Feature</a></li>
+          <li class="navLinks"><a href="#PlansRoot" class="topLink">Choose plan</a></li>
+          <li class="navLinks"><a href="#LetsTalk" class="topLink">Lets talk</a></li>
+        </ul>
+      </div>
+  </div>
+</nav>
+
+<!--Navigation End-->
+<section class="bannerImg" style="background-image: url(images/banner.jpg);" id="Banner">
+  <div class="container detail-container">
+    <h4 class="mainHeading">HOOTERS CAFE LOUNG & TERTACE</h4>
+    <p class="bannerContent">Maecenas sit amet tempus augue. Vivamus maximus sem nec sem pellentesque, ut vehicula leo sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+    <button class="btn CommonButton"><span>CHOOSE NOW</span></button>    
+  </div>
+</section>
+
+<!--Who we are-->
+<section class="aboutUsRoot" id="who-we-are" >
+  <div class="container">
+    <h4 class="Heading">WHO WE ARE</h4>        
+    <div class="row" id="aboutUs">
+      <div class="col-sm-6">
+        <img class="img-responsive aboutusImg" src="images/about-us.jpg" alt="About Us">      
+      </div>  
+      <div class="col-sm-6 col-xs-12 setPaddingMax">  
+          <p class="subheading">COMPANY HIGHLIGHTS</p>
+          <p>This is how we achive the success</p> 
+          <p class="about-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+          <p class="about-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+      </div>
+  	</div>
+  </div>
+  <div class="container-fluid partiesPriceRoot">
+    <div class="row partiesPrice">
+      <!--Happy Client-->
+      <div class="text-center col-sm-3" >
+        <i class="fa fa-users icon" aria-hidden="true"></i>
+        <p class="price">1800K</p>
+        <p class="priceDeal">Happy Clients</p>
+      </div>
+      <!--City Present-->
+      <div class="text-center col-sm-3">
+        <i class="fa fa-building-o icon" aria-hidden="true"></i>
+        <p class="price">225</p>
+        <p class="priceDeal">City Present</p>
+      </div>
+      <!--Partymon-->
+      <div class="text-center col-sm-3">
+        <i class="fa fa-users icon" aria-hidden="true"></i>
+        <p class="price">1500K</p>
+        <p class="priceDeal">Partymons</p>
+      </div>
+      <!--Success Parties-->
+      <div class="text-center col-sm-3">
+        <i class="fa fa-thumbs-up icon" aria-hidden="true"></i>
+        <p class="price">5000</p>
+        <p class="priceDeal">Success Parties</p>
+      </div>    
+    </div>
+  </div>
+</section>
+
+<!--What we do-->
+<section class="container-fluid" id="whatWeDo">
+  <div class="container">
+    <h4 class="Heading">What We DO</h4>
+    <p><img class="img-responsive whatWeDoImg" src="images/what-we-do.png" alt=""></p>    
+  </div>
+</section>
+
+<!--App Benifits-->
+<section class="container-fluid" id="appBenifits">
+  <div class="container">
+    <h4 class="Heading heading-light">APP BENIFITS</h4>
+    <p class="section-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of</p>
+    <div class="row appBenifitsFeaturesRoot">
+      <!--Left Feature-->
+      <div class="col-sm-4">
+        <div class="col-sm-12 features ">
+          <div class="featuresIcon"><i class="fa fa-bell" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>REAL TIME NOTIFICATION</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features">
+          <div class="featuresIcon"><i class="fa fa-ticket" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>MANAGE YOUR BOOKING</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features">
+          <div class="featuresIcon"><i class="fa fa-inr" aria-hidden="true"></i></div>
+            <div class="features-text">
+              <p>AUTO PROCESSING OF PAYMENT</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            </div>
+        </div>
+      </div>
+      <!--Mobile Image-->
+      <div class="col-sm-3">
+        <img class="img-responsive" src="images/app-benifits.png" alt="">
+      </div>
+      <!--Right Feature-->
+      <div class="col-sm-4">
+        <div class="col-sm-12 features features-rgt">
+          <div class="featuresIcon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>CHAT WITH PARTYMON</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-rgt">
+          <div class="featuresIcon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>TRACK YOUR REVENUE EFFICIENTLY</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-rgt">
+          <div class="featuresIcon"><i class="fa fa-gift" aria-hidden="true"></i></div>
+            <div class="features-text">
+              <p>DEAL</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Why You Choose Us-->
+<section class="container-fluid" id="ChooseUs">
+  <div class="container">
+    <h4 class="Heading">WHY YOU CHOOSE US</h4>
+    <p class="section-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of</p>
+    <div class="row" id="blogFeaturesRow">
+      <!--Mobile Image-->
+      <div class="col-sm-5">
+        <img class="img-responsive" src="images/why-you-choose-us.png" alt="">
+      </div>
+      <!--Content Area-->
+      <div class="col-sm-5">
+        <div class="col-sm-12 features features-chooseus">
+          <div class="featuresIcon"><i class="fa fa-rss" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>BLOG</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-chooseus">
+          <div class="featuresIcon"><i class="fa fa-line-chart" aria-hidden="true" style="font-size: 23px;"></i></div>
+          <div class="features-text">
+            <p>GOOGLE RANKING</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-chooseus">
+          <div class="featuresIcon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>DEAL</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-chooseus">
+          <div class="featuresIcon"><i class="fa fa-building-o" aria-hidden="true"></i></div>
+          <div class="features-text">
+            <p>PARTY SPOT</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+        <div class="col-sm-12 features features-chooseus">
+          <div class="featuresIcon"><i class="fa fa-desktop" aria-hidden="true" style="font-size: 24px;"></i></div>
+          <div class="features-text">
+            <p>BUSINESS DASHBOARD</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Choose Plan-->
+<section class="container-fluid" id="PlansRoot">
+  <div class="container">
+    <h4 class="Heading">PLANS</h4>
+    <p class="section-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of</p>
+      <div class="row" id="Plans">
+        <div class="col-sm-12">
+          <div class="row plan-container">
+            <div class="col-sm-4 setPaddingMin">
+              <div class="plan-box">
+                <h4 class="plan-heading">Basic</h4>
+                <hr>
+                <p class="PlanPrice">
+                  <i style="font-size:24px" class="fa fa-inr"></i>1800<sub>/monthly</sub></p>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Full Access
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Update Deals
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Manage Booking
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Business Dashboard
+                    </li>
+                </ul>
+                <button class="btn getStartedButton btn-block">Get Started</button>                    
+              </div>
+            </div>
+            <div class="col-sm-4 setPaddingMin">
+              <div class="plan-box plan-box-active">                
+                <h4 class="plan-heading">Unlimited</h4>
+                <hr>
+                <p class="PlanPrice">
+                  <i style="font-size:24px" class="fa fa-inr"></i>3500<sub>/monthly</sub></p>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Full Access
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Update Deals
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Manage Booking
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Business Dashboard
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Deal Showing
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Google Ranking
+                    </li>
+                </ul>
+                <button class="btn getStartedButton btn-block">Get Started</button>                    
+              </div>
+            </div>             
+            <!-- <div class="col-sm-4">
+                <div id="recommended">
+                <div id="recommendedUpper" class="text-center">Recommended</div>
+                <div id="recommendedInner">
+                    <p class="subheading">Unlimited</p>
+                    <hr>
+                    <p class="PlanPrice"><i style="font-size:24px" class="fa">&#xf156;</i>1800<sub>/monthly</sub></p>
+                    <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Full Access</li>
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Update Deals</li>
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Manage Booking</li>
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Business Dashboard</li>
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Business Dashboard</li>
+
+                    <li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>
+                Business Dashboard</li>
+
+
+                </ul>
+                <a href="#" class="btn recommendedButton" role="button">Get Started</a>
+                   </div>
+                </div>
+            </div> -->
+            <div class="col-sm-4 setPaddingMin">
+              <div class="plan-box">
+                <h4 class="plan-heading">Professional</h4>
+                <hr>
+                <p class="PlanPrice">
+                  <i style="font-size:24px" class="fa fa-inr"></i>2100<sub>/monthly</sub></p>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Full Access
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Update Deals
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Manage Booking
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-check changeCheckColor" aria-hidden="true"></i>Business Dashboard
+                    </li>
+                </ul>
+                <button class="btn getStartedButton btn-block">Get Started</button>                    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!--Testominal-->
+<section class="container-fluid slider" style="background-image: url(images/testominals.jpg);" id="whatclientsay">
+      <div class="container testomainal-container">
+          <h4 class="Heading coverOverlay">What Clients Say</h4>
+          <p class="section-type coverOverlay">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of</p>
+          <div class="row sliderRow">
+              <div class="col-sm-12">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                      </ol>
+
+                      <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                          <div class="item active">
+                            <img src="images/photo-thumb-1.jpg" class="sliderImg" alt="">
+                            <div class="carousel-caption">
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                              <div class="profileDetail">
+                                <p class="profileName">AAROHI ARORA</p>
+                                  <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item">
+                            <img src="images/photo-thumb-1.jpg" class="sliderImg" alt="">
+                            <div class="carousel-caption">
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                              <div class="profileDetail">
+                                <p class="profileName">AAROHI ARORA</p>
+                                  <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item">
+                            <img src="images/photo-thumb-1.jpg" class="sliderImg" alt="">
+                            <div class="carousel-caption">
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                              <div class="profileDetail">
+                                <p class="profileName">AAROHI ARORA</p>
+                                  <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
+<!--Contact us-->
+<!--AddressDetailSection-->
+<section class="container-fluid sayHello" id="LetsTalk">
+ <div class="container">
+    <h4 class="Heading">What Clients Say</h4>
+    <p class="section-type">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of</p>
+  
+
+
+<div class="row sayHelloDetail">
+  <div class="col-sm-4 text-center setpadding">
+      <p class="detaiIcon"><i class="fa fa-phone" aria-hidden="true"></i></p>
+      <p>PHONE NO</p>
+      <span class="HeadingNext">+91 9953464264</span><br/>
+      <span class="HeadingNext">+91 9986011079</span>
+  </div>
+
+  <div class="col-sm-4 text-center setpadding">
+      <p class="detaiIcon"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
+     <p>ADDRESS</p>
+      <span class="HeadingNext">10/8 Dlf Phase 1, sushant lok phase 1<br/>behind pine crest school Gurgaon<br/>122002</span>
+  </div>
+
+  <div class="col-sm-4 text-center setpadding">
+    <p class="detaiIcon"><i class="fa fa-envelope-o" aria-hidden="true"></i></p>
+      <p>EMAIL ID</p>
+      <span class="HeadingNext">info@goparties.com</span>
+  </div>
+</div>
+
+<div class="row formRow">                             
+  <div class="col-sm-6">
+      <div class="form-group">
+          <div class="form-line">
+              <input type="text" class="form-control" placeholder="Your Name *" required/>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="form-group">
+          <div class="form-line">
+              <input type="email" class="form-control" placeholder="Your Email*" required />
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                <textarea rows="4" class="form-control no-resize" placeholder="Your Message" required></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn CommonButton pull-right" type="submit"><span>SUBMIT</span></button>
+
+</div>
+</section>
+
+
+
+<!--Fotter-->
+<div footer-directive>
+    <footer>
+        <section id="footer" class=""> 
+            <div class="footer-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">GoParties For Businesses</h3>
+                            <ul class="list-unstyled">
+                                <li class="loginmodal"><a href="#" data-toggle="modal" data-target="#businessLogin">Business Login</a></li>
+                                <li><a ui-sref="partyspot">Tech Products For Party Spots</a></li>
+                                <li><a ui-sref="band">Tech Products For Bands</a></li>
+                                <li><a ui-sref="dj">Tech Products For DJs</a></li>
+                                <li><a ui-sref="artist">Tech Products For Artists</a></li>
+                                <li><a ui-sref="concerts">Tech Products For Concerts</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">About US</h3>
+                            <ul class="list-unstyled">
+                                <li><a ui-sref="faq">FAQ's</a></li>
+                                <li><a ui-sref="contact">Contact Us</a></li>
+                                <li><a ui-sref="sendfeedback">Send Feedback</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">Our Policies</h3>
+                            <ul class="list-unstyled">
+                                <li><a ui-sref="privacyPolicy">Privacy Policy</a></li>
+                                <li><a ui-sref="tnc">Terms &amp; Conditions</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-8" ng-form="newslatterForm">
+                            <h3 class="footer-list-title text-uppercase">Newsletter</h3>
+                            <input name="email" ng-model="obj.params" type="email" class="form-control" placeholder="Enter Your Email Id For Newsletter" required>
+                            <!--<span  class="invalidText" ng-show="(newslatterForm.email.$invalid&&newslatterForm.email.$dirty)||(isSubmit==true && newslatterForm.email.$invalid)">*Please Enter Valid Email ID</span>-->
+                            <button ng-click="submit(obj,newslatterForm.$valid)" type="button"  class="btn btn-news text-uppercase">SEND</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="copyright-content">
+                                    <div class="copyright-details">Grooved in Silicon Valley While Partying</div>
+                                    <div class="pull-right socialmedia first">
+                                        <a href="https://www.facebook.com/goparties/" target="_blank" title="facebook"><i class="fa fa-icon fa-facebook"></i></a>
+                                        <a href="https://twitter.com/go_parties" target="_blank" title="Twitter"><i class="fa fa-icon fa-twitter"></i></a>
+                                        <a href="https://plus.google.com/+Goparties" target="_blank" title="Google Plus"><i class="fa fa-icon fa-google-plus"></i></a>
+                                        <a href="https://www.instagram.com/goparties/" target="_blank" title="Instagram"><i class="fa fa-icon fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</div>
+
+<!--Java Script Code-->
+<!--<script src="libjs/angular.js"></script>-->
+<script src="js/angularCode.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/angularCode.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* Variables and Mixins*/
+@import "variables.less";
+@import "mixins.less";
+
+.careerImg{
+	width: 100%;
+	position: relative;
+	min-height: 170px;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center -150px;
+	background-repeat:no-repeat;
+	margin-top:65px;
+	.flex-center();
+
+	&::before {
+	    content: "";
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(0,0,0,0.7);
+	    z-index: 1;
+	}
+
+	.bannerContent{
+		.flex-center();
+			.bannerText{
+			    color: #fff;
+				font-family: @profilefont;
+				font-size: 50px;
+				text-align: center;
+				z-index:2;
+				border-bottom: 4px solid #fff;
+				padding-bottom: 15px;	
+
+					@media(max-width: 514px){
+						font-size: 30px;
+					}		
+			}
+	}
+
+}
+
+.contentSection{
+	padding-top:40px;
+	padding-bottom:40px;
+
+
+	.careerContents{
+		width: 60%;
+		margin: 0 auto 40px;
+		.flex-center();
+		flex-direction: column;
+
+		@media(max-width:400px){
+			width:95%;
+			}
+
+
+		.careerHeading{
+			font-family: @profileheadingfont;
+			font-size:30px;
+			color:#9660b8;
+			text-transform: uppercase;
+			margin-bottom: 0;
+
+			@media(max-width:385px){
+				font-size: 24px;
+			}
+		}
+		.careerText{
+			font-size:20px;
+			text-align:center;
+
+			@media(max-width:385px){
+				font-size: 18px;
+			}
+		}
+
+	}
+}
+
+.career-container{
+	.flex-center();
+
+	@media(max-width: 740px){
+	flex-direction: column;
+	}
+
+	.job-container{
+		cursor: pointer;
+		border:2px solid #ccc; 
+		margin-bottom:26px;
+		margin: 10px;
+		position: relative;
+		.default-transition();
+
+			@media(max-width: 740px){
+			width: 95%;
+			}
+
+
+		
+		&::after{
+		    content: "";		    
+		    position: absolute;
+		    left: 0;
+		    background-color: #9660b8;
+		    width: 0px;
+		    height: 104%;
+		    top: -2px;
+		    left: -2px;
+		}
+
+		&:hover{			
+			-webkit-transform: translateY(-5px);
+		    -moz-transform: translateY(-5px);
+		    -ms-transform: translateY(-5px);
+		    -o-transform: translateY(-5px);
+		    transform: translateY(-5px);
+		    .default-transition();
+		    
+		    &::after{
+		    	width:5px;
+		    }
+		}
+		.Requirement{
+			border-left: 5px solid transparent;
+			padding:15px;
+			margin: 0px -15px;
+			background-color:#fff;		
+			
+			.RequirementHeading{
+				font-size:20px;
+				font-family: @profileheadingfont;
+
+				@media(max-width:991px){
+					font-size:18px;
+
+				}
+			}
+			.RequirementText{
+				color:#989898;
+				font-size: 14px;
+				margin-bottom: 5px;
+			}
+					
+		}
+	}
+}
+
+
+

@@ -1,0 +1,107 @@
+<gpca-header date-value="false" search-strip="false" login-status="false" ></gpca-header>
+<div jspdf-directive class="container booking-order" >
+	<div class="row">
+		<!--Booking Details-->
+		<div class="col-lg-9 col-md-9 col-sm-12 col-lg-12 order-details-section">
+			<div id="ticket">	
+				<h3 class="booking-head">{{orderobj.to.title==undefined?orderobj.to.name:orderobj.to.title}}</h3>
+					<div class="row" ng-show="orderobj.bookingtype">
+	                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+	                   <div class="booking-section">
+	                      <label class="booking-label">Preference</label>
+	                      <p class="booking-type">{{orderobj.bookingtype}}</p>
+	                    </div>
+	                  </div>
+					</div>  
+
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+						<div class="booking-section">
+							<label class="booking-label">Ticket <span class="confirm">Confirmation</span></label>
+							<p class="booking-type"><span class="confirm">{{orderobj.status}}</span> ( {{orderobj.segment}} )
+								<!--Confirm Icon-->
+								<span class="confirmIcon">&#x2611;</span>
+								<!-- <i class="fa fa-check-circle confirm-icon" aria-hidden="true"></i> -->
+								<!--Pending Icon if any need-->							
+								<!-- <i class="fa fa-info-circle pending-icon" aria-hidden="true"></i> -->
+								<!--Failed Icon if any need-->							
+								<!-- <i class="fa fa-times canceled-icon" aria-hidden="true"></i> -->
+							</p>
+						</div>
+						<div class="booking-section">
+							<label class="booking-label">Ticket (s)</label>
+							<p class="booking-type">
+								<span ng-show="orderobj.nop_male>0">{{orderobj.nop_male}} male</span>
+								<span ng-show="orderobj.nop_female>0">{{orderobj.nop_female}} female</span>
+								<span ng-show="orderobj.nop_couple>0">{{orderobj.nop_couple}} couple</span>
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+						<div class="booking-section">
+							<label class="booking-label">Order Id</label>
+							<p class="booking-type">{{orderobj.orderid}}</p>
+						</div>
+						<div class="booking-section">
+							<label class="booking-label">Date &amp; Time</label>
+							<p class="booking-type">{{(orderobj.type!='profile')?(orderobj.to.startdate|timeStamptoProperDate):(orderobj.startdate|timeStamptoProperDate)}}</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+						<div  id="qrcodeCanvas" qr-code-directive class="bar-code">
+							<qrcode version="5" error-correction-level="M" size="350" data="{{orderobj.orderid}}"></qrcode>
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 booking-section">
+						<label class="booking-label">Venue</label>
+						<p class="booking-type">{{(orderobj.to.location!=undefined && orderobj.to.location!="")?orderobj.to.location:orderobj.to.address}}</p>
+					</div>
+				</div>
+			</div>	
+			
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 term-condition">
+				<p>* Subject to Term &amp; Conditions as well as entry Terms</p>
+				<p>** Subject to GoParties’s Terms &amp; Conditions</p>
+				<p>**** Should you have any quiries / face any challenges at entry - point, please feel free to contact us at + 91 9711 971 244</p>
+			</div>
+			<p><button id="download" class="btn btn-tckt-download" ng-click="download()">Download/Print <i class="fa fa-download downloadicon" aria-hidden="true"></i></button></p>
+			
+		</div>
+		<!--Payment Details-->
+		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 payment-details-section">
+			<div class="row">
+				<div class="col-lg-12 booking-payment-section">
+					<div class="booking-title-container">
+						<h3 class="booking-payment-title">Payment Details</h3>	
+					</div>
+					<ul>
+						<li>
+							<span>Sub Total</span>
+							<span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderobj.subtotal}}</span>
+						</li>
+						<li>
+							<span>Convienience Charge</span>
+							<span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderobj.handling}}</span>
+						</li>
+						<li>
+							<span>Discount</span>
+							<span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderobj.discount}}</span>
+						</li>
+						<li>
+							<span>Payment Mode </span>
+							<span class="pull-right">{{orderobj.mode=='poa'?'At Venue':'Credit/Debit Card Netbanking'}}</span>
+						</li>
+						<li>
+							<span>Total Amount</span>
+							<span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderobj.amount}}</span>
+						</li>
+					</ul>
+					<div class="deal-section" ng-if="orderobj.deal">
+						<label class="deal-label">Additional Offer</label>
+						<p class="deal-details">{{orderobj.deal.title}}</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div><!--End Container-->

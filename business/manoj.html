@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript" src="libjs/jquery.min.js"></script>
+<script type="text/javascript">
+	jQuery(function ($) {
+    //For adding play pause layer on top on the player
+    $("#Layer").css({
+        position: "absolute",
+        top: $("#video").offset().top,
+        left: $("#video").offset().left,
+        width: $("#video").outerWidth(),
+        height: $("#video").outerHeight()
+    });
+
+    //Switching play/pause image on the player
+    $("#Layer").on("click", function (e) {
+
+        var myVideo = $("#video")[0];
+        if (myVideo.paused) {
+            myVideo.play();
+            $(this).addClass("pause");
+        } else {
+            myVideo.pause();
+            $(this).removeClass("pause");
+        }
+    });
+
+    //Toggle behaviour for play/pause 
+    $("#video").on("click", function (e) {
+        var myVideo = $(this)[0];
+        if (myVideo.paused) {
+            myVideo.play();
+        } else {
+            myVideo.pause();
+        }
+    });
+
+    //Showing/Hiding layer on top of the player
+    $("#video").on("mouseenter", function (e) {
+        $("#Layer").toggle();
+    });
+
+    //Volume bar to control video volume
+    $("#volume-bar").on("change", function () {
+        var myVideo = $("#video")[0];
+        myVideo.volume = $(this).val();
+    });
+
+    //Seek bar to sync with the current playing video
+    $("#video").on("timeupdate", function () {
+        var myVideo = $(this)[0];
+        var value = (100 / myVideo.duration) * myVideo.currentTime;
+        $("#seek-bar").val(value);
+    });
+
+    //Seek bar drag to move the current playing video at the time.
+    $("#seek-bar").on("mouseup", function () {
+        var myVideo = $("#video")[0];
+
+        var currentTime = $("#seek-bar").val() / (100 / myVideo.duration);
+        myVideo.currentTime = currentTime;
+    });
+
+    $("#seek-bar").on("mousedown", function () {
+        var myVideo = $("#video")[0];
+        myVideo.pause();
+    });
+
+});
+</script>
+<style type="text/css">
+	#video {
+    background:white url(http://cdn.css-tricks.com/wp-content/uploads/2011/02/spinnnnnn.gif) no-repeat center;
+}
+#Layer {
+    background: url(http://cdn3.iconfinder.com/data/icons/snowish/128x128/actions/gtk-media-play-ltr.png) no-repeat center;
+    opacity:10;
+    display:none;
+}
+.pause {
+    background: url(http://cdn1.iconfinder.com/data/icons/snowish/128x128/actions/gtk-media-pause.png) no-repeat center !important;
+    display:none;
+}
+#seek-bar {
+    width: 496px;
+}
+</style>
+</head>
+<body>
+	<video id="video" width="500" oncontextmenu="return false;">
+		<source src="https://ia802302.us.archive.org/27/items/Pbtestfilemp4videotestmp4/video_test_512kb.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+			<div id="Layer"></div>
+			<input type="range" id="seek-bar" value="0">
+			<div class="clear"></div>
+			<img src="http://cdn1.iconfinder.com/data/icons/minimal/22x22/status/audio-volume-high.png">
+			<input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+		</body>
+		</html>

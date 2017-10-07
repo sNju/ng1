@@ -1,0 +1,398 @@
+/**/
+.container{   
+    margin: 0 auto;
+    
+    @media (min-width: 768px){
+        width: 750px;
+    }
+    @media (min-width: 992px){
+        width: 970px;
+    }
+    @media (min-width: 1200px){
+        width: 1140px;
+    }
+}
+
+.col-lg-8{
+    width: 46.66666667%;    
+    padding:0 15px;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    @media(min-width: 991px) {
+        width: 56.66666667%;
+    }
+
+    @media(min-width: 1200px) {
+        width: 66.66666667%;
+    }
+}
+.col-lg-4{
+    width: 100%;
+    padding:0 15px;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    @media(min-width: 640px) {
+        width: 53.33333333%;
+    }
+
+    @media(min-width: 991px) {
+        width: 43.33333333%;
+    }
+
+    @media(min-width: 1200px) {
+        width: 33.33333333%;
+    }
+}
+
+/*New Roboto Fonts Start*/
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Roboto');
+}
+
+/*Flex Property*/
+.flex-center{
+	display: flex;	
+	display: -webkit-flex;
+	align-self: center;
+	-webkit-align-self:center;
+	align-items:center;
+	-webkit-align-items:center;
+	justify-content:space-between;
+	-webkit-justify-content:space-between;
+}
+
+body, html {
+    width:100%;
+    height:100%;
+}
+body {
+    font-family: 'Roboto', sans-serif!important;
+    background-color: #f4f4f4!important;
+    margin:0;
+    padding:0;
+    color: #000!important;
+}
+*{
+	margin:0;
+    padding:0;
+}
+.payment-content{
+	background-color: #fff;
+	border:1px solid #ececec;
+	margin: 30px;
+	padding: 0px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content:center;
+	
+    @media(min-width: 641px){
+        padding: 30px;
+    }
+	.content-panel{
+		padding: 0;
+        display: none;
+
+        @media(min-width: 641px){
+            display: block;
+        }
+        .details-section{
+            margin-bottom: 0;
+
+            @media(min-width: 991px){
+                margin-bottom: 10px;
+            }
+        }
+		.p-title{
+			font-size: 13px;
+            font-weight: 500;
+            margin-right: 3px;
+            
+            @media(min-width: 991px){
+                margin-left: 10px;
+                font-size: 15px;
+            }
+		}
+		.p-type{
+			font-size: 14px;			
+			color: #666;
+
+            @media(min-width: 991px){
+                font-size: 16px;
+            }
+		}
+		.p-fotter{
+			.flex-center();
+		}
+		.payment-heading{
+			font-size: 18px;
+			font-family: 'Roboto', sans-serif;			
+            font-weight: 500;
+
+            @media(min-width: 991px){
+                margin-left: 10px;
+            }
+
+            &.price-panel{
+                color: #e89519;
+                font-weight: 500;
+                margin-left: 0px;
+            }
+		}
+		
+		hr{
+			color: #ddd;
+			margin: 10px 0;
+		}
+	}
+}
+.fa-icn{
+    margin:0 3px;
+    margin-top:-2px;
+}
+.main-title{
+    color: #93a0af;
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 11px;
+    margin-bottom: 10px;
+}
+.booking-figure{
+	background-color: #f4f4f4;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	min-height: 198px;
+	position: relative;
+	margin-bottom: 25px;
+
+    &::before{
+        content: " ";
+        background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        background: -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        filter: progid:DXImageTransform.Microsoft.gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        height: 40%;
+        width: 100%;
+        opacity: .7;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        pointer-events: none;        
+    }
+	
+	.payment-party-title{
+		font-size: 24px;
+		color: #fff;
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 190px;
+
+        @media(min-width: 991px){
+            width: 330px;
+        }
+        @media(min-width: 1200px){
+            width: 550px;
+        }
+	}
+    .ticket-count{
+        position: absolute;        
+        right: 20px;
+        border:3px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        text-align: center;
+        
+        @media(min-width: 641px){
+            padding: 5px;
+            bottom: -27px;
+        }
+        @media(min-width: 991px){
+            padding: 7px;
+            bottom: -40px;
+            right: 50px;
+        }
+        .counting{
+            font-size: 20px;
+            font-weight: 700;
+            
+            @media(min-width: 991px){
+                font-size: 30px;
+            }
+        }
+        .type{
+            font-size: 12px;
+            text-transform: uppercase;
+
+            @media(min-width: 991px){
+                font-size: 16px;
+            }
+        }
+
+    }
+}
+.payment-container{
+    text-align: center;
+    padding: 0!important;
+        
+    @media(min-width: 641px){
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+
+    .payment-box{
+        min-height: 450PX;
+        min-width: 320px;
+        float: left;
+
+        @media(min-width: 360px)and (max-width: 640px){            
+            min-width: 350px;
+        }
+        @media(min-width: 641px){            
+            min-width: 320px;
+        } 
+               
+    }
+}
+
+/*.payment-detail {
+    height: 550px;
+    margin-left: -15px;   
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}*/
+/*.iframe {
+    position:relative;
+    width: 100%;
+    height: 100%;
+}*/
+
+
+/*.body-bg {
+    height: 100%;
+    width:100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px) grayscale(90%) opacity(30%);
+}
+*/
+/*.body-hover {
+    background-color: rgba(255,255,255,0.75) !important;
+    height: 100%;
+    width:100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.iframe {
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
+
+.order-detail {
+}
+
+.order-title {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 20px;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.order-title1 {
+    position: absolute;
+    left: 0px;
+    top: 230px;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    background: transparent;
+    background: -webkit-linear-gradient(transparent, black);
+    background: -o-linear-gradient(transparent, black);
+    background: -moz-linear-gradient(transparent, black);
+    background: linear-gradient(transparent, black);
+}
+
+.billing-detail {
+    border: 1px solid #8C8C8C;
+    background-color: #fff;
+    padding: 0px !important;
+}
+
+.venue-detail {
+    padding: 20px 20px 0px 20px;
+    border-bottom: 1px solid #8C8C8C;
+}
+
+.payment-detail {
+    height: 550px;
+    margin-left: -15px;
+    //background: #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+ul {
+    padding: 10px;
+    list-style-type: none;
+    margin: 0px !important;
+}
+
+ul li:not(:first-child) {
+    margin: 0px 20px 0px 20px;
+    color: #8c8c8c;
+}
+
+.enlarge {
+    font-size: 20px;
+}
+
+.amount-payable {
+    background: #f3f3f3;
+    border: 1px solid #8C8C8C;
+    border-top: 0;
+    padding: 5px 0;
+}
+
+.cover-detail {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+iframe, object, embed {
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
+}*/

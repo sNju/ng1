@@ -1,0 +1,8 @@
+<booking-records-header></booking-records-header>
+<div class="container-fluid min-width">
+		<ul class="booking-conversation-list">
+			<group-conversation></group-conversation>
+			<booking-conversation data={{obj}}  ng-repeat="obj in bookingRequest | bookingStatusFilter:tabStatus"></booking-conversation>
+
+		</ul>
+	</div>

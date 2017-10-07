@@ -1,0 +1,57 @@
+/*
+ *	GPCA List Style
+ */
+.gp-list {
+	.flex-center();
+	.list-figure {
+		border:1px solid #ececec;
+		min-height: 60px;
+		min-width: 92px;
+		background-repeat:no-repeat;
+		background-size:cover;
+		background-position:top left;
+		background-color:darken(#ececec, 50%);
+		float: left;
+		.RoundShape(4px 0 0 4px);
+		@media(min-width: 768px){
+			min-height: 80px;
+			min-width: 112px;
+		}		
+	}
+	.list-details{
+		.flex-center();
+		align-items: flex-start;
+		-webkit-align-items: flex-start;
+		justify-content: center;
+		-webkit-justify-content: center;
+		flex-direction: column;
+		-webkit-flex-direction: column;
+		padding:4px 8px;
+		float: left;
+		min-height:60px;
+		@media(min-width: 768px){
+			min-height: 80px;
+			padding:8px;
+		}
+	}
+	.list-title{
+		margin-top: 0;
+		margin-bottom:5px;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 1.5em;
+		font-family: @profiletypefont;
+		text-align: left;
+	}
+	.list-type{
+		font-size: 1.3em;
+		margin-bottom:5px;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		color: #666;
+		text-align: left;
+	}
+}	 
+	

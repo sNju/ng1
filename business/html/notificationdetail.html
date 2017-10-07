@@ -1,0 +1,20 @@
+<div class="main-content-header page-header">
+	<h1 class="page-heading">Notifications</h1>
+</div>
+
+<div class="container-fluid max-width">
+	<ul class="notifications-list">
+		<li class="media" ng-repeat="obj in notificationsdetail">
+			<div class="media-left">
+				<img alt="" class="user-pic media-object" src="{{obj.thumburl}}">
+			</div>
+			<div class="media-body">
+				<div class="media-header">
+					<time>{{obj.createdat|timeStamptoProperDate}}</time>    
+					<h4 class="media-heading">{{obj.name}}</h4>
+				</div>    
+				<p>{{obj.message}}</p>
+			</div>
+		</li>
+	</ul>
+</div>

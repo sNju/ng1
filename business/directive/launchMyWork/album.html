@@ -1,0 +1,27 @@
+<li>
+	<figure class="launched-work album" launched-work>
+		<button class="user-actions-toggle" role="button">
+			<span>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+			</span>
+		</button>
+
+		<div class="user-actions">
+			<a class="user-action" ui-sref="launchMyWork({id:id})" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+			<a class="user-action" href="#" ng-click="deleteDialog($event)" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+			<a class="user-action" href="#" ng-click="shareModal($event)" data-toggle="tooltip" title="Share"><i class="fa fa-share-alt"></i></a>
+		</div>
+
+		<a href="#gpLaunchedAlbumModal" ng-click="setAlbum(mediaObj.id)" data-toggle="modal" data-target="#gpLaunchedAlbumModal" ng-click="setImageSource()" class="gp-photo-gallery-lightBox work-figure-wrap">
+			<span style="background-image:url({{mediaObj.fileurl}})"></span>
+		</a>
+		<figcaption>
+			<h3 class="work-heading">{{mediaObj.title}}</h3>
+		</figcaption>
+
+		
+	</figure>
+
+</li>

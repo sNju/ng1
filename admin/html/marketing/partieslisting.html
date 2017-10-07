@@ -1,0 +1,112 @@
+<form method="POST" add-user-directive modal-open>
+    <div class="container-fluid">
+        <div class="sec-heading">
+            <h2 class="heading-type">Parties and Party Spots</h2>
+            <div class="pull-right">
+                <button type="button" ng-click="getId(filterobj.user)"  class="btn waves-effect bg-base" >Create Party</button>
+                <button type="button" class="btn bg-dark waves-effect" ng-click="submitdetail()"  stop-flickering>Generate On-Boarding Link</button>
+                <button type="button" ng-if="isclaimed!=true" ng-click="grantcredentials()"  class="btn waves-effect bg-base" formnovalidate>Grant Access</button>
+                <button type="button" ui-sref="/partyfetchlisting({id:filterobj.user})" class="btn bg-fb waves-effect" formnovalidate>Fetch Event From Facebook</button>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="panel-header">
+                <h2 class="header-type">Parties/party Spot</h2>
+                <button type="submit" ng-click="getallparty(filterobj)" class="btn bg-dark pull-right waves-effect">Apply Filters</button>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input ng-value="filterobj.address" id="txtlocation" google-location-autocomplete type="text" class="form-control" placeholder="Location" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input ng-model="filterobj.keyword"  type="text" class="form-control" placeholder="Keyword" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">date_range</i>
+                        </span>
+                        <div class="form-line">
+                            <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">date_range</i>
+                    </span>
+                    <div class="form-line">
+                        <input name="startdate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date " >
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="specification booking-details">
+                    <span>Total Head Count</span>            
+                    <span>Total Booking Count</span>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <ul class="details-container clearfix">
+                 <!--  <li class="details-list col-lg-3 col-md-3 col-sm-4 col-xs-12"    ng-class="{'active':$index%2==0}"  ng-repeat="partyobj in parties">
+                      <div class="gpa-card gpa-card-booking">
+                          <div class="card-title">
+                              {{partyobj.party.title|limitTo:20}}
+                          </div>
+                          <div class="card-detail-section" ui-sref="/detail({type:'party',id:partyobj.party._key})">
+                              <p class="card-types">{{partyobj.party.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>
+                              <p class="card-value"><span>{{partyobj.headcount}}</span>/<span>{{partyobj.bookings}}</span></p>
+                              <p class="card-types location">{{partyobj.party.location|limitTo:30}}</p>
+                          </div>
+                          <div ng-click="makeurl($event,obj)" class="name-and-status">
+                            Edit
+                        </div>
+                    </div>
+                </li> -->
+
+
+                <booking-card obj={{revenue}} ng-repeat="revenue in parties"></booking-card>
+            </ul>
+        </div>                
+        
+    </div>
+</div>
+</div><!--Close Card-->
+</div><!--Close Container-->
+</form>
+
+
+<!--Ok Modal Window-->
+<div id="urlconfrm" class="modal fade" role="dialog">
+    <div class="modal-dialog url-modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body url-body panel-center">
+                <button type="button" class="close url-close" data-dismiss="modal">&times;</button>
+                <div class="url-content">
+                    <i class="material-icons url-icon">done</i>
+                    <h3 class="url-heading">Awesome!</h3>
+                    <p class="url-type">You are ready to proceed using this URL</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="url-link" id="copyUrlText">{{onboardinglink}}</div>
+                <div class="panel-center">
+                    <button class="btn url-btn" id="copyUrl" copy-url-link>Copy URL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal Window End-->

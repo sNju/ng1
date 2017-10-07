@@ -1,0 +1,211 @@
+<gpca-header date-value="false" search-strip="false"></gpca-header>
+<div class="container blog-container" image-gallery blog-detail-directive facebook-page-find>
+	<div class="row">
+		<div class="col-lg-8  col-md-8 col-sm-12 col-xs-12 blog-posting">
+			<div class="blog-details">
+				<!--Blog Heading-->
+				<h4 class="blog-detail-heading">{{blog.title}}</h4>
+				<div class="pull-right icon-socail-m clearfix">
+					<span>
+						<a target="_blank" href="https://www.facebook.com/sharer.php?u=https://www.goparties.com{{$root.getGpUrl(blog)}}"><i class="fa fa-facebook" data-toggle="tooltip" title="share on facebook" data-placement="top"></i></a>
+					</span>
+					<span>
+						<a target="_blank" href="https://twitter.com/intent/tweet?url=https://www.goparties.com{{$root.getGpUrl(blog)}}"><i class="fa fa-twitter" data-toggle="tooltip" title="share on twitter" data-placement="top" ></i></a>
+					</span>
+					<span>
+						<a target="_blank"  href="https://plus.google.com/share?url=https%3A//plus.google.com{{$root.getGpUrl(blog)}}"><i class="fa fa-google-plus" data-toggle="tooltip" title="share on google plus" data-placement="top"></i></a>
+					</span>
+					<span>
+						<a target="_blank"  href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="fa fa-pinterest-p" data-toggle="tooltip" title="share on printest" data-placement="top"></i></a>
+					</span>
+					<span>
+						<a target="_blank" href="mailto:?subject={{blog.title}}&amp;body=Hi%2C%20%0D%0ACheckout%20this%20%20https://www.goparties.com{{$root.getGpUrl(blog)}}%0D%0A%20and%20Keep%20Partying%21"><i class="fa fa-envelope-o" data-toggle="tooltip" title="share on email" data-placement="top"></i></a>
+					</span>
+				</div>
+				<div class="date-section">{{blog.createdat|timeStamptoProperDate}}</div>
+				<!--Image Section-->
+				<a ng-href="{{$root.getGpUrl(blog)}}">
+					<div class="blog-detail-figure" style="background-image: url('{{blog.cover}}');">
+						<!-- <span class="btn party-btn">Heading</span> -->
+					</div>
+				</a>
+				<!--Content use in P Tag -->
+				<p ng-bind-html="blog.html">
+
+				</p>
+
+				<!--Caurosal-->
+				<section>
+					<div class="blog-gallery">
+						<!--Video Add for List-->
+						<!--Video 1-->
+						<div style="display:none;" id="video1">
+							<video class="lg-video-object lg-html5" controls preload="none">
+								<source src="https://video.xx.fbcdn.net/v/t43.1792-2/15779789_358244551210883_653794279872790528_n.mp4?efg=eyJybHIiOjI0ODcsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=2487&vabr=1658&oh=d8fc615c746a1015d1fa1f7396df91df&oe=5867BF18" type="video/mp4">
+								</video>
+							</div>
+							<!--Video 1-->
+							<div style="display:none;" id="video2">
+								<video class="lg-video-object lg-html5" controls preload="none">
+									<source src="https://video.xx.fbcdn.net/v/t43.1792-2/15780157_1208430452543395_2419091834996260864_n.mp4?efg=eyJybHIiOjE1MDAsInJsYSI6MTAyNCwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=409&oh=83bb23c3f966fe5622f06ba3cf86c766&oe=5868CE99" type="video/mp4">
+									</video>
+								</div>
+								<!--Start Ul thumb-->
+								<ul light-gallery-bind-blog-detail id="lightgallery" class="list-unstyled clearfix">
+									<!--Thumb image 1-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b1.jpg">
+										<div class="img-gallery" style="background-image: url(/images/blog/gallery/thumb/b1.jpg);">
+											<span class="thumb-overlay"></span>
+										</div>
+									</li>
+									<!--Thumb image 2-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b2.jpg">
+										<a href="">
+											<img class="img-responsive" src="/images/blog/gallery/thumb/b2.jpg"><span class="thumb-overlay"></span>
+										</a>
+									</li>
+									<!--Thumb video 1-->
+									<li  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-poster="/images/blog/gallery/thumb/b3.jpg" data-html="#video1" >
+										<a href="">
+											<img class="img-responsive" src="/images/blog/gallery/thumb/b3.jpg"><span class="thumb-overlay thumb-overlay-video"></span>
+										</a>
+									</li>
+									<!--Thumb image 3-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b4.jpg">
+										<a href=""><img class="img-responsive" src="/images/blog/gallery/thumb/b4.jpg"><span class="thumb-overlay"></span></a>
+									</li>
+									<!--Thumb video 2-->
+									<li  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-poster="/images/blog/gallery/thumb/b5.jpg" data-html="#video1" >
+										<a href=""><img class="img-responsive" src="/images/blog/gallery/thumb/b5.jpg"><span class="thumb-overlay thumb-overlay-video"></span></a>
+									</li>
+									<!--Thumb image 4-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b6.jpg">
+										<a href=""><img class="img-responsive" src="/images/blog/gallery/thumb/b6.jpg"><span class="thumb-overlay"></span></a>
+									</li>
+									<!--Thumb image 5-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b7.jpg">
+										<a href=""><img class="img-responsive" src="/images/blog/gallery/thumb/b7.jpg"><span class="thumb-overlay"></span></a>
+									</li>
+									<!--Thumb image 6-->
+									<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-src="/images/blog/gallery/b8.jpg">
+										<a href=""><img class="img-responsive" src="/images/blog/gallery/thumb/b8.jpg"><span class="thumb-overlay"></span></a>
+									</li>
+								</ul>
+							</div>
+						</section>
+
+						<!--Share Icons-->
+						<section id="share-icons">
+							<div class="share-social-media">
+								<span class="share-content">Share on</span>
+								<div class="sm-icon">
+									<span>
+										<a target="_blank" href="https://www.facebook.com/sharer.php?u=https://www.goparties.com/{{blog.gpurl}}"><i class="fa fa-facebook" data-toggle="tooltip" title="share on facebook" data-placement="top"></i></a>
+									</span>
+									<span>
+										<a target="_blank" href="https://twitter.com/intent/tweet?url=https://www.goparties.com/{{blog.gpurl}}"><i class="fa fa-twitter" data-toggle="tooltip" title="share on twitter" data-placement="top" ></i></a>
+									</span>
+									<span>
+										<a target="_blank" href="https://plus.google.com/share?url=https%3A//plus.google.com/{{blog.gpurl}}"><i class="fa fa-google-plus" data-toggle="tooltip" title="share on google plus" data-placement="top"></i></a>
+									</span>
+									<span>
+										<a target="_blank" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="fa fa-pinterest-p" data-toggle="tooltip" title="share on printest" data-placement="top"></i></a>
+									</span>
+									<span>
+										<a target="_blank" href="mailto:?subject={{blog.title}}&amp;body=Hi%2C%20%0D%0ACheckout%20this%20%20https://www.goparties.com/{{blog.gpurl}}%0D%0A%20and%20Keep%20Partying%21"><i class="fa fa-envelope-o" data-toggle="tooltip" title="share on email" data-placement="top"></i></a>
+									</span>
+								</div>
+							</div>
+						</section>
+
+						<!--Suggested Blog-->
+						<section id="suggested-blog">
+							<div class="row">
+								<div class="col-lg-12">
+									<h3 class="heading">Suggested Blogs</h3>
+
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blogContainer blogDetail" ng-repeat="blog in suggested">
+				                      <div class="slideUp blogOne" show-share-content-one>      
+				                        <div class="bottomFixed">
+				                          <p class="blog-date">24 April 2017</p>
+				                        </div>
+				                        <div class="blogIcons">
+				                          <i class="fa fa-eye blog-view" aria-hidden="true" title="Views"></i>
+				                          <span class="viewcount">{{blog.viewcount}}</span>                            
+				                          <div class="blogTooltip">
+				                            <i class="fa fa-share-alt blog-share" aria-hidden="true" title="Share"></i>
+				                            <div class="tooltiptext">
+				                              <span><a target="_blank" href="https://www.facebook.com/sharer.php?u=https://www.goparties.com/{{blog._id}}"><i class="fa fa-facebook"  title="share on facebook"></i></a></span>
+				                              <span><a target="_blank" href="https://twitter.com/intent/tweet?url=https://www.goparties.com/{{blog._id}}"><i class="fa fa-twitter" title="share on twitter"></i></a></span>
+				                              <span><a target="_blank" href="https://plus.google.com/share?url=https%3A//plus.google.com/{{blog._id}}"><i class="fa fa-google-plus" title="share on google plus"></i></a></span>
+				                              <span><a target="_blank" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="fa fa-pinterest-p" title="share on printest"></i></a></span>
+				                              <span><a target="_blank" href="mailto:?subject={{homeobj.blogs[0].title}}&amp;body=Hi%2C%20%0D%0ACheckout%20this%20%20https://www.goparties.com/{{homeobj.blogs[0]._key}}%0D%0A%20and%20Keep%20Partying%21"><i class="fa fa-envelope-o" title="share on email"></i></a></span>
+				                            </div>
+				                          </div>
+				                        </div>
+				                        <a ng-href="{{$root.getGpUrl(blog)}}"><div style="background-image:url('{{blog.cover}}')" class="blogImage blogDetailImg"></div></a>
+				                        <div class="overlay-container">
+				                          <div class="overlay">
+				                            <div class="overlay-content">
+				                              <p class="blog-Title"><a ng-href="{{$root.getGpUrl(blog)}}">{{blog.title}}</a></p>
+				                              <p class="blog-Type" ><a ng-href="{{$root.getGpUrl(blog)}}">{{blog.description|limitTo:100}}...</a></p>
+				                            </div>
+				                          </div>
+				                        </div>  
+				                      </div>
+									</div> 
+								</div>
+							</div>
+						</section>
+					</div>
+
+				</div><!--End Blog Posting-->
+
+				<aside><!--Aside Panel-->
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  blog-aside">
+						<!--Blog Search-->
+					<!-- 	<div class="gp-well">
+							<h4 class="heading">Blog Search</h4>
+							<div class="input-group blog-right-search">
+								<input type="text" class="form-control" placeholder="blog search">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<span><i class="fa fa-search" aria-hidden="true"></i></span>
+									</button>
+								</span>
+							</div>
+						</div> -->
+						<!--Current Post-->
+						<div class="recent-post">
+							<h3 class="heading">Recent Post</h3>
+							<!--Post 1-->
+							<a ng-href="{{$root.getGpUrl(blog)}}" ng-repeat="blog in recent">
+								<div class="media">
+									<div class="media-left gp-media-left">
+									<div style="background-image: url('{{blog.cover}}');" class="coverImg"></div>
+<!-- 										<img src="{{blog.cover}}" class="media-object gp-media-figure" alt="GoParties|{{blog.title}}"> -->
+									</div>
+									<div class="media-body gp-media-content">
+										<h4 class="media-heading gp-media-title">{{blog.title|limitTo:30}}</h4>
+										<p class="gp-media-type">{{blog.description|limitTo:30}}</p>
+										<p class="date-format">{{blog.createdat|timeStamptoProperDate}}</p>
+									</div>
+								</div>
+							</a>
+
+
+							<!--Facebook Like Panel-->
+							<section id="facebook-container">
+								<div id="facebook-panel">
+									<h3 class="heading">Find on Facebook</h3>
+									<div class="fb-like-panel">
+										<div  id="fb-root">
+											<div class="fb-page" data-href="https://www.facebook.com/goparties/?fref=ts" data-width="370" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/goparties/?fref=ts" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/goparties/?fref=ts">GoParties - Your Party App</a></blockquote></div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</aside>
+				</div><!--End Row-->
+			</div><!--End Container-->

@@ -1,0 +1,17 @@
+<div class="main-content-header page-header support-services-header clearfix" has-search-filter-widget >
+	<h1 class="page-heading">Support Services</h1>
+	<form>
+		<button class="search-filter-toggle" role="button"><i class="fa fa-search"></i></button>
+		<div class="form-group view-specific-search searchServiceCategories">
+			<input type="text" class="gp-search-control" ng-model="searchValue" placeholder="Search Category" />
+		</div>
+	</form>	
+</div>
+
+<div class="container-fluid max-width">
+	<ul class="responsiveColumnLayout supportServiceCategoriesList">
+		<support-service-category data="{{obj}}" ng-repeat="obj in services|searchCategoryList:searchValue"></support-service-category>
+		<support-service-category data="{{obj}}" ng-repeat="obj in services|searchCategoryList:searchValue"></support-service-category>
+		<support-service-category data="{{obj}}" ng-repeat="obj in services|searchCategoryList:searchValue"></support-service-category>
+	</ul>
+</div>

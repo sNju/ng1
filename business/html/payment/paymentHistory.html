@@ -1,0 +1,130 @@
+
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>
+
+<div ng-hide="show&&!loading">
+	<div class="main-content-header page-header support-services-header clearfix" has-search-filter-widget >
+		<h1 class="page-heading">Payment History</h1>
+		<form>
+			<button class="search-filter-toggle" role="button"><i class="fa fa-search"></i></button>
+			<div class="form-group view-specific-search">
+				<label class="sr-only"></label>	
+				<input ng-change="change(search)" ng-model="search" class="gp-search-control" type="text" placeholder="Search">
+			</div>	
+		</form>
+		<div class="payout-balance">Balance : {{balance}} {{balance>=0?'Cr.':'Dr.'}}</div>
+		<!-- <button data-toggle="modal" data-target="#requestPayoutModal" class="btn btn-primary pull-right call-to-action" type="button">Request Payout</button> -->
+	</div>
+
+	<div class="filters payment-history-filters clearfix">
+		<div class="form-group gp-form-group payment-type">
+			<label class="sr-only">Type</label>
+			<select ng-init="filterobj.type='All'" class="form-control" ng-model="filterobj.type">
+				<option>All</option>
+				<option>Sales</option>
+				<option>Payouts Paid</option>
+				<option>Pending Payouts</option>
+			</select>
+		</div>
+
+		<div class="date-range-picker form-group gp-form-group combined-form-group">
+			<label class="sr-only">Search By Date Range</label>
+			<div class="clearfix">
+				<div class="input-group from-date-picker">
+					<adm-dtp full-data="startdate_detail" ng-model="filterobj.fromdate" options="{ format: 'DD/MM/YYYY hh:mm'}">
+						<input type="text" class="form-control" ng-model="filterobj.fromdate" dtp-input placeholder="From Date" />
+					</adm-dtp>
+				</div> 
+
+				<div class="input-group to-date-picker">
+					<adm-dtp mindate="{{startdate_detail.unix}}" ng-model="filterobj.todate" options="{ format: 'DD/MM/YYYY hh:mm'}">
+						<input type="text" class="form-control" ng-model="filterobj.todate" dtp-input placeholder="To Date" />
+					</adm-dtp>
+				</div>
+			</div>
+		</div>
+		
+		<div class="btn-primary-wrap form-group">
+			<button class="btn btn-primary call-to-action" ng-click="filterClick()" type="button">Apply Filter</button>
+		</div>
+	</div><!-- /.payment-history-filters -->
+
+	<div class="container-fluid max-width">
+		<div class="payment-history-wrapper">
+			<ul id="paymentHistoryList" class="payment-history-list" gp-accordion>
+				<li ng-repeat="obj in history|paymenthistoryfilter:search" class="payment-history has-sub-content">
+					<div class="payment-history-header data-link" data-parent="#paymentHistoryList">
+						<div class="ammount-paid">
+							<h5 class="item-title">Ammount Paid</h5>
+							<span>{{obj.amount}}</span>
+						</div>
+						<div class="payment-history-time hidden-xs">
+							<h5 class="item-title">Time</h5>
+							<span>{{obj.createdat|timeStamptoProperDate}}</span>
+						</div>
+						<div class="transaction-id">
+							<h5 class="item-title">Transaction ID</h5>
+							<span>{{obj.transcationid}}</span>
+						</div>
+					</div>
+					<div class="sub-content">	
+						<div class="payment-history-full-details">
+							<ul class="details-list">
+								<li ng-show="obj.type==1">
+									<h5 class="item-title">Ammount Paid</h5>
+									<span>{{obj.amount}}</span>
+								</li>
+								<li ng-show="obj.type==-1">
+									<h5 class="item-title">Payout ID</h5>
+									<span>{{obj.payoutid}}</span>
+								</li>
+								<li ng-show="obj.type==-1">
+									<h5 class="item-title">Payout At</h5>
+									<span>{{obj.payoutat|timeStamptoProperDate}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">{{obj.type==1?'Credit':obj.type==-1?'Debit':'Amount'}}</h5>
+									<span>{{obj.value}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">Time</h5>
+									<span>{{obj.createdat|timeStamptoProperDate}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">Transaction ID</h5>
+									<span>{{obj.transcationid}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">Towards</h5>
+									<span>{{obj.towards}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">Paid Using</h5>
+									<span>{{obj.mode}}</span>
+								</li>
+								<li>
+									<h5 class="item-title">Name</h5>
+									<span>{{obj.name}}</span>
+								</li>
+								<li>
+								<!-- 	<div class="btn-wrap">
+										<a class="btn btn-lg btn-primary call-to-action" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i>Download PDF</a>
+									</div> -->
+									<span>Any Query or Concern? <a class="link-txt" href="#">Contact Us</a></span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+
+
+			</ul>	
+
+
+
+		</div>
+	</div>
+</div>
+

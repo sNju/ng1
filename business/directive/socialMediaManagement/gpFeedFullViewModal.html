@@ -1,0 +1,204 @@
+<md-dialog class="gp-feed-full-view-dialog gp-modal-sm" aria-label="Mango (Fruit)"  ng-cloak >
+
+
+    <md-dialog-content class="gp-full-feed" ng-class="{'facebook-feed':currentObj.network=='facebook','goParties-feed':currentObj.network=='goparties','instagram-feed':currentObj.network=='instagram','twitter-feed':currentObj.network=='twitter','gp-video-feed':currentObj.type=='video','gp-audio-feed':currentObj.type=='video'}" layout="row" layout-xs="column">
+
+        <button type="button" class="dialog-close-btn" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+        <div class="gp-feed-media-wrapper flex" ng-class="{'hidden':currentObj.thumburl.length==0}" flex>
+
+            <div class="img-outer-wrap">
+                <div class="img-wrap" layout="column" layout-align="center center">
+                    <img alt="" class="hidden" src="images/launched-work/photos/snap-1.jpg">
+                    <img alt="" class="" src="{{currentObj.thumburl}}">
+                </div>    
+            </div>    
+        </div>        
+
+
+        <div class="gp-feed-details flex" flex >
+
+            <div class="gp-feed-header">
+                <div class="gp-user-profile-table">
+                    <div class="gp-user-pic-table-cell"> 
+                        <img alt="" class="gp-user-pic" src="{{currentObj.user_image.length>0?currentObj.user_image:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+                    </div>
+                    <div class="gp-user-info-table-cell">
+                       <h4 class="gp-user-name">{{currentObj.user}}</h4>
+                       <p>{{(currentObj.created_at/1000)|timeStampToDate|dateFormat}},{{(currentObj.created_at/1000)|timeStampToDate|timeFormat}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gp-feed-content-wrapper">
+
+                <section id="textFeedContent" class="gp-feed-content gp-feed-section">
+                    <p class="feed-full-txt">{{currentObj.text}}</p>
+                    <div class="gp-feed-actions">   
+                        <ul class="gp-feed-actions-nav clearfix">
+                            <li>
+                                <div class="gp-feed-action">
+                                    <button  ng-click="likeClick(currentObj)" ng-class="{'liked':currentObj.has_liked==true}"  class="btn-action gp-feed-action-icon like-post-btn" type="button"><i ng-class="{'fa fa-heart-o':currentObj.has_liked!=true,'fa fa-heart':currentObj.has_liked==true}" class=""></i></button>
+                                    <button ng-click="getLikeList(currentObj)" class="btn-action" data-toggle="feed-content" data-target="#likedUsersContent" type="button"><span>{{currentObj.like_count}}</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="gp-feed-action gp-feed-comment-action">
+                                    <button ng-click="getCommentList(currentObj)" class="btn-action" data-toggle="feed-content" data-target="#feedCommentsContent" type="button">
+                                        <span class="gp-feed-action-icon"><i class="fa fa-comment-o"></i></span> <span>{{currentObj.comment_count}}</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="gp-feed-action">
+                                    <button ng-click="getShareList(currentObj)" class="btn-action gp-feed-action-icon" type="button"><i class="fa fa-share"></i></button>
+                                    <button class="btn-action" data-toggle="feed-content" data-target="#feedSharesContent" type="button"><span>{{currentObj.share_count}}</span></button>
+                                </div>
+                            </li>
+                            <li class="hidden">
+                                <div class="gp-feed-action dropup">
+                                    <button class="btn-action" data-toggle="dropdown" type="button">
+                                        <div class="gp-ellipsis-v">
+                                            <i class="gp-ellipse-o"></i>
+                                        </div>
+                                    </button>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fa fa-pencil"></i> Edit Feed</a></li>
+                                        <li><a href="#"><i class="fa fa-trash-o"></i> Delete Feed</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                        </ul>   
+                    </div><!-- /.gp-feed-actions -->    
+                </section><!-- /.gp-feed-content section -->
+
+                <section id="likedUsersContent" class="gp-feed-likes gp-feed-section">
+
+                    <div class="gp-section-header">
+
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+                        <h3 class="gp-section-heading"><i class="fa fa-heart heading-icon"></i> {{likeList.length}} Like This</h3>
+
+                    </div>
+                    <div style="max-height:400px; overflow-y:scroll;">
+                        <ul class="liked-users-list">
+                            <li ng-repeat="user in likeList">
+                                <a ng-show="isProfile==true" href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                                <div class="gp-user-profile-wrap">
+                                    <div class="gp-user-profile-table">
+                                        <div class="gp-user-pic-table-cell"> 
+                                            <img alt="" class="gp-user-pic" src="{{user.userimage.length>0?user.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+                                        </div>
+                                        <div class="gp-user-info-table-cell">
+                                            <h4 class="gp-user-name">{{user.user}}</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>    
+                    </div>
+
+                </section><!-- /.gp-feed-likes section -->    
+
+
+                <section id="feedCommentsContent" class="gp-feed-comments gp-feed-section">
+                    <div class="gp-section-header">
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+                        <h3 class="gp-section-heading"><i class="fa fa-comment heading-icon"></i> {{commentList.length}} Comments</h3>
+                    </div>
+
+
+                    <div style="max-height:200px; overflow-y:scroll;">
+                        <ul class="liked-users-list">
+                            <li ng-repeat="comment in commentList">
+
+                                <time datetime="2016-01-05">{{(comment.created_at/1000)|timeStampToDate|dateFormat}},{{(comment.created_at/1000)|timeStampToDate|timeFormat}}</time>
+                                    <div class="gp-user-profile-wrap">
+                                        <div class="gp-user-profile-table">
+                                            <div class="gp-user-pic-table-cell"> 
+                                                <img alt="" class="gp-user-pic" src="{{comment.userimage.length>0?comment.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+                                            </div>
+                                            <div class="gp-user-info-table-cell">
+                                                <h4 class="gp-user-name">{{comment.user}}</h4>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br class="clearfix">
+                                    <div class="gp-user-comment">
+                                        <p> <p>{{comment.comment}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Post New Comment -->
+                        <div class="post-new-comment">
+                            <form>
+                                <div class="form-group">    
+                                    <textarea ng-model="commentText" class="gp-new-comment-control" placeholder="Add New Message"></textarea>
+                                    <button ng-click="postCommentfromPopup(commentText,currentObj)" class="post-btn"><i class="fa fa-send"></i></button>
+                                </div>  
+                            </form>
+                        </div>  
+
+                        <!-- End Post New Comment -->    
+
+                    </section><!-- /.gp-feed-comments section --> 
+
+
+                    <section id="feedSharesContent" class="gp-feed-shares gp-feed-section">
+
+                        <div class="gp-section-header">
+
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+                            <h3 class="gp-section-heading"><i class="fa fa-share heading-icon"></i> {{shareList.length}} Share This</h3>
+
+                        </div>
+
+                        <ul class="liked-users-list">
+                            <li ng-repeat="share in shareList">
+                                <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                                <div class="gp-user-profile-wrap">
+                                    <div class="gp-user-profile-table">
+                                        <div class="gp-user-pic-table-cell"> 
+                                            <img alt="" class="gp-user-pic" src="{{share.userimage.length>0?share.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+                                        </div>
+                                        <div class="gp-user-info-table-cell">
+                                            <h4 class="gp-user-name">{{share.user}}</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>    
+
+                    </section><!-- /.gp-feed-shares section -->       
+
+                    
+
+                </div>    
+
+            </div>    
+
+            
+            
+
+        </md-dialog-content>
+
+
+        <nav class="dialog-controls-nav hidden-xs clearfix">
+            <a ng-click="prevObj()" class="dialog-control dialog-prev-control" href="#"><i class="fa fa-angle-left"></i></a>
+            <a ng-click="nextObj()" class="dialog-control dialog-next-control" href="#"><i class="fa fa-angle-right"></i></a>
+        </nav>
+
+
+    </md-dialog>

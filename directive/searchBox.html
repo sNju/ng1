@@ -1,0 +1,19 @@
+ <form class="search-header">
+  <div class="input-group">
+    <div class="input-group-btn search-btn">
+      <ul class="filter-list">
+        <a href="" ng-click="redirect('category','party')" data-backdrop="false"><li><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/parties.png">Parties</li></a>
+        <a href="" ng-click="redirect('tablebooking',true)" data-backdrop="false"><li><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/table-booking.png">Book Table</li></a>
+        <a href="" ng-click="redirect('guestlist',true)" data-backdrop="false"><li><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/guest-list.png">Guest List</li></a>
+        <a href="" ng-click="redirect('category','band,dj,artist')"  data-backdrop="false"><li><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/performers.png">Performers</li></a>
+      </ul>
+      <div class="search-dd">
+        <img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/search-list.png">
+        <span class="content-data">All</span>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <input readonly-input ng-click="$parent.searchdata($root.keyword)" id="searchtxt" type="text" class="form-control" ng-model="$root.keyword" placeholder="Search with filters to explore more..."   data-backdrop="false" autocomplete="off"  readonly>
+    <a id="searchbtn" href="#" ng-click="$parent.searchdata($root.keyword)"  data-backdrop="false"><i class="fa fa-search fa-search-icon" aria-hidden="true"></i></a>
+  </div>
+</form>

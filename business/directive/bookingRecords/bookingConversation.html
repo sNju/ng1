@@ -1,0 +1,16 @@
+	<li class="booking-conversation" ng-class="addStatusClass(booking_status)">
+		<div ng-include="getChatButton()"></div>
+		
+		<div class="media">
+			<div class="media-left">
+				<img alt="" class="user-pic media-object" src={{profilePic}}>
+			</div>
+			<div class="media-body">
+				<div class="media-header">
+					<time class="hidden-xs" datetime="2016-01-05">{{creation_time|timeStamptoProperDate}} </time>    
+					<h4 class="media-heading">{{name}}  <span class="gp-user-type">{{profileType}}</span></h4>
+				</div>
+				<p class="conversation-text">{{bookingMessage}}</p>
+			</div>
+		</div>
+	</li>

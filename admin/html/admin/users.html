@@ -1,0 +1,58 @@
+    <div class="container-fluid" add-user-directive>
+        <div class="sec-heading">
+            <h2 class="heading-type">DASHBOARD USERS</h2>
+        </div>
+
+        <div class="row">
+            <!-- Task Info -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="panel-header switch">
+                        <h2 class="header-type">All Users</h2>
+                        <button ui-sref="/adduser" class="btn bg-dark pull-right waves-effect">Add User</button>
+                        <!-- <div class="pull-right">
+                            <div class=" panel-switch-btn">
+                                span class="m-r-10 font-12">REAL TIME</span>
+                                <label>OFF<input type="checkbox" id="realtime" checked=""><span class="lever switch-col-cyan"></span>ON</label>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover dashboard-task-infos">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Added On</th>
+                                        <th>Last Logged In</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="animate-repeat tablerow"  ng-repeat="user in users">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{user.name}}</td>
+                                        <td><span ng-class="getclassname(user.role)" class="label">{{user.role}}</span></td>
+                                        <td>{{user.createdat|timeStamptoProperDate}}</td>
+                                        <td>{{user.lastlogin==undefined?'Never':(user.lastlogin|timeStamptoProperDate)}}</td>
+                                        <td>
+                                            <button ui-sref="/adduser({id:user._key})" class="btn btn-xs bg-light-blue waves-effect">Edit</button>
+                                            <button ng-class="(user.active==true) ? 'bg-red':'bg-green'"  ng-click="togglestate(user)" class="btn btn-xs bg-red waves-effect">{{user.active==true?'Disable':'Enable'}}</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Task Info -->
+        </div>
+    </div>
+    <!-- #END# Task Info -->
+</div>
+</div>
+
+</div>

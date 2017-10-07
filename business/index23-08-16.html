@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="72677469672-o5j9kmf1ub1eu8utsathsu2bsohua4bk.apps.googleusercontent.com">
+    <link rel="icon" href="http://gopartiesstatic.s3.amazonaws.com/favicon.png" />
+
+    <title>GoParties Business Application</title>
+    <link rel="stylesheet" type="text/css" href="libcss/angular-material.min.css">
+    <!--date time picker css file-->
+    <link rel="stylesheet" type="text/css" href="libcss/jquery.datepick.css"> 
+    <link rel="stylesheet" href="libcss/material-datetimepicker.css" type="text/css"/>
+    <!---->
+    <link href="libcss/bootstrap.min.css" rel="stylesheet">
+    <link href="libcss/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="libcss/font-awesome.css" rel="stylesheet">
+    
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libcss/ADM-dateTimePicker.min.css">
+    <link rel="stylesheet" href="libcss/ngToast.min.css">
+    <link rel="stylesheet" href="libcss/c3.min.css">
+    <link href="libcss/plugins/angular.rangeSlider.css" rel="stylesheet">
+
+    <link href="css/plugins/fullcalendar.css" rel="stylesheet"/>
+    <link href="css/plugins/calender.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libcss/angular-circular-timepicker.css">
+    <link rel="stylesheet" href="libcss/plugins/jquery.mCustomScrollbar.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+          textarea {
+            resize: none;
+        }
+        .pac-container {
+            z-index: 100000 !important;
+        }
+        .md-virtual-repeat-container.md-autocomplete-suggestions-container {
+            position: absolute;
+            box-shadow: 0 2px 5px rgba(0,0,0,.25);
+            height: 225.5px;
+            max-height: 225.5px;
+            z-index: 100000;
+        }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+            transition: all linear 0.5s;
+            display: block !important;
+        }
+
+        .animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+            opacity: 0;
+        }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+            opacity: 1;
+        }
+    </style>
+    <style type="text/css">
+        input.ng-invalid.ng-dirty {
+            border-color:red;
+        }
+        input.ng-valid.ng-dirty {
+            border-color:lightgreen;
+        }
+        .invalidText{
+            color:red;
+        }
+        .today.ng-binding,.calTypeContainer.ng-scope.gregorian{
+            display:none !important;
+        }
+
+        .ng-enter{
+            transition: 1s;
+            opacity: 0;
+        }
+        .ng-enter-active{
+            opacity: 1;
+        }
+
+        .ng-leave{
+          transtion: 1s;
+          opacity: 1;
+      }
+      .ng-leave-active{
+        opacity: 0;
+    }
+    /*tiny mce style*/
+    .mce-menubar,#mceu_28-body,#mceu_21-body,#mceu_11,#mceu_12,#mceu_42,#mceu_43,#mceu_31,#mceu_32,#mceu_59-body,#mceu_73,#mceu_74,#mceu_62,#mceu_63,#mceu_90-body,#mceu_104,#mceu_105,#mceu_93,#mceu_94,#mceu_121-body,#mceu_152-body,#mceu_183-body{
+       display:none !important;
+   }
+   div[id$="-body" && id^="mceu_"]{
+    display: none !important;
+}
+.md-scroll-mask{
+    position: initial
+}
+
+/*animation when image tag source chnage*/
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    transition: all linear 0.5s;
+    display: block !important;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+    opacity: 0;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+/*angular animation*/
+.container {
+  height:250px;
+  width:250px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid black;
+}
+.container.cell {
+  font-size:150px;
+  text-align:center;
+  line-height:250px;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  border-bottom:2px solid black;
+}
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+  transition:0.5s linear all;
+}
+.swap-animation.ng-enter {
+  top:-250px;
+}
+.swap-animation.ng-enter-active {
+  top:0px;
+}
+.swap-animation.ng-leave {
+  top:0px;
+}
+.swap-animation.ng-leave-active {
+  top:250px;
+}
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
+.c3-line {
+    stroke-width:3px;
+}
+</style>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</head>
+<body id="mainParent" has-bs-tooltip  ng-controller="notificationCtrl">
+    <toast></toast>
+    <header id="site-header">
+        <div class="container-fluid">
+            <button class="sidebar-toggle-btn" role="button">
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+            </button>
+            
+            <a class="logo" ui-sref="/({profile_type:'all'})">
+                <img alt="GoParties for Business" class="gp-monogram" src="images/go-parties-logo.png">
+                <h1 class="gp-app-heading hidden-xs hidden-sm">
+                    GoParties
+                    <span>For Business</span>
+                </h1>
+            </a>                    
+
+            <nav class="header-nav">
+                <ul class="clearfix">
+
+                    <li class="header-nav-item hidden-xs hidden-sm"><a class="header-nav-link gpca-link" href="www.goparties.com" target="_blank">GoParties.com</a></li>
+                    
+
+                    <li class="header-nav-item dropdown hidden-xs hidden-sm">
+                        <a id="profileDropdown" class="header-nav-link user-login-link" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi! {{name}}</a>    
+                        <login-info-directive></login-info-directive>
+                    </li>    
+
+                    <li class="dropdown header-nav-item notifications">
+                        <a id="notificationDropdown" class="header-nav-link" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell-o" data-toggle="tooltip" title="Notifications"></i> <span class="badge">4</span></a>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+                            <li class="dropdown-header">Notifications</li>
+                            <notification-directive></notification-directive>
+                            <li><a class="view-all-link" href="#">View All</a></li>
+                        </ul>                        
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>                                    
+    </header>
+    <div class="content-wrapper">
+        <aside class="sidebar" role="complementary">
+            <nav class="nav user-mobile-nav visible-xs visible-sm">
+                <li class="dropdown">
+                    <a id="profileDropdown" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="gp-user-profile-table">
+                            <div class="gp-user-pic-table-cell"> 
+                                <img alt="" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                            </div>
+                            <div class="gp-user-info-table-cell">
+                                <h4>Hi! {{name}}</h4>
+                                <p>{{profile}}</p>
+                            </div>
+                        </div>
+                        <div class="gp-ellipsis-v">
+                            <i class="gp-ellipse-o"></i>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                        <li class="header-nav-item"><a class="header-nav-link gpca-link" href="www.goparties.com" target="_blank">GoParties.com</a></li>
+
+                        <li><a href="#">GP Coins</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Plan &amp; Pricing</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="#" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </li>
+            </nav><!-- /.user-mobile-nav -->
+
+
+            <nav id="primary-navigation" class="primary-navigation">
+                <ul class="main-menu">
+                  <li><a ui-sref="analytics" data-parent="#primary-navigation"><i class="gp-icon gp-lmw-icon"></i>Analytics</a></li>
+                  <li class="has-sub-menu">
+                    <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-dnb-icon"></i> Discover &amp; Book</a>
+                    <ul class="main-sub-menu">
+                        <li class="" ng-class="{active: activetab=='/all'}"><a  ui-sref="/({profile_type:'all'})"><i class="gp-icon gp-all-icon"></i> All</a></li>
+                        <li class="" ng-class="{active: activetab=='/party spot'}"><a ui-sref="/({profile_type:'Party Spot'})"><i class="gp-icon gp-party-spots-icon"></i> Party Spots</a></li>
+                        <li class="" ng-class="{active: activetab=='/Band'}"><a ui-sref="/({profile_type:'Band'})"><i class="gp-icon gp-bands-icon"></i> Bands</a></li>
+                        <li class="" ng-class="{active:activetab=='/Artist'}"><a ui-sref="/({profile_type:'Artist'})"><i class="gp-icon gp-performing-artists-icon"></i> Performing Artists</a></li>
+                        <li class="" ng-class="{active:activetab=='/DJ'}"><a ui-sref="/({profile_type:'DJ'})"><i class="gp-icon gp-dj-icon"></i> DJs</a></li>
+                        <li class="" ng-class="{active:activetab=='/Concert'}"><a ui-sref="/({profile_type:'Concert'})"><i class="gp-icon gp-concerts-icon"></i> Concerts</a></li>  
+                        <li class="" ng-class="{active: activetab=='/bookmark'}"><a ui-sref="/({profile_type:'bookmark'})"><i class="gp-icon gp-bookmarked-profiles-icon"></i>Bookmarked Profiles</a></li>    
+                    </ul>
+                </li> 
+
+                <li>
+                    <a ui-sref="bookingRecords({category:'all'})" data-parent="#primary-navigation"><i class="gp-icon gp-bnr-icon"></i> Booking Records</a>
+                </li>
+
+                <li class="has-sub-menu">
+                    <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-create-icon"></i> Create</a>
+                    <ul class="main-sub-menu">
+                       <li ng-class="{active:activetab=='/createdParties'}"><a ui-sref="createdParties({category:'all'})"><i class="gp-icon gp-party-icon"></i> Party</a></li>
+                       <li ng-class="{active: activetab=='/createdStandAloneDeals'}"><a ui-sref="createdStandAloneDeals({category:'all'})"><i class="gp-icon gp-stand-alone-deal-icon"></i> Stand Alone Deal</a></li>
+                       <li ng-class="{active: activetab=='/createdAvailabilities'}"><a ui-sref="availability"><i class="gp-icon gp-availability-icon"></i> Availability</a></li>   
+                   </ul>
+               </li>
+
+               <li><a ui-sref="myLaunchedWork({category:'all'})" data-parent="#primary-navigation"><i class="gp-icon gp-lmw-icon"></i> Launch My Work</a></li>
+
+               <li><a ui-sref="categoryList" data-parent="#primary-navigation"><i class="gp-icon gp-ss-icon"></i> Support Services</a></li>
+
+               <li class="has-sub-menu hidden">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-promote-icon"></i> Promote</a>
+                <ul class="main-sub-menu">
+                    <li><a href="#"><i class="gp-icon gp-promoted-items-icon"></i> View Items</a></li>
+                    <li><a href="#"><i class="gp-icon gp-promote-item-icon"></i> Promote</a></li>
+                </ul>
+            </li>
+
+            <li><a ui-sref="smmFirstTimeScreen" data-parent="#primary-navigation"><i class="gp-icon gp-smm-icon"></i> SMM First Time Screen</a></li>
+
+            <li><a ui-sref="createdPost({network:'all'})" data-parent="#primary-navigation"><i class="gp-icon gp-smm-icon"></i> Social Media Management</a></li>
+
+            
+
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-manage-icon"></i> Manage</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref="manageProfile"><i class="gp-icon gp-profile-outlet-icon"></i> Profile / Outlet</a></li>
+                    <li><a ui-sref="manageSocialMediaHandles"><i class="gp-icon gp-social-media-handles-icon"></i> Social Media Handles</a></li>
+                    <!-- 
+                    <li><a href="#"><i class="gp-icon gp-profile-outlet-icon"></i> Add Profile / Outlet</a></li>
+                    <li><a href="#"><i class="gp-icon gp-assign-right-icon"></i> Assign Rights</a></li>
+                    <li><a href="#">Notifications</a></li> -->
+                </ul>
+            </li>
+
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-payments-icon"></i> Payments</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref="cardHolder"><i class="gp-icon gp-card-holder-icon"></i> Card Holder</a></li>
+                    <li><a ui-sref="paymentHistory"><i class="gp-icon gp-payment-history-icon"></i> Payment History</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-help-icon"></i> Help</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref="faq"><i class="gp-icon gp-faqs-icon"></i> FAQ's</a></li>
+                    <li><a ui-sref="relationshipManager"><i class="gp-icon gp-relationship-manager-icon"></i> Relationship Manager</a></li>
+                </ul>
+            </li>
+        </ul>                     
+    </nav><!-- /.primary-navigation -->
+    
+    
+</aside><!-- /.sidebar -->
+
+<main  class="main-content" role="main">
+    <!--
+    <div class="align-center gp-preloader" ng-show="loading" style="position:absolute; top:100px; left:0; width:100%; height:100%;" >
+        <img src="images/general-preloader.gif">
+        <h4>Please Wait</h4>
+    </div>
+    -->
+
+    <div id="main-content">
+            <div class="main-content-header page-header" has-search-filter-widget >
+        <nav id="secondary-navigation" class="secondary-navigation has-horizontal-scrollbar pull-left" has-custom-horizontal-scrollbar > 
+            <ul class="sub-menu clearfix">
+                <li class="nav-sub-tabs" ng-class="{active: activetab=='/createdParties/all'}"><a ui-sref="createdParties({category:'all'})">All <span class="badge">{{categoryObj.all}}</span></a></li>
+                <li class="nav-sub-tabs" ng-class="{active: activetab=='/createdParties/live'}"><a ui-sref="createdParties({category:'live'})">Live <span class="badge">{{categoryObj.live}}</span></a></li>
+                <li class="nav-sub-tabs" ng-class="{active: activetab=='/createdParties/archived'}"><a ui-sref="createdParties({category:'archived'})">Archived <span class="badge">{{categoryObj.archived}}</span></a></li>
+                <li class="nav-sub-tabs"><a href="javascript:void(0);">Drafts <span class="badge">02</span></a></li>
+            </ul>
+        </nav>
+
+        <form>
+            <button class="search-filter-toggle" role="button"><i class="fa fa-search"></i></button>
+            <div class="form-group view-specific-search">
+                <input type="text" class="gp-search-control" placeholder="Search Party" />
+            </div>
+        </form>         
+    </div>
+        <div class="container-fluid max-width">
+        <ul class="gp-cards-wrapper responsiveColumnLayout clearfix" id="container">
+            <li>
+                <div class="gp-card gp-party-card gp-create-card">
+                    <div class="gp-party gp-card-details">
+                        <figure class="gp-party-card-figure">
+                            <a class="gp-create" ui-sref="createParty" role="button" href="#">
+                                <span class="gp-create-icon-wrap">
+                                    <i class="gp-add-icon"></i>
+                                </span> 
+                            </a>
+                        </figure>                       
+                        <!--
+                        <div class="gp-party-details">
+                            <p>Lorem ipsum dolor sit consect</p>
+                            <div class="gp-card-actions align-center clearfix">
+                                <button class="btn btn-lg btn-primary call-to-action" ng-click="book(profiletype,name,profilepic,id)" data-toggle="modal" data-target="#">Add Party</button>
+                            </div>
+                        </div>
+                        -->
+
+                    </div>
+                </div>
+            </li>   
+        </ul>
+    </div>        
+
+    </div>
+
+</main><!-- /.main-content -->
+
+</div>
+
+<footer id="footer" class="footer">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="footer-nav col-sm-6">
+                <h5>GoParties Business Application <span>ver 1.0</span></h5>    
+                <ul class="list-inline">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                </ul>    
+                <p><strong>Disclaimer: </strong> All Trademarks are properties of their respective owners.</p>
+            </nav>
+
+            <nav class="footer-nav gpba-mobile-app-nav align-right col-sm-6">
+                <h5>GoParties Business Mobile Apps</h5>                        
+                <ul class="list-inline">
+                    <li>
+                        <a class="gpba-mobile-app gpba-android-app" href="#">
+                            <small>Android App On</small> Google Play
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gpba-mobile-app gpba-iOS-app" href="#">
+                            <small>Available on the</small> App Store
+                        </a>
+                    </li>
+                </ul>    
+            </nav>
+        </div>
+    </div>                            
+</footer><!-- /.footer -->
+
+<!-- Instant Create Component -->
+<div class="instant-create">
+    <a href="#" data-toggle="tooltip" title="Instant Create" class="instant-create-btn" role="button">
+        <span></span>    
+    </a>
+    <div class="instant-create-options">
+        <a class="instant-create-option" ui-sref="createParty({id:''})"><i class="fa fa-flag"></i> <span>Create Party</span></a>
+        <a class="instant-create-option" ui-sref="createStandAloneDeal({id:''})"><i class="fa fa-tag"></i> <span>Create Stand Alone Deal</span></a>
+        <a class="instant-create-option" ui-sref="createAvail"><i class="fa fa-calendar"></i> <span>Create Availability</span></a>
+        <a class="instant-create-option" ui-sref="createPost"><i class="fa fa-comment"></i> <span>Create Post</span></a>
+    </div>
+</div>
+<!-- /.Instant Create Component -->
+
+
+
+
+
+
+    <!-- JavaScript
+    ================================================== -->
+    <!--Google API CDN-->
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="libjs/jquery.min.js"></script>
+    <script src="libjs/angular.min.js"></script>
+    <script type="text/javascript" src="libjs/ADM-dateTimePicker.min.js"></script>
+
+    <script src="libjs/angular-animate.min.js"></script>
+    <script src="libjs/angular-aria.min.js"></script>
+    <script src="libjs/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="libjs/angular-material.min.js"></script>
+    <script src="libjs/angular-ui-router.min.js"></script>
+    <script src="libjs/angular-sanitize.min.js"></script>
+    <script src="libjs/ngToast.min.js"></script>
+    
+    <!--Analytics library-->
+    <script src="libjs/d3.v3.min.js" charset="utf-8"></script>
+    <script src="libjs/c3.js"></script>
+    <!---->
+
+    <script src="libjs/plugins/angular.rangeSlider.js"></script>
+
+    <script src="libjs/ui-bootstrap-tpls-1.3.3.min.js"></script>
+    <!--Jquery datepicker js file-->
+    <script src="libjs/moment.js"></script>
+    <script src="libjs/angular-circular-timepicker.js"></script>
+    <script type="text/javascript" src="libjs/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="libjs/jquery.datepick.js"></script>
+    <!---->
+    <script type="text/javascript" src="libjs/scrollglue.js"></script>
+    <!--Date time picker js file-->
+    <script type="text/javascript" src="libjs/moment.min.js"></script>
+    <script type="text/javascript" src="libjs/angular-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="libjs/beautifier.js"></script>
+    <!---->
+    <!--Library for security purpose-->
+    <script type="text/javascript" src="libjs/fingerprint2.js"></script>
+    <!---->
+    <!--Text Editor Reference-->
+    <script src="//tinymce.cachefly.net/4/tinymce.min.js"></script>
+    <!--File upload javascript reference-->
+    <script type="text/javascript" src="libjs/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="libjs/ng-file-upload.js"></script>
+    <!---->
+    <script src="libjs/bootstrap.min.js"></script>
+    <script src="libjs/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/global-css.js"></script>
+    <script src="libjs/sidebar.js"></script>
+    <script src="libjs/socket.io.js"></script>
+
+
+    <!-- Custom Scrollbar Plugin -->
+    <script src="libjs/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+        /* Custom Scrollbar Directive
+        $(document).ready(function(){
+            $('#secondary-navigation').mCustomScrollbar({
+                axis:'x'
+            });
+        });
+        */
+    </script>
+    
+
+    <!-- Angular JS Range Slider /- Price Range -/ -->
+    
+    <!-- Availability Calendar /- Full Calendar -/ -->
+    <script src='libjs/plugins/moment.min.js'></script>
+    <script src="libjs/plugins/fullcalendar.js"></script>
+
+
+    <script src="controller/filterController.js"></script>
+    <script src="controller/commonController.js"></script>
+    <script src="controller/tinymceController.js"></script>
+    <script src="controller/commonDirectiveController.js"></script>
+    <script src="controller/commonDirectiveController2.js"></script>
+    <script src="controller/httpRequestController.js"></script>
+    <script src="controller/cardDirective.js"></script>
+    <script src="controller/cardController.js"></script>
+    <script src="controller/notificationController.js"></script>
+    <script src="controller/login.js"></script>
+
+    <script src="controller/analytics/analyticsController.js"></script>
+
+    <script src="controller/discoverAndBook/discoverAndBook.js"></script>
+
+    <script src="controller/create/createController.js"></script>
+    <script src="controller/create/createdPartiesController.js"></script>
+    <script src="controller/create/createStandAloneDealController.js"></script>
+    <script src="controller/create/createdStandAloneController.js"></script>
+    <script src="controller/create/createAvailabilityController.js"></script>
+
+    <script src="controller/bookingRecords/chatController.js"></script>
+    <script src="controller/bookingRecords/broadcastGroupCtrl.js"></script>
+    <script src="controller/bookingRecords/bookingRecordsCtrl.js"></script>
+    
+    <script src="controller/launchMyWork/launchMyWorkController.js"></script>
+    <script src="controller/launchMyWork/myLaunchedWorkCtrl.js"></script>
+    <script src="controller/launchMyWork/launchAlbumController.js"></script>
+
+    <script type="text/javascript" src="controller/supportAndServices/supportServiceController.js"></script>
+
+    <script src="controller/socialMedia/createPostCtrl.js"></script>
+    <script src="controller/socialMedia/createdPostCtrl.js"></script>
+    <script src="controller/socialMedia/smmFirstTimeScreenCtrl.js"></script>
+    
+    <script src="controller/manage/manageProfileCtrl.js"></script>
+    <script src="controller/manage/manageSocialMediaHandlesCtrl.js"></script>
+    
+    <script src="controller/payment/paymentController.js"></script>
+
+    <script src="controller/help/faqCtrl.js"></script>
+    <script src="controller/help/relationshipManagerCtrl.js"></script>
+
+    
+    <script src="js/app.js"></script>
+    
+</body>
+</html>

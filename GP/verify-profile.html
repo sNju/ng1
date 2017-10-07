@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <title>Claim your listing</title>
+    <link href="libcss/bootstrap.min.css" rel="stylesheet">
+    <link href="libcss/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="libcss/font-awesome.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+      $(document).ready(function(){
+        $("#forgotPassword_popup").hide();
+          $("#forgotPasswordPopup").click(function(){
+              $("#businessLogin_popup").hide();
+          $("#forgotPassword_popup").show();
+          });
+          $("#loginPopup").click(function(){
+              $("#forgotPassword_popup").hide();
+           $("#businessLogin_popup").show();
+          });
+      });
+</script>
+</head>
+<body>
+ <!-- business login popup -->
+  <div class="modal fade bd-example-modal-sm" id="businessLogin" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" id="businessLogin_popup">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Business Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+        <label class="sr-only" for="Your Name">Your Name:</label>
+        <input type="email" class="form-control" placeholder="Your User Name">
+        </div>
+
+         <div class="form-group">
+        <label class="sr-only" for="Your Name">Password:</label>
+        <input type="password" class="form-control" placeholder="Your Password">
+        </div>
+         <div class="form-group" align="center">
+        <label class="sr-only" for="Submit">Log-in:</label>
+        <button type="submit" class="btn btn-default gp-send-btn">Log-In</button>
+        <br><br>
+        <a href="#" id="forgotPasswordPopup">Forgot Password</a>
+        </div>
+
+        </div>
+       
+      </div>
+
+      <div class="modal-content" id="forgotPassword_popup">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password</h4>
+        </div>
+        <div class="modal-body">
+        
+        <div class="form-group">
+        <label class="sr-only" for="Your Name">Email:</label>
+        <input type="password" class="form-control" placeholder="Your Email ID">
+        </div>
+         <div class="form-group" align="center">
+        <label class="sr-only" for="Submit">Get Password:</label>
+        <button type="submit" class="btn btn-default gp-send-btn">Get Password</button>
+        <br><br>
+        <a href="#" id="loginPopup">Log-In</a>
+        </div>
+
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+<!-- popup end -->
+   <header id="site-header" class="clearfix">
+        <div class="container">       
+            <a class="logo" href="../home-static.html">
+                <img alt="GoParties - 1st Global Parties Network" class="hidden" src="images/go-parties-mobile-logo.png">
+                <img alt="GoParties - 1st Global Parties Network" class="gp-monogram" src="images/go-parties-logo.png">
+                <h1 class="gp-app-heading">
+                    GoParties
+                    <span>For Business</span>
+                </h1>
+            </a>                    
+                         
+           <button class="sidebar-toggle-btn" role="button">
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+            </button>
+
+            <nav id="mySidenav" class="primary-navigation" role="navigation">
+                <ul class="main-menu clearfix">
+                  <li><a href="../home-static.html">Home</a></li>
+               </ul>
+            </nav>
+
+
+        </div>                                    
+    </header>
+    
+    <div class="content-wrapper">
+        <main class="main-content" role="main">
+
+            <header class="page-header">
+                <div class="container-fluid min-width">
+                    <h1 class="page-heading">Verify Your Profile</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                </div>
+
+            </header>        
+
+            <section class="verify-profile-wrapper">
+                
+                <div class="container-fluid min-width">            
+                    <ul class="verify-options-list">
+                        <li class="verify-profile-option verify-facebook">
+                            <div class="verify-option-header clearfix">
+                                <div class="media verify-media">                
+                                    <div class="media-left">
+                                        <span class="icon-wrap"><i class="fa fa-facebook media-object"></i></span>
+                                    </div>
+                                    <div class="media-body">Facebook</div>
+                                </div>  
+                                <button class="btn btn-primary btn-lg call-to-action">Verify</button>
+                            </div>
+                        </li>
+
+                        <li class="verify-profile-option verify-twitter verified">
+                            <div class="verify-option-header clearfix">
+                                <div class="media verify-media">                
+                                    <div class="media-left">
+                                        <span class="icon-wrap"><i class="fa fa-twitter media-object"></i></span>
+                                    </div>
+                                    <div class="media-body">Twitter</div>
+                                </div>  
+                                <button class="btn btn-primary btn-lg call-to-action">Verified</button>
+                            </div>
+                        </li>
+
+                        <li class="verify-profile-option verify-email">
+                            <div class="verify-option-header clearfix">
+                                <div class="media verify-media">                
+                                    <div class="media-left">
+                                        <span class="icon-wrap"><i class="fa fa-envelope media-object"></i></span>
+                                    </div>
+                                    <div class="media-body">Email</div>
+                                </div>  
+                               <button class="btn btn-primary btn-lg call-to-action">Verify</button>
+                            	<button class="btn btn-primary btn-lg call-to-action new-btn">Submit</button>
+                            </div>
+
+                            <div class="verify-option-body">
+                                <h3>Verify Your Email</h3>        
+                                <p>Lorem ipsum dolor sit amet, consectetur <span>info@gmail.com</span></p>
+
+                                <form>
+                                    <div class="otp-check flex-wrap">
+                                        <div class="form-group flex-item">        
+                                            <label class="sr-only">Enter OTP</label>
+                                            <input class="form-control" type="text" placeholder="Enter OTP">
+                                        </div>  
+                                         
+                                    </div>
+                                    <br>
+
+                                    
+                                </form>
+                            </div>
+
+
+                        </li>
+
+                        <li class="verify-profile-option verify-phone">
+                            <div class="verify-option-header clearfix">
+                                <div class="media verify-media">                
+                                    <div class="media-left">
+                                        <span class="icon-wrap"><i class="fa fa-phone media-object"></i></span>
+                                    </div>
+                                    <div class="media-body">Phone</div>
+                                </div>  
+                                <button class="btn btn-primary btn-lg call-to-action">Verify</button>
+                                <button class="btn btn-primary btn-lg call-to-action new-btn">Submit</button>
+                            </div>
+
+                            <div class="verify-option-body">
+                                <h3>Verify Your Number</h3>        
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <span>654323-4543</span></p>
+
+                                <form>
+                                    <div class="otp-check flex-wrap">
+                                        <div class="form-group flex-item">        
+                                            <label class="sr-only">Enter OTP</label>
+                                            <input class="form-control" type="text" placeholder="Enter OTP">
+                                        </div>  
+                                       
+                                    </div>
+                                    <br>
+
+                                    
+                                </form>
+                            </div>
+                        </li>
+
+                        <li class="verify-profile-option verify-website">
+                            <div class="verify-option-header clearfix">
+                                <div class="media verify-media">                
+                                    <div class="media-left">
+                                        <span class="icon-wrap"><i class="fa fa-globe media-object"></i></span>
+                                    </div>
+                                    <div class="media-body">Website</div>
+                                </div>  
+                                <button class="btn btn-primary btn-lg call-to-action">Verify</button>
+                                 <button class="btn btn-primary btn-lg call-to-action new-btn">Submit</button>
+                            </div>
+
+                            <div class="verify-option-body">
+                                <article class="align-left">
+                                    <h3>Verify Your Website</h3>
+                                    <ol starts="1">
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <span>012 - 234 - 567 - 789</span></li>
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
+                                    </ol>
+
+                                </article>
+
+                               <!-- <h3>Enter Website</h3>        
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>-->
+
+                                <!--<form>
+                                    <div class="otp-check flex-wrap">
+                                        <div class="form-group flex-item">        
+                                            <label class="sr-only">Enter Website</label>
+                                            <input class="form-control" type="text" placeholder="Enter Website">
+                                        </div>  
+                                        <button class="submit-btn flex-item" type="button">Submit</button>  
+                                    </div>
+                                </form>-->
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </section><!-- /.verify-profile-wrapper -->
+
+            <section class="skip-verification-process">
+                <div class="container-fluid min-width">        
+                    <div class="skip-article">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <button class="registration-action skip-btn" type="button">Skip</button>
+                    </div>        
+                </div>
+
+            </section>
+
+
+                        
+            
+
+        </main><!-- /.main-content -->
+    </div>
+
+    <!-- /.footer -->
+
+   <div class="gp-footer-category">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>GoParties For Businesses</h3>
+                  <ul>
+                     <!-- <li><a href="#" data-toggle="modal" data-target="#businessLogin">Business Login</a></li> -->
+                      <li><a href="index.html">Tech Products For Party Spots</a></li>
+                     <li><a href="Bands.html">Tech Products For Bands</a></li>
+                     <li><a href="DJS.html">Tech Products For DJs</a></li>
+                     <li><a href="Artists.html">Tech Products For Artists</a></li>
+                     <li><a href="Concerts.html">Tech Products For Concerts</a></li>
+                  </ul>
+               </div>
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>About US</h3>
+                  <ul>
+                     <li><a href="../faq.html">FAQ's</a></li>
+                     <li><a href="../Contact-Us.html">Contact Us</a></li>
+                     
+                    
+                  </ul>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>Our Policies</h3>
+                  <ul>
+                     <li><a href="../Privacy-Policy.html">Privacy Policy</a></li>
+                     <li><a href="../tnc.html">Terms &amp; Conditions</a></li>
+                      <!-- <li><a href="../SIte-Map.html">Sitemap</a></li> -->
+                  </ul>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>Newsletter</h3>
+                  <input type="text" class="gpnews" placeholder="Enter Your Email For Newsletter">
+                  <button type="button" class="gp-send">SEND</button>
+                 
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8 col-md-8 col-sm-8">
+                  <p>Grooved in Silicon Valley While Partying</p>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="pull-right">
+                     <a href="https://www.facebook.com/goparties/" target="_blank"><li class="facebook"><i class="fa fa-facebook"></i></a>
+                     <a href="https://twitter.com/go_parties" target="_blank"><li class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="https://plus.google.com/+Goparties" target="_blank"><li class="google"><i class="fa fa-google-plus"></i></a>
+                    <a href="https://www.instagram.com/goparties/" target="_blank"> <li class="instagram"><i class="fa fa-instagram"></i></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+
+    <!-- JavaScript
+    ================================================== -->
+    <script src="libjs/jquery.min.js"></script>
+
+    
+    <script src="libjs/bootstrap.min.js"></script>
+    <script src="libjs/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

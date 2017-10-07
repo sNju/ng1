@@ -1,0 +1,295 @@
+<gpca-header date-value="true" search-strip="false"  call-back="true"></gpca-header>
+
+<section class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-lg-12 profile-title">
+
+            <p class="my-account-title" ng-show="!isedit">MY ACCOUNT</p>
+
+            <p class="edit-profile-title" ng-show="isedit">EDIT PROFILE</p>
+
+        </div>
+
+    </div>
+
+    <div class="row my-account-container">
+
+        <div class="col-xs-12 col-sm-5 col-lg-5 my-account-Img">
+
+            <div class="my-account-header">
+
+                <div class="account-img">
+
+                    <div class="center-img" style="background-image:url('{{userobj.profile_pic}}');">
+
+                        <label for="cover-img" class="change-img" >
+
+                            <div ng-if="isedit" class="edit-acount-img">
+
+                                <i class="fa fa-camera edit-pic-icon"></i>
+
+                                <input id="cover-img" type="file" style="display: none;" image-upload='profilepic' accept="image/*">
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="account-figure" style="background-image:url('{{userobj.profile_pic}}');">
+
+                </div>
+
+                <div id="preloader" ng-show="imgloader">
+
+                    <img class="preloaderImg" alt="loading" src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/preloader-img.png">
+
+                </div>
+
+                <div class="account-img-overlay"></div>                   
+
+            </div>
+
+        </div>
+
+        <div class="my-account-details col-xs-12 col-sm-7 col-lg-7">
+
+            <div edit-profile>
+
+                <a href="" ng-show="!isedit" class="edit-profile btn" ng-click="editclick()"><span>EDIT PROFILE</span></a>          
+
+                <button ng-show="isedit" ng-click="editclick()"  type="button" class="edit-close"><span>×</span></button>
+
+            </div>
+
+            <p class="party-text">Party-Goer Detail</p>
+
+            <hr>
+
+            <div class="account-details">   
+
+                <div class="user-detail" name="userProfile">
+
+                    <div class="form-group row">
+
+                        <label for="full-name" class="col-sm-3 col-form-label col-form-label-lg">Full Name</label>
+
+                        <div class="col-sm-9">
+
+                            <input ng-disabled="!isedit" ng-click="namesave=!namesave" type="text" class="form-control form-control-lg check-class" ng-class="{'edit-input':isedit==true}" id="full-name"  ng-model="userobj.name" autocomplete="off" required >
+
+                        </div>
+
+                    </div>
+
+                    <form class="form-group row" name="emailform">
+
+                        <label for="email-address" class="col-sm-3 col-form-label col-form-label-sm">Email Id</label>
+
+                        <div class="col-sm-9">
+
+                            <button type="button" ng-click="emailsave=!emailsave" class="edit-btn" ng-show="isedit && userobj.email && !emailsave">Edit</button>
+
+                            <button type="button" ng-click="emailsave=!emailsave" class="add-btn" ng-show="isedit && !userobj.email && !emailsave" >Add</button>
+
+                            <button ng-click="updateemail(userobj.email,emailform.$valid)" type="submit" class="save-btn" ng-show="isedit && emailsave && emailform.$valid" stop-flickering>Save</button>
+
+                            <input ng-disabled="!emailsave" ng-class="{'edit-input':isedit==true,'edit-input-border':editborder==true && emailsave}" name="email" ng-model="userobj.email" type="email" pattern="\S+@\S+\.\S+" class="form-control form-control-sm check-class" id="email-address"  focus="{{emailsave}}" autocomplete="off" required>
+
+                        </div>
+
+                    </form>
+
+                    <form class="form-group row" name="phoneform">
+
+                        <label for="mobile-number" class="col-sm-3 col-form-label col-form-label-sm">Mobile Number</label>
+
+                        <div class="col-sm-9">
+
+                            <button type="button" ng-click="phonesave=!phonesave;" class="edit-btn" ng-show="isedit&&userobj.phone && !phonesave">Edit</button>
+
+                            <button type="button" ng-click="phonesave=!phonesave" class="add-btn" ng-show="isedit&&!userobj.phone && !phonesave" >Add</button>
+
+                            <button ng-click="updatephone(userobj.phone,phoneform.$valid)" type="submit" class="save-btn"  ng-show="isedit && phonesave && phoneform.$valid" stop-flickering>Save</button>
+
+                            <input  ng-disabled="!phonesave" type="text" ng-class="{'edit-input':isedit==true,'edit-input-border':editborder==true && phonesave}" ng-model="userobj.phone" pattern="[0-9]{10,10}" name="userPhone" class="form-control form-control-sm check-class " id="mobile-number" focus="{{phonesave}}" autocomplete="off" required>
+
+                        </div>
+
+                    </form>
+
+                    <div class="pull-right update-btn" ng-show="isedit">
+
+                        <button  ng-click=updateuserinfo(userobj,true) class="btn-proceed btn-block text-uppercase"><span>UPDATE</span></button>
+
+                    </div>  
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- send email otp modal start-->
+
+    <div class="modal fade" id="email-update-modal" role="dialog">
+
+        <div class="modal-dialog account-modal-dialog">
+
+            <div class="modal-content account-modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h4 class="modal-title">Enter OTP sent to {{userobj.email}}</h4>
+
+                </div>
+
+                <div class="modal-body">              
+
+                    <form class="form" name="verifyemail">
+
+                        <p  class="otp-text-top" ng-show="otpsendEmail">OTP sent successfully. If you don’t receive in 30 seconds,
+
+                            click on Resend OTP.</p>
+
+                            <p ng-hide="blink" class="otp-text-top" ng-show="otpresendEmail">OTP resent successfully. If you don’t receive in 30 seconds,
+
+                                click on Resend OTP.</p>
+
+                                <div class="form-group resend-otp">
+
+                                    <p ng-hide="blink" class="otp"><a ng-click="addemailresend(userobj.email,true);" href="">Resend <span class="text-uppercase">OTP</span></a></p>
+
+                                    <input ng-model="emailotp" name="otp" type="text" placeholder="Enter OTP" class="form-control" pattern="[0-9]{4}" required>
+
+                                    <p ng-show="verifyemailstatus" class="text-danger return-msg">Please enter valid OTP</p>
+
+                                </div>
+
+                                <button ng-click="verifyemailcall(emailotp,verifyemail.$valid)" ng-disabled="verifyemail.$invalid" type="submit" class="btn btn-login btn-block btn-login-disable" ng-class="{'btn-login-disable': verifyemail.$invalid}">Confirm</button>
+
+                            </form>     
+
+                        </div>   
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- send email otp modal end-->
+
+            <!-- send phone otp modal start-->
+
+            <div class="modal fade" id="phone-update-modal" role="dialog">
+
+                <div class="modal-dialog account-modal-dialog">
+
+                    <div class="modal-content account-modal-content">
+
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            <h4 class="modal-title">Enter OTP sent to {{userobj.phone}}</h4>
+
+                        </div>
+
+                        <div class="modal-body">              
+
+                            <form class="form" name="verifyphone">
+
+                                <p  class="otp-text-top" ng-show="otpsendPhone">OTP sent successfully. If you don’t receive in 30 seconds,
+
+                                    click on Resend OTP.</p>
+
+                                    <p ng-hide="blink1" class="otp-text-top" ng-show="otpresendPhone">OTP resent successfully. If you don’t receive in 30 seconds,
+
+                                        click on Resend OTP.</p>
+
+                                        <div class="form-group resend-otp">
+
+                                            <p ng-hide="blink1" class="otp"><a ng-click="updatephoneresend(userobj.phone,true)" href="">Resend <span class="text-uppercase">OTP</span></a></p>
+
+                                            <input name="otp" type="text" ng-model="phoneotp"  placeholder="Enter OTP" class="form-control" pattern="[0-9]{4}" required>
+
+                                            <p ng-show="verifyphonestatus" class="text-danger return-msg">Please enter valid OTP</p>
+
+                                        </div>
+
+                                        <button  ng-click="verifyphonecall(phoneotp,verifyphone.$valid)" type="submit" class="btn btn-login btn-block btn-login-disable" ng-class="{'btn-login-disable': verifyphone.$invalid}" ng-disabled="verifyphone.$invalid">Confirm</button>
+
+                                    </form>     
+
+                                </div>   
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- send phone otp modal end-->
+
+                </section>
+
+                <!--Newsltter Panel-->
+
+                <section id="newsletter">
+
+                    <div class="container-fluid newsletter-bg ">
+
+                        <div class="container">
+
+                            <div class="newsletter-container">
+
+                                <div class="news-item">
+
+                                    <h1 class="newsletter-title">The new style the world Parties ! Get your Party App right now:</h1>
+
+                                    <form>
+
+                                        <div class="input-group">
+
+                                            <input ng-model="mobile" class="form-control" placeholder="Enter Your Mobile Number">
+
+                                            <div class="input-group-btn">
+
+                                                <button ng-click="getapplink(mobile)" class="btn btn-app">
+
+                                                    Get App Link
+
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                    <p>
+
+                                        <span><a href="https://play.google.com/store/apps/details?id=com.goparties.gpuser&hl=en" target="_blank" title="Go Parties App"><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/play-store.png" alt="GoParties-PlayStore"></a></span>
+
+                                        <span><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1084955093&mt=8" target="_blank" title="Go Parties App"><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/app-store.png" alt="GoParties-Itunes"></a></span>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>

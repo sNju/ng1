@@ -1,0 +1,28 @@
+
+	<figure class="launched-work video" launched-work>
+		
+		<button class="user-actions-toggle" role="button">
+			<span>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+			</span>
+		</button>
+
+		<div class="user-actions">
+			<a class="user-action" ui-sref="launchMyWork({id:id})" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+			<a class="user-action" href="#" ng-click="deleteDialog($event)" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+			<a class="user-action" href="#" ng-click="shareModal($event)" data-toggle="tooltip" title="Share"><i class="fa fa-share-alt"></i></a>
+		</div>
+		
+
+		<a href="#gpVideoPlayerModal" ng-click="setVideoSource()" data-toggle="modal" data-target="#gpVideoPlayerModal" class="gp-video-player-lightBox work-figure-wrap">
+			<span style="background-image:url({{mediaObj.thumburl}})"></span>
+		</a>
+		<figcaption>
+			<h3 class="work-heading">{{mediaObj.title}}</h3>
+		</figcaption>
+		
+		
+
+	</figure>

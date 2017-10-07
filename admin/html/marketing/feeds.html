@@ -1,0 +1,94 @@
+<form method="POST" add-user-directive>
+    <div class="container-fluid">
+        <div class="sec-heading">
+            <h2 class="heading-type">List of feeds</h2>
+
+        </div>
+        <div class="card">
+            <div class="panel-header profileHdr">
+            <h2 class="header-type">Feeds</h2>
+                <button type="submit" ng-click="getallfeeds(filterobj)" class="btn bg-dark waves-effect hidden-xs">Apply Filters</button>
+                <button type="button" class="btn bg-dark waves-effect visible-xs navbar-toggle filterToggle" data-toggle="collapse" data-target="#filterCollapse">filter<i class="fa fa-filter filter-icon" aria-hidden="true"></i></button>
+            </div>
+            <div class="body">
+                <div class="row collapse navbar-collapse" id="filterCollapse">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input ng-value="filterobj.location" id="txtlocation" google-location-autocomplete type="text" class="form-control" placeholder="Location" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input ng-model="filterobj.keyword"  type="text" class="form-control" placeholder="Title" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input ng-model="filterobj.duration" pattern="\d" type="text" class="form-control" placeholder="Duration in seconds" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                       <button type="submit" ng-click="getallfeeds(filterobj)" class="btn bg-dark waves-effect visible-xs">Apply Filters</button>
+                    </div>
+                </div>
+                <div class="row" ng-controller="parentController">
+                    <div class="col-sm-12" ng-init="paginationinit($parent.filterobj)">
+                        <div class="pull-right m-t-5">
+                            <span ng-click="prev($parent.filterobj)"><button type="button" class="btn">Prev</button></span>
+                            <span ng-click="next($parent.filterobj)" class="m-l-10"><button type="button" class="btn">Next</button></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Table Content-->
+                <div class="table-responsive">
+                    <table class="table table-hover dashboard-task-infos">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="animate-repeat"  ng-repeat="feed in feeds track by $index">
+                            <td>{{$parent.indexcalculate($index,filterobj.since)}}</td>
+                            <td>{{feed.text|limitTo:20}}</td>
+                            <td>{{feed.location|limitTo:20}}</td>
+
+                            <td>
+                                <button type="button" ng-click="play($index,true)" class="btn btn-xs bg-light-blue waves-effect">Play</button>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- Close Card -->
+    </div><!-- Close Container -->
+</form>
+
+
+<div id="urlconfrm" class="modal fade" role="dialog" modal-play>
+    <div class="modal-dialog url-modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close url-close" data-dismiss="modal">&times;</button>
+            <video id="Video1" width="300" height="300" controls="">
+                <source src="{{videoobj.fileurl|trustUrl}}" type="video/mp4">
+            </video>
+            <button type="button" ng-click="iterate(-1)"   class="btn btn-xs bg-light-blue waves-effect">Previous</button>
+            <button type="button" ng-click="iterate(1)"  class="btn btn-xs bg-light-blue waves-effect">Next</button>
+            <button type="button" ng-class="(videoobj.active==false || videoobj.active==undefined) ? 'bg-green':'bg-red'"  ng-click="togglestate(videoobj,$event)" class="btn btn-xs bg-red waves-effect">{{(videoobj.active==false||videoobj.active==undefined)?'Enable':'Disable'}}</button>
+            <button type="button"  class="btn btn-xs bg-light-blue waves-effect">Upload to S3</button>
+</div>
+</div>
+</div>

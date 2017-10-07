@@ -1,0 +1,231 @@
+<div class="launch-album-wrapper">
+	<div class="main-content-header page-header">
+		<h1 class="page-heading">{{isEdit==true?'Update Album':'Launch Album'}}</h1>
+	</div>
+	<section  class="launch-album" ng-form="albumForm">
+		<div ng-hide="isEdit==true" class="album-details has-bg-img">
+			<div class="container-fluid max-width">
+				<figure class="launching-media">
+					<div class="media-wrap">
+						<span data-toggle="tooltip" data-placement="bottom" title="Update Track Poster">
+							<div class="data-img" style="background-image:url({{albumObj[0].thumburl==undefined?'https://s3.ap-south-1.amazonaws.com/gpcaweb/default/default-album.jpg':albumObj[0].thumburl;}})"></div>
+							<!-- <img alt="" class="img-responsive" src="{{albumObj[0].thumburl}}"> -->
+							<span class="gp-input-file">
+								<span class="btn btn-primary btn-file">
+									<i class="fa fa-camera" id="thumburl"></i> <input  type="file" name="banner" id="partyCover" accept="image/*" album-pic-upload>
+								</span>
+							</span>
+						</span>
+					</div>
+					<figcaption>
+						<div class="form-group gp-form-group">
+							<label class="" for="audio-track-title">Title *</label>
+							<input name="albumTitle" class="form-control" ng-model="albumObj[0].title" id="audio-track-title" type="text" placeholder="" ng-model="uploadContainer.title" required>
+							<span class="invalidText" ng-show="albumForm.albumTitle.$invalid && albumForm.albumTitle.$dirty">album title must be required</span>
+						</div>
+						<div class="form-group gp-form-group">
+							<label class="" for="audio-track-genre">Genre(s) *</label>
+							<md-content class="form-control autocomplete" layout="column">
+								<md-contact-chips
+								ng-model="albumGenres"
+								md-min-length="1"
+								md-contacts="searchGenre($query)"
+								md-contact-name="name"
+								md-contact-image="image"
+								md-contact-email="email"
+								md-require-match="true"
+								md-highlight-flags="i"
+								filter-selected="true"
+								ng-required="true"
+								placeholder="">
+							</md-contact-chips>
+						</md-content>
+						
+						<!-- 	<input class="gp-input-control"  ng-model="albumObj[0].genre" id="audio-track-title" type="text" placeholder="Track Genre"> -->
+					</div>
+					<div class="form-group gp-form-group">
+						<label class="" for="audio-track-genre">Theme *</label>
+						<md-content class="form-control autocomplete" layout="column">
+							<md-contact-chips
+							ng-model="albumTheme"
+							md-min-length="1"
+							md-contacts="searchTheme($query)"
+							md-contact-name="name"
+							md-contact-image="image"
+							md-contact-email="email"
+							md-require-match="true"
+							md-highlight-flags="i"
+							filter-selected="true"
+							ng-required="true"
+							placeholder="">
+						</md-contact-chips>
+					</md-content>
+					
+					<!-- 	<input class="gp-input-control"  ng-model="albumObj[0].genre" id="audio-track-title" type="text" placeholder="Track Genre"> -->
+				</div>
+				<div class="form-group gp-form-group">
+					<label class="" for="audio-track-description">Description *</label>
+					<textarea  class="form-control" name="albumDescription" ng-model="albumObj[0].description" id="album-track-description" placeholder="" ng-model="uploadContainer.description" required></textarea>
+					<!-- <span class="invalidText" ng-show="albumForm.albumDescription.$invalid && albumForm.albumDescription.$dirty">Album Dscription must be required</span> -->
+				</div>
+				<percentage-widget ng-show="obj.progress!=100&&obj.progress!=0"  ng-repeat="obj in albumObj" percent={{obj.progress}}></percentage-widget>
+			</figcaption>
+		</figure>
+	</div>
+</div>
+<div class="album-content">
+	<div class="align-center cf-call-to-action gp-button-group">
+		<!-- <button class="btn btn-lg btn-primary call-to-action">Add Media</button> -->
+		<span class="gp-input-file">
+
+			<span class="has-gp-icon has-pseudo-icon has-audio-icon">
+				<!-- <i class="gp-icon gp-album-icon"></i> -->
+			</span>
+
+			<span class="btn btn-lg btn-primary call-to-action btn-file">
+				Add Audio
+				<input type="file" album-upload  accept="audio/*" multiple>
+			</span>
+		</span>
+
+		<span class="gp-input-file">
+			<span class="has-gp-icon has-pseudo-icon has-video-icon">
+				<!-- <i class="gp-icon gp-album-icon"></i> -->
+			</span>
+
+			<span class="btn btn-lg btn-primary call-to-action btn-file">
+				Add Video
+				<input type="file" album-upload  accept="video/*" multiple>
+			</span>
+		</span>
+
+		<span class="gp-input-file">
+			<span class="has-gp-icon has-pseudo-icon has-image-icon">
+				<!-- <i class="gp-icon gp-album-icon"></i> -->
+			</span>
+
+			<span class="btn btn-lg btn-primary call-to-action btn-file">
+				Add Image
+				<input type="file" album-upload  accept="image/*" multiple>
+			</span>
+		</span>
+	</div>
+
+
+	<div class="container-fluid min-width">
+		
+
+		<section class="added-media-list" >
+			<div>
+				<ul id="addedMediaList" gp-accordion>
+					<li class="added-media has-sub-content" ng-repeat="obj in myFiles">
+						<div class="data-link" data-parent="addedMediaList">
+							<div class="media-actions">
+								<button  class="small-btn" ng-click="deleteItem($index,$event)" type="button"><i class="fa fa-close visible-xs"></i><span class="hidden-xs">Remove</span></button>		
+							</div>	
+
+							<div class="gp-media">
+								<div class="media-details media">
+									<div class="media-left">
+										<img alt="" class="media-object" src="{{obj.thumburl}}">
+									</div>
+									<div class="media-body">
+										<h3 class="media-title">{{obj.title}}</h3>	
+										<percentage-widget percent={{obj.progress}}></percentage-widget>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="sub-content">
+							<div class="album-details">
+								<figure class="launching-media">
+									<div class="media-wrap">
+										<span data-toggle="tooltip" data-placement="bottom" title="Update Track Poster">
+											<div class="data-img" style="background-image:url({{obj.thumburl}})"></div>			
+											<!-- <img alt="" class="img-responsive" src="{{obj.thumburl}}"> -->
+											<span class="gp-input-file">
+												<span class="btn btn-primary btn-file">
+													<i class="fa fa-camera" id="thumburl"></i> 
+													<input album-upload-change index="{{$index}}" type="file" name="banner" id="partyCover">
+												</span>
+											</span>
+										</span>
+									</div>
+
+									<figcaption>
+										<div class="form-group gp-form-group">
+											<label class="" for="audio-track-title">Title *</label>
+											<input ng-model="obj.title" name="conentTitle" class="form-control" id="audio-track-title" type="text" placeholder="" required>
+											<span class="invalidText" ng-show="albumForm.conentTitle.$invalid && albumForm.conentTitle.$dirty">Title must be required</span>
+										</div>
+										<div ng-hide="{{obj.worktype=='image'}}" class="form-group gp-form-group">
+											<label class="" for="audio-track-genre">Genre(s)</label>
+											<md-content class="form-control autocomplete" layout="column">
+												<md-contact-chips
+												ng-model="obj.genre"
+												md-min-length="1"
+												md-contacts="searchGenre($query)"
+												md-contact-name="name"
+												md-contact-image="image"
+												md-contact-email="email"
+												md-require-match="true"
+												md-highlight-flags="i"
+												filter-selected="true"
+												placeholder="">
+											</md-contact-chips>
+										</md-content>
+										<!-- <input class="gp-input-control" ng-model="obj.genre" id="audio-track-title" type="text" placeholder="Track Genre"> -->
+									</div>
+									<div ng-hide="{{obj.worktype=='image'}}" class="form-group gp-form-group">
+										<label class="" for="audio-track-genre">Theme</label>
+										<md-content class="form-control autocomplete" layout="column">
+											<md-contact-chips
+											ng-model="obj.theme"
+											md-min-length="1"
+											md-contacts="searchTheme($query)"
+											md-contact-name="name"
+											md-contact-image="image"
+											md-contact-email="email"
+											md-require-match="true"
+											md-highlight-flags="i"
+											filter-selected="true"
+											placeholder="">
+										</md-contact-chips>
+									</md-content>
+									<!-- <input class="gp-input-control" ng-model="obj.genre" id="audio-track-title" type="text" placeholder="Track Genre"> -->
+								</div>
+								<div class="form-group gp-form-group">
+									<label class="" for="audio-track-description">Description</label>
+									<textarea name="conentDescription" class="form-control" ng-model="obj.description" id="audio-track-description{{$index}}" placeholder="" required></textarea>
+									<span class="invalidText" ng-show="albumForm.conentDescription.$invalid && albumForm.conentDescription.$dirty">Description must be required</span>
+								</div>
+							</figcaption>
+						</figure>		
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>		
+</section>
+
+
+</div>	
+
+</div>
+
+</section>
+
+<section class="launch-album-body">
+	<div class="container-fluid upload-launching-media">
+		<form>
+
+
+			<div class="align-center cf-call-to-action">
+					<!-- <percentage-widget percent={{uploadStatus.progress}}></percentage-widget>	
+					<label>{{uploadStatus.progress!='100'}}</label> -->
+					<button class="btn btn-lg btn-primary call-to-action"  ng-click="publishAlbum(albumForm.$valid)">{{isEdit==true?'Update Album':'Publish Album'}}</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,391 @@
+// Variables and Mixins
+@import "variables.less";
+@import "mixins.less";
+/*FIxed Css*/
+
+.booking-order{
+  background-color: #fff;
+  padding:40px;
+  margin: 100px auto 30px; 
+}
+.order-details-section{  
+  #ticket{
+  padding: 15px;
+  }
+  canvas{
+    width: 100px;
+  }  
+  .respView{
+      @media (max-width: 500px){
+        width: 100%;
+      }
+    }
+  .booking-head{
+    font-size: 24px;    
+    color: #000;
+    margin-bottom: 45px;
+    font-weight: normal;
+    margin-top: 0;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    
+    @media(min-width: 991px){
+      font-size: 30px;    
+    }
+  }
+  .booking-section{
+    margin-bottom: 25px;
+
+    .booking-label{
+      font-size: 13px;
+      color: #666;
+      font-weight: normal;
+      
+      @media(min-width: 991px){
+        font-size: 15px;
+      }
+
+    }
+    .booking-type{
+      font-size: 15px;
+      position: relative;
+      span{
+      margin-right:5px;
+      }
+      @media(min-width: 991px){
+        font-size: 18px;
+      }
+
+    }
+    .confirm{
+      letter-spacing: initial;
+      text-align: justify;
+    }
+
+  }
+
+.confirmIcon{
+   color: #7cbb00;
+   margin-left: 5px;
+  }
+
+  .confirm-icon{
+    color: #7cbb00;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .pending-icon{    
+    color: #f00;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .canceled-icon{
+        color: #fff;
+    background-color: #f00;
+    padding: 4px 6px;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+  .term-condition{    
+    margin-bottom: 20px;
+    padding: 0;
+    
+    @media(max-width: 768px){
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    p{
+      font-size: 12px;
+      color: #666; 
+      margin-bottom: 3px; 
+    }
+  }
+  .btn-tckt-download{
+    background-color: transparent;
+    border:1px solid #989898;
+    border-radius: 0;
+    color: #666;
+    font-size: 12px;
+    margin-left: 15px;
+    padding: 4px 10px;
+
+    .downloadicon{
+      color: #666;
+      font-size: 14px!important;
+      margin-left: 10px;
+    }
+  }
+}
+.booking-payment-section{
+  border:1px dashed #989898;
+  padding: 15px;
+
+  @media(min-width: 992px){
+    min-height: 420px;
+  }
+  
+  .booking-title-container{
+      border-bottom: 1px dashed #989898;
+      padding-bottom: 15px;
+      margin: 0 -15px 15px;
+
+      .booking-payment-title{ 
+        margin: 0;      
+        font-size: 16px;
+        font-family: @rmedium;
+        font-weight: normal;
+        padding-left: 15px;
+      }
+  }
+  
+  li{
+    font-size: 15px;
+    margin-bottom:10px; 
+    
+    &:last-child{
+      font-size:16px;
+      font-family: @rbold;
+      border-bottom: 1px dashed #989898;
+      border-top: 1px dashed #989898;
+      padding: 8px 0;
+      @media(min-width: 991px){
+        font-size:20px;        
+      }
+      .rupee-icon{
+        font-size: 18px!important; 
+        
+        @media(min-width: 991px){
+          font-size:14px!important;        
+        }       
+      }
+    }   
+  }
+  .rupee-icon{
+    font-size: 14px!important;
+    margin-right: 5px;
+  }
+  .deal-section{
+    .deal-label{
+      margin-top: 15px;
+      font-size:15px;
+      color: @base-color;
+      font-family: @rmedium;
+      font-weight: normal;
+    }
+    .deal-details{
+      font-size: 15px;
+    }
+  }
+}
+
+@media print{
+  #ticket{
+    display:block;
+  }
+  .term-condition, #download,.payment-details-section,footer{
+    display:none !important;
+  }
+} 
+/*Booking History (bkg-hs)*/
+.bkg-hs{
+  margin:90px auto 30px;  
+  
+  .bkg-hs-ttl{
+    font-weight: normal;
+    margin-top: 0;
+    display: inline-block;
+    color: #6e3d8d;
+    font-size: 20px;
+    padding-left: 30px;
+  }
+  /*Tab Button*/
+  .btn-bkg{
+    background-color: #fff;
+    color: #333;
+    text-transform: uppercase;
+    box-shadow: none;
+    border-radius: 0;
+    .default-transition();
+    
+    &.active{
+      background-color: #9660b8;
+      color: #fff;
+      .default-transition();
+    }  
+  }
+  /*Booking List Less*/
+  .bkg-list-container{
+      background-color: #fff;
+      padding:15px 30px;
+      min-height: 1px;
+      margin-top: 10px;
+      .tab-pane{
+        .bkg-lst-details{
+            li{
+              border-bottom: 1px solid #ececec;
+              &:last-child{
+                border-bottom: none;
+              }
+            }
+            .bkg-lst-heading>div{
+               font-family: @rbold;
+               font-size: 15px;
+               padding: 10px 0;
+
+               &>div{
+                  &:last-child{
+                   text-align:center;
+                 }
+               } 
+            }
+
+            .bkg-lst-hs{
+              box-shadow: none;
+
+              &>div{         
+                font-size: 15px;
+                padding: 10px 0;
+                box-shadow: none;           
+               
+                &:nth-child(2){
+                  font-family: @rmedium;
+                }                
+                .fa{
+                  margin-right: 5px;
+                }
+
+                &>div{
+                  &:last-child{
+                   text-align:center;
+                  }
+                }         
+            
+                .btn-bkg-view{
+                  background-color: #f5f5f5;
+                  border:1px solid #ececec;
+                  color: #333;
+                  .default-transition();
+
+                  &:hover,&.active{
+                    background-color: #9660b8;
+                    color: #fff;
+                    .default-transition();
+                  }        
+                }
+
+                a.btn-bkg-view{
+                  display: initial;
+                }
+              }
+            }
+        }
+      }
+  }/*End bkg-list-container*/
+}/*End bkg-hs*/
+
+.ticket-view-conatiner{
+    background-color: #f5f5f5;
+    border:1px solid #ececec;
+    padding: 30px;
+    text-align: left!important;
+    margin-right: 0;
+    margin-left: 0;
+    .booking-head{
+      font-size: 24px;
+    }   
+    .order-details-section{
+      position: relative;
+    }
+    .btn-tckt-download{
+      position: absolute;
+      top: 10px;
+      right: 30px;
+    }
+    .booking-payment-section{
+      min-height: 380px;
+    }
+    .order-details-section .booking-section .booking-label{
+      font-size: 13px;
+    }
+    .order-details-section .booking-section .booking-type{
+      font-size: 16px;
+    }
+    .booking-payment-section .booking-title-container .booking-payment-title{
+      font-size: 14px;
+    }
+    .booking-payment-section li{
+      font-size: 13px;
+      border-bottom: 0!important; 
+      &:last-child{
+        font-size: 16px;
+      }     
+    }
+    .booking-payment-section .deal-section .deal-details{
+      font-size: 13px;
+    }
+}
+/*if booking not found*/
+.ifNoBooking{
+  .flex-center();
+  flex-direction:column;
+    h3{
+      font-size:24px;
+      font-family: @rmedium;
+      font-weight: normal;
+    }
+    img{
+      margin:10px 0; 
+    }
+    p{
+      font-size: 16px;
+      font-family:@rregular;
+    }
+    .explore-btn{
+      margin: 15px 0 30px;
+      .btn-proceed{
+        padding: 10px 45px;
+        background-color: @base-color;
+        font-family: @rmedium;
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        border-color: #9660b8;
+        box-shadow: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        margin-right: 20px;
+        transition: all 0.5s;
+          span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+              &:after {
+                content: '\f0a9';
+                position: absolute;
+                opacity: 0;
+                top: -4px;
+                right: -20px;
+                transition: 0.5s;
+                font-size: 20px;
+                font-family: FontAwesome;
+              }
+          }
+          &:hover{
+              background-color: #a272c0;
+              span {
+                padding-right: 25px;
+                  &:after {
+                    opacity: 1;
+                    right: 0;
+                  }
+              }
+          }       
+      }
+  }
+}

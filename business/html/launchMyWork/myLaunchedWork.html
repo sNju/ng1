@@ -1,0 +1,302 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>
+<div ng-hide="show&&!loading" ng-init="isShow==false" ng-show="isShow==true">
+	<mylaunched-work-header data="{{recordsCount}}"></mylaunched-work-header>
+	<section class="">
+		<div class="container-fluid max-width">
+			<ul class="launched-work-list responsiveColumnLayout">
+
+				<li>
+					<figure class="gp-card gp-create-card launched-work">
+						<a class="gp-create" ui-sref="launchMyWork" role="button">
+							<span class="gp-create-icon-wrap has-pseudo-lmw-icon">
+								<i class="gp-add-icon"></i>
+							</span>	
+							<h3 class="item-title">Launch My Work</h3>
+						</a>
+					</figure>
+				</li>
+
+				<media-directory  media-obj="obj" ng-repeat="obj in mediaObj| workCategoryFilter:tabStatus|lmwSearchBaseFilter:textSearch"></media-directory>
+			</ul>												
+		</div>								
+	</section> 
+
+	<!-- GP Album Modal -->
+	<div  class="modal gp-modal fade" id="gpLaunchedAlbumModal" tabindex="-1" role="dialog" aria-labelledby="GP Launched Album" gp-modal>
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content gp-modal-content">
+
+				<div class="gp-modal-header gp-album-modal-header">
+					<nav class="gp-modal-controls">
+						<ul class="album-nav clearfix hidden-xs">
+							<li ng-click="changeAlbumTab('all')" class="nav-sub-tabs active" ng-class=""><a href="#">All <span class="badge">{{albumRecordsCount.allCount}}</span></a></li>
+							<li ng-click="changeAlbumTab('audio')" class="nav-sub-tabs" ng-class=""><a href="#">Audio <span class="badge">{{albumRecordsCount.audioCount}}</span></a></li>
+							<li ng-click="changeAlbumTab('video')" class="nav-sub-tabs" ng-class=""><a href="#">Video <span class="badge">{{albumRecordsCount.videoCount}}</span></a></li>
+							<li ng-click="changeAlbumTab('image')" class="nav-sub-tabs" ng-class=""><a href="#">Photo <span class="badge">{{albumRecordsCount.photoCount}}</span></a></li>
+						</ul><!-- /.album-nav -->
+
+						<ul class="user-action-nav clearfix">
+							<li ui-sref="launchMyWork({id:currentAlbum._key})"><a  title="Edit Album" ng-click="" href="#" data-toggle="tooltip" data-dismiss="modal" class="media-info-edit"><span><i class="fa fa-pencil"></i></span></a></li>
+							<li ng-click="deleteFromPopUp($event,currentAlbum._key)"><a title="Delete Album" href="#" data-toggle="tooltip"><span><i class="fa fa-trash-o"></i></span></a></li>
+							<li ng-click="shareModal($event)"><a title="Share Album" href="#" data-toggle="tooltip"><span><i class="fa fa-share-alt"></i></span></a></li>
+						</ul><!-- /.user-action-nav -->
+
+						<ul class="clearfix">
+							<li><button ng-click="resetAlbum()" ng-click="stopAudio()" type="button" data-dismiss="modal" data-toggle="tooltip" title="Close" aria-label="Close" class="close"><span>&times;</span></button></li>
+						</ul><!-- /.gp-modal-nav -->
+
+					</nav><!-- /.gp-modal-controls -->
+
+					<h1 class="gp-media-heading hidden-xs hidden-sm">{{currentAlbum.title}}</h1>
+				</div><!-- /.gp-modal-header -->
+
+
+				<div class="gp-modal-body gp-launched-ablum-body">
+					<aside class="gp-modal-sidebar hidden-xs">
+						<div class="gp-album-details">
+							<div class="album-thumb" style="background-image:url('{{currentAlbum.fileurl}}')"></div>
+							<p class="album-genre">{{currentAlbum.genre}}</p>
+							<div ng-bind-html="currentAlbum.description"></div>
+
+							<button  ui-sref="launchAlbum({id:currentAlbum._key})" class="btn btn-lg btn-primary call-to-action media-info-edit" type="button">Add New Media</button>
+						</div>		
+					</aside>
+					<main class="gp-modal-main-content">
+						<div class="container-fluid max-width">
+							<ul class="launched-work-list responsiveColumnLayout">
+								<media-directory  media-obj="obj" ng-repeat="obj in mediaObj| filterAlbumObject:currentAlbum|workCategoryFilter:albumTabStatus"></media-directory>	
+							</ul>
+						</div>
+					</main>
+				</div>	
+			</div>	
+		</div>
+	</div> <!-- /#gp-album-Modal -->
+
+
+
+
+
+
+
+
+	<!-- GP Video Media Player Modal -->
+	<div ng-controller="videoGalleryCtrl" class="modal gp-modal fade" id="gpVideoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="GP Video Player" gp-modal>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content gp-modal-content">
+				<div class="gp-modal-header">
+					<span class="gp-lightBox-content-status hidden-xs">Playing Track <span>{{currentVideo.index+1}}</span> of {{videoArrayLength}}</span>
+					<nav class="gp-modal-controls">
+						<ul class="user-action-nav clearfix">
+							<li><a ui-sref="launchMyWork({id:currentVideo._key})" title="Edit Video" data-toggle="tooltip" class="media-info-edit" ><span><i class="fa fa-pencil"></i></span></a></li>
+							<li ng-click="deleteFromPopUp($event,currentVideo._key)"><a ng-click="" href="#" title="Delete Video" data-toggle="tooltip" class="media-info-toggle"><span><i class="fa fa-trash-o"></i></span></a></li>
+							<li ng-click="shareModal($event)"><a ng-click="" href="#" title="Share Video" data-toggle="tooltip"><span><i class="fa fa-share-alt"></i></span></a></li>
+						</ul>
+						<ul class="clearfix">	
+							<li class="has-info-toggle"><a title="Info" data-toggle="tooltip" ng-click="videoListToggle()"  href="#"  class="media-info-toggle videoInfoToggle"><span><i class="fa fa-info-circle"></i></span></a></li>
+							<li><button type="button" ng-click="stopVideo()" data-dismiss="modal" aria-label="Close" title="Close" data-toggle="tooltip" class="close"><span>&times;</span></button></li>
+						</ul>
+					</nav><!-- /.gp-modal-controls -->
+				</div><!-- /.gp-modal-header -->
+
+				<div class="gp-modal-body">
+					<div class="gp-media-container gp-media-player-container gp-video-player-container">
+						<section class="gp-media-player gp-video-media-player" gp-media-player gp-video-media-player >
+							<header class="gp-media-player-header">
+								<h1 class="gp-media-heading">{{currentVideo.title}}</h1>
+							</header>
+
+							<div class="gp-media-player-body">
+								<div class="video-outer-container">
+									<div id="videoResponsiveContainer" class="">
+										<div class="embed-responsive embed-responsive-16by9">
+											<video  id="video" class="gp-media gp-launched-media" controls autoplay>
+												<source src="{{currentVideo.fileurl|trustUrl}}" type="video/mp4"/>
+											</video>
+										</div>
+									</div>
+								</div><!-- /.gp-media-poster -->
+							</div><!-- /.gp-media-player-body -->
+
+
+							<div class="gp-media-wrap">
+								<div class="gp-media-player-controls clearfix hidden">
+									<div class="gp-media-player-progress-bar">
+										<form>
+											<div class="gp-media-controls-group clearfix">
+												<div class="gp-media-volume-control pull-right">
+													<button class="small-btn media-volume-btn" type="button"><i class="fa fa-volume-up"></i></button>
+													<div class="gp-media-volume-bar">
+														<span ng-click="videoVolumeSeekClick($event)" id="videoVolumeSeek" class="current-progress" style="width:{{videoPlayer.videoVolumeClass}}%"></span>
+														<input  type="range" min="0" max="1" step="0.01" id="volume-bar" eventName="videoVolumeChange"/>
+													</div>	
+												</div>
+
+												<div class="gp-media-progress-bar" data-media-progress="{{videoElapsedSecond}}" data-media-total-length="{{videoDuration}}">
+													<span ng-click="bufferedVideoClick($event)" id="elapsedVideoSpan" class="buffering current-progress" style="width:{{videoBuffered}}%"></span>
+													<span ng-click="backWardVideoClick($event)" id="buffredVideoSpan" class="current-progress" style="width:{{videoElapsedPercent}}%"></span>
+													<input type="range" id="seek-bar" value="0">
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<nav class="gp-media-player-controls-nav" gp-media-player-controls-nav >
+										<a ng-click="previousVideo()" class="gp-media-control prev-media" href="#">Previous</a>
+										<a class="gp-media-control play-pause-media" href="#" ng-class="{'media-playing':isVideoPlay==true}" ng-click="videoToggle()">Play / Pause</a>
+										<a ng-click="nextVideo()" class="gp-media-control next-media" href="#">Next</a>
+									</nav>
+								</div>
+							</div>
+						</section><!-- /.gp-media-player -->
+
+						<!-- <div ng-class="{'slide-from-right':isVideoListShow==true,'slide-to-left':isVideoListShow==false}" class="gp-media-info"> -->
+						<div class="gp-media-info video-media-info">
+							<div class="main-media-info videoInfo">
+								<div class="media-genre widget">
+									<h3 class="widget-heading">Genre</h3>	
+									<p>{{currentVideo.genre}}</p>
+								</div>
+								<article class="widget">
+									<h3 class="widget-heading">Description </h3>
+									<div ng-bind-html="currentVideo.description"></div>
+								</article>
+							</div>
+
+							<div class="related-media-list widget">
+								<h3 class="widget-heading"><i class="fa fa-list-ul widget-icon"></i> Playlist</h3>	
+
+								<div class="gp-related-media-wrap">
+									<div class="gp-related-media">
+										<div ng-click="setVideoSource(video,$index)" ng-repeat="video in videoArray track by $index" class="media-details media">
+											<a href="#" ng-class="{'active':videoIndex==$index}">
+												<div class="media-left">
+													<div class="media-thumb-wrap">
+														<img alt="" class="media-object" src="{{video.thumburl}}">
+													</div>
+												</div>
+												<div class="media-body">
+													<h3 class="media-title ng-binding">{{video.title}}</h3>	
+													<p class="media-genre">Classical</p>
+													<p class="media-duration">{{calculateTotalTime(video.duration/1000)}}</p>
+												</div>
+											</a>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>		
+			</div>	
+		</div>
+	</div> <!-- /#gp-video-player-Modal -->
+
+
+
+	<!-- GP Photo Gallery Modal -->
+	<div ng-controller="imageGalleryCtrl" ng-keydown="slidePhoto($event)" class="modal gp-modal fade" id="gpPhotoGalleryModal" tabindex="-1" role="dialog" aria-labelledby="GP Photo Gallery" gp-modal>
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content gp-modal-content">
+
+				<div class="gp-modal-header">
+					<span class="gp-lightBox-content-status hidden-xs hidden-sm">Snap <span>{{currentImage.index+1}}</span> of {{imageArrayLength}}</span>
+
+					<nav class="gp-modal-controls">
+						<ul class="user-action-nav clearfix">
+							<li><a class="media-info-edit" ui-sref="launchMyWork({id:currentImage._key})" data-dismiss="modal" data-toggle="tooltip" title="Edit Photo"><span><i class="fa fa-pencil"></i></span></a></li>
+							<li><a ng-click="deleteFromPopUp($event,currentImage._key)" href="#" data-toggle="tooltip" title="Delete Photo"><span><i class="fa fa-trash-o"></i></span></a></li>
+							<li><a ng-click="shareModal($event)" href="#" data-toggle="tooltip" title="Share Photo"><span><i class="fa fa-share-alt"></i></span></a></li>		
+						</ul>
+
+						<ul class="clearfix">
+							<li><a title="{{isImageListShow==true?'Less':'More'}}" ng-click="imageListToggle()" href="#" class="media-info-toggle" data-toggle="tooltip" title="View Detail"><span><i class="fa fa-info-circle"></i></span></a></li>
+							<li><button ng-click="" type="button" data-dismiss="modal" aria-label="Close" class="close"><span id="snap-popup-close">&times;</span></button></li>
+						</ul>
+					</nav><!-- /.gp-modal-controls -->
+				</div><!-- /.gp-modal-header -->
+
+
+				<div class="gp-modal-body gp-photo-gallery-body">
+					<div class="gp-media-container gp-media-player-container" ng-class="{'squeezed':isImageListShow==false}">
+						<section id="gpPhotoGallery" class="gp-photo-gallery" >					
+							<div class="gp-media-header hidden-xs">
+								<h1 class="gp-media-heading">{{currentImage.title}}</h1>
+							</div>	
+							<!-- <div ng-class="{'slide-from-right':isImageListShow==true,'slide-to-left':isImageListShow==false}" class="gp-media"> -->
+						<!-- <div ng-animate-swap="currentImage.fileurl" class="gp-media cell swap-animation-reverse">
+							<img alt="" ng-src="{{currentImage.fileurl}}">
+						</div>	 --> 
+						<div ng-animate-swap="currentImage.fileurl" class="gp-media cell swap-animation-reverse" >	
+							<img ng-src="{{currentImage.fileurl}}">
+						</div>
+
+						<nav class="gp-gallery-controls clearfix">
+							<a ng-click="prevImage(-1)" class="prev-snap" href="#"><i class="fa fa-arrow-left"></i></a>
+							<a ng-click="nextImage(1)" class="next-snap" href="#"><i class="fa fa-arrow-right"></i></a>
+						</nav>	
+
+
+						
+						<section class="gp-gallery-thumbs-container hidden-xs">
+
+							<nav class="gp-gallery-controls clearfix">
+								<a ng-click="shiftImageArray(-1)" class="prev-snap" href="#"><i class="fa fa-angle-left"></i></a>
+								<a ng-click="shiftImageArray(1)" class="next-snap" href="#"><i class="fa fa-angle-right"></i></a>
+							</nav>	
+							
+
+							<nav class="gallery-thumbs-navigation">
+								<ul class="clearfix">
+									<li ng-click="setSource($index,imageObj)" class="gallery-thumb-wrap" ng-repeat="imageObj in imageArray">
+										<a ng-class="{'active':imageIndex==$index}" class="gallery-thumb" href="#">
+											<img alt="" src="{{imageObj.thumburl}}">
+										</a>
+									</li>
+								</ul>
+							</nav>	
+							
+						</section><!-- /.gp-gallery-thumbs-container -->
+
+
+
+					</section>
+
+					<!-- <div ng-class="{'slide-from-right':isImageListShow==false,'slide-to-left':isImageListShow==true}"  class="gp-media-info main-media-info"> -->
+					<div  class="gp-media-info main-media-info" ng-class="{'slide-from-right':isImageListShow==false}">
+						<article class="widget">
+							<h3 class="widget-heading">Description </h3>
+							<div ng-bind-html="currentImage.description"></div>
+						</article>
+					</div>
+				</div>
+
+				
+
+
+
+			</div>		
+		</div>	
+	</div>
+</div> <!-- /#gp-photo-gallery-Modal -->
+
+<style>
+	.gallery-thumb.active {
+		background-color:#e68a00;
+	}
+
+	.active .media-title {
+		color:#e68a00!important;
+	}
+</style>
+</div>
+

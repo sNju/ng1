@@ -1,0 +1,676 @@
+/* 
+	GP Cards: Party Cards, Profile Cards, Deal Cards
+*/
+
+.gp-card {
+	position:relative;
+	background-color:#fff;
+	margin-bottom:10px;
+	padding:@default-gp-card-padding;
+	border:1px #e9e9e9 solid;
+	/*box-shadow:0 0 3px rgba(0, 0, 0, .08);*/
+}
+
+@media (min-width:768px) {
+	.gp-card {
+		.gp-card-height();
+	}
+}
+
+.gp-card-heading {
+	font-size:16px;
+	margin-bottom:5px;
+}
+
+.gp-card-details + .gp-card-actions > .call-to-action {
+	margin-top:20px;
+}
+
+.gp-card .call-to-action {
+	.medium-button-padding();
+	.border-only-button();
+	border-color:#111;
+	color:#000;
+}
+
+.gp-card .call-to-action:hover {
+	border:1px @base-color-dark solid;
+	background-color:@base-color;
+	color:#fff;
+	text-shadow:1px 1px 0 rgba(0, 0, 0, .15);
+}
+
+/* GP Small Card */
+.gp-small-card {
+	height:@gp-small-card-height;
+	text-align:left!important; 
+}
+
+.gp-small-card .gp-card-heading {
+	margin:0 0 2px;
+	max-width:80px;
+	white-space:nowrap;
+	overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.gp-small-card .gp-user-pic {
+	padding-right:10px;
+}
+
+/* 
+ *  GP Profile Card  
+ */
+.gp-profile-card {
+	padding-top:42px;
+	text-align:center;
+}
+
+.gp-user-pic > img {
+	max-height:66px;
+	border-radius:@circularRadius;
+	border:2px @base-color-dark solid;
+}
+
+.gp-user-type {
+	font-size:13px;
+	margin-bottom:5px;
+}
+
+.gp-user-type strong {
+	font-weight:900;
+}
+
+.gp-profile-rating {
+	color:@base-color;
+}
+
+/* GP Small Profile Card */
+.gp-profile-card.gp-small-card {
+	padding-top:40px;
+}
+
+.gp-small-card > .gp-profile {
+	display:table;
+	overflow:hidden;
+}
+
+.gp-profile-card.gp-small-card > .gp-card-actions {
+	float:right;
+	font-size:13px;
+}
+
+.gp-profile-card .gp-small-card .gp-card-actions .call-to-action {
+	padding-left:12px;
+	padding-right:12px;
+}
+
+.gp-small-card > .gp-profile > .gp-user-pic,
+.gp-small-card > .gp-profile > .gp-user-details {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+
+/* 
+ *  GP Party Card  
+ */
+.gp-party-card {
+	padding:0;
+}
+
+.demo {
+	border:none!important;
+}
+
+.gp-party-card-figure {
+	position:relative;
+	background-color:#fff;
+	height:200px;
+	padding:0;
+	z-index:0; 
+	.default-transition();
+}
+
+.gp-party-card:hover figure.hasFocus {
+	.default-transition();
+}
+
+.gp-party-card:hover figure {
+	.default-transition();
+}
+
+@gp-party-details-height: @default-gp-card-height - 200; 
+
+.gp-party-details {
+	height:@gp-party-details-height;
+	background-color:#fff;
+	border-bottom:1px #ddd solid;
+	border-left:1px #ddd solid;
+	border-right:1px #ddd solid;
+	.default-transition();
+}
+
+.gp-party-card:hover .gp-party-details {
+	transform-origin:50% 100%;
+	.default-transition();
+} 
+
+.gp-party-card .gp-party-details:hover {
+	transform:translateZ(0) scale(1);
+	.default-transition();
+}
+
+.gp-party-card figure > span {
+	position:relative;
+	display:block;
+	width:100%;
+	height:200px;
+	.default-transition(.22s);
+}
+
+.gp-party-card figure:hover > span {
+	.default-transition(.15s);
+}
+
+.gp-party-card .img-wrapper,
+.gp-party-card .data-img {
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1; 
+	.default-transition(.15s);
+}
+
+.gp-party-card .img-wrapper {
+	height:200px;
+	max-height:200px;
+	overflow:hidden;
+	.default-transition(.22s);
+}
+
+.gp-party-card-figure:hover .img-wrapper{
+	.default-transition(.15s);
+}
+
+.gp-party-card .data-img {
+	position:absolute;
+	background-color:#eee;
+	height:200px;
+	background-repeat:no-repeat;
+	background-size:cover;
+	.default-transition();
+}
+
+.get-collapsed .data-img {
+	height:190px;
+	.default-transition();
+}
+
+.gp-party-card .data-img:before {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0, 0, 0, .4);
+	content:" ";
+}
+
+.gp-party-card:hover .data-img {
+	.default-transition(.25s);
+}
+
+.gp-party-card figure > span:before,
+.gp-party-card figure > span:after {
+	display:none;
+	position:absolute;
+	bottom:0;
+	right:0;
+	content:" ";
+	width:100%;
+	height:1px;
+	z-index:3; 
+	background-color:@base-color;
+	-webkit-transform-origin:0 50%;
+	   -moz-transform-origin:0 50%;
+			transform-origin:0 50%;
+	transform:scale(0);
+	.default-transition(.15s);
+}
+
+
+.gp-party-card figure > span:after {
+	width:1px;
+	height:100%;
+	background-color:rgba(90, 19, 133, 1);
+	-webkit-transform-origin:100% 100%;
+	   -moz-transform-origin:100% 100%;
+			transform-origin:100% 100%;
+}
+
+.gp-party-card figure:hover > span:after{
+	transform:scale(1);
+	.default-transition(.15s);	
+	-webkit-transition-delay:.21s;
+		   	transition-delay:.21s;
+		   	
+}
+
+.gp-party-card figure:hover span:before {
+	transform:scale(1);
+	.default-transition(.15s);
+	-webkit-transition-delay:.1s;
+		   	transition-delay:.1s;
+}
+
+.gp-party-card figcaption {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding:0 15px 15px 15px;
+	z-index:3; 
+	.default-transition();
+}
+
+.gp-party-card-figure:hover figcaption {
+	.default-transition();
+}
+
+.gp-party-card .gp-card-heading {
+	font-size:17px;
+	margin-top:@no-margin;
+	margin-bottom:8px;
+	color:@base-color;
+	.default-transition(.25s);
+}
+
+.gp-party-card-figure.get-collapsed .gp-card-heading {
+	font-size:16px;
+	.default-transition(.25s);
+}
+
+.gp-party-card .gp-card-heading + p {
+	color:#fff;
+}
+
+.gp-party-card .call-to-action {
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-top:0;
+	min-width:150px;
+	transform-origin:50% 100%;
+	transform:scale(.9);
+	.default-transition(.08s);
+}
+
+.expanded .call-to-action {
+	margin-top:20px;
+	transform:scale(1);
+	.default-transition(.08s);	
+}
+
+.gp-party-details {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	font-size:12px;
+	font-weight:400;
+	color:#000;
+	text-align:center; 
+	.default-transition(.1s);
+}
+
+.gp-party-details.expanded {
+	.default-transition(.1s);
+}
+
+.gp-party-date-time {
+	position:relative;
+	display:table;
+	width:100%;
+}
+
+.gp-party-date-time:before {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:1px;
+	background-color:#ddd;
+	content:" ";
+	box-shadow:0 2px 3px rgba(0, 0, 0, .07);
+	transform:scale(0);
+	.default-transition(.17s);
+}
+
+.expanded .gp-party-date-time:before {
+	transform:scale(1);
+	.default-transition(.17s);
+	-webkit-transition-delay:.08s;
+			transition-delay:.08s;
+}
+
+.gp-party-date,
+.gp-party-time {
+	position:inherit;
+	display:table-cell;
+	width:50%;
+	vertical-align:middle;
+	text-align:center;
+	padding:13px 10px;
+	.default-transition(.18s);
+}
+
+.expanded .gp-party-date,
+.expanded .gp-party-time {
+	font-size:13px;
+	color:#000;
+	.default-transition(.18s);
+}
+
+.gp-party-date:before {
+	position:absolute;	
+	top:0;
+	right:0;
+	width:1px;
+	height:100%;
+	background-color:#bbb;
+	content:" ";
+	transform:scale(.5);
+	.default-transition(.08s);
+}
+
+.expanded .gp-party-date:before {
+	background-color:#ddd;
+	transform:scale(1);
+	.default-transition(.08s);
+}
+
+.gp-party-date-time span .fa {
+	margin-right:6px;
+	.default-transition(.18s);
+}
+
+.gp-party-date-time span .fa-clock-o {
+	position:relative;
+	top:1px;
+	font-size:15px;
+}
+
+.expanded .gp-party-date-time span .fa {
+	margin-right:8px;
+	.default-transition(.18s);
+}
+
+.user-actions {
+	position:absolute;
+	top:15px;
+	right:0;
+	width:100%;
+	text-align:right;
+	padding-right:15px; 
+	z-index:4; 
+}
+
+.gp-party .user-actions .user-actions-toggle {
+	position:relative;
+	display:inline-block;
+	width:42px;
+	height:42px;
+	background-color:#fff;
+	border:none;
+	line-height:16px;
+	.RoundShape();
+	padding:0;
+	box-shadow:0 0 4px rgba(0, 0, 0, .25);
+	transform:scale(1);
+	.default-transition(.25s);
+}
+
+.gp-party-card-figure:hover .user-actions-toggle {
+	background-color:@base-color;
+	transform:scale(.85);
+	.default-transition(.25s);
+	padding:2px;
+}
+
+.gp-party-card-figure .user-actions-toggle:before {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	border:2px #fff solid;
+	content:" ";
+	.RoundShape();
+	transform:scale(.7);
+	.default-transition(.25s);
+}
+
+.gp-party-card-figure:hover .user-actions-toggle.close,
+.user-actions-toggle.close {
+	background-color:#fff!important;
+}
+
+.user-actions-toggle.close,
+.user-actions-toggle.close:hover {
+	transform:scale(.85);
+}
+
+.gp-party-card-figure:hover .user-actions-toggle:before {
+	transform:scale(1.3);
+	.default-transition(.25s);
+}
+
+.gp-party-card-figure:hover .user-actions-toggle .gp-slick-line {
+	background-color:#fff;
+}
+
+.gp-party-card-figure:hover .user-actions-toggle.close .gp-slick-line {
+	background-color:rgb(90, 19, 133);
+}
+
+.user-actions-toggle span {
+	position:relative;
+	display:inline-block;
+	width:18px;
+	height:16px;
+	overflow:hidden;
+}
+
+.user-actions-toggle span .gp-slick-line:first-child {
+	transform-origin:0 50%;
+	transform:scale(.7);
+	background-color:rgba(90, 19, 133, 1);
+}
+
+.close span .gp-slick-line:first-child {
+	transform-origin:0 50%;
+	transform:scale(0);
+}
+
+.user-actions-toggle span .gp-slick-line {
+	margin-top:-1px;
+}
+
+.user-actions-toggle span .gp-slick-line + .gp-slick-line {
+	margin-top:-7px;
+}
+
+.user-actions-toggle span .gp-slick-line:last-child,
+.user-actions-toggle span .gp-slick-line + .gp-slick-line:last-child {
+	margin-top:5px;
+	transform: rotateZ(0) translateY(0);
+}
+
+.close span .gp-slick-line + .gp-slick-line {
+	margin-top:-6px;
+}
+
+.close span .gp-slick-line:last-child,
+.close span .gp-slick-line + .gp-slick-line:last-child {
+	margin-top:4px;
+	transform: rotateZ(45deg) translateY(2px);
+}
+
+.gp-party-card-figure:hover .user-actions-toggle {
+	position:relative;
+	background-color:@base-color;
+	.default-transition();
+}
+
+.gp-party-card-figure:before {
+	content:" ";		
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:4; 
+	transform:scale(1);
+	.default-transition();
+}
+
+.gp-party-card-figure.has-mask:before {
+	background-color:rgba(230, 138, 0, .65);
+	box-shadow:inset 0 -100px 200px rgba(230, 138, 0, .8);
+	transform:scale(1);
+	.default-transition();
+}
+
+.close.user-actions-toggle {
+	background-color:@base-color;
+	color:#fff;
+	text-shadow:none;  
+	.default-transition(.12s);
+}
+
+.close.user-actions-toggle .fa {
+	display:none;
+	opacity:0;
+	.default-transition(.1);
+}
+
+.user-action-options {
+	position:absolute;
+	top:70px;
+	left:0;
+	width:100%;
+	font-size:0; /* Removing space between two or more inline-block elements */
+	opacity:0;
+	visibility:hidden;
+	.default-transition();
+}
+
+.user-actions.open .user-action-options {
+	opacity:1;
+	visibility:visible;
+	.default-transition();
+}
+
+.gp-party .user-action {
+	display:inline-block;
+	background-color:#fff;
+	color:@base-color;
+	width:44px;
+	height:44px;
+	line-height:44px;
+	font-size:15px;
+	.RoundShape();
+	opacity:0;
+	margin:0 8px;
+	transform-origin:0 0;
+	transform:translateY(-26px);
+	.default-transition(.12s);
+}
+
+.gp-party .user-action:nth-child(2) {
+	transform:translateY(26px);
+}
+
+.gp-party .user-action .fa-ban {
+	font-size:16px;
+}
+
+.gp-party .user-actions.open .user-action {
+	opacity:1;
+	box-shadow:0 0 3px rgba(0, 0, 0, .2);
+	transform:translateY(0);
+}
+
+.open .user-action:nth-child(2) {
+	.default-transition(.18s);
+	transition-delay:.05s;
+}
+
+.open .user-action:last-child {
+	.default-transition(.22s);
+	transition-delay:.12s;
+}
+
+
+
+/*
+ *  GP Cards for Small Screens
+ */
+@media (max-width:767px) {
+	.gp-card {
+		padding:15px!important;
+		text-align:left;
+		overflow:hidden;
+	}
+
+	.gp-card .gp-card-heading {
+		margin:3px 0 2px;
+		font-size:15px;
+		max-width:180px;
+		white-space:nowrap;
+		overflow:hidden;
+	    text-overflow:ellipsis;
+	}
+
+	.gp-card > .gp-profile {
+		display:table!important;
+		width:100%;
+	}
+
+	.gp-card > .gp-profile > .gp-user-pic,
+	.gp-card > .gp-profile > .gp-user-details {
+		display:table-cell;
+		vertical-align:top;
+	}
+
+	.gp-card > .gp-profile > .gp-user-pic {
+		width:25%;
+		padding-right:15px;
+	}
+
+	/* GP Card Actions */
+	.gp-card-actions {
+		border-top:1px #eee solid;
+		margin:15px -15px -15px;
+		padding:8px 15px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+	}
+
+	.gp-card .call-to-action {
+		float:right;
+		margin:@no-margin!important;
+		padding:5px 14px;
+	}
+	
+	.gp-small-card .gp-card-actions {
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		margin:@no-margin;
+		min-height:45px;
+	}
+}
+

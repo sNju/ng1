@@ -1,0 +1,104 @@
+// Variables and Mixins
+@import "variables.less";
+@import "mixins.less";
+
+.hoverline{
+  position: relative;
+  display: block;
+  .default-transition();
+
+  &::after{
+    content:"";
+    position: absolute;
+    top: -31px;
+    left: 50%;
+    width: 0%;
+    height: 1px;
+    background-color: @base-color;
+    .default-transition(.3s);
+  }
+  &::before{
+    content:"";
+    position: absolute;
+    top: -31px;
+    right: 50%;
+    width: 0%;
+    height: 1px;
+    background-color: @base-color;
+    .default-transition(.3s);
+  }
+}
+.form-group:hover{
+  .hoverline:after{
+    width:50%;
+  }
+  .hoverline:before{
+    width:50%;
+  }
+}
+label{
+  font-size: 14px;
+  font-family:@profiletypefont;
+  color: #666; 
+}
+.top-heading{
+  margin-left: -15px;
+  font-size: 16px;
+  font-family:@profiletypefont;
+  margin-bottom: 15px;
+}
+.onboard-bg{
+  background-color: #f5f5f5;        
+}
+/*FIxed Css*/
+.onboard-form{
+  .flex-center();
+  padding: 30px;
+}
+.box{   
+  border-radius: 3px;
+  background: #fff;
+  border-top: 3px solid @base-color;
+  margin-bottom: 20px;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  .box-heading{
+    color: @base-color;
+    border-bottom: 1px solid #ececec;
+    padding:15px;
+    font-size: 16px;
+    font-family: @profileheadingfont;
+  }
+  .box-body{
+    padding: 25px 40px;
+    span{
+      color: #f00;
+    }
+    .form-control{
+      position: relative;
+      box-shadow: none;
+      border:none;
+      border-bottom:1px solid #d2d2d2;
+      border-radius: 0;
+      margin-bottom: 30px;
+      padding: 0;
+      font-size: 16px;
+    }
+    .heading{
+      font-size: 14px;
+      font-family:@profiletypefont;
+      padding:15px 15px 0px;    
+    }
+    .btn-submit{
+      font-size: 16px;
+      padding: 8px 30px;
+      color: #fff;
+      background-color: @base-color;
+      margin-right: 15px;
+      &:hover{
+        background-color:lighten(@base-color, 7%);
+      }
+    }
+  }
+}
+

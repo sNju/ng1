@@ -1,0 +1,78 @@
+  <form method="POST" id="allelement" add-user-directive>
+    <div class="container-fluid">
+      <div class="block-header">
+        <h2></h2>
+      </div>
+
+      <div class="row clearfix">
+        <!-- Task Info -->
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="card">
+            <div class="header">
+              <h2>Select Party and Party Spot</h2>
+              <div class="pull-right">
+                <div class="switch panel-switch-btn">
+                  <button type="submit" ng-click="getallelement(filterobj)" class="btn bg-teal btn-block waves-effect">Apply Filters</button>
+                </div>
+              </div>
+            </div>
+            <div class="body">
+              <div class="row clearfix">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input ng-value="filterobj.address" id="txtlocation" google-location-autocomplete type="text" class="form-control" placeholder="Location"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input ng-model="filterobj.keyword" type="text" class="form-control" placeholder="Keyword" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">date_range</i>
+                    </span>
+                    <div class="form-line">
+                      <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">date_range</i>
+                    </span>
+                    <div class="form-line">
+                      <input name="startdate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date " >
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <div class="row">
+                  <div class="col-lg-12">
+                      <ul class="details-container clearfix">
+                        <li class="details-list col-lg-3 col-md-3 col-sm-4 col-xs-12"  ng-click="selectobj(obj)"  class="animate-repeat" ng-class="getclassnametype(obj.party!=undefined?'party':'profile')" ng-repeat="obj in elements">
+                            <div class="gpa-card gp-party-card">
+                                <div class="card-figure" style="background-image: url({{(obj.party!=undefined?obj.party.banner:obj.profile.cover)}});">
+                                </div>
+                                <div class="card-title">
+                                    {{(obj.party!=undefined?obj.party.title:obj.profile.name)|limitTo:40}}
+                                </div>
+                                <div class="card-detail-section">
+                                    <p class="card-types">{{obj.party.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>                                    
+                                    <p class="card-types location">{{(obj.party!=undefined?obj.party.location:obj.profile.location)| limitTo:30}}</p>
+                                </div>                              
+                            </div>
+                        </li>
+                      </ul>
+                  </div>                
+                </div><!--END ROW-->
+            </div>
+            <form>
+

@@ -1,0 +1,32 @@
+<form id="sign_in" method="POST">
+    <div class="msg">Sign in to start your session</div>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="material-icons">person</i>
+        </span>
+        <div class="form-line">
+            <input ng-model="loginobj.email" type="text" class="form-control" name="username" placeholder="Email Id or Mobile No" required autofocus>
+        </div>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="material-icons">lock</i>
+        </span>
+        <div class="form-line">
+            <button type="button" class="forget" ng-click="chnagestate('forget')" >Forgot?</button>
+            <input ng-model="loginobj.password" type="password" class="form-control input-forget" name="password" placeholder="Password" autocomplete="false" required>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-lg-12">                            
+            <button ng-click="login(loginobj)" class="btn btn-block btn-login waves-effect" type="submit">SIGN IN</button>
+       </div>    
+    </div>
+
+    <div class="row" ng-controller="authenticationCtrl">
+        <div class="col-lg-12">
+            <button ng-click="login()" class="btn btn-block bg-fb waves-effect text-uppercase" type="button">LOGIN WITH Facebook</button>
+        </div>
+    </div>
+</form>
+

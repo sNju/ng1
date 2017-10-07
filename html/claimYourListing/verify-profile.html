@@ -1,0 +1,202 @@
+
+<div class="content-wrapper" collapse-status>
+    <main class="main-content" role="main">
+
+        <header class="page-header">
+            <div class="container-fluid min-width">
+                <h1 class="page-heading">Verify Your Profile</h1>
+                <p>Follow the following process to verify your profile and get the dashboard access. We will send you the credentials once all the requirements are fullfilled.</p>
+            </div>
+
+        </header>        
+
+        <section class="verify-profile-wrapper">
+
+            <div class="container-fluid min-width">            
+                <ul class="verify-options-list">
+                    <li class="verify-profile-option verify-facebook" ng-class="{'verified':isFacebookVerify==true}" >
+                        <div class="verify-option-header clearfix">
+                            <div class="media verify-media">                
+                                <div class="media-left">
+                                    <span class="icon-wrap"><i class="fa fa-facebook media-object"></i></span>
+                                </div>
+                                <div class="media-body">Facebook</div>
+                            </div>  
+                            <button ng-click="isFacebookVerify==false&&facebookLogin(id)" class="btn btn-primary btn-lg call-to-action">{{isFacebookVerify==true?'Verified':'Verify'}}</button>
+                        </div>
+                    </li>
+
+                    <li class="verify-profile-option verify-twitter" ng-class="{'verified':isTwitterVerify==true}" >
+                        <div class="verify-option-header clearfix">
+                            <div class="media verify-media">                
+                                <div class="media-left">
+                                    <span class="icon-wrap"><i class="fa fa-twitter media-object"></i></span>
+                                </div>
+                                <div class="media-body">Twitter</div>
+                            </div>  
+                            <button ng-click="isTwitterVerify==false&&twitterLogin(id)" class="btn btn-primary btn-lg call-to-action">{{isTwitterVerify==true?'Verified':'Verify'}}</button>
+                        </div>
+                    </li>
+
+                    <li ng-class="{'verified':isemailVerify==true}" class="verify-profile-option verify-email">
+                        <div class="verify-option-header emailhead clearfix">
+                            <div class="media verify-media">                
+                                <div class="media-left">
+                                    <span class="icon-wrap"><i class="fa fa-envelope media-object"></i></span>
+                                </div>
+                                <div class="media-body">Email</div>
+                            </div>  
+                            <!-- ng-show="isemailVerify" --> <button ng-click="isEmailExist&&isemailVerify==false&&sendotp('email',profile.email,true)"  class="btn btn-primary btn-lg call-to-action">{{isemailVerify==true?'Verified':isemailotpsending==true?'Sending...':issentemailotp==true?'Resend OTP':isEmailExist==true?'Send OTP':'Verify'}}</button>
+                        </div>
+
+                        <div class="verify-option-body emailbody">
+                            <h3>Verify Your Email</h3>        
+                            <p>Enter your email to get the OTP</p>
+
+                            <form>
+                                <div ng-show="isemail" class="otp-check flex-wrap" ng-form="emailotpform">
+                                    <div  class="form-group flex-item">        
+                                        <label class="sr-only">Enter OTP</label>
+                                        <input name="otp" ng-model="emailotp" class="form-control" type="text" placeholder="Enter OTP" required>
+                                    </div>  
+                                    <button ng-click="verifyotp('email',emailotp,emailotpform.$valid)" class="submit-btn flex-item" type="button">Submit</button>  
+                                    <span class="invalidText" ng-show="(emailotpform.otp.$invalid&&emailotpform.otp.$dirty)||(issubmitEmailotp&&emailotpform.otp.$invalid)">*OTP must be required</span>
+                                </div>
+                                <br>
+
+                                <div ng-hide="isemail" ng-form="emailform" class="otp-check flex-wrap">
+                                    <div class="form-group flex-item">        
+                                        <label class="sr-only">Enter Email</label>
+                                        <input name="email" ng-model="email" class="form-control" type="text" placeholder="Enter Email"required>
+                                    </div>  
+                                    <button ng-click="sendotp('email',email,emailform.$valid)" class="submit-btn flex-item" type="button">Submit</button>  
+                                    <span class="invalidText" ng-show="(emailform.email.$invalid&&emailform.email.$dirty)||(isSubmitEmail&&emailform.$invalid)">*Email must be valid</span>
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </li>
+
+                    <li class="verify-profile-option verify-phone" ng-class="{'verified':isphoneVerify==true}">
+                        <div class="verify-option-header clearfix phonehead">
+                            <div class="media verify-media">                
+                                <div class="media-left">
+                                    <span class="icon-wrap"><i class="fa fa-phone media-object"></i></span>
+                                </div>
+                                <div class="media-body">Phone</div>
+                            </div> 
+                            <button ng-click="isPhoneExist&&isphoneVerify==false&&sendotp('phone',profile.phone,true)"  class="btn btn-primary btn-lg call-to-action">{{isphoneVerify==true?'Verified':isphoneotpsending==true?'Sending...':issentphoneotp==true?'Resend OTP':isPhoneExist==true?'Send OTP':'Verify'}}</button> 
+                            
+                        </div>
+
+                        <div class="verify-option-body phonebody" >
+                            <h3>Verify Your Number</h3>        
+                            <p>Enter you phone number for verification</p>
+
+                            <div>
+                                <div ng-form="phoneotpform" ng-show="isphone" class="otp-check flex-wrap">
+                                    <div  class="form-group flex-item">        
+                                        <label class="sr-only">Enter OTP</label>
+                                        <input name="otp" ng-model="phoneotp" class="form-control" type="text" placeholder="Enter OTP" required>
+                                    </div>  
+                                    <button ng-click="verifyotp('phone',phoneotp,phoneotpform.$valid)" class="submit-btn flex-item" type="button">Submit</button>  
+                                    <span class="invalidText" ng-show="(phoneotpform.otp.$dirty&&phonrotpform.$dirty)||(issubmitPhoneotpotp&&phoneotpform.otp.$invalid)">*OTP required</span>
+                                </div>
+                                <br>
+
+                                <div ng-form="phoneform" ng-hide="isphone" class="otp-check flex-wrap">
+                                    <div class="form-group flex-item">        
+                                        <label class="sr-only">Phone Number</label>
+                                        <input name="phone" ng-model="phone" class="form-control" type="text" placeholder="Phone Number" required>
+                                    </div>  
+                                    <button ng-click="sendotp('phone',phone,phoneform.$valid)" class="submit-btn flex-item" type="button">Submit</button> 
+                                    <span class="invalidText" ng-show="(phoneform.phone.$invalid&&phoneform.phone.$dirty)||(isSubmitPhone&&phoneform.phone.$invalid)">*Phone number must be valid</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+<!--
+                    <li class="verify-profile-option verify-website verified">
+                        <div class="verify-option-header clearfix websitehead">
+                            <div class="media verify-media">                
+                                <div class="media-left">
+                                    <span class="icon-wrap"><i class="fa fa-globe media-object"></i></span>
+                                </div>
+                                <div class="media-body">Website</div>
+                            </div>  
+                            <button ng-show="iswebsiteVerify" class="btn btn-primary btn-lg call-to-action">Verified</button>
+                        </div>
+
+                        <div class="verify-option-body websitebody">
+                            <article class="align-left">
+                                <h3>Verify Your Website</h3>
+                                <ol starts="1">
+                                    <li>Enter you website address</li>
+                                    <li>Get the code and paste it in the header of your home page.</li>
+                                    <li>Verify your website and you can then remove the code</li>
+                                </ol>
+
+                            </article>
+                            <h3>Enter Website</h3>        
+                            <p>Enter your website for verification</p>
+
+                            <form>
+                                <div class="otp-check flex-wrap">
+                                    <div class="form-group flex-item">        
+                                        <label class="sr-only">Enter Website</label>
+                                        <input ng-model="website" class="form-control" type="text" placeholder="Enter Website">
+                                    </div>  
+                                    <button  ng-click="sendotp('website',website)" class="submit-btn flex-item" type="button">Submit</button>  
+                                </div>
+                            </form>
+                        </div>
+
+                    </li>
+                -->
+            </ul>
+        </div>
+    </section><!-- /.verify-profile-wrapper -->
+
+    <section class="skip-verification-process">
+        <div class="container-fluid min-width">        
+            <div class="skip-article">
+                <p>You can skip few steps to do them later. We will get back to you for anything required.</p>
+                <button data-toggle="modal" data-target="#skipVerificationModal" data-backdrop="static"  class="registration-action skip-btn" type="button">Skip</button>
+            </div>        
+        </div>
+
+    </section>
+
+
+
+
+
+</main><!-- /.main-content -->
+</div>
+
+
+<div id="skipVerificationModal" class="modal fade fixed-modal verification-modal" tabindex="-1" role="dialog" aria-labelledby="Skip Verification Modal">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <h3 class="modal-title">THANKYOU</h3>
+            <p>We have got your details and our team will have a check on the elements. Do check your email for updates.</p>
+            <a class="primary-btn" href="/">Home</a>
+        </div>
+    </div>
+</div>
+
+<div id="verficationSuccessModal" class="modal fade fixed-modal verification-modal" tabindex="-1" role="dialog" aria-labelledby="Skip Verification Modal">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <h3 class="modal-title">CONGRATULATIONS</h3>
+            <p>You have successfully claimed the profile, please check your email for the login credentials.</p>
+            <a class="primary-btn" href="/">Home</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+

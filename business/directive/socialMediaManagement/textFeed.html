@@ -1,0 +1,61 @@
+<article class="gp-feed goParties-feed">		
+					<header class="gp-feed-header">
+						<div class="gp-user-profile-table">
+							<div class="gp-user-pic-table-cell"> 
+								<img alt="" class="gp-user-pic" src="{{feedObj.user_image.length>0?feedObj.user_image:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+							</div>
+							<div class="gp-user-info-table-cell">
+								<h4 class="gp-user-name">{{feedObj.user}}</h4>
+								<p>{{feedObj.created_at}}</p>
+							</div>
+						</div>
+					</header><!-- /.gp-feed-header -->
+
+					<figure class="gp-feed-figure">
+						<a href="#" ng-click="fullFeedModal($event)">
+							<img alt="" class="img-responsive" src="{{feedObj.image.length>0?feedObj.image:'images/feeds/feed-dummy-img1.jpg'}}">
+						</a>
+					</figure><!-- /.gp-feed-figure -->
+
+					<p class="gp-feed-txt">{{feedObj.text}}</p>
+
+
+					<div class="gp-feed-actions">	
+						<ul class="gp-feed-actions-nav clearfix">
+							<li>
+								<div class="gp-feed-action">
+									<button class="btn-action gp-feed-action-icon like-post-btn" type="button"><i ng-click="likeClick(feedObj)" ng-class="{'fa fa-heart-o':feedObj.has_liked!=true,'fa fa-heart':feedObj.has_liked==true}"></i></button>
+									<button class="btn-action" data-toggle="modal" data-target="#likedUsersModal" type="button"><span>{{feedObj.like_count}}{{feedObj.has_liked}}</span></button>
+								</div>
+							</li>
+							<li>
+								<div class="gp-feed-action gp-feed-comment-action">
+									<button class="btn-action" data-toggle="modal" data-target="#postCommentsModal" type="button">
+										<span class="gp-feed-action-icon"><i class="fa fa-comment-o"></i></span> <span>{{feedObj.comment_count}}</span>
+									</button>
+								</div>
+							</li>
+							<li>
+								<div class="gp-feed-action">
+									<button class="btn-action gp-feed-action-icon" type="button" ng-click="shareModal($event)"><i class="fa fa-share"></i></button>
+									<button class="btn-action" data-toggle="modal" data-target="#sharedUsersModal" type="button"><span>{{feedObj.share_count}}</span></button>
+								</div>
+							</li>
+							<li>
+								<div class="gp-feed-action dropup">
+									<button class="btn-action" data-toggle="" type="button">
+										<div class="gp-ellipsis-v">
+											<i class="gp-ellipse-o"></i>
+										</div>
+									</button>
+
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a href="#"><i class="fa fa-pencil"></i> Edit Feed</a></li>
+										<li><a href="#"><i class="fa fa-trash-o"></i> Delete Feed</a></li>
+									</ul>
+
+								</div>
+							</li>
+						</ul>	
+					</div><!-- /.gp-feed-actions -->	
+				</article><!-- /.gp-feed -->	

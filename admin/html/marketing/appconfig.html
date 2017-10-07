@@ -1,0 +1,92 @@
+<form id="form_validation" name="adduserform" add-user-directive validation-directive>
+    <!-- add-user-directive -->
+    <div class="container-fluid">
+        <div class="sec-headingr">
+            <h2 class="heading-type">The bolow settings are reflected in the Mobile
+                Applications</h2>
+        </div>
+        <!-- Input -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 class="header-type">
+                            You may enter the title and the sub-title of the blocks
+                            <small>The search result to be opened can be provided by a "search"
+                                url
+                            </small>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2 respIcon">
+                                <div class="form-group" style="text-align:center;">
+                                    <img src="https://s3-ap-southeast-1.amazonaws.com/gpapi/party.png">
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-9 col-md-10 respForm">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input ng-model="headers.party.title" type="text"
+                                               class="form-control" placeholder="Enter the title"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input name="email" type="text"
+                                               ng-model="headers.party.subtitle"
+                                               class="form-control" placeholder="Sub-Title"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input ng-model="partyurl" name="email" type="text"
+                                               class="form-control"
+                                               placeholder="Enter the search page url"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2 respIcon">
+                                <div class="form-group" style="text-align:center;">
+                                    <img src="https://s3-ap-southeast-1.amazonaws.com/gpapi/deal.png">
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-9 col-md-10 respForm"">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input ng-model="headers.deal.title" type="text"
+                                               class="form-control" placeholder="Enter the title"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input name="email" type="text"
+                                               ng-model="headers.deal.subtitle" class="form-control"
+                                               placeholder="Sub-Title"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input ng-model="dealurl" name="email" type="text"
+                                               class="form-control"
+                                               placeholder="Enter the search page url"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-end">
+                            <button class="btn bg-base btn-lg waves-effect"
+                                    ng-click="updateheader()">Save
+                            </button>
+                        </div>
+                    </div><!-- Close Body -->
+                </div><!-- Close Card -->
+            </div><!-- Close Col -->
+        </div><!-- Close ROw -->
+    </div><!-- Close Container -->
+</form>

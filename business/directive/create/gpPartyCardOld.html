@@ -1,0 +1,48 @@
+<li>
+	<div class="gp-card gp-party-card">
+		<div class="gp-party gp-card-details">
+			
+			<figure class="gp-card-figure gp-party-card-figure">
+				<a target="_blank" href="http://www.goparties.com/#/party/{{partiesObj._key}}">
+					<span>
+						<div class="img-wrapper">
+							<div class="data-img" style="background-image:url({{partiesObj.thumburl.length>0?partiesObj.thumburl:'images/wiki-princess-nokia.jpg'}});"></div>
+						</div>
+						<figcaption>
+							<h3 class="gp-card-heading">{{partiesObj.title}}</h3>
+							<p>{{partiesObj.locaiton}}</p>
+						</figcaption>
+					</span>
+				</a>
+				<div class="user-actions">
+					<button class="user-actions-toggle" role="button">
+						<span>
+							<i class="gp gp-slick-line"></i>
+							<i class="gp gp-slick-line"></i>
+							<i class="gp gp-slick-line"></i>
+						</span>
+					</button>
+					<div class="align-center user-action-options">
+						<a class="user-action" ui-sref="createParty({id:partiesObj._key})"><i class="fa fa-pencil"></i><span>Edit</span></a>
+						<a class="user-action" share-modal ng-click="shareModal($event,'party/'+partiesObj.partiesObj._key)" href="#"><i class="fa fa-share-alt"></i> <span>Share</span></a>
+						<a ng-click="enbaleAndDisable(partiesObj._key,partiesObj.isactive)" class="user-action" href="#">
+							<i ng-class="{'fa fa-ban':partiesObj.isactive=='true'||partiesObj.isactive=='','fa fa-eye':partiesObj.isactive=='false'}"></i>
+							<span>{{partiesObj.isactive=="true"?'Disable':'Enable'}}</span>
+						</a>
+					</div>
+				</div>
+			</figure>						
+
+				<div class="gp-party-details">
+					<time class="gp-party-date-time">
+						<span class="gp-party-date"><i class="fa fa-calendar-o"></i> <strong>{{(partiesObj.startdate/1000)|timeStampToDate|dateFormat}}</strong></span>
+						<span class="gp-party-time"><i class="fa fa-clock-o"></i> <strong>{{(partiesObj.startdate/1000)|timeStampToDate|timeFormat}}</strong></span>
+					</time>
+
+					<div class="gp-card-actions align-center clearfix hidden">
+						<button class="btn btn-lg btn-primary call-to-action" ng-click="book(profiletype,name,profilepic,id)" data-toggle="modal" data-target="#">Promote</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>

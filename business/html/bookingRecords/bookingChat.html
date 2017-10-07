@@ -1,0 +1,23 @@
+<booking-records-header></booking-records-header>
+<div class="container-fluid no-padding-xs max-width">
+	<chat-window rcord-id="{{record_id}}" ></chat-window>
+	<aside class="main-content-sidebar">
+		<div class="booking-regarding-widget">
+			<ul class="booking-details">
+				<li class="hidden">
+					<h3>Availability</h3>
+					<p>12 Sep, 2016 - 15 Sep, 2016</p>
+				</li>
+				<li class="hidden">
+					<h3>Price Range</h3>
+					<p>$300 - $500</p>
+				</li>
+				<li class="preferred-time-slot">
+					<h3>Preferred Time Slot</h3>
+					<p>{{bookingStatus.startdate|timeStampToDate:dd-mm-yyyy:'-':0:true}} to {{bookingStatus.enddate|timeStampToDate:dd-mm-yyyy:'-':0:true}}</p>
+				</li>
+			</ul>
+		</div>
+		<status-widget booked-user="{{bookedUser._key}}" status="{{bookingStatus.status}}" id="{{record_id}}"></status-widget>
+	</aside>
+</div>

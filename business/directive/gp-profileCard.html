@@ -1,0 +1,35 @@
+
+<li>
+    <div class="gp-card gp-profile-card">
+        <button class="user-bookmark-action user-actions-toggle call-of-action" role="button" ng-click="bookMarkToggle(isbookmarkedbyme,id,'profile')">
+            <span><i ng-class="isbookmarkedbyme!='false'?'fa-bookmark':'fa-bookmark-o'" class="fa"></i> </span>
+        </button>
+        
+        <figure class="gp-card-figure">
+            <a href="http://www.goparties.com/#/profile/{{id}}" target="_blank">
+                <span>
+                    <div class="img-wrapper">
+                        <div class="data-img" style="background-image:url({{profilecover}})"></div>
+                    </div>
+                </span>
+            </a>
+
+            <div class="crowd-quotient" ng-class="{'cq-1':profile.crowd_quotient>=0&&profile.crowd_quotient<1,'cq-2':profile.crowd_quotient>=1&&profile.crowd_quotient<2,'cq-3':profile.crowd_quotient>=2&&profile.crowd_quotient<3,'cq-4':profile.crowd_quotient>=3&&profile.crowd_quotient<4,'cq-5':profile.crowd_quotient>=4&&profile.crowd_quotient<5}">{{profile.crowd_quotient}}</div>
+            <!--
+            <div class="user-actions">
+                
+            </div>
+            -->
+        </figure>    
+
+        <div class="details">
+            <h3 class="gp-card-heading">{{name}}</h3>
+            <p class="gp-user-type">
+                <strong class="genre">{{profiletype}}</strong> 
+                <!-- <span class="type">Band{{profiletype}}</span> -->
+            </p> 
+            <button class="btn btn-primary call-to-action" data-toggle="modal" data-target="#showInterestModal" ng-click="book(profiletype,username,profilepic,id)">Show Interest</button>
+        </div>                        
+        
+    </div>
+</li>

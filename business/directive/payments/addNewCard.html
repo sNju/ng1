@@ -1,0 +1,116 @@
+<md-dialog id="add-new-card-dialog" class="gp-modal-sm add-new-card-dialog" ng-cloak layout="row">
+    <form name="addcard">
+        <div class="gp-modal-header-sm">
+            <button type="button" class="close" ng-click="cancel('yes')" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+            <h2 class="modal-title">Add New Card</h2>
+        </div>
+        
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="add-new-card-form">
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label class="sr-only">Your Name*</label>
+                            <input name="name" ng-model="creditCardObj.name" type="text" class="form-control" id="nameofCardHolder" placeholder="Your Name*" required>
+                            <span class="invalidText" ng-show="(addcard.name.$invalid && addcard.name.$dirty)||(issubmit==true && addcard.name.$invalid)">*Name Filed is Mandatory</span>
+                        </div>
+                        <div class="checkbox set-default-checkbox col-md-3">
+                            <label ng-click="toggleDefault()">
+                                <i  ng-show="!creditCardObj.isdefault" class="fa fa-square-o"></i>
+                                <i ng-show="creditCardObj.isdefault" class="fa fa-check-square"></i>
+                                Set as Default
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group card-number-form-group col-md-12">
+                            <label class="sr-only">Your Card Number*</label>
+                            <input name="cardnumber" ng-model="creditCardObj.number" ng-keyup="checkCreditCardCompany(creditCardObj.number)" type="text" class="form-control" id="cardNumber" placeholder="Your Card Number*" required>
+                            <div class="card-type-img">
+                                <img alt="" src="{{cardImage}}">
+                            </div>
+                            <span class="invalidText" ng-show="(addcard.cardnumber.$invalid && addcard.cardnumber.$dirty)||(issubmit==true && addcard.cardnumber.$invalid)">*Please Enter Card Number</span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-7">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="sr-only">Expiry Month*</label> 
+
+                                    <select name="month" class="form-control ex-year"
+                                    ng-model="creditCardObj.month" 
+                                    ng-options="month.value as month.month for month in months"
+                                    required> 
+                                    <option value="">*Month</option> 
+                                </select> 
+                                <span class="invalidText" ng-show="addcard.month.$error.required&&issubmit==true">Select Month</span>   
+                               <!--  <select ng-init="creditCardObj.month='Month*'" ng-model="creditCardObj.month" class="form-control ex-month">
+                                    <option disabled selected>Month*</option>
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select> -->
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="sr-only">Expiry Year*</label>
+                                  <!--   <select name="year" ng-init="creditCardObj.year='Year*'" ng-model="creditCardObj.year" class="form-control ex-year" required>
+                                        <option disabled selected class="hidden">Year*</option>
+                                        <option>2016</option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                        <option>2024</option>
+                                        <option>2025</option>
+                                        <option>2026</option>
+                                        <option>2027</option>
+                                        <option>2028</option>
+                                        <option>2029</option>
+                                        <option>2030</option>
+                                    </select> -->
+                                    <label class="sr-only">Expiry Year*</label>
+                                    <select name="year" class="form-control ex-year"
+                                    ng-model="creditCardObj.year" 
+                                    ng-options="year.value as year.year for year in years"
+                                    required> 
+                                    <option value="">*year</option> 
+                                </select> 
+                                <span class="invalidText" ng-show="addcard.year.$error.required&&issubmit==true">Select Year</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-2">
+                        <label class="sr-only">CVV*</label>
+                        <input name="ccv"  ng-model="creditCardObj.cvv" type="text" class="form-control" id="CVV" placeholder="CVV*" required>
+                        <span class="invalidText" ng-show="(addcard.ccv.$invalid && addcard.ccv.$dirty)||(issubmit==true && addcard.ccv.$invalid)">*Please Enter CVV</span>
+                    </div>
+                </div>
+
+                <div class="align-center modal-btn-wrap">
+                    <button  ng-click="submit(creditCardObj,addcard.$valid)" class="btn btn-lg btn-primary call-to-action" type="button">Add Your Card</button>
+                </div>
+
+            </div>    
+        </div>
+    </md-dialog-content>
+
+</form>
+</md-dialog>

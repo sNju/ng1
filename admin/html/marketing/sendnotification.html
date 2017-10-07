@@ -1,0 +1,121 @@
+<form id="form_validation" name="sendnotificationform" add-user-directive validation-directive>
+ <!-- add-user-directive -->
+ <div class="container-fluid">
+  <div class="sec-heading">
+    <h2 class="heading-type">Just send out a personalised message to all the Partymons..!!</h2>
+  </div>
+  <!-- Input -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="header">
+          <h2 class="header-type">
+            Select the filters to do more..!!
+            <small>e.g. Location to select a target audience</small>
+          </h2>
+        </div>
+        <div class="body">
+          <p class="font-bold">Major Filterations</p>
+          <div class="row">
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <input ng-value="notificationobj.address" id="txtlocation"  google-location-autocomplete type="text" class="form-control" placeholder="Location" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+
+                  <select  ng-model="notificationobj.profile_type" class="form-control show-tick" selectpicker>
+                    <option value="">--Select Profile Type</option>
+                    <option value="partymon">Partymon</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <p class="font-bold">The necessary fillouts</p>
+          <!-- <h2 class="card-inside-title">The necessary fillouts</h2> -->
+          <div class="row">
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <input ng-model="notificationobj.title" name="title" type="text" class="form-control" placeholder="Title" required />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <input ng-model="notificationobj.message" name="message" type="text" class="form-control" placeholder="Message" required />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-xs-12 col-md-4 respView">
+              <div class="form-group">
+                <input value="link" ng-model="notificationobj.type" name="group5" type="radio" id="radio_30" class="with-gap radio-col-red" checked="">
+                <label for="radio_30">Web Link</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6 respView">
+              <div class="form-group">
+                <input ng-model="notificationobj.type" name="group5" type="radio" id="radio_31" value="profile" class="with-gap radio-col-red" checked="">
+                <label for="radio_31">Select any exclusive Party or PartySpot</label>
+              </div>
+            </div>
+            <div class="col-sm-2 col-xs-12 col-md-2 respView">
+              <div class="form-group">
+                <input ng-model="notificationobj.type" name="group5" type="radio" id="radio_32" value="text" class="with-gap radio-col-red" checked="">
+                <label for="radio_32">None</label>
+              </div>
+            </div>
+          </div>
+          <div class="row" ng-show="notificationobj.type=='link'" >
+            <div class="col-sm-12 col-xs-12 col-md-12">
+              <div class="form-group">
+                <div class="form-line">
+                  <input ng-model="notificationobj.link" name="link" type="text" class="form-control" placeholder="Link"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-show="notificationobj.type=='profile'||notificationobj.type=='party'" class="row clearfix">
+            <div class="col-sm-3 col-xs-12 col-md-3 respView">
+              <div class="form-group respView">
+                <div>
+                  <button type="button"  ng-click="redirect()" class="btn .p-l-35 bg-purple waves-effect">Select Profile or Party</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <input  ng-model="profile.title" name="title" type="text" class="form-control" placeholder="Title" disable />   
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-3 col-md-3">
+              <div class="form-group">
+                <div class="form-line">
+                  <input   ng-model="profile.location" name="address" type="text" class="form-control" placeholder="Address" disable />   
+                </div>
+              </div>
+            </div>
+          </div>              
+          <!-- <h2 class="card-inside-title">The necessary fillouts</h2> -->
+          <div class="panel-end">
+            <button type="button" ui-sref="/notifications" class="btn bg-red btn-lg waves-effect">Cancel</button>
+            <button ng-click="sendnotification(notificationobj,sendnotificationform.$valid)" type="submit" class="btn bg-teal btn-lg waves-effect m-l-10">Send Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

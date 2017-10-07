@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="login.module">
+<head>
+	<title></title>
+	<link rel="icon" href="http://gopartiesstatic.s3.amazonaws.com/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="libcss/bootstrap.min.css">
+	<script type="text/javascript" src="libjs/angular.min.js"></script>
+	<script type="text/javascript" src="libjs/jquery.min.js"></script>
+	<script type="text/javascript" src="libjs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="controller/login.js"></script>
+
+
+    <!-- Angular Material Library -->
+    <script src="libjs/angular-ui-router.min.js"></script>
+    <script src="libjs/angular-sanitize.min.js"></script>
+	<style type="text/css">
+		.invalidControl{
+			border:2px solid #B40404 !important;
+		}
+		.validControl{
+			border: 2px solid #0B610B !important;
+		}
+
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url('images/loader2.gif') 50% 50% no-repeat rgb(249,249,249);
+		}
+	</style>
+	<script type="text/javascript">
+		$(window).load(function() {
+			$(".loader").fadeOut("slow");
+		})
+	</script>
+</head>
+<body style="width: 100%;height: 100%;background-color: #66B0A2" ng-controller="loginCtrl">
+	<form class="form-signin" style="margin-top: 11%">
+
+		<div class="col-md-offset-4 col-md-4">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<label for="inputEmail" class="sr-only">Email address</label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Email address"  autofocus="" ng-model="user.email">
+
+			<hr/>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" class="form-control " placeholder="Password" ng-model="user.password" >
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="button" ng-click="login()">Sign in</button>
+		</div>
+	<!-- 	<div class="loader"></div> -->
+	</form>
+</body>
+</html>

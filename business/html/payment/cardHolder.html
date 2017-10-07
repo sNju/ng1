@@ -1,0 +1,66 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>
+<div ng-hide="show&&!loading" has-add-new-payment-card-dialog>
+	<div class="main-content-header page-header support-services-header clearfix">
+		<h1 class="page-heading">Card Holder</h1>
+		<a ng-click="addNewPaymentCardDialog($event)" class="btn btn-lg btn-primary call-to-action" role="button" href="#">
+			<i class="gp-add-icon visible-xs"></i>
+			<span class="hidden-xs">Add New Card</span>
+		</a>
+	</div>
+
+
+	<div class="container-fluid max-width">
+		
+		<ul class="payment-cards-list responsiveColumnLayout clearfix">
+			<li ng-repeat="card in cards">
+				<div class="payment-card">
+					<button ng-show="card.isdefault==false" class="user-actions-toggle" role="button">
+						<span>
+							<i class="gp gp-slick-line"></i>
+							<i class="gp gp-slick-line"></i>
+							<i class="gp gp-slick-line"></i>
+						</span>
+					</button>
+					<div class="user-actions">
+						
+						<div class="align-center user-action-options">
+							<a ng-click="delete(card,$index)" class="user-action" href="#" data-toggle="tooltip" title="Delete Card"><i class="fa fa-trash-o"></i></a>
+							<a ng-click="toggle(card,$index)" class="user-action" href="#" data-toggle="tooltip" title="Set As Default"><i class="fa fa-check"></i></a>
+						</div>
+					</div>
+					<div class="payment-card-view">
+
+
+						<figure class="payment-card-figure">
+
+
+							<div class="payment-card-detail">
+								<div class="card-head">
+									<div class="card-type">
+										<img src="{{cardType(card.number).image}}" alt="">
+									</div>
+									<div ng-show="card.isdefault==true" class="card-default">
+										<span class=""><i class="fa fa-check-circle"></i></span>
+									</div>
+								</div>
+								<div class="card-number">
+									<h3>{{card.number}}</h3>
+								</div>
+								<div class="card-footer">
+									<p class="card-holder">{{card.name}}</p>
+									<p class="card-expire"><span class="month">{{card.month}}/</span><span class="year">{{card.year}}</span></p>
+								</div>
+							</div>
+							
+						</figure>
+					</div>
+				</div>		
+				
+			</li>			
+		</ul><!-- /.payment-cards-list -->	
+	</div>	
+</div>
+

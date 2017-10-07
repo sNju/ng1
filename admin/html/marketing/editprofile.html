@@ -1,0 +1,537 @@
+<form id="form_validation" name="userform" add-user-directive upload-click-directive validation-directive> 
+  <!-- add-user-directive -->
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <!-- Cover Image Upload -->
+          <div class="row">
+            <div class="col-lg-12 profile-detail">
+              <div class="cover-img" style="background-image:url('{{profileobj.cover}}');">
+                  <label for="cover-img">
+                    <span class="fb-content">Update Cover Picture</span>
+                    <span class="img-upload">
+                    <i class="fa fa-camera camera-icon" aria-hidden="true"></i>
+                    <input id="cover-img" type="file" image-upload='profilecover'/>
+                   </label>
+                </span>
+              </div>
+              <!--Profile Pic Panel Start-->
+              <div class="profile-container">
+                <div class="profile-img" style="background-image:url('{{profileobj.profile_pic}}');">
+
+                  <div class="upload-prof-img">
+                    <label for="update-img">
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </label>
+                    <input id="update-img" type="file" image-upload='profilepic'/>
+                    <span>Update profile pic</span>
+                  </div>
+
+                </div>
+              </div>
+              <!--Profile Pic Panel End-->
+            </div>
+          </div>        
+          <!-- Cover Image Panel End-->  
+
+          <div class="body">
+            <div class=" sec-heading">
+              <h2 class="heading-type">The business details :</h2>
+            </div>
+            <p class="font-bold col-pink">Some quick actions : </p>       
+            <div class="row">
+              <div ng-show="!isba" class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input ng-model="profileobj.active" type="checkbox" id="gpb_active" class="filled-in chk-col-light-blue" checked="">
+                  <label for="gpb_active">Active and Visible</label>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input ng-model="profileobj.booking.tablebooking" type="checkbox" id="gpb_tablebooking" class="filled-in chk-col-deep-purple" checked="">
+                  <label for="gpb_tablebooking">Table Booking</label>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input ng-model="profileobj.booking.guestlist" type="checkbox" id="gpb_guestlist" class="filled-in chk-col-pink" checked="">
+                  <label for="gpb_guestlist">Get On Guest List</label>
+                </div>
+              </div>
+              <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input ng-model="profileobj.active" type="checkbox" id="gpb_publish" class="filled-in chk-col-pink" checked="">
+                  <label for="gpb_publish">Publish</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                <label>Before booking time</label>
+                <div class="form-group">
+                  <div class="form-line">
+                    <select  ng-model="profileobj.booking.advance" class="form-control show-tick" selectpicker>
+                      <option value="7">Bookings upto 7 days</option>
+                      <option value="1">1 single day Advance</option>
+                      <option value="2">2 days advance is bearable</option>
+                      <option value="3">3 days booking can be handled</option>
+                      <option value="4">4 days...no problem..!!</option>
+                      <option value="5">5 days bookings</option>
+                      <option value="6">6 days of advance bookings</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-12 col-md-4">
+                <label>Start Time</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                   <input ng-model="profileobj.booking.starttime" type="text" class="timepicker gpform" placeholder="Choose a Start Time...">
+                 </div>
+               </div>
+             </div>
+             <div class="col-sm-4 col-xs-12 col-md-4">
+              <label>End time</label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">date_range</i>
+                </span>
+                <div class="form-line">
+                  <input ng-model="profileobj.booking.endtime" type="text" class="timepicker gpform" placeholder="Choose an End Time...">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="!isba"  class="heading-panel">
+            <label ng-show="profileobj.deal!=undefined" class="col-pink">
+              Deal Information as required..!!!
+            </label>
+            <button formnovalidate ng-click="toggleDeal()" class="btn bg-red waves-effect pull-right">{{profileobj.deal==undefined?'Add Deal':'Remove Deal'}}</button>  
+          </div>
+
+          <form ng-if="!isba"  ng-show="profileobj.deal!=undefined">
+            <div ng-show="!isba"  class="row">
+              <div class="col-sm-6 col-xs-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12 col-md-12">
+                    <label>Title</label>
+                    <div class="form-group" >
+                      <div class="form-line">
+                        <input ng-model="profileobj.deal.title" type="text" class="form-control" placeholder="The attractive title of the deal" required/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-xs-6 col-md-6">
+                    <label>Start Date</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">date_range</i>
+                      </span>
+                      <div class="form-line">
+                        <input name="startdate" ng-model="profileobj.deal.startdate" type="text" class="datetimepicker form-control" placeholder="Start Date " required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-xs-6 col-md-6">
+                    <label>End Datetime</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">date_range</i>
+                      </span>
+                      <div class="form-line">
+                        <input name="enddate" ng-model="profileobj.deal.enddate" type="text" class="datetimepicker form-control" placeholder="End Date " required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12 col-md-6">
+                <label>description</label>
+                <div class="form-group">
+                  <div class="form-line">
+                    <textarea ng-model="profileobj.deal.description" rows="6" class="form-control description no-resize" placeholder="Please type the deal in detail..." style="margin-bottom: 10px;"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div ng-if="!isba" class="row" ng-show="profileobj.deal!=undefined">
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12">
+                  <label>Type</label>
+                  <div class="form-group" >
+                    <div class="form-line">
+                      <select ng-model="profileobj.deal.type" class="form-control show-tick">
+                        <option value="cashback">Cashback in terms of GP Coins</option>
+                        <option value="percent">A percentage of the total bill</option>
+                        <option value="amount">A Fix Amount</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 col-md-6">
+                  <label>Amount to be waived off</label>
+                  <div class="input-group">          
+                    <div class="form-line">
+                      <input ng-model="profileobj.deal.value" type="text" class="form-control" placeholder="Matrix" />
+                    </div>
+                    <span class="input-group-addon">{{profileobj.deal.type=="percent"?"% of on Total Bill":profileobj.deal.type=="cashback"?"Gp Coins on Total Bill":"INR on Total Bill"}}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 col-md-6">
+                  <label>Minimum Billing Amount</label>
+                  <div class="form-group" >
+                    <div class="form-line">
+                      <input ng-model="profileobj.deal.minimum" type="text" class="form-control" placeholder="0 INR" required/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <label>Catagory</label>
+              <div class="form-group" >
+                <div class="form-line">
+                  <select ng-model="profileobj.deal.category" class="form-control show-tick">
+                    <option value="daily">Daily</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p ng-show="!isba" class=".font-20 font-bold col-pink">Revenue Matrix for GoParties :</p>
+          <div  class="row" ng-show="!isba">
+            <div class="col-sm-8 col-xs-8 col-md-8">
+              <div class="form-group">
+                <div class="form-line">
+                  <select  ng-model="profileobj.revenue.stream" class="form-control show-tick" selectpicker>
+                    <option value="">Select the revenue stream</option>
+                    <option value="perhead">X Amount on Per Head</option>
+                    <option value="totalbill">% of the Total Bill</option>
+                  </select>      
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-4 col-md-4">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="form-line">
+                    <input ng-model="profileobj.revenue.value" type="text" class="form-control" placeholder="Matrix" />
+                  </div>
+                  <span class="input-group-addon">{{profileobj.revenue.stream=="perhead"?"INR per head":"% of the bill"}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div ng-if="!isba" class="row">
+            <div class="col-sm-4 col-xs-12 col-md-4">
+              <div class="form-group" style="display:flex;justify-content:center;">
+                <div class="input-group">
+                  <span class="input-group-addon">Crowd Quotient : </span>
+                  <div class="form-line">
+                    <input ng-model="profileobj.crowd_quotient" type="text" class="form-control" placeholder="Crowd Quotient" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 col-md-4">
+              <div class="form-group" style="display:flex;justify-content:center;">
+                <div class="input-group">
+                  <span class="input-group-addon">Ranking in GoParties : </span>
+                  <div class="form-line">
+                    <input ng-model="profileobj.rank" type="text" class="form-control" placeholder="Rank" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 col-md-4">
+              <div class="form-group" style="display:flex;justify-content:center;">
+                <input ng-model="profileobj.isclaimed" type="checkbox" id="gpb_dashboard" class="filled-in chk-col-light-blue" checked="">
+                <label for="gpb_dashboard"><b>Business Dashboard Claimed?</b></label>
+              </div>
+            </div>
+          </div>
+          <p ng-if="!isba" class=".font-20 font-bold">Relationship Manager Details : </p>
+          <div ng-if="!isba" class="row">
+            <div class="col-sm-4 col-xs-12 col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">person</i>
+                </span>
+                <div class="form-line">
+                 <input ng-model="profileobj.rsm.name" name="title" type="text" class="form-control" placeholder="Name" required />
+               </div>
+             </div>
+           </div>
+           <div class="col-sm-4 col-xs-12 col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">email</i>
+              </span>
+              <div class="form-line">
+               <input ng-model="profileobj.rsm.email" name="username" type="text" class="form-control" placeholder="Preferred @username" required />
+             </div>
+           </div>
+         </div>
+         <div class="col-sm-4 col-xs-12 col-md-4">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">phone</i>
+            </span>
+            <div class="form-line">
+             <input ng-model="profileobj.rsm.phone" name="username" type="text" class="form-control" placeholder="Preferred @username" required />
+           </div>
+         </div>
+       </div>
+     </div>
+     <p class=".font-20 font-bold col-pink">The detailed information of the Business: </p>
+     <div class="row">
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line">
+            <input ng-model="profileobj.name" name="title" type="text" class="form-control" placeholder="Name" required />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line">
+            <input ng-model="profileobj.username" name="username" type="text" class="form-control" placeholder="Preferred @username" required />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line">
+            <select  ng-model="profileobj.profile_type" class="form-control show-tick" selectpicker>
+             <option value="">Select Profile Type</option>
+             <option value="Party Spot">Party Spot</option>
+             <option value="Party Organizer">Party Organizer</option>
+             <option value="DJ">DJ</option>
+             <option value="Band">Band</option>
+             <option value="Artist">Artist</option>
+           </select>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-sm-4 col-xs-12 col-md-4">
+      <div class="form-group">
+        <div class="form-line">
+          <input ng-model="profileobj.location" id="txtlocation"  google-location-autocomplete type="text" class="form-control" placeholder="Location" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-xs-12 col-md-8">
+      <div class="form-group">
+        <div class="form-line">
+          <input ng-model="profileobj.address" name="address" type="text" class="form-control" placeholder="A bit detailed address of the venu" required />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-xs-12 col-md-12">
+      <div class="form-group">
+        <label class="" for="party-genre">Genre</label>
+        <md-content class="autocomplete form-control height-control" layout="column">
+          <md-contact-chips
+          ng-model="profileobj.genre"
+          md-contacts="searchGenre($query)"
+          md-contact-name="name"
+          md-contact-image="image"
+          md-contact-email="email"
+          md-require-match="true"
+          md-highlight-flags="i"
+          filter-selected="true">
+        </md-contact-chips>
+      </md-content>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="form-group">
+      <label class="" for="party-genre">Theme</label>
+      <md-content class="autocomplete form-control height-control" layout="column">
+        <md-contact-chips
+        ng-model="profileobj.theme"
+        md-contacts="searchTheme($query)"
+        md-contact-name="name"
+        md-contact-image="image"
+        md-contact-email="email"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="true">
+      </md-contact-chips>
+    </md-content>
+  </div>
+</div>
+</div>
+<p ng-if="!isba" class=".font-20 font-bold">Know Your Business...KYB</p>
+<div  class="row">
+  <div class="col-sm-4 col-xs-12 col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="material-icons">language</i>
+      </span>
+      <div class="form-line">
+       <input ng-model="profileobj.website" name="website" type="text" class="form-control" placeholder="http://www.your-website.com" required />
+     </div>
+   </div>
+ </div>
+ <div ng-if="!isba" class="col-sm-4 col-xs-12 col-md-4">
+   <div class="input-group">
+    <span class="input-group-addon">
+      <i class="material-icons">person</i>
+    </span>
+    <div class="form-line">
+      <input ng-model="profileobj.name" name="contactname" type="text" class="form-control" placeholder="Contact Person's name" required />
+    </div>
+  </div>
+</div>
+<div ng-if="!isba" class="col-sm-4 col-xs-12 col-md-4">
+ <div class="input-group">
+  <span class="input-group-addon">
+    <i class="material-icons">phone</i>
+  </span>
+  <div class="form-line">
+    <input ng-model="profileobj.phone" name="phone" type="text" class="form-control" placeholder="Contact number" required />
+  </div>
+</div>
+</div>
+</div>
+<p ng-if="!isba" class=".font-20 font-bold col-pink clearfix">Add Business Managers to notify about bookings..!!</p>
+<div class="row clearfix" ng-repeat="manager in profileobj.manager">
+  <div class="col-sm-4 col-xs-12 col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="material-icons">person</i>
+      </span>
+      <div class="form-line">
+        <input ng-model="manager.name" name="title" type="text" class="form-control" placeholder="Name" required />
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-xs-12 col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="material-icons">email</i>
+      </span>
+      <div class="form-line">
+       <input ng-model="manager.email" name="username" type="text" class="form-control" placeholder="Preferred @username" required />
+     </div>
+   </div>
+ </div>
+ <div class="col-sm-3 col-xs-12 col-md-3">
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="material-icons">phone</i>
+    </span>
+    <div class="form-line">
+      <input ng-model="manager.phone" name="username" type="text" class="form-control" placeholder="Preferred @username" required />
+    </div>
+  </div>
+</div>
+<div class="col-sm-2 col-xs-12 col-md-2" ng-click="deletesegment(profileobj.manager,$index)">
+     <i class="material-icons trash-icon">delete_forever</i>
+</div>
+</div>
+<div ng-show="!isba" class="heading-panel switch">
+  <button ng-click="addmanager(profileobj.manager)"  class="btn bg-teal pull-right waves-effect" formnovalidate>Add Manager</button>
+</div>            
+<div class="row">
+  <div class="col-sm-12">
+    <p class=".font-20 font-bold">Description</p>
+    <div class="form-group">
+      <div class="form-line">
+        <textarea ng-model="profileobj.description" rows="4" class="form-control no-resize" placeholder="Please type in the description..."></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <p class=".font-20 font-bold">Terms and Condition</p>
+    <div class="form-group">
+      <div class="form-line">
+        <textarea ng-model="profileobj.terms" rows="4" class="form-control no-resize" placeholder="I hope you don't want leave it blank..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<p ng-if="!isba"  class=".font-20 font-bold col-pink">FNB: </p>
+<div ng-repeat="obj in profileobj.booking.header" class="row ">
+  <div class="col-sm-4 col-xs-12 col-md-4">
+    <div class="form-group">
+      <div class="form-line">
+        <input ng-model="obj.key" type="text" class="form-control" placeholder="Location" />
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xs-12 col-md-6">
+    <div class="form-group">
+      <div class="form-line">
+        <input ng-model="obj.val" name="address" type="text" class="form-control" placeholder="A bit detailed address of the venu" required />
+      </div>
+    </div>
+  </div>
+  <div ng-click="deletesegment(profileobj.booking.header,$index)" class="col-sm-2 col-xs-2 col-md-2">
+    <i class="material-icons trash-icon">delete_forever</i>   
+  </div>
+</div>
+<div ng-if="!isba" class="heading-panel switch">
+  <button ng-click="addsegment(profileobj.booking.header)"  class="btn bg-teal pull-right waves-effect" formnovalidate>Add Header</button>
+</div>            
+<p ng-if="!isba" class="font-bold col-pink">Footers of the Booking : </p>
+<hr ng-if="!isba">
+<div ng-if="!isba" ng-repeat="obj in profileobj.booking.footer" class="row">
+  <div class="col-sm-4 col-xs-12 col-md-4">
+    <div class="form-group">
+      <div class="form-line">
+        <input ng-model="obj.key" type="text" class="form-control" placeholder="Location" />
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xs-12 col-md-6">
+    <div class="form-group">
+      <div class="form-line">
+        <input ng-model="obj.val" name="address" type="text" class="form-control" placeholder="A bit detailed address of the venu" required />
+      </div>
+    </div>
+  </div>
+  <div ng-click="deletesegment(profileobj.booking.footer,$index)" class="col-sm-2 col-xs-2 col-md-2">
+   <div class="form-group" style="display:flex;justify-content:center;">
+     <div class="demo-google-material-icon"> <i class="material-icons">delete_forever</i></div>
+   </div>
+ </div>
+</div>
+<div ng-if="!isba" class="heading-panel switch">
+  <button ng-click="addsegment(profileobj.booking.footer)"  class="btn bg-teal pull-right waves-effect" formnovalidate>Add Footer</button>
+</div>
+<hr ng-if="!isba">
+<div class="row" style="display:flex;justify-content:center;">
+  <div class="col-sm-8 col-xs-6 col-md-8">
+  </div>
+  <div class="col-sm-2 col-xs-6 col-md-2">
+    <button  class="btn bg-dark btn-block btn-lg waves-effect">Later</button>
+  </div>
+  <div class="col-sm-2 col-xs-6 col-md-2">
+    <button ng-click="makeprofileobject(profileobj,true)"  class="btn bg-base btn-block btn-lg waves-effect" formnovalidate>Save Now</button>
+  </div>
+</div>
+</div><!--Body Close-->
+
+</div><!--Card Close-->
+
+</div><!--col Close-->
+</div><!--Row Close-->
+</div><!--Container Close-->
+</form>

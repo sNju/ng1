@@ -1,0 +1,87 @@
+  <form method="POST" add-user-directive>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Task Info -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="sec-heading">
+            <h2 class="heading-type">The list of all the Businesses who have the access to GoParties Dashboard</h2>
+          </div>
+          <div class="card">
+            <div class="panel-header claimedHdr">
+                <h2 class="header-type">Search with the accurate filters..!!</h2>
+                <button type="submit" ng-click="getclaimed(filterobj)" class="btn bg-dark pull-right waves-effect hidden-xs">Apply Filters</button>
+               <button type="button" class="btn bg-dark waves-effect visible-xs navbar-toggle filterToggle" data-toggle="collapse" data-target="#filterCollapse">filter<i class="fa fa-filter filter-icon" aria-hidden="true"></i></button>
+            </div>
+            <div class="body">
+              <div class="row collapse navbar-collapse" id="filterCollapse">
+                <div class="col-sm-3 col-xs-12">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input ng-value="filterobj.address" id="txtlocation" google-location-autocomplete type="text" class="form-control" placeholder="Location"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input ng-model="filterobj.keyword" type="text" class="form-control" placeholder="Keyword" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">date_range</i>
+                      </span>
+                      <div class="form-line">
+                        <input name="date" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                  <div class="form-group">
+                   <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">date_range</i>
+                      </span>
+                      <div class="form-line">
+                        <input name="startdate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <button type="submit" ng-click="getclaimed(filterobj)" class="btn bg-dark pull-right waves-effect visible-xs">Apply Filters</button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover dashboard-task-infos">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Location</th>
+                      <th>Claim On</th>
+                      <th>Total Business</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="animate-repeat" ng-class="{'active':$index%2==0}" ng-repeat="profile in claimedbusiness" ui-sref="/detail({type:'profile',id:profile.profile._key})">
+                      <td>{{$index+1}}</td>
+                      <td>{{profile.profile.name|limitTo:10}}</td>
+                      <td>{{profile.profile.location|limitTo:10}}</td>
+                      <td>{{profile.claimdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+                      <td>INR {{profile.business}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div><!-- Close Card -->
+        </div><!-- Close Cols -->
+      </div><!-- Close Row -->
+    </div><!-- Close Container -->
+</form>
+

@@ -1,0 +1,423 @@
+<form id="form_validation" name="clientform" upload-click-directive validate-date
+
+xmlns:https="http://www.w3.org/1999/xhtml" ng-if="userobj.token!=undefined">
+<!--Navigation start-->
+<div ng-show="childloading==true&&loadmore!=true" class="overlay-loader">
+	<div class="preloader-wrap">
+		<img class="preloader" alt="GoParties-Search" src="images/preloader-img.png">
+
+	</div>
+</div>
+
+<div class="row">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" id="navbarLogo"  ui-sref="/">
+					<div class="logo-img"><img src="images/go-parties-business-logo.png"></div>
+					<div class="logo-text">
+						<p class="text-uppercase text-brend business-logo-title">GOPARTIES <sup>&reg;</sup></p>
+						<p class="text-capitalize">Your Party App</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</nav>
+</div>
+<div class="bg-body" date-picker>
+	<div class="container bg-white">
+		<!-- Cover Image Upload -->
+		<div class="row">
+			<div class="col-lg-12 profile-detail">
+				<div class="cover-img" style="background-image:url({{image(userobj.cover, 'cover')}});">
+					<label for="cover-img">
+						<span class="fb-content">Update Cover Picture</span>
+						<span class="img-upload">
+	                    <i class="fa fa-camera camera-icon" aria-hidden="true"></i>
+                  	</label>
+                  <input id="cover-img" type="file" image-upload='profilecover'/>
+                </span>
+
+				</div>
+				<!--Profile Pic Panel Start-->
+				<div class="profile-container">
+					<div class="profile-img" style="background-image:url({{image(userobj.profile_pic, 'profilepic')}});">
+
+						<div class="upload-prof-img">
+							<label for="update-img">
+								<i class="fa fa-camera" aria-hidden="true"></i>
+								<span>Update profile pic</span>
+							</label>
+							<input id="update-img" type="file" image-upload='profilepic'/>
+							
+						</div>
+
+					</div>
+				</div>
+				<!--Profile Pic Panel End-->
+			</div>
+		</div>
+		<!-- Cover Image Panel End-->
+		<!-- Form Aera Start-->
+		<div class="section-panel">
+			<div class=" sec-heading">
+				<h2 class="heading-type">Require Below business details :</h2>
+			</div>
+			<label class="label-heading">Some quick actions : </label>
+
+			<div class="row">
+				<div class="col-sm-3 col-xs-3 col-md-3">
+					<div class="form-group">
+						<input ng-model="userobj.booking.tablebooking" type="checkbox" id="gpb_tablebooking" class="filled-in chk-col-deep-purple" checked="">
+						<label for="gpb_tablebooking">Table Booking</label>
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3">
+					<div class="form-group">
+						<input ng-model="userobj.booking.guestlist" type="checkbox" id="gpb_guestlist" class="filled-in chk-col-pink" checked="">
+						<label for="gpb_guestlist">Get On Guest List</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-xs-12 col-md-6">
+					<label>Name of Profile<span class="text-danger">*</span></label>
+					<div class="form-group" >
+						<div class="form-line">
+							<input ng-model="userobj.name" type="text"  class="form-control" placeholder="The attractive title of the profile" required/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3">
+					<label>Start Time<span class="text-danger">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">date_range</i>
+						</span>
+						<div class="form-line clearfix">
+							<input ng-model="userobj.booking.starttime" id="starttime" name="date" type="text" class="form-control timepicker" placeholder="Start Time" required>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3">
+					<label>End Time<span class="text-danger">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">date_range</i>
+						</span>
+						<div class="form-line clearfix">
+							<input ng-model="userobj.booking.endtime" id="endtime" name="date" type="text" class="form-control timepicker" placeholder="End Time" required>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-xs-6 col-md-6">
+					<label>Description</label>
+					<div class="form-group">
+						<div class="form-line">
+							<textarea ng-model="userobj.description" class="form-control description no-resize" placeholder="Please type the description..." style="margin-bottom: 10px;"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-6 col-md-6">
+					<label>Terms &amp; Conditions</label>
+					<div class="form-group">
+						<div class="form-line">
+							<textarea ng-model="userobj.entry_terms" class="form-control description no-resize" placeholder="Please type the term and condition..." style="margin-bottom: 10px;"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<label class="label-heading">Select your Feature:</label>
+			<div class="row">
+				<div class="col-sm-4 col-xs-4 col-md-4">
+					<label>Profile Type</label>
+					<div class="form-group" >
+						<div class="form-line">
+							<select  ng-model="userobj.profile_type" class="form-control" selectpicker>
+								<option value="Party Spot">Party Spot</option>
+								<option value="DJ">DJ</option>
+								<option value="Band">Band</option>
+								<option value="Artist">Artist</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4 col-md-4">
+					<label class="" for="party-genre">Genre</label>
+					<div class="form-group drop-dpwn-select">
+						<div class="form-line">
+							<md-content class="autocomplete form-control" layout="column">
+								<md-contact-chips
+								ng-model="userobj.genre"
+								md-contacts="searchGenre($query)"
+								md-contact-name="name"
+								md-contact-image="image"
+								md-contact-email="email"
+								md-require-match="true"
+								md-highlight-flags="i"
+								filter-selected="true">
+							</md-contact-chips>
+						</md-content>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 col-xs-4 col-md-4">
+				<label class="" for="party-theme">Theme</label>
+				<div class="form-group drop-dpwn-select">
+					<div class="form-line">
+						<md-content class="autocomplete form-control" layout="column">
+							<md-contact-chips
+							ng-model="userobj.theme"
+							md-contacts="searchTheme($query)"
+							md-contact-name="name"
+							md-contact-image="image"
+							md-contact-email="email"
+							md-require-match="true"
+							md-highlight-flags="i"
+							filter-selected="true">
+						</md-contact-chips>
+					</md-content>
+				</div>
+			</div>
+		</div>
+	          <!-- <div class="col-sm-4 col-xs-4 col-md-4">
+	              <label>Theme</label>
+	              <div class="form-group" >
+	                <div class="form-line">
+	                  <input type="text" class="form-control" placeholder="" required/>
+	                </div>
+	              </div>
+	          </div> -->
+	      </div>
+
+	      <label class="label-heading">Fill Your Contact Details</label>
+	      <div class="row">
+	          <div class="col-sm-3 col-xs-3 col-md-3">
+	              <label>Contact Person<span class="text-danger">*</span></label>
+	              <div class="form-group" >
+	                <div class="form-line">
+	                  <input ng-model="userobj.contactname" type="text" class="form-control" placeholder="Enter Contact Person Name" required/>
+	                </div>
+	              </div>
+	          </div>
+	          <div class="col-sm-3 col-xs-3 col-md-3">
+	              <label>Contact Number<span class="text-danger">*</span></label>
+	              <div class="form-group" >
+	                <div class="form-line">
+	                  <input type="text" ng-model="userobj.phone" pattern="\d{10}" class="form-control" placeholder="Enter Contact No" required/>
+	                </div>
+	              </div>
+	          </div>
+			  <div class="col-sm-3 col-xs-3 col-md-3">
+				  <label>Email<span class="text-danger">*</span></label>
+				  <div class="form-group" >
+					  <div class="form-line">
+						  <input type="text" ng-model="userobj.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" placeholder="Enter Email" required/>
+					  </div>
+				  </div>
+			  </div>
+			  <div class="col-sm-3 col-xs-3 col-md-3 ">
+	              <label>Location<span class="text-danger">*</span></label>
+	              <div class="form-group" >
+	                <div class="form-line location">
+	                  <input ng-model="userobj.location" google-location-autocomplete id="txtlocation"  type="text" class="form-control" placeholder="Enter location" required/>
+	                  <!--<span><a href="#"><img src="images/location-icon.png" class="brend-tool" data-toggle="tooltip" title="Auto Detect my Location" data-placement="top"></a></span>-->
+	                </div>
+	              </div>
+	          </div>
+	          <div class="col-sm-4 col-xs-4 col-md-4">
+	              <label>Website</label>
+	              <div class="form-group" >
+	                <div class="form-line">
+	                  <input type="text" ng-model="userobj.website" class="form-control" placeholder="Enter Your Website URL" />
+	                </div>
+	              </div>
+	          </div>
+	          
+	          <div class="col-sm-8 col-xs-8 col-md-8">
+	              <label>Address<span class="text-danger">*</span></label>
+	              <div class="form-group" >
+	                <div class="form-line">
+	                  <input ng-model="userobj.address" type="text" class="form-control" placeholder="Enter Address" required/>
+	                </div>
+	              </div>
+	          </div>
+
+	      </div>
+
+	      <label class="label-heading">Add Deal Information</label>
+	      <div class="row">
+	      	<div class="col-sm-6 col-xs-12 col-md-6">
+	      		<label>Title</label>
+	      		<div class="form-group" >
+	      			<div class="form-line">
+	      				<input ng-model="userobj.deal.title" type="text" class="form-control" placeholder="The attractive title of the deal" />
+	      			</div>
+	      		</div>
+	      	</div>
+	      	<div class="col-sm-3 col-xs-3 col-md-3">
+	      		<label>Start Date-Time</label>
+	      		<div class="input-group">
+	      			<span class="input-group-addon">
+	      				<i class="material-icons">date_range</i>
+	      			</span>
+	      			<div class="form-line clearfix">
+	      				<input ng-model="userobj.deal.startdate" id="dealstartdate" name="date" type="text" class="datetimepicker form-control" placeholder="Start Date-Time" >
+	      			</div>
+	      		</div>
+	      	</div>
+	      	<div class="col-sm-3 col-xs-3 col-md-3">
+	      		<label>End Date-Time</label>
+	      		<div class="input-group">
+	      			<span class="input-group-addon">
+	      				<i class="material-icons">date_range</i>
+	      			</span>
+	      			<div class="form-line clearfix">
+	      				<input ng-model="userobj.deal.enddate" id="dealenddate"  name="date" type="text" class="datetimepicker form-control" placeholder="End Date-Time" >
+	      			</div>
+	      		</div>
+	      	</div>
+
+	      	<div class="col-sm-12 col-xs-12 col-md-12">
+	      		<label>Description</label>
+	      		<div class="form-group">
+	      			<div class="form-line">
+	      				<textarea ng-model="userobj.deal.description" class="form-control description no-resize" placeholder="Please type the description..." style="margin-bottom: 10px;"></textarea>
+	      			</div>
+	      		</div>
+	      	</div>
+	      </div>
+
+	      <label class="label-heading">Manager Details</label>
+
+		  <div  ng-repeat="manager in userobj.manager track by $index" class="row clearfix">
+			  <div class="col-sm-4 col-xs-4 col-md-4">
+				  <label>Name</label>
+				  <div class="form-group" >
+					  <div class="form-line">
+						  <input ng-model="manager.name" type="text" class="form-control" placeholder="Enter Manager Name" />
+					  </div>
+				  </div>
+			  </div>
+			  <div class="col-sm-4 col-xs-4 col-md-4">
+				  <label>Email Id</label>
+				  <div class="form-group" >
+					  <div class="form-line">
+						  <input ng-model="manager.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="text" class="form-control" placeholder="Enter Manager Email Id" />
+					  </div>
+				  </div>
+			  </div>
+			  <div class="col-sm-3 col-xs-3 col-md-3">
+				  <label>Phone No</label>
+				  <div class="form-group" >
+					  <div class="form-line">
+						  <input ng-model="manager.phone" pattern="\d{10}"  type="text" class="form-control" placeholder="Enter Manager No" />
+					  </div>
+				  </div>
+			  </div>
+
+
+	      	<div class="col-sm-1 col-xs-1 col-md-1" ng-click="deletesegment(userobj.manager,$index)">
+	      		<i class="material-icons m-t-40">delete</i>
+	      	</div>
+	      </div>
+
+	      <p><button ng-click="addmanager(userobj.manager)" class="btn btn-add pull-right" formnovalidate>Add More</button></p>
+
+	      <label class="label-heading">FNB Inputs</label>
+
+	      <div  ng-repeat="obj in  userobj.booking.header track by $index" class="row ">
+	      	<div class="col-sm-4 col-xs-4 col-md-4">
+	      		<label>Field</label>
+	      		<div class="form-group" >
+	      			<div class="form-line">
+	      				<input ng-model=" obj.key" type="text" class="form-control" placeholder="Enter FNB Name" />
+	      			</div>
+	      		</div>
+	      	</div>
+	      	<div class="col-sm-4 col-xs-4 col-md-4">
+	      		<label>Value</label>
+	      		<div class="form-group" >
+	      			<div class="form-line">
+	      				<input ng-model=" obj.val" type="text" class="form-control" placeholder="Enter FNB Value" />
+	      			</div>
+	      		</div>
+	      	</div>
+
+	      	<div class="col-sm-2 col-xs-2 col-md-2" ng-click="deletesegment(userobj.booking.header,$index)">
+	      		<i class="material-icons m-t-40">delete</i>
+	      	</div>
+	      </div>
+	      <p class="clearfix"><button ng-click="addsegment(userobj.booking.header)" class="btn btn-add pull-right" formnovalidate>Add More</button></p>
+	      <div class="row">
+	      	<div class="col-lg-12">
+	      		<div class="form-group">
+	      			<input type="checkbox" id="checkbox_tnc" name="tnc" ng-model="tnc" required>
+	      			<label for="checkbox_tnc" class="text-lowercase">I agree the <a ui-sref="tnc" target="blank" class="btn-link" style="text-decoration: underline;">terms and conditions</a></label>
+	      			<!--<span id="error_tnc" style="display: none;">Please check TNC to continue</span>-->
+	      		</div>
+	      	</div>
+	      </div>
+	      <!--<button id="errordata" class="btn btn-base pull-right" data-toggle="modal" data-target="#tokenexpired" style="margin-right: 10px;">Token Expire</button>-->
+	      <button id="submitdata"  ng-click="makeprofileobject(userobj,clientform.$valid,clientform.tnc.$valid)" class="btn btn-base pull-right" type="submit" data-toggle="modal">Submit</button>
+	  </div>
+	</div><!-- Close Container-->
+</div><!-- Close Bg body-->
+</form>
+
+
+<div id="successmodal" class="modal b-modal fade" role="dialog">
+	<div class="flex-center" style="height: 100%;">
+		<div class="modal-dialog url-modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body url-body panel-center">
+					<div class="url-content">
+						<i class="material-icons url-icon">done</i>
+						<h3 class="url-heading">{{heading}}</h3>
+						<p class="url-type">{{message}}</p>
+					</div>
+				</div>
+				<div class="modal-footer success-fotter">
+					<p>Go to Goparties Home Page click below</p>
+					<p><a href="http://goparties.com/" class="btn url-btn">GoParties</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--Token Expire Modal Window-->
+<div id="tokenexpired" class="modal b-modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="flex-center" style="height: 100%;">
+		<div class="modal-dialog token-modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body token-body panel-center">
+					<div class="token-content">
+						<i class="material-icons token-icon">visibility_off</i>
+						<h3 class="token-heading">Oops..!!</h3>
+						<p class="token-type">It seems the link has been expired, please contact our support team to know more</p>
+					</div>
+				</div>
+				<div class="modal-footer token-fotter">
+					<p>support@goparties.com</p>
+					<p>You may call on <span>+91-9711-9712-44</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Token Expire  Modal Window End-->

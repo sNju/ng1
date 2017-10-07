@@ -1,0 +1,26 @@
+<div class="gp-card gp-deal-card" >
+		<a ng-href="{{$root.getGpUrl(profile)}}">
+		<div class="card-figure removeClass" style="background-image: url('{{deal.banner}}');">
+			<div class="event-crowd-rating text-uppercase"  ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{deal.crowd_quotient}}<i class="fa fa-star star-rating" aria-hidden="true"></i></div>
+			<div class="cover-img" style="background-image: url('images/profile/events-pic-1.jpg');"></div>
+			<div class="deal">
+				<p class="text-uppercase">{{(status=deal.startdate|getremaintimecalculate:deal.enddate).indexOf('ppen')>=0?'Expired':status}}</p>
+			</div>
+			<div class="overlay"></div>
+		</div>
+	</a>
+	<div class="card-type">
+		<div class="row card-content">
+			<div class="col-xs-9 profileTitle">
+				<a ng-href="{{$root.getGpUrl(profile)}}" class="removeClass">
+					<h4 class="card-title">
+						{{deal.title}}
+					</h4>
+				</a>			
+			</div>
+			<div class="col-xs-3 date-likes-panel">
+				<p class="dateSection">22<br/>April</p>
+			</div>
+		</div>
+	</div>
+</div>

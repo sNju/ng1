@@ -1,0 +1,46 @@
+<li>
+	<div class="gp-card gp-party-card">
+		<button class="user-actions-toggle" role="button">
+			<span>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+			</span>
+		</button>
+
+		<div class="user-actions">
+			<a class="user-action" ui-sref="createParty({id:partiesObj._key})" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+			<a class="user-action" share-modal ng-click="shareModal($event,'party/'+partiesObj._key)" href="#" data-toggle="tooltip" title="Share"><i class="fa fa-share-alt"></i></a>
+			<a ng-click="enbaleAndDisable(partiesObj._key,partiesObj.isactive)" class="user-action" href="#" data-toggle="tooltip" title="{{partiesObj.isactive==true?'Disable':'Enable'}}">
+				<i ng-class="{'fa fa-ban':partiesObj.isactive==true,'fa fa-eye':partiesObj.isactive==false||partiesObj.isactive==null}"></i>
+				<!-- <span>{{partiesObj.isactive=="true"?'Disable':'Enable'}}</span> -->
+			</a>
+		</div>
+		
+		<figure class="gp-card-figure">
+			<a target="_blank" href="http://www.goparties.com/#/party/{{partiesObj._key}}">
+				<span>
+					<div class="img-wrapper">
+						<div class="data-img" style="background-image:url({{partiesObj.banner.length>0?partiesObj.banner:'images/wiki-princess-nokia.jpg'}});"></div>
+					</div>
+				</span>
+			</a>
+
+			<div class="crowd-quotient" ng-class="{'cq-1':partiesObj.crowd_quotient>=0&&partiesObj.crowd_quotient<1,'cq-2':partiesObj.crowd_quotient>=1&&partiesObj.crowd_quotient<2,'cq-3':partiesObj.crowd_quotient>=2&&partiesObj.crowd_quotient<3,'cq-4':partiesObj.crowd_quotient>=3&&partiesObj.crowd_quotient<4,'cq-5':partiesObj.crowd_quotient>=4&&partiesObj.crowd_quotient<5}">{{partiesObj.crowd_quotient}}</div>
+
+		</figure>						
+
+		<div class="details">
+			<h3 class="gp-card-heading">{{partiesObj.title}}</h3>
+			<p class="time-left">{{partiesObj.startdate|getremaintimecalculate:partiesObj.enddate}}</p>
+			<!--
+			<p>{{partiesObj.locaiton}}</p>
+			
+			<time class="gp-party-date-time">
+				<span class="gp-party-date"><i class="fa fa-calendar-o"></i> <strong>{{(partiesObj.startdate/1000)|timeStampToDate|dateFormat}}</strong></span>
+				<span class="gp-party-time"><i class="fa fa-clock-o"></i> <strong>{{(partiesObj.startdate/1000)|timeStampToDate|timeFormat}}</strong></span>
+			</time>
+		-->
+	</div>
+</div>
+</li>

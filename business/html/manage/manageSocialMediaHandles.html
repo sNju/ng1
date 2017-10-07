@@ -1,0 +1,126 @@
+	<div class="main-content-header page-header">
+		<nav class="gp-create-mobile-nav hidden">
+			<a href="#"><i class="fa fa-eye"></i></a>
+		</nav><!-- /.gp-create-mobile-nav -->
+
+		<h1 class="page-heading">Manage Social Media Handles</h1>
+	</div>
+
+
+	<div class="container-fluid min-width" social-media-status>
+		<ul class="social-media-handles-list">
+			<li class="social-media-handle media-facebook connected">
+				<div class="social-media-handle-header" id="facebookHeader">
+					<button  id="facebookButton" class="btn btn-primary btn-lg call-to-action">{{facbookButton}}</button>
+					<!-- <button  ng-hide="facebookConnect" id="facebookConnect" class="btn btn-primary btn-lg call-to-action">Connect</button> -->
+					<div class="social-media media">				
+						<div class="media-left">
+							<i class="fa fa-facebook media-object"></i>
+						</div>
+						<div class="media-body">Facebook</div>
+					</div>	
+				</div>
+				<div id="facebookSlide" class="social-media-page" style="display:none">
+					<figure class="page-banner" style="background-image:url('{{socialData.facebook.cover}}');"></figure>		
+
+					<div class="gp-user-profile-table page-details">
+						<div class="gp-user-pic-table-cell"> 
+							<img alt="" class="gp-user-pic" src="{{socialData.facebook.profile_pic.length>0?socialData.facebook.profile_pic:'images/soi7-profile-pic.jpg'}}">
+						</div>
+						<div class="gp-user-info-table-cell page-description">
+							<h4 class="gp-user-name page-title">{{socialData.facebook.name}}</h4>
+							<p>{{socialData.facebook.description}}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="social-media-handle media-twitter connected" id="twitterHeader" >
+				<div class="social-media-handle-header">
+					<button id="twitterButton"   class="btn btn-primary btn-lg call-to-action">{{twitterButton}}</button>
+
+					<!-- <button ng-click="logout('twitter')" ng-hide="!twitterConnect" id="twitterLogout" class="btn btn-primary btn-lg call-to-action">Logout</button> -->
+					<div class="social-media media">				
+						<div class="media-left">
+							<i class="fa fa-twitter media-object"></i>
+						</div>
+						<div class="media-body">Twitter</div>
+					</div>	
+				</div>
+				<div id="twitterSlide" class="social-media-page" style="display:none">
+					<figure class="page-banner" style="background-image:url('{{socialData.twitter.cover}}');"></figure>		
+
+					<div class="gp-user-profile-table page-details">
+						<div class="gp-user-pic-table-cell"> 
+							<img alt="" class="gp-user-pic" src="{{socialData.twitter.profile_pic}}">
+						</div>
+						<div class="gp-user-info-table-cell page-description">
+							<h4 class="gp-user-name page-title">{{socialData.twitter.name}}</h4>
+							<p>{{socialData.twitter.description}}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="social-media-handle media-instagram connected">
+				<div id="instagramHeader" class="social-media-handle-header">
+					<button id="instagramButton" class="btn btn-primary btn-lg call-to-action">{{instagramButton}}</button>
+					<!-- <button ng-click="logout('instagram')" ng-hide="!instagramConnect" id="instagramLogout" class="btn btn-primary btn-lg call-to-action">Logout</button> -->
+					<div class="social-media media">				
+						<div class="media-left">
+							<i class="fa fa-instagram media-object"></i>
+						</div>
+						<div class="media-body">Instagram</div>
+					</div>	
+				</div>	
+				<div id="instagramSlide" class="social-media-page" style="display:none">
+					<figure class="page-banner" style="background-image:url('{{socialData.instagram.cover}}');"></figure>		
+
+					<div class="gp-user-profile-table page-details">
+						<div class="gp-user-pic-table-cell"> 
+							<img alt="" class="gp-user-pic" src="{{socialData.instagram.profile_pic}}">
+						</div>
+						<div class="gp-user-info-table-cell page-description">
+							<h4 class="gp-user-name page-title">{{socialData.instagram.name}}</h4>
+							<p>{{socialData.instagram.description}}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+		<div class="modal gp-small-modal fade" id="socialMediaPagesListModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id=""><i class="fa fa-share"></i>Select Facebook Page</h4>
+					</div>
+
+					<div class="modal-body">
+
+						<ul class="liked-users-list">
+							<li ng-repeat="page in facebookPages.data">
+								<a href="#" ng-click="facebookPageClick(page)" data-toggle="modal" data-target="#socialMediaPagesListModal">
+									<div class="gp-user-profile-wrap">
+										<div class="gp-user-profile-table">
+											<div class="gp-user-pic-table-cell"> 
+												<img alt="" class="gp-user-pic" src="{{page.picture.data.url.length>0?page.picture.data.url:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+											</div>
+											<div class="gp-user-info-table-cell">
+												<h4 class="gp-user-name">{{page.name}}</h4>
+
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>

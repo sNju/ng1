@@ -1,0 +1,784 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"ce",
+				"cellspacing\tAttr"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"c",
+				"center"
+			],
+			[
+				"th",
+				"thead\tTag"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"b",
+				"border\tAttr"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"s",
+				"src\tAttr"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"past",
+				"past-3"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"backgroun",
+				"background-image"
+			],
+			[
+				"ali",
+				"align-self"
+			],
+			[
+				"goog",
+				"google-plus-base-color"
+			],
+			[
+				"in",
+				"inside"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"mag",
+				"margin-top"
+			],
+			[
+				"headi",
+				"headingfont"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"tra",
+				"transition"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"fle",
+				"flex-wrap"
+			],
+			[
+				"scroll",
+				"scrollTop"
+			],
+			[
+				"sc",
+				"scroll"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"flex",
+				"flex-end"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"scr",
+				"scroll_idea"
+			],
+			[
+				"base",
+				"base-color"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"col",
+				"col-xs-12"
+			],
+			[
+				"MARG",
+				"margin-bottom"
+			],
+			[
+				"backgr",
+				"background-size"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"se",
+				"select\tTag"
+			],
+			[
+				"res",
+				"reset"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"form",
+				"form-group"
+			],
+			[
+				"fot",
+				"font-size"
+			],
+			[
+				"sha",
+				"box-shadow"
+			],
+			[
+				"text-a",
+				"text-align"
+			],
+			[
+				"head",
+				"headingfont"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"boo",
+				"booking-modal-content"
+			],
+			[
+				"btn",
+				"btn-default"
+			],
+			[
+				"sec",
+				"Section"
+			],
+			[
+				"al",
+				"alt\tAttr"
+			],
+			[
+				"impor",
+				"important"
+			],
+			[
+				"tab",
+				"Tab"
+			],
+			[
+				"over",
+				"overflow"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"con",
+				"center-container"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"sear",
+				"search-result"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"icon",
+				"icon_image"
+			],
+			[
+				"section",
+				"section-bg"
+			],
+			[
+				"anim",
+				"Animate"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"cop",
+				"copyright-details"
+			],
+			[
+				"min-h",
+				"margin-right"
+			],
+			[
+				"box",
+				"box-shadow"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"class",
+				"class"
+			],
+			[
+				"img",
+				"box-img"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"onCl",
+				"onclick\tAttr"
+			],
+			[
+				"o",
+				"outline"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Add Channel"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/gpwebapp",
+		"/D/gpwebapp/js"
+	],
+	"file_history":
+	[
+		"/C/Users/s/Desktop/image.html",
+		"/D/Design Work/Go Parties Web/emailer/GPCA-EMAILER-FORGET-PASSWORD.html",
+		"/D/Design Work/Go Parties Web/emailer/GPCA-EMAILER-VERIFIED.html",
+		"/D/Design Work/Go Parties Web/emailer/Cancel-Booking.html",
+		"/D/Design Work/Go Parties Web/emailer/GPCA-EMAILER.html",
+		"/D/Design Work/Go Parties Web/emailer/Booking-confirmed.html",
+		"/D/Design Work/Go Parties Web/emailer/Pending-Booking.html",
+		"/D/Design Work/Go Parties Web/emailer/party-list.html",
+		"/D/Design Work/Go Parties Web/emailer/party-list-F.html",
+		"/D/Design Work/Go Parties Web/emailer/party-list-01.html",
+		"/D/gpwebapp/js/scrolling-nav.js",
+		"/D/gpwebapp/home-static.html",
+		"/C/Users/s/Desktop/emailer/Pending-Booking.html",
+		"/C/Users/s/Desktop/emailer/Cancel-Booking.html",
+		"/C/Users/s/Desktop/emailer/Booking-confirmed.html",
+		"/C/Users/s/Desktop/emailer/testing.html",
+		"/C/Users/s/Desktop/emailer/GPCA-EMAILER-VERIFIED.html",
+		"/C/Users/s/Desktop/emailer/GPCA-EMAILER-FORGET-PASSWORD.html",
+		"/C/Users/s/Desktop/emailer/GPCA-EMAILER.html",
+		"/C/Users/s/Desktop/help/scroll.html",
+		"/C/Users/s/Desktop/GPCA-EMAILER.html",
+		"/D/gpwebapp/html/blogdetail.html",
+		"/D/gpwebapp/less/new/blog-inner.less",
+		"/D/gpwebapp/css/blog.css",
+		"/D/gpwebapp/js/slider/blog.js",
+		"/C/Users/s/Desktop/help/scroll-fixed-final.html",
+		"/C/Users/s/Desktop/help/try-scroll.html",
+		"/C/Users/s/Desktop/lightGallery-master/lightGallery-master/demo/js/lg-thumbnail.js",
+		"/D/gpwebapp/js/slider/lightgallery/lg-thumbnail.min.js",
+		"/C/Users/s/Desktop/lightGallery-master/lightGallery-master/demo/js/lightgallery.js",
+		"/D/gpwebapp/index.html",
+		"/C/Users/s/Desktop/scrool fixed multi item.html",
+		"/D/gpwebapp/html/blog.html",
+		"/D/gpwebapp/less/new/common/reset.less",
+		"/D/gpwebapp/less/new/blog.less",
+		"/D/gpwebapp/css/lightgallery.css",
+		"/D/gpwebapp/css/blog-inner.css",
+		"/C/Users/s/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/s/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/s/AppData/Roaming/Sublime Text 3/Packages/Package Control.sublime-package",
+		"/C/Users/s/Desktop/lightGallery-master/lightGallery-master/demo/index.html",
+		"/D/gpwebapp/controller/blogdetailController.js",
+		"/D/gpwebapp/html/home/body.html",
+		"/D/gpwebapp/js/claimListingRouting.js",
+		"/D/gpwebapp/html/claimprofiletype.html",
+		"/D/gpwebapp/controller/blogController.js",
+		"/C/Users/s/Desktop/slick-1.6.0/slick/slick-theme.css",
+		"/D/gpwebapp/js/blog-page.js",
+		"/D/gpwebapp/controller/commonController.js",
+		"/D/gpwebapp/controller/newpartydetailcontroller.js",
+		"/D/gpwebapp/controller/partyDetailController.js",
+		"/D/gpwebapp/controller/newprofileController.js",
+		"/C/Users/s/Desktop/slick-1.6.0/index.html",
+		"/D/gpwebapp/less/new/common/header.less",
+		"/D/gpwebapp/css/slick.css",
+		"/C/Users/s/Desktop/slick-1.6.0/slick/slick.css",
+		"/D/gpwebapp/less/new/common/footer.less",
+		"/D/gpwebapp/less/new/variables.less",
+		"/D/gpwebapp/less/new/home.less",
+		"/D/gpwebapp/less/variable.less",
+		"/D/gpwebapp/libcss/bootstrap.min.css",
+		"/D/gpwebapp/less/new/mixins.less",
+		"/D/gpwebapp/less/new/main.less",
+		"/D/gpwebapp/Gruntfile.js",
+		"/D/gpwebapp/directive/homeheader.html",
+		"/D/gpwebapp/html/blog - Copy.html",
+		"/D/gpwebapp/directive/caheader.html",
+		"/D/gpwebapp/controller/home/homeController.js",
+		"/D/gpwebapp/less/new/common/gpca-fonts.less",
+		"/C/Users/s/Desktop/test-scroll-final.html",
+		"/D/gpwebapp/controller/myprofilecontroller.js",
+		"/C/Users/s/Desktop/bootstrap/index.html",
+		"/D/gpwebapp/less/new/myprofile.less",
+		"/D/gpwebapp/index-new.html",
+		"/D/gpwebapp/less/new/search.less",
+		"/C/Users/s/Desktop/final animate/index-animate.html",
+		"/C/Users/s/Desktop/final animate/animate.css",
+		"/D/gpwebapp/directive/footer.html",
+		"/D/gpwebapp/html/profile/myprofile.html",
+		"/C/Users/s/Desktop/scroll-fixed-final.html",
+		"/D/gpwebapp/html/profile/newprofiledetail.html",
+		"/C/Users/s/Desktop/bootstrap/slider-test-SCROLL.html",
+		"/C/Users/s/Desktop/try-scroll.html",
+		"/D/gpwebapp/node_modules/less/test/css/media.css",
+		"/C/Users/s/Desktop/bootstrap/slider-test.html",
+		"/D/gpwebapp/less/new/party-detail.less",
+		"/D/gpwebapp/html/party/newpartydetail.html",
+		"/D/gpwebapp/css/myprofile.css",
+		"/D/gpwebapp/business/less/main.less",
+		"/D/gpwebapp/business/less/forms.less",
+		"/D/gpwebapp/business/less/mixins.less",
+		"/D/gpwebapp/business/less/variables.less",
+		"/D/gpwebapp/less/new/claimprofiletype.less",
+		"/D/gpwebapp/less/new/signup-page.less",
+		"/D/gpwebapp/html/login.html",
+		"/D/gpwebapp/directive/auth/signup.html",
+		"/D/gpwebapp/controller/loginController.js",
+		"/D/gpwebapp/directive/auth/signup-final.html",
+		"/D/gpwebapp/directive/auth/login.html",
+		"/D/gpwebapp/directive/auth/signupotp.html",
+		"/D/gpwebapp/directive/auth/loginheader.html",
+		"/D/gpwebapp/directive/loginheader.html",
+		"/D/gpwebapp/directive/login-panel-collapsed",
+		"/D/gpwebapp/directive/auth/forget.html",
+		"/D/gpwebapp/directive/auth/reset.html",
+		"/C/Users/s/Desktop/slick-1.6.0/slick-1.6.0/index1.html",
+		"/D/Reff/JS SLIDER and other ref/slider/nearby-image-partial-visible-slider.slider/no-jquery.html",
+		"/D/gpwebapp/less/claim-your-listing.less",
+		"/D/gpwebapp/html/businesshtml/band.html",
+		"/D/gpwebapp/html/claimYourListing/search.html",
+		"/D/gpwebapp/business/callback.html",
+		"/D/gpwebapp/controller/claimprofiletypeController.js",
+		"/D/gpwebapp/directive/profile/socialbuzzdirective.html",
+		"/D/gpwebapp/directive/claimlisting/addProfile.html",
+		"/D/gpwebapp/html/profiledetail.html",
+		"/D/gpwebapp/css/claim-listing.css",
+		"/D/gpwebapp/less/new/claim-listing.less",
+		"/D/gpwebapp/html/claimYourListing/claim-listing.html",
+		"/D/gpwebapp/html/party/partydetail.html",
+		"/D/gpwebapp/less/new/common/gp-card.less",
+		"/D/gpwebapp/less/new/common/gp-list-style.less",
+		"/C/Users/s/Desktop/slick-slider.html",
+		"/C/Users/s/Downloads/slick-1.6.0/slick-1.6.0/index.html",
+		"/D/gpwebapp/html/faq.html",
+		"/D/gpwebapp/app.html",
+		"/D/gpwebapp/controller/filterController.js",
+		"/C/Users/s/Downloads/webfontkit-20161215-055740/stylesheet.css",
+		"/C/Users/s/Downloads/webfontkit-20161215-055012/stylesheet.css"
+	],
+	"find":
+	{
+		"height": 45.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"page-scroll",
+			"<!",
+			"style=\"text-align: center;\"",
+			"td",
+			"px",
+			"640",
+			"px",
+			"-->",
+			"<img src\"/images/rupee.png\" />",
+			"<img src=\"",
+			"more",
+			"view more",
+			"showThumbByDefault",
+			"keydown.lg",
+			"lg-thumb",
+			"lg-thumb group",
+			"lg-toogle-thumb",
+			"lg-toogle-thumb lg-icon",
+			"prv",
+			"PRV",
+			".icon-socail-m",
+			"icon\n",
+			"}\n",
+			"sm-i",
+			"log",
+			".blog-posting",
+			".blog-posting li",
+			"demo-gallery",
+			"-->",
+			"blog",
+			"facebook-panel",
+			"site-header",
+			"facebook-panel",
+			"details",
+			"background",
+			"var app=angular.module(\"blog.module\",[]);\n\napp.controller('blogdetailController', ['$scope', function($scope){\n\t\n    \n\n\n}]);\n\n\napp.directive(\"blogSlider\",function(){\n    return{\n        link:function($scope,$element,$attr){\n            //tolltip-controler\n            $(document).ready(function(){\n                $('[data-toggle=\"tooltip\"]').tooltip(); \n                \n                //Image Slider code\n                $(\".regular\").slick({\n                    dots: true,\n                    infinite: true,\n                    slidesToShow: 3,\n                    slidesToScroll: 3\n                });\n\n    /*Facebook Plugin*/\n    (function(d, s, id) {\n      var js, fjs = d.getElementsByTagName(s)[0];\n      if (d.getElementById(id)) return;\n      js = d.createElement(s); js.id = id;\n      js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8\";\n      fjs.parentNode.insertBefore(js, fjs);\n    }(document, 'script', 'facebook-jssdk'));\n\n    /*Facebook Panel Fixed*/\n    function scroll_fixed(source,destination,stuckheight){\n            var destinationtop=$('#'+destination).offset().top;\n            var scrollTop=$(window).scrollTop();\n            var sourceTop=$('#'+source).outerHeight()+$('#'+source).offset().top-scrollTop;\n            \n            console.log(\"destinationtop,stuckheight\",destinationtop,stuckheight);\n            \n            if(sourceTop+scrollTop>=destinationtop&&destinationtop>=stuckheight){\n                if(!$('#'+destination).hasClass(\"position-fixed\")){\n                    $('#'+destination).addClass(\"position-fixed\").css({'top':sourceTop});\n                    return 1;\n                }\n                return 0;\n            }\n            else{\n                if($('#'+destination).hasClass(\"position-fixed\")){\n                    $('#'+destination).removeClass(\"position-fixed\");\n                }\n                return 0;\n            }\n        }\n            var stuckheight1=$('#facebook-panel').offset().top;\n            $(window).on('scroll', function(){\n                \n                if(scroll_fixed(\"site-header\",\"facebook-panel\",stuckheight1)==1){\n                };\n\n                scroll_fixed(\"header\",\"facebook-panel\",stuckheight1)\n            });\n\n            });\n        }\n    }\n})",
+			"regular",
+			"Multiple Items",
+			"multi",
+			"nth",
+			"bth",
+			"nth",
+			".fa",
+			"face",
+			"head",
+			"tooltip",
+			"blog",
+			"btn-app",
+			"facebook-panel",
+			"facebook",
+			"blog",
+			"gp-blog-thumbnail",
+			"check",
+			"header",
+			"fixed-content",
+			"face",
+			"head",
+			"date",
+			"blog-type",
+			"events.jpg",
+			"btn-tour",
+			"party-btn",
+			"btn-app thumb-btn",
+			"hr",
+			".gp-media-title",
+			"media-left",
+			"media ",
+			"btn-default",
+			"heading",
+			"rec",
+			"head",
+			"heading",
+			"gp-well",
+			"heading",
+			".heading",
+			"head",
+			"face",
+			"prv-blog",
+			"head",
+			"Recent",
+			"Recent Post",
+			"section",
+			"transition",
+			"head",
+			"\t\t\n",
+			"tooltip",
+			"bounceIn",
+			"bouncein",
+			"slide",
+			"slideinup",
+			"section3",
+			"profile-tabs-toggle",
+			"stuck",
+			"stuckDirective",
+			"remov",
+			"hr",
+			"booking-modal-close",
+			"list-content",
+			"book",
+			"Hip-Hop #FioFridays feat. DJ Skip",
+			"ismodalopen(party.webpaymentlink)",
+			"btn-default",
+			"tab-content",
+			"profile-tabs",
+			"tab-list",
+			"btn-wallet",
+			"form-group",
+			"user-pic",
+			"user-pic img",
+			"btn-shadowing",
+			".claim-list-type p",
+			"text-base",
+			".section-bg",
+			"media-object",
+			"media-middle",
+			"768",
+			"list-content",
+			"min-width",
+			"claim-list-type",
+			"media-heading",
+			".media-heading",
+			"profile-contact-details li",
+			"claim-listing",
+			"login-form",
+			"logout",
+			"log",
+			"form-head",
+			"input"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"<img src=\"https://s3.ap-south-1.amazonaws.com/gpcaweb/mailers/images/",
+			"blog-gallery",
+			"heading-patch",
+			"media-left gp-media-left",
+			"<!",
+			"container",
+			"item post1",
+			"col-lg-6 slide-content",
+			"col-lg-6 slide-img",
+			"col-lg-8 slide-content",
+			"col-lg-4 slide-img",
+			"col-lg-6 col-xs-12 col-sm-6 slide-content",
+			"col-lg-6 col-xs-12 col-sm-6 slide-img",
+			"col-lg-8 col-xs-12 col-md-8 slide-content",
+			"col-lg-4 col-xs-12 col-md-4 slide-img",
+			"col-lg-6 col-xs-12 slide-content",
+			"col-lg-6 col-xs-12 slide-img",
+			"<button class=\"btn call-of-action text-uppercase\" data-toggle=\"modal\" data-target=\"#gpAppModal\">",
+			"<button class=\"btn call-of-action text-uppercase\" data-toggle=\"modal\" data-target=\"#myModal\">",
+			"col-lg-6 col-xs-12 slide-img",
+			"col-lg-6 col-xs-12 slide-content",
+			"col-lg-8 col-xs-12 slide-content",
+			"col-lg-4 col-xs-12 slide-img",
+			"col-lg-4 col-xs-4 slide-img",
+			"post1",
+			"gp-card post",
+			"767",
+			"<div class=\"card-block\">",
+			"<h5 class=\"card-title\">",
+			"<img  class=\"card-img-top\"",
+			"<a href=\"#\"><div class=\"card",
+			"<a href=\"#\"><h5 class=\"card-title\">Showshaa Nightclub</h5></a>",
+			" <a href=\"#\"><img  class=\"card-img-top\"",
+			" <a href=\"#\"<img  class=\"card-img-top\"",
+			"btn-brand",
+			"btn-orange",
+			"distance-b",
+			"distance",
+			"banner-content"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 48.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 84.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 313.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

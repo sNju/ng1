@@ -1,0 +1,98 @@
+<form method="POST" add-user-directive>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="sec-heading blogHdr">
+          <h2 class="heading-type">List of blogs in goparties</h2>
+          <button type="button" ui-sref="/blog" class="btn bg-base pull-right waves-effect">Add New Blog</button>
+        </div>        
+        <div class="card">
+          <div class="panel-header">
+             <h2 class="header-type">Blogs</h2>
+            <button type="submit" ng-click="$parent.filterdata(filterobj)" class="btn bg-dark pull-right waves-effect hidden-xs">Apply Filters</button>
+            <button type="button" class="btn bg-dark waves-effect visible-xs navbar-toggle filterToggle" data-toggle="collapse" data-target="#filterCollapse">filter<i class="fa fa-filter filter-icon" aria-hidden="true"></i></button>
+          </div>
+
+          <div class="body">
+            <div class="row collapse  navbar-collapse" id="filterCollapse">
+              <div class="col-sm-4 col-xs-12">
+                <div class="form-group">
+                  <div class="form-line">
+                    <input ng-model="filterobj.keyword" type="text" class="form-control" placeholder="Keyword" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="enddate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <button type="submit" ng-click="$parent.filterdata(filterobj)" class="btn bg-dark pull-right waves-effect visible-xs">Apply Filters</button>
+              </div>
+            </div>
+            <div class="row" ng-controller="parentController">
+              <div class="col-sm-12" ng-init="paginationinit($parent.filterobj)">
+                 <div class="pull-right m-t-5">
+                  <span ng-click="prev($parent.filterobj)"><button type="button" class="btn">Prev</button></span>
+                  <span ng-click="next($parent.filterobj)" class="m-l-10"><button type="button" class="btn">Next</button></span>
+                  </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover dashboard-task-infos">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Created Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-click="redirect($event,blog)" class="animate-repeat"   ng-repeat="blog in blogs">
+                    <td>{{$parent.indexcalculate($index,filterobj.since)}}</td>
+                    <td>{{blog.title|limitTo:20}}</td>
+                    <td>{{blog.slug|limitTo:20}}</td>
+                    <td>{{blog.description|limitTo:20}}</td>
+                    <td>{{blog.createdat|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+                    <td>
+                      <button ng-click="editblog($event,blog)"  class="btn btn-xs bg-light-blue waves-effect">Edit</button>
+                      <button ng-class="(blog.active==false) ? 'bg-green':'bg-red'"  ng-click="toggleblog($event,blog)" class="btn btn-xs bg-red waves-effect">{{blog.active==false?'Enable':'Disable'}}</button>
+                      <!--  <button ng-class="(user.active==true) ? 'bg-red':'bg-green'"  ng-click="togglestate(user)" class="btn btn-xs bg-red waves-effect">{{user.active==true?'Disable':'Enable'}}</button> -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row" ng-controller="parentController">
+                <div class="col-sm-12" ng-init="paginationinit($parent.filterobj)" >
+                  <div class="pull-right m-t-5">
+                    <span ng-click="prev($parent.filterobj)"><button type="button" class="btn">Prev</button></span>
+                    <span ng-click="next($parent.filterobj)" class="m-l-10"><button type="button" class="btn">Next</button></span>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div><!-- Close Card -->
+      </div><!-- Close cols -->
+    </div><!-- Close row -->
+  </div><!-- Close Container -->
+</form>

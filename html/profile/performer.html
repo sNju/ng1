@@ -1,0 +1,65 @@
+<gpca-header date-value="false" search-strip="true" ></gpca-header>
+<section class="mainSection">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 leftSection">
+				<section id="profileDetail">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="profileCoverOuter">
+								<div class="profileDetailImg-per" style="background-image: url('{{profile.cover}}')">
+								</div>
+							</div>
+							<div class="profileDetailText">
+								<p class="profile-title">{{profile.name}}</p>
+								<div class="genreBtn">
+									<button type="button" class="btn" ng-repeat="genre in profile.genre.split(',')">{{genre}}</button>
+									<button type="button" class="btn" ng-repeat="theme in profile.theme.split(',')">{{theme}}</button>			         
+								</div>
+								<p class="location">{{profile.address}}</p>
+
+								<div class="btn-group shadoBtn" >
+									<button type="button" class="btn">Shadowing</button>
+									<button type="button" class="btn">{{profile.likes>1000?(profile.likes/1000).toFixed(2)+'K':profile.likes}}</button>
+								</div>        
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="row">
+						<div class="col-xs-12 bio">
+							<p class="about-title">About / Bio</p>
+							<p class="about-type">{{profile.about}}</p>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<div ng-show="works.length>0" class="col-sm-8">
+				<div class="row">					
+					<div class="col-lg-12">
+						<h4 class="titleHeading">Media Gallery</h4>	
+						<section image-gallery  light-gallery-bind>
+							<div id="mainGalleryContainer" class="profileImg-gallery">						
+								<div id="lightgallery" class="list-unstyled clearfix image-gallary-common">
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+</section>
+<section class="suggested">
+	<div class="container">
+		<div class="row">
+			<h4 class="section-title"><span class="bottomBorder">Suggested</span></h4>
+			<div class="col-lg-12 suggested-card">
+				<rdgp-card class-name="card-load-onethird" disable-obj="false" card-obj="{{obj}}" ng-repeat="obj in suggested track by $index"></rdgp-card>
+			</div>
+		</div>
+	</div>
+</section>

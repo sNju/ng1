@@ -1,0 +1,81 @@
+  <div>
+
+   <div class="register-with-gp-options" ng-controller="searchController">
+    <section  class="search-profile-wrapper">
+        <div class="container-fluid min-width">
+            <form>
+                <div class="search-profile-box">
+                    <div class="form-group select-your-city">
+                        <label class="sr-only">Your City</label>
+                        <input google-location-autocomplete class ="form-control location" id="searchLocation" ng-model="location"  type="text" placeholder="Enter Location">
+                    </div>
+
+                    <div class="form-group search-your-profile">
+                        <label class="sr-only">Search Your Profile</label>
+                        <input ng-model="keyword" class="form-control" type="text" placeholder="Search Your Profile">
+                    </div>
+
+                    <button ng-click="getProfile(keyword)" class="search-profile-btn" type="button">Search</button>
+                </div>
+            </form>            
+
+
+            <div class="profile-listing-wrapper">
+                <ul>
+                 <claim-profile profile-obj="profile"  ng-repeat="profile in profiles"></claim-profile>
+             </ul>        
+         </div>
+
+     </div>
+
+ </section><!-- /.search-profile-wrapper -->
+
+ <section ng-hide="isAddProfile" class="cannot-find-yourself">
+    <div class="container-fluid min-width">
+        <h2>Can't Find Yourself</h2>
+        <p>Let us know your details and we will get back to you shortly.</p>
+        <button ng-click="addProfileClick()" class="add-profile-action" type="button">Add Your Profile</button>
+    </div>
+</section><!-- /.cannot-find-yourself -->    
+</div><!-- /.register-with-gp-wrapper --> 
+
+
+
+<section ng-show="isAddProfile==true" class="register-with-goparties">
+    <div class="container">
+     <h2>Contact with Us</h2>
+     <p>If you are an  <span class="app-base-color">{{pagename}}</span>, do drop in your contact detail below and our team will contact you to get the parties rolling. Welcome to Your Party App</p>
+
+     <form name="contactForm">
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="sr-only">Your city</label>
+                <input name="city" ng-model="obj.location" google-location-autocomplete id="userlocation" class="form-control" type="text" placeholder="*Your City" required>
+                <span  class="invalidText" ng-show="(contactForm.city.$invalid&&contactForm.city.$dirty)||(isSubmit==true && contactForm.city.$invalid)">*City Can't be Empty</span> 
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="sr-only">Your Name</label>
+                <input name="name" ng-model="obj.name" class="form-control" type="text" placeholder="Your Name" required>
+                <span  class="invalidText" ng-show="(contactForm.name.$invalid&&contactForm.name.$dirty)||(isSubmit==true && contactForm.name.$invalid)">*Name Can't be Empty</span>
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="sr-only">Your Number</label>
+                <input ng-pattern="/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/" name="phone" ng-model="obj.phone" class="form-control" type="text" placeholder="Your Number" required> 
+                <span  class="invalidText" ng-show="(contactForm.phone.$invalid&&contactForm.phone.$dirty)||(isSubmit==true && contactForm.phone.$invalid)">*Phone Number Should be Valid</span>
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="sr-only">Your Email</label>
+                <input name="email" ng-model="obj.email" class="form-control" type="email" placeholder="*Your Email" required> 
+                <span  class="invalidText" ng-show="(contactForm.email.$invalid&&contactForm.email.$dirty)||(isSubmit==true && contactForm.email.$invalid)">*Email Should be Valid</span>
+            </div>
+
+        </div>
+
+        <button ng-click="submit(obj,contactForm.$valid,contactForm)" class="registration-action" type="button">Contact Me Back</button>
+
+    </form>
+</div>
+</section><!-- /.register-with-goparties -->
+
+
+</div>

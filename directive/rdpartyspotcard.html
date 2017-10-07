@@ -1,0 +1,25 @@
+<div class="gp-card gp-deal-card" remove-scroll-bar>
+	<a ng-href="{{$root.getGpUrl(profile)}}">
+		<div class="card-zoom">
+			<div class="card-figure removeClass" style="background-image: url('{{profile.cover}}');">				
+			</div>
+			<div ng-show="profile.hasdeal==true" class="deal">
+				<p  class="text-uppercase">hot deal</p>
+			</div>
+		</div>
+	</a>
+	<div class="card-type">		
+		<div class="profileTitle">
+			<a ng-href="{{$root.getGpUrl(profile)}}" class="removeClass">
+				<h4 class="card-title">
+					{{profile.name}}
+				</h4>
+				<p class="party-location">{{profile.address}}</p>
+			</a>					
+		</div>
+		<div class="date-likes-panel">
+			<button class="btn btn-book" ng-click="$root.redirectWithScroll(profile)"><span>Book</span></button>	
+		</div>
+	</div>
+</div>
+</div>

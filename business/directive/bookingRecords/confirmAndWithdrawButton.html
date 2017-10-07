@@ -1,0 +1,10 @@
+<div class="widget article-widget">
+	<h3 class="widget-heading">Ready to confirm booking?</h3>
+	<p>Click below to proceed</p>
+	<button class="btn btn-block btn-lg btn-primary success call-to-action" ng-click="bookingAction('confirmed',record_id)">Confirm Booking</button>
+</div>
+<div class="widget article-widget">
+	<h3 class="widget-heading">Not Interested ?</h3>
+	<p>In case this does not interest you right now, please click below:</p>
+	<button ng-click="bookingAction('cancelled',record_id)" class="btn btn-block btn-lg btn-primary cancelled call-to-action">Withdraw Interest</button>
+</div>

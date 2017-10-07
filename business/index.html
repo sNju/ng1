@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app.module"  ng-cloak>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="72677469672-o5j9kmf1ub1eu8utsathsu2bsohua4bk.apps.googleusercontent.com">
+    <link rel="icon" href="images/favicon.png" />
+
+    <title>GoParties Business Application</title>
+    <link rel="stylesheet" type="text/css" href="libcss/angular-material.min.css">
+    <!--date time picker css file-->
+    <link rel="stylesheet" type="text/css" href="libcss/jquery.datepick.css"> 
+    <link rel="stylesheet" href="libcss/material-datetimepicker.css" type="text/css"/>
+    <!---->
+    <link href="libcss/bootstrap.min.css" rel="stylesheet">
+    <link href="libcss/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="libcss/font-awesome.css" rel="stylesheet">
+    
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libcss/ADM-dateTimePicker.min.css">
+    <link rel="stylesheet" href="libcss/ngToast.min.css">
+    <link rel="stylesheet" href="libcss/c3.min.css">
+    <link href="libcss/plugins/angular.rangeSlider.css" rel="stylesheet">
+
+    <link href="css/plugins/fullcalendar.css" rel="stylesheet"/>
+    <link href="css/plugins/calender.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libcss/angular-circular-timepicker.css">
+    <link rel="stylesheet" href="libcss/plugins/jquery.mCustomScrollbar.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+          textarea {
+            resize: none;
+        }
+        .pac-container {
+            z-index: 100000 !important;
+        }
+        .md-virtual-repeat-container.md-autocomplete-suggestions-container {
+            position: absolute;
+            box-shadow: 0 2px 5px rgba(0,0,0,.25);
+            height: 225.5px;
+            max-height: 225.5px;
+            z-index: 100000;
+        }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+            transition: all linear 0.5s;
+            display: block !important;
+        }
+
+        .animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+            opacity: 0;
+        }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+            opacity: 1;
+        }
+    </style>
+    <style type="text/css">
+        input.ng-invalid.ng-dirty {
+            border-color:red;
+        }
+        input.ng-valid.ng-dirty {
+            border-color:lightgreen;
+        }
+        
+        .invalidText{
+            color:red;
+        }
+        .calTypeContainer.ng-scope.gregorian,
+        .ADMdtp-calendar-container footer .today{
+            display:none !important;
+        }
+
+        .ADMdtp-calendar-container .days > span > .today,
+        .ADMdtp-calendar-container .days > span > .today:hover {
+            background-color:#fc5f2a !important;
+            color:#fff!important;
+        }
+
+        .ng-enter{
+            transition: 1s;
+            opacity: 0;
+        }
+        .ng-enter-active{
+            opacity: 1;
+        }
+
+        .ng-leave{
+          transtion: 1s;
+          opacity: 1;
+      }
+      .ng-leave-active{
+        opacity: 0;
+    }
+    /*tiny mce style*/
+    .mce-menubar,#mceu_28-body,#mceu_21-body,#mceu_11,#mceu_12,#mceu_42,#mceu_43,#mceu_31,#mceu_32,#mceu_59-body,#mceu_73,#mceu_74,#mceu_62,#mceu_63,#mceu_90-body,#mceu_104,#mceu_105,#mceu_93,#mceu_94,#mceu_121-body,#mceu_152-body,#mceu_183-body{
+       display:none !important;
+   }
+   div[id$="-body" && id^="mceu_"]{
+    display: none !important;
+}
+.md-scroll-mask{
+    position: initial
+}
+
+/*animation when image tag source chnage*/
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    transition: all linear 0.5s;
+    display: block !important;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+    opacity: 0;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+/*angular animation*/
+.container {
+  height:250px;
+  width:250px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid black;
+}
+.container.cell {
+  font-size:150px;
+  text-align:center;
+  line-height:250px;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  border-bottom:2px solid black;
+}
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+  transition:0.5s linear all;
+}
+.swap-animation.ng-enter {
+  top:-250px;
+}
+.swap-animation.ng-enter-active {
+  top:0px;
+}
+.swap-animation.ng-leave {
+  top:0px;
+}
+.swap-animation.ng-leave-active {
+  top:250px;
+}
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
+.c3-line {
+    stroke-width:3px;
+}
+
+md-progress-linear{
+    display: none;
+}
+
+/*ng-repeat animation start*/
+/* Styles go here */
+
+.example-animate-container {
+  background:white;
+  list-style:none;
+  margin:0;
+  padding:0 10px;
+}
+
+.animate-repeat {
+  line-height:40px;
+  list-style:none;
+  box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  -webkit-transition:all linear 0.1s;
+  transition:all linear 0.1s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:40px;
+}
+/* animation end*/
+
+@media (max-width:1023px) {
+    .gp-media-info {
+        width:220px;
+        background-color:#090909;
+        -webkit-transform:translateX(100%);
+        -moz-transform:translateX(100%);
+        transform:translateX(100%);
+    }
+
+    .gp-media-info.slide-from-right {
+        -webkit-transform:translateX(0);
+        -moz-transform:translateX(0);
+        transform:translateX(0);
+    }
+
+    .gp-media-info .main-media-info {
+        display:block;
+    }
+
+    .gp-media-player,
+    .gp-media-player-container {
+        padding-right:0;
+    }
+
+    .squeezed.gp-media-player-container {
+        padding-right:220px;
+    }
+}
+/*master calendar css*/
+.fc-highlight{
+ background-color: rgba(165,98,206,1);
+}
+
+</style>
+<style>
+    .c3-axis-y text {
+       fill: red;
+       font-size:12px;
+   }
+   .c3-axis-x text {
+    font-size:12px;
+    fill:purple;
+}
+</style>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</head>
+<body analytics-directive id="mainParent" has-bs-tooltip notofication-directive ng-controller="notificationCtrl" gp-media-info>
+    <toast></toast>
+    <header id="site-header">
+        <div class="container-fluid">
+            <button class="sidebar-toggle-btn" role="button">
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+            </button>
+            
+            <a class="logo" ui-sref="/({profile_type:'all'})">
+                <img alt="GoParties for Business" class="gp-monogram" src="images/go-parties-business-logo.png">
+                <h1 class="gp-app-heading hidden-xs hidden-sm">
+                    GoParties
+                    <span>For Business</span>
+                </h1>
+            </a>                    
+
+            <nav class="header-nav">
+                <ul class="clearfix">
+
+                    <li class="header-nav-item hidden-xs hidden-sm"><a class="header-nav-link gpca-link" href="http://www.goparties.com" target="_blank">GoParties.com</a></li>
+                    
+
+                    <li class="header-nav-item dropdown hidden-xs hidden-sm">
+                        <a id="profileDropdown" class="header-nav-link user-login-link" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi! {{name}}</a>    
+                        <login-info-directive></login-info-directive>
+                    </li>    
+
+                    <li class="dropdown header-nav-item notifications">
+                        <a ng-click="updateNotification()" id="notificationDropdown" class="header-nav-link" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell-o" data-toggle="tooltip" title="Notifications"></i> <span class="badge">{{unreadNotificationCount}}</span></a>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+                            <li class="dropdown-header">Notifications</li>
+                            <notification-directive></notification-directive>
+                            <li><a class="view-all-link" ui-sref="notificationdetail">View All</a></li>
+                        </ul>                        
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>                                    
+    </header>
+
+
+
+
+    <div class="content-wrapper">
+        <aside id="appSidebar" class="sidebar" role="complementary">
+            <nav class="nav user-mobile-nav visible-xs visible-sm">
+                <li class="dropdown">
+                    <a id="profileDropdown" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="gp-user-profile-table">
+                            <div class="gp-user-pic-table-cell"> 
+                                <img alt="" src="{{profile_pic}}">
+                            </div>
+                            <div class="gp-user-info-table-cell">
+                                <h4>Hi! {{name}}</h4>
+                                <p>{{profile}}</p>
+                            </div>
+                        </div>
+                        <div class="gp-ellipsis-v">
+                            <i class="gp-ellipse-o"></i>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                        <li class="header-nav-item"><a class="header-nav-link gpca-link" href="http://www.goparties.com" target="_blank">GoParties.com</a></li>
+                        <!--
+                        <li><a href="#">GP Coins</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Plan &amp; Pricing</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                    -->
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
+                </ul>
+            </li>
+        </nav><!-- /.user-mobile-nav -->
+
+
+        <nav id="primary-navigation" class="primary-navigation has-vertical-scrollbar" has-custom-vertical-scrollbar >
+            <ul class="main-menu">
+              <li><a ui-sref-opts="{reload: true}" ui-sref="analytics" data-parent="#primary-navigation"><i class="gp-icon gp-analytics-icon"></i>Analytics</a></li>
+              <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-dnb-icon"></i> Discover &amp; Book</a>
+                <ul class="main-sub-menu">
+                    <li class="" ng-class="{active: activetab=='/all'}"><a  ui-sref="/({profile_type:'all'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-all-icon"></i> All</a></li>
+                    <li class="" ng-class="{active: activetab=='/party spot'}"><a ui-sref="/({profile_type:'Party Spot'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-party-spots-icon"></i> Party Spots</a></li>
+                    <li class="" ng-class="{active: activetab=='/Band'}"><a ui-sref="/({profile_type:'Band'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-bands-icon"></i> Bands</a></li>
+                    <li class="" ng-class="{active:activetab=='/Artist'}"><a ui-sref="/({profile_type:'Artist'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-performing-artists-icon"></i> Performing Artists</a></li>
+                    <li class="" ng-class="{active:activetab=='/DJ'}"><a ui-sref="/({profile_type:'DJ'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-dj-icon"></i> DJs</a></li>
+                    <li class="" ng-class="{active:activetab=='/Concert'}"><a ui-sref="/({profile_type:'Concert'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-concerts-icon"></i> Concerts</a></li>  
+                    <li class="" ng-class="{active: activetab=='/bookmark'}"><a ui-sref="/({profile_type:'bookmark'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-bookmarked-profiles-icon"></i>Bookmarked Profiles</a></li>    
+                </ul>
+            </li> 
+
+            <li>
+                <a ui-sref="bookingRecords({category:'all'})" data-parent="#primary-navigation" ui-sref-opts="{reload: true}"><i class="gp-icon gp-bnr-icon"></i> Booking Records</a>
+            </li>
+
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-create-icon"></i> Create</a>
+                <ul class="main-sub-menu">
+                 <li ng-class="{active:activetab=='/createdParties'}"><a ui-sref="createdParties({category:'all'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-party-icon"></i> Party</a></li>
+                 <li ng-class="{active: activetab=='/createdStandAloneDeals'}"><a ui-sref="createdStandAloneDeals({category:'all'})" ui-sref-opts="{reload: true}"><i class="gp-icon gp-stand-alone-deal-icon"></i> Deal</a></li>
+                 <li ng-class="{active: activetab=='/createdAvailabilities'}"><a ui-sref="availability" ui-sref-opts="{reload: true}"><i class="gp-icon gp-availability-icon"></i> Availability</a></li>   
+             </ul>
+         </li>
+
+
+         <li><a ui-sref-opts="{reload: true}" ui-sref="myLaunchedWork({category:'all'})" data-parent="#primary-navigation" ui-sref-opts="{reload: true}"><i class="gp-icon gp-lmw-icon"></i> Launch My Work</a></li>
+
+              <!-- <li><a ui-sref-opts="{reload: true}" ui-sref="categoryList" data-parent="#primary-navigation"><i class="gp-icon gp-ss-icon"></i> Support Services</a></li>
+
+               <li class="has-sub-menu hidden">
+                <a  href="#" data-parent="#primary-navigation"><i class="gp-icon gp-promote-icon"></i> Promote</a>
+                <ul class="main-sub-menu">
+                    <li><a href="#"><i class="gp-icon gp-promoted-items-icon"></i> View Items</a></li>
+                    <li><a href="#"><i class="gp-icon gp-promote-item-icon"></i> Promote</a></li>
+                </ul>
+            </li>
+
+            <li><a ui-sref="smmFirstTimeScreen" data-parent="#primary-navigation"><i class="gp-icon gp-smm-icon"></i> SMM First Time Screen</a></li>
+
+            <li><a ui-sref="createdPost({network:'all'})" data-parent="#primary-navigation"><i class="gp-icon gp-smm-icon"></i> Social Media Management</a></li>-->
+
+            
+
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-manage-icon"></i> Manage</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref-opts="{reload: true}" ui-sref="manageProfile"><i class="gp-icon gp-profile-outlet-icon"></i> Profile / Outlet</a></li>
+                    <!-- <li><a ui-sref-opts="{reload: true}" ui-sref="manageSocialMediaHandles"><i class="gp-icon gp-social-media-handles-icon"></i> Social Media Handles</a></li> -->
+                    <!-- 
+                    <li><a href="#"><i class="gp-icon gp-profile-outlet-icon"></i> Add Profile / Outlet</a></li>
+                    <li><a href="#"><i class="gp-icon gp-assign-right-icon"></i> Assign Rights</a></li>
+                    <li><a href="#">Notifications</a></li> -->
+                </ul>
+            </li>
+
+            
+            <li class="has-sub-menu">
+                <a href="#" data-parent="#primary-navigation"><i class="gp-icon gp-payments-icon"></i> Payments</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref-opts="{reload: true}" ui-sref="cardHolder"><i class="gp-icon gp-card-holder-icon"></i> Card Holder</a></li>
+                    <li><a ui-sref-opts="{reload: true}" ui-sref="paymentHistory"><i class="gp-icon gp-payment-history-icon"></i> Payment History</a></li>
+                    <li><a ui-sref-opts="{reload: true}" ui-sref="payoutrequest"><i class="gp-icon gp-payout-settings-icon"></i>Payout Settings</a></li>
+                </ul>
+            </li>
+            
+
+            <li class="has-sub-menu">
+                <a ui-sref-opts="{reload: true}" href="#" data-parent="#primary-navigation"><i class="gp-icon gp-help-icon"></i> Help</a>
+                <ul class="main-sub-menu">
+                    <li><a ui-sref="faq"><i class="gp-icon gp-faqs-icon"></i> FAQ's</a></li>
+                    <li><a ui-sref-opts="{reload: true}" ui-sref="relationshipManager"><i class="gp-icon gp-relationship-manager-icon"></i> Relationship Manager</a></li>
+                </ul>
+            </li>
+        </ul>                     
+    </nav><!-- /.primary-navigation -->
+    
+    
+</aside><!-- /.sidebar -->
+
+<main  class="main-content" role="main">
+
+
+    <div id="main-content" ui-view share-modal ng-cloak>
+
+    </div>
+
+</main><!-- /.main-content -->
+
+</div>
+
+<!--
+<footer id="footer" class="footer">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="footer-nav col-sm-6">
+                <h5>GoParties Business Application <span>ver 1.0</span></h5>    
+                <ul class="list-inline">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                </ul>    
+                <p><strong>Disclaimer: </strong> All Trademarks are properties of their respective owners.</p>
+            </nav>
+
+            <nav class="footer-nav gpba-mobile-app-nav col-sm-6">
+                <h5>GoParties Business Mobile Apps</h5>                        
+                <ul class="list-inline">
+                    <li>
+                        <a class="gpba-mobile-app gpba-android-app" href="#">
+                            <small>Android App On</small> Google Play
+                        </a>
+                    </li>
+                    <li>
+                        <a class="gpba-mobile-app gpba-iOS-app" href="#">
+                            <small>Available on the</small> App Store
+                        </a>
+                    </li>
+                </ul>    
+            </nav>
+        </div>
+    </div>                            
+</footer>
+-->
+
+<!-- Instant Create Component -->
+<div class="instant-create">
+    <a href="#" title="Instant Create" class="instant-create-btn" role="button">
+        <span></span>    
+    </a>
+    <div class="instant-create-options">
+        <a class="instant-create-option" ui-sref="createParty({id:''})"><i class="fa fa-flag"></i> <span>Create Party</span></a>
+        <a class="instant-create-option" ui-sref="createStandAloneDeal({id:''})"><i class="fa fa-tag"></i> <span>Create Stand Alone Deal</span></a>
+        <a class="instant-create-option" ui-sref="availability"><i class="fa fa-calendar"></i> <span>Create Availability</span></a>
+        <!--  <a class="instant-create-option" ui-sref="createPost"><i class="fa fa-comment"></i> <span>Create Post</span></a> -->
+    </div>
+</div>
+<!-- /.Instant Create Component -->
+
+<!-- Preloader -->
+<div class="preloader-wrap full-width-wrap" ng-show="loading" >
+    <img class="preloader" src="images/preloader-img.png">
+    <span class="preloader-text">Grooving For You. Please Wait</span>
+</div>
+
+
+
+
+
+<!-- GP Audio Media Player Modal -->
+<div ng-controller="audioGalleryCtrl" gp-audio-media-player class="modal gp-modal fade" id="gpAudioPlayerModal" tabindex="-1" role="dialog" aria-labelledby="GP Audio Player" gp-modal>
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content gp-modal-content">
+
+            <div class="gp-modal-header">
+                <span class="gp-lightBox-content-status hidden-xs">Playing Track <span>{{currentAudio.index+1}}</span> of {{audioArrayLength}}</span>
+
+                <nav class="gp-modal-controls">
+                    <ul class="user-action-nav clearfix">
+                        <li><a title="Edit Audio" ui-sref="launchMyWork({id:currentAudio._key})" data-dismiss="modal" data-toggle="tooltip"><span><i class="fa fa-pencil"></i></span></a></li>
+                        <li ng-click="deleteFromPopUp($event,currentAudio._key)"><a ng-click="" title="Delete Audio" href="#" class="" data-toggle="tooltip"><span><i class="fa fa-trash-o"></i></span></a></li>
+                        <li ng-click="shareModal($event)"><a ng-click="" href="#" title="Share Audio" data-toggle="tooltip"><span><i class="fa fa-share-alt"></i></span></a></li>
+                    </ul><!-- /.user-action-nav -->
+
+                    <ul class="clearfix">
+                        <li class="main-media-info-toggle"><a title="{{isAudioListShow==true?'Less':'More'}}" ng-click="audioListToggle()" href="#" class="audioInfoToggle media-info-toggle tab-media-toggle" data-toggle="tooltip"><span><i class="fa fa-info-circle"></i></span></a></li>
+                        <li class="hidden-sm hidden-xs"><a href="#" class="compress-media" title="Minimize" data-toggle="tooltip"><span><i class="fa fa-compress"></i></span></a></li>
+                        <li><button ng-click="stopAudio()" type="button" data-dismiss="modal" data-toggle="tooltip" title="Close" aria-label="Close" class="close"><span>&times;</span></button></li>
+                    </ul><!-- /.gp-modal-nav -->
+
+                </nav><!-- /.gp-modal-controls -->
+
+            </div><!-- /.gp-modal-header -->
+
+            <div class="gp-modal-body">
+                <div class="gp-media-player-container">
+                    <!-- <section ng-class="{'slide-from-right':isAudioListShow==false,'slide-to-left':isAudioListShow==true}" class="gp-media-player gp-audio-media-player" gp-media-player > -->
+                    <section class="gp-media-player gp-audio-media-player" class="gp-media-player gp-audio-media-player" gp-media-player >
+                        <header class="gp-media-player-header">
+                            <h1 class="gp-media-heading">{{currentAudio.title}}</h1>
+                            <nav class="gp-media-player-pagination" gp-media-player-pagination >
+                                <!-- <a class="gp-media-player-pager" href="#track-listing">Track Listing</a></li>
+                                <a class="active gp-media-player-pager" href="#track-poster">Track Poster</a></li>
+                                <a class="gp-media-player-pager" href="#track-info">Track Info</a></li> -->
+                            </nav>
+                        </header>
+
+                        <div class="gp-media-player-body">
+
+                            <div id="track-listing" class="gp-media-listing media-info">
+                                <h4 class="track-genre">Track Listing</h4>
+                            </div><!-- /.gp-media-listing -->
+
+                            <div id="track-poster" class="gp-media-poster media-info open">
+                                <figure class="media-poster">
+                                    <img alt="" src="{{currentAudio.thumburl}}">        
+                                </figure>       
+                            </div><!-- /.gp-media-poster -->
+
+                            <div id="track-info" class="media-info">
+                                <h4 class="track-genre">{{currentAudio.genre}}</h4>
+                                <div ng-bind-html="currentAudio.description"></div> 
+                            </div><!-- /.gp-media-info -->
+                            <!-- mobile tab media slide toggle -->
+                            
+                            <div class="tab-media-info-toggle">
+                                <h3>Test</h3>
+                            </div>
+
+                        </div><!-- /.gp-media-player-body -->
+
+                        <div  class="gp-media-wrap">
+                            <div class="gp-media-player-controls clearfix">
+                                <div class="gp-media-player-progress-bar">
+                                    <div class="minimized-track-info">
+                                        <h3 class="gp-media-heading">{{currentAudio.title}}</h3>    
+                                        <span class="track-genre">{{currentAudio.genre}}</span>
+                                    </div>
+
+                                    <form>
+                                        <div class="gp-media-controls-group clearfix">
+                                            <div class="gp-media-volume-control pull-right">
+                                                <button class="small-btn media-volume-btn" type="button"><i class="fa fa-volume-up"></i></button>
+                                                <div class="gp-media-volume-bar">
+                                                    <span class="current-progress" id="audioVolumeSeek" ng-click="audioVolumeSeekClick($event)" style="width:{{audioPlayer.volumeClass}}%"></span>
+                                                    <input type="range" min="0" max="1" step="0.01" ng-click="audioVolumeChange($event)" id="audioVolumn" eventName="audioVolumeChange"/>
+                                                </div>  
+                                            </div>
+
+                                            <div class="gp-media-progress-bar" data-media-progress="{{audioElapsedSecond}}" data-media-total-length="{{audioDuration}}">
+                                                <span ng-click="bufferedClick($event)" id="buffered" class="buffering current-progress" style="width:{{audioBuffered}}%;"></span>
+                                                <span ng-click="backWardAudioClick($event)" id="elapsedSpan" class="current-progress" style="width:{{audioElapsedPercent}}%;"></span>
+                                                <input  id="gp-media-status" ng-click="audioSeekClick($event)" type="range" min="0" max="{{audioPlayer.duration}}" value="{{audioElapsedSecond}}" step="1"> 
+                                            </div>
+                                        </div>
+
+
+
+                                    </form>
+                                </div>
+
+                                <nav class="gp-media-player-controls-nav" gp-media-player-controls-nav >
+                                    <a ng-click="previousAudio()" class="gp-media-control prev-media" href="#">Previous</a>
+                                    <a class="gp-media-control play-pause-media" href="#" ng-class="{'media-playing':isAudioPlay==true}" ng-click="audioToggle()">Play / Pause</a>
+                                    <a ng-click="nextAudio()" class="gp-media-control next-media" href="#">Next</a>
+                                </nav>
+                                
+                            </div>
+                            <audio  preload='auto' id="audioPlayer" src="{{currentAudio.fileurl | trustUrl}}" class="gp-media gp-launched-media hidden" controls></audio>
+
+                        </div>
+                    </section><!-- /.gp-media-player -->
+
+                    <!-- <div ng-class="{'slide-from-right':isAudioListShow==true,'slide-to-left':isAudioListShow==false}" class="gp-media-info"> -->
+                    <div class="gp-media-info audio-media-info">
+                        <div class="main-media-info audioInfo">
+                            <div class="media-genre widget">
+                                <h3 class="widget-heading">Genre</h3>   
+                                <p>{{currentAudio.genre}}</p>
+                            </div>
+
+                            <article class="widget">
+                                <h3 class="widget-heading">Description</h3>
+                                <div ng-bind-html="currentAudio.description"></div>
+                            </article>
+                        </div>
+
+                        <div class="related-media-list widget hidden-xs hidden-sm">
+                            <h3 class="widget-heading">Playlist</h3>    
+
+                            <div class="gp-related-media-wrap">
+                                <div ng-repeat="audio in audioArray track by $index" class="gp-related-media">
+                                    <a ng-class="{'active':audioIndex==$index}" href="#" ng-click="setAudioSource(audio,$index)">                                   
+                                        <div class="media-details media">
+                                            <div class="media-left">
+                                                <div class="media-thumb-wrap">
+                                                    <img alt="" class="media-object" src="{{audio.thumburl}}">
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h3 class="media-title ng-binding">{{audio.title}}</h3> 
+                                                <p class="media-genre">Classical</p>
+                                                <p class="media-duration">{{calculateTotalTime(audio.duration/1000)}}</p>
+                                            </div>
+                                        </div>  
+                                    </a>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>      
+        </div>  
+    </div>  
+</div>
+</div> <!-- /#gp-audio-player-Modal -->
+
+
+
+    <!-- JavaScript
+    
+    ================================================== -->
+    <!--Google API CDN-->
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDs4QGFiUhr_M9mhmA3PSR6c2T0N6HroZA"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="libjs/jquery.min.js"></script>
+    <script src="libjs/angular.min.js"></script>
+    <script src="libjs/ocLazyLoad.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="libjs/ADM-dateTimePicker.min.js"></script>
+    <script src="libjs/angular-animate.min.js"></script>
+    <script src="libjs/angular-aria.min.js"></script>
+    <script src="libjs/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="libjs/angular-material.min.js"></script>
+    <script src="libjs/angular-ui-router.min.js"></script>
+    <script src="libjs/angular-sanitize.min.js"></script>
+    <script src="libjs/ngToast.min.js"></script>
+    
+    <!--Analytics library-->
+    <script src="libjs/d3.v3.min.js" charset="utf-8"></script>
+    <script src="libjs/c3.js"></script>
+    <!---->
+
+    <script src="libjs/plugins/angular.rangeSlider.js"></script>
+
+    <script src="libjs/ui-bootstrap-tpls-1.3.3.min.js"></script>
+    <!--Jquery datepicker js file-->
+    <script src="libjs/moment.js"></script>
+    <script src="libjs/angular-circular-timepicker.js"></script>
+    <script type="text/javascript" src="libjs/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="libjs/jquery.datepick.js"></script>
+    <!---->
+    <script type="text/javascript" src="libjs/scrollglue.js"></script>
+    <!--Date time picker js file-->
+    <script type="text/javascript" src="libjs/moment.min.js"></script>
+    <script type="text/javascript" src="libjs/angular-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="libjs/beautifier.js"></script>
+    <!---->
+    <!--Library for security purpose-->
+    <script type="text/javascript" src="libjs/fingerprint2.js"></script>
+    <!---->
+    <!--Text Editor Reference-->
+    <!--  <script src="//tinymce.cachefly.net/4/tinymce.min.js"></script> -->
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <!--File upload javascript reference-->
+    <script type="text/javascript" src="libjs/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="libjs/ng-file-upload.js"></script>
+    <!---->
+    <script src="libjs/bootstrap.min.js"></script>
+    <script src="libjs/ie10-viewport-bug-workaround.js"></script>
+    <script src="libjs/plugins/jquery.easing.min.js"></script>
+    <script src="js/global-css.js"></script>
+    <script src="libjs/sidebar.js"></script>
+    <script src="libjs/socket.io.js"></script>
+
+
+    <!-- Custom Scrollbar Plugin -->
+    <script src="libjs/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+        /* Custom Scrollbar Directive
+        $(document).ready(function(){
+            $('#secondary-navigation').mCustomScrollbar({
+                axis:'x'
+            });
+        });
+        */
+    </script>
+    
+
+    <!-- Angular JS Range Slider /- Price Range -/ -->
+
+    
+    <!-- Availability Calendar /- Full Calendar -/ -->
+    <script src='libjs/plugins/moment.min.js'></script>
+    <script src="libjs/plugins/fullcalendar.js"></script>
+
+
+    <script src="controller/filterController.js"></script>
+    <script src="controller/commonController.js"></script>
+    <script src="controller/tinymceController.js"></script>
+    <script src="controller/commonDirectiveController.js"></script>
+    <script src="controller/commonDirectiveController2.js"></script>
+    <script src="controller/httpRequestController.js"></script>
+    <script src="controller/cardDirective.js"></script>
+    <script src="controller/cardController.js"></script>
+    <script src="controller/notificationController.js"></script>
+    <script src="controller/login.js"></script>
+
+    <script src="controller/analytics/analyticsController.js"></script>
+
+    <script src="controller/discoverAndBook/discoverAndBook.js"></script>
+
+    <script src="controller/create/createController.js"></script>
+    <script src="controller/create/createdPartiesController.js"></script>
+    <script src="controller/create/createdStandAloneController.js"></script>
+    <script src="controller/create/createAvailabilityController.js"></script>
+
+    <script src="controller/bookingRecords/chatController.js"></script>
+    <script src="controller/bookingRecords/broadcastGroupCtrl.js"></script>
+    <script src="controller/bookingRecords/bookingRecordsCtrl.js"></script>
+    <script src="controller/bookingRecords/directChatController.js"></script>
+    
+    <script src="controller/launchMyWork/launchMyWorkController.js"></script>
+    <script src="controller/launchMyWork/myLaunchedWorkCtrl.js"></script>
+    <script src="controller/launchMyWork/launchAlbumController.js"></script>
+
+    <script type="text/javascript" src="controller/supportAndServices/supportServiceController.js"></script>
+
+    <script src="controller/socialMedia/createPostCtrl.js"></script>
+    <script src="controller/socialMedia/createdPostCtrl.js"></script>
+    <script src="controller/socialMedia/smmFirstTimeScreenCtrl.js"></script>
+    
+    <script src="controller/manage/manageProfileCtrl.js"></script>
+    <script src="controller/manage/manageSocialMediaHandlesCtrl.js"></script>
+    
+    <script src="controller/payment/paymentController.js"></script>
+    <script src="controller/payment/paymenthistory.js"></script>
+    <script src="controller/payment/payoutrequestController.js"></script>
+    <script src="controller/help/faqCtrl.js"></script>
+    <script src="controller/help/relationshipManagerCtrl.js"></script>
+
+    
+    <script src="js/app.js"></script>
+    <script src="js/next1.js"></script>
+    <script>
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64499317-1', 'auto');
+    ga('send', 'pageview');
+
+    
+</script>
+</body>
+</html>

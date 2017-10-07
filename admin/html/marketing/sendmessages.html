@@ -1,0 +1,102 @@
+<form method="POST" name="sendmessageform" index-page-directive>
+  <div class="container-fluid">
+    <!-- Widgets -->
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-pink hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">playlist_add_check</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL SENT</div>
+            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">125</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-cyan hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">help</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL READ</div>
+            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">257</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-light-green hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">forum</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL SEEN</div>
+            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">243</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-orange hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">person_add</i>
+          </div>
+          <div class="content">
+            <div class="text">CLICKS</div>
+            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">1225</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Widgets -->
+
+    <div class="row">
+      <!-- Task Info -->
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="sec-heading respNotif">
+          <h2 class="heading-type">MARKETING MESSAGE GROUP</h2>
+          <button ui-sref="/createmessagesgroup" class="btn bg-pink pull-right waves-effect">create smsgroup</button>
+        </div>
+        <div class="card">
+          <div class="panel-header contactHdr">
+            <h2 class="header-type">select all or select the few as required and I will do the rest</h2>
+            <button type="submit" ng-click="sendmessage(groups,message,sendmessageform.$valid)" class="btn bg-dark pull-right waves-effect">Send Now</button>
+          </div>
+          <div class="body">
+<div class="form-group">
+            <textarea name="message" rows="5" class="sms-textarea" ng-model="message" placeholder="Type your message" required ></textarea>
+</div>          
+
+<!--             <textarea name="message" rows="5" ng-model="message" placeholder="Type your message" required></textarea> -->
+            <div class="table-responsive">
+              <table class="table table-hover dashboard-task-infos">
+                <thead>
+                  <tr>
+                    <th><input ng-model="isallcheck"  type="checkbox" id="basic_checkbox" class="filled-in" /><label class="gpcheckbox" for="basic_checkbox"></label></th>
+                    <th>Name</th>
+                    <th>Created Date</th>
+                    <th>Numbers</th>
+                    <th>Action</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="animate-repeat" ng-class="{'active':$index%2==0}"  ng-init="group.check=false" ng-repeat="group in groups">
+                    <td><input ng-model="group.check" type="checkbox" id="basic_checkbox_{{$index+1}}" /><label for="basic_checkbox_{{$index+1}}"></label></td>
+                    <td>{{group.name}}</td>
+                    <td>{{group.createdat|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+                    <td>{{group.numbers|limitTo:15}}</td>
+                    <td>
+                      <button ui-sref="/createmessagesgroup({id:group._key})" class="btn btn-xs bg-light-blue waves-effect">Edit</button>
+                      <button ng-click="DeleteGroup(group,$index)" class="btn btn-xs bg-red waves-effect bg-red">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

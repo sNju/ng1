@@ -1,0 +1,116 @@
+<gpca-header date-value="false" search-strip="false"></gpca-header>
+<div class="container-fluid error-bg">
+	<div class="container">
+		<div class="row error-container">
+			<div class="ntfound-box col-lg-3">
+				<img src="/images/error-404.jpg">
+				<!-- <p class="error-title">404</p>
+				<p class="error-type">page not found</p> -->
+			</div>
+			<div class="flex-content flex-content-col  col-lg-9">
+				<p class="oops">Oops..</p>
+				<p class="oops-title">We were unable to find the page you are looking for.click on button to go back to our homepage</p>
+				<button class="btn btn-app">Back to Home</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="container">
+		<div class="row section-content">
+			<h3 class="sugestion-title">You May like</h3>
+			<div class="col-lg-3">
+				<div class="gp-card gp-event-card gp-deal-card">
+					<a ng-href="{{$root.getGpUrl(profile)}}">
+						<div class="card-figure" style="background-image: url('{{profile.cover}}');">
+							<div class="event-crowd-rating text-uppercase"  ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{profile.crowd_quotient}}<i class="fa fa-star star-rating" aria-hidden="true"></i></div>
+							<div class="cover-img" style="background-image: url('{{profile.profile_pic}}');"></div>
+							<div ng-show="profile.hasdeal==true" class="deal">
+								<p  class="text-uppercase">hot deal</p>
+							</div>
+							<div class="overlay"></div>
+						</div>
+					</a>
+					<div class="card-details">
+						<a ng-href="{{$root.getGpUrl(profile)}}">
+							<h4 class="card-title">
+								{{profile.name}}
+							</h4>
+						</a>
+						<p  class="card-type text-uppercase">Party Spot</p>
+						<button  ng-click="$root.redirectWithScroll(profile)"  class="btn call-of-action text-uppercase">Book</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="gp-card gp-event-card gp-deal-card">
+					<a ng-href="{{$root.getGpUrl(profile)}}">
+						<div class="card-figure" style="background-image: url('{{profile.cover}}');">
+							<div class="event-crowd-rating text-uppercase"  ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{profile.crowd_quotient}}<i class="fa fa-star star-rating" aria-hidden="true"></i></div>
+							<div class="cover-img" style="background-image: url('{{profile.profile_pic}}');"></div>
+							<div ng-show="profile.hasdeal==true" class="deal">
+								<p  class="text-uppercase">hot deal</p>
+							</div>
+							<div class="overlay"></div>
+						</div>
+					</a>
+					<div class="card-details">
+						<a ng-href="{{$root.getGpUrl(profile)}}">
+							<h4 class="card-title">
+								{{profile.name}}
+							</h4>
+						</a>
+						<p  class="card-type text-uppercase">Party Spot</p>
+						<button  ng-click="$root.redirectWithScroll(profile)"  class="btn call-of-action text-uppercase">Book</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="gp-card gp-event-card gp-deal-card">
+					<a ng-href="{{$root.getGpUrl(profile)}}">
+						<div class="card-figure" style="background-image: url('{{profile.cover}}');">
+							<div class="event-crowd-rating text-uppercase"  ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{profile.crowd_quotient}}<i class="fa fa-star star-rating" aria-hidden="true"></i></div>
+							<div class="cover-img" style="background-image: url('{{profile.profile_pic}}');"></div>
+							<div ng-show="profile.hasdeal==true" class="deal">
+								<p  class="text-uppercase">hot deal</p>
+							</div>
+							<div class="overlay"></div>
+						</div>
+					</a>
+					<div class="card-details">
+						<a ng-href="{{$root.getGpUrl(profile)}}">
+							<h4 class="card-title">
+								{{profile.name}}
+							</h4>
+						</a>
+						<p  class="card-type text-uppercase">Party Spot</p>
+						<button  ng-click="$root.redirectWithScroll(profile)"  class="btn call-of-action text-uppercase">Book</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="gp-card gp-event-card gp-deal-card">
+					<a ng-href="{{$root.getGpUrl(profile)}}">
+						<div class="card-figure" style="background-image: url('{{profile.cover}}');">
+							<div class="event-crowd-rating text-uppercase"  ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{profile.crowd_quotient}}<i class="fa fa-star star-rating" aria-hidden="true"></i></div>
+							<div class="cover-img" style="background-image: url('{{profile.profile_pic}}');"></div>
+							<div ng-show="profile.hasdeal==true" class="deal">
+								<p  class="text-uppercase">hot deal</p>
+							</div>
+							<div class="overlay"></div>
+						</div>
+					</a>
+					<div class="card-details">
+						<a ng-href="{{$root.getGpUrl(profile)}}">
+							<h4 class="card-title">
+								{{profile.name}}
+							</h4>
+						</a>
+						<p  class="card-type text-uppercase">Party Spot</p>
+						<button  ng-click="$root.redirectWithScroll(profile)"  class="btn call-of-action text-uppercase">Book</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

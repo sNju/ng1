@@ -1,0 +1,154 @@
+<link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+<form method="POST" index-page-directive>
+  <div class="container-fluid">
+    <!-- Widgets -->
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox" >
+        <div class="info-box bg-pink hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">playlist_add_check</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL SENT</div>
+            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">125</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-cyan hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">help</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL READ</div>
+            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">257</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-light-green hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">forum</i>
+          </div>
+          <div class="content">
+            <div class="text">TOTAL SEEN</div>
+            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">243</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+        <div class="info-box bg-orange hover-expand-effect">
+          <div class="icon">
+            <i class="material-icons">person_add</i>
+          </div>
+          <div class="content">
+            <div class="text">CLICKS</div>
+            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">1225</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Widgets -->
+
+    <div class="row">
+      <!-- Task Info -->
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="sec-heading">
+          <h2 class="heading-type">Slider Party</h2>
+          <button ng-if="sliders.length>0" ng-click="setIndex(-1)"  stop-flickering  class="btn bg-pink pull-right waves-effect">Add Party To All List</button>
+        </div>
+        <div class="card">
+          <div class="panel-header">
+            <div class="row">
+              <div class="col-sm-4 col-xs-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="enddate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date ">
+                  </div>
+                </div>
+              </div>                
+              <div class="col-sm-4 col-xs-12">
+                <button ng-click="getAndSpreadSlider(filterobj)" type="submit" class="btn bg-dark pull-right waves-effect">Apply Filter</button>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="row" ng-repeat="parties in sliders track by $index">
+                <div class="col-lg-12">
+                  <span>{{parties._key|timeStamptoProperDate}}</span>
+                  <button ng-click="setIndex($index+1)" stop-flickering  class="btn bg-pink pull-right waves-effect">Add Party</button>
+                </div>
+                <div class="col-lg-12">
+                    <ul class="details-container clearfix" ui-sortable ng-model="parties.party">
+                      <li class="details-list col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="party in parties.party track by $index">
+                          <div class="gpa-card gp-party-card">
+                              <div class="card-figure" style="background-image: url({{party.banner}});">
+                              </div>
+                              <div class="card-title">
+                                  {{party.title}}{{party.name}}
+                              </div>
+                              <div class="card-detail-section">
+                                  <p class="card-types">{{party.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>                                  
+                                  <p class="card-types location">{{party.address}}</p>
+                              </div>
+                              <div class="name-and-status" ng-click="removeparty(parties.party,$index)">
+                                  Remove
+                              </div>                              
+                          </div>
+                      </li>
+                    </ul>
+                    <hr class="deviders"> 
+                </div>
+            </div> <!--END ROW-->
+            <div class="row">
+              <div class="col-lg-12">
+                <button ng-if="sliders.length>0" ng-click="saveslider(sliders)" class="btn btn-lg waves-effect  bg-base pull-right">Save Now</button>
+              </div>          
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WebsliderModel Start -->
+<div class="modal fade clicktocall" id="WebsliderModel" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modelHeader">
+        <button type="button" class="close closeBtn" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Type something</h4>
+      </div>
+      <div class="modal-body">
+       <form>
+         <div class="form-group formGrp">
+           <input ng-model="partyobjectindex" type="number" class="form-control modelInput" id="name" placeholder="Enter Name">
+         </div>
+       </form>
+
+     </div>
+     <div class="modal-footer modelFooter">
+       <button data-dismiss="modal" ng-click="selectparty(partyobjectindex)" type="button" class="btn btn-default yesbtn" >Yes</button>
+
+       <button  data-dismiss="modal" type="button" class="btn btn-default nobtn" >No</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+<!-- WebsliderModel End -->
+
+</form>
+

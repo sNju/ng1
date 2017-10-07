@@ -1,0 +1,143 @@
+.RoundShape(@radius:@circularRadius) {
+	-webkit-border-radius:@radius;
+	   -moz-border-radius:@radius;
+			border-radius:@radius;
+}
+
+.body-typo(@bodyText: @defaultFont) {
+	font-family: @bodyText;
+	font-weight:400;
+	color:#333;
+}
+
+.DefaultHeadingTypo(@DefaultHeadingFontFamily: @defaultHeadingFont) {
+	font-family: @DefaultHeadingFontFamily;
+	font-weight:400;
+}
+
+.boldText(@DefaultHeadingFontFamily: @boldTextFont) {
+	font-family: @DefaultHeadingFontFamily;
+	font-weight:400;
+}
+
+.ZeroDistanceBoxShadow(@shadowColor: @defaultShadowColor) { /* Mixin */
+	-webkit-box-shadow: 0 0 3px @shadowColor;
+	   -moz-box-shadow: 0 0 3px @shadowColor;
+			box-shadow: 0 0 3px @shadowColor;
+}
+
+.default-transition(@transition-duration: @default-transition-duration) { /* Mixin */
+	-webkit-transition:all @transition-duration ease-out;
+	   -moz-transition:all @transition-duration ease-out;
+			transition:all @transition-duration ease-out;
+}
+
+.sidebar-lg-top-offset(@height: @site-header-lg-height) {
+	top:@height;
+}
+
+.horizontal-scaling-transform(@scaleX: @default-scaleX) {
+	/*-webkit-transform-origin:50% 0;
+	   -moz-transform-origin:50% 0;
+			transform-origin:50% 0;*/
+	-webkit-transform:scaleX(@scaleX);
+	   -moz-transform:scaleX(@scaleX);
+			transform:scaleX(@scaleX);
+}
+
+/* Button Component */
+.medium-button-padding(@set-padding: @medium-button-padding){
+	padding:@set-padding;
+} 
+
+.border-only-button(@button-radius: @standard-button-radius; @bg-color: @border-only-button-bg) {
+	background-color:@bg-color;
+	border-radius:@button-radius;						
+}
+
+
+/* Form */
+.form-control-base(@input-height: @default-input-height; @input-border-color: @default-input-border-color; @input-radius: @default-input-radius) {
+	height:@input-height;
+	background-color:@whiteBg;
+	border:1px @input-border-color solid;
+	border-radius:@input-radius;
+	box-shadow:inset 0 0 3px rgba(0, 0, 0, .14);
+}
+
+.input-placeholder-base(@placeholder-font:@default-input-placeholder-font; ) {
+	position:relative;
+	top:-1px;
+	font-family:@placeholder-font;	
+	font-size:12px;
+	color:#bbb;
+	line-height:26px;
+
+}
+
+.preview-card-input-placeholder(@placeholder-font:@default-input-placeholder-font; ) {
+	font-family:@placeholder-font;	
+	font-size:14px;
+	color:@base-color;
+	line-height:26px;
+}
+
+
+
+/* GP Card */
+.gp-card-height(@set-height: @default-gp-card-height) {
+	height:@set-height;
+}
+
+/* 2D Translation */
+.2d-translation( @x-axis: 0, @y-axis: 0 ) {
+	-webkit-transform:translate(@x-axis, @y-axis);
+	   -moz-transform:translate(@x-axis, @y-axis);
+		-ms-transform:translate(@x-axis, @y-axis);
+	     -o-transform:translate(@x-axis, @y-axis);
+			transform:translate(@x-axis, @y-axis);
+}
+
+
+/* Animations */
+.cw-rotation-animation(@animation-duration: .7s) { /* Clock-wise Rotation */
+	transform-origin:50% 50%;
+	-webkit-animation:clockwiseRotationAnimation @animation-duration infinite linear;
+	   -moz-animation:clockwiseRotationAnimation @animation-duration infinite linear;
+			animation:clockwiseRotationAnimation @animation-duration infinite linear;
+}
+
+.ccw-rotation-animation(@animation-duration: .7s) { /* Counter Clock-wise Rotation */
+	transform-origin:50% 50%;
+	-webkit-animation:counterClockwiseRotationAnimation @animation-duration infinite linear;
+	   -moz-animation:counterClockwiseRotationAnimation @animation-duration infinite linear;
+			animation:counterClockwiseRotationAnimation @animation-duration infinite linear;
+}
+
+@keyframes clockwiseRotationAnimation {
+	0 { transform:rotate(0); };
+	50% { transform:rotate(180deg); };
+	100% { transform:rotate(360deg); };
+}
+
+@keyframes counterClockwiseRotationAnimation {
+	0 { transform:rotate(0); };
+	50% { transform:rotate(-180deg); };
+	100% { transform:rotate(-360deg); };
+}
+
+/* Slide Up Animation */
+
+.slide-up-animation(@animation-duration: @default-transition-duration) {
+	-webkit-animation:slideUpAnimation @animation-duration 1 ease-out;
+	   -moz-animation:slideUpAnimation @animation-duration 1 ease-out;
+			animation:slideUpAnimation @animation-duration 1 ease-out;
+}
+
+@keyframes slideUpAnimation {
+	0 { transform:translateY(100px); };
+	100% { transform:translateY(0); };
+}
+
+
+

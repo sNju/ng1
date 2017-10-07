@@ -1,0 +1,403 @@
+// Variables and Mixins
+@import "variables.less";
+@import "mixins.less";
+
+#main-container{
+  @media (max-width:767px){
+    padding-top:54px;
+  }
+
+}
+
+.main{
+  background-color: #f4f4f4 !important;
+}
+
+.mainSection{
+  padding-top: 100px;
+  padding-bottom: 30px;
+    @media(max-width:767px){
+      padding-top: 126px;
+    }
+}
+
+.titleHeading{
+  font-size: 24px;
+  color: #000;
+  margin: 0;
+  padding-bottom: 20px;
+  font-weight: normal;
+}
+.leftSection{
+  padding-right: 15px;
+
+  
+
+  #profileDetail{
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+      .profileCoverOuter{
+        .profileDetailImg-per{
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          min-height: 250px;
+        }
+      }
+      .profileDetailText{
+        overflow:hidden;
+        background: #fff;
+        padding: 15px 20px;
+          .profile-title{
+            font-size: 18px;
+            color: #000;
+          }
+          .location{
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+          }
+        .genreBtn{
+          font-size: 14px;
+          color: #666;
+            .btn{
+              max-width: 150px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size:14px;
+              color: #000;
+              padding: 4px 12px;
+              border-radius: 0;
+              border: 1px solid #ddd;
+              background-color: #f4f4f4;
+              margin-right: 5px;
+              margin-bottom: 5px;
+            }     
+        }
+        .shadoBtn{
+          margin-top: 5px;
+          border: 1px solid #ececec;
+          margin-bottom: 10px;
+          .btn{   
+            &:nth-child(1){
+                font-size: 18px;
+                color: #fff;
+                padding: 8px 35px;
+                border-radius: 0;
+                background-color: #ed991c;
+            }
+            &:nth-child(2){
+              font-size: 18px;
+              color: #000;
+              padding: 8px 12px;
+              border-radius: 0;
+              background-color: #f4f4f4; 
+            }
+          }
+        }
+      }
+  }
+}
+ 
+.bio{
+    .about-title{
+      font-size: 18px;
+      color: #000;
+      font-family: @rmedium;
+    }
+    .about-type{
+      font-size: 14px;
+      color: #000;
+    }    
+}
+
+
+/*.thumb-overlay-video{
+    background: rgba(0,0,0,0.5) url(https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/zoom-video.png) no-repeat center;
+    background-size: 50px 50px;
+}*/
+/*.profileImg-gallery {
+    li{
+      &:nth-child(even){
+        .thumb-figure{
+          -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+        }
+      }
+      a{
+        overflow: hidden;
+
+        &:hover{
+          .thumb-figure{
+            -moz-transform: scale(1.5);
+              -webkit-transform: scale(1.5);
+              transform: scale(1.5);
+              -webkit-filter: grayscale(0%);
+                filter: grayscale(0%);
+          }
+          .img-gallery{
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);        
+            opacity: 1;
+          }
+        }
+
+        @media(max-width:767px){
+          float: none !important;  
+        }
+      }
+    }
+}
+
+.profileImg-gallery > ul > li a:hover{
+  
+}
+.profileImg-gallery{
+  padding: 0;
+  margin-bottom: 25px;
+}
+.profileImg-gallery > ul > li {
+    float: left;                
+    padding-left: 0;
+    padding-right: 0;
+    list-style-type: none;
+}
+.profileImg-gallery > ul > li a {
+  border: 1px solid #ddd; 
+  display: block;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+.profileImg-gallery > ul > li a > img {
+  -webkit-transition: -webkit-transform 0.40s ease 0s;
+  -moz-transition: -moz-transform 0.40s ease 0s;
+  -o-transition: -o-transform 0.40s ease 0s;
+  transition: transform 0.40s ease 0s;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  height: 100%;
+  width: 100%;
+}
+.profileImg-gallery > ul > li a:hover .thumb-overlay{
+  opacity: 0.8;
+}
+.profileImg-gallery > ul > li a:hover > img {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+.profileImg-gallery > ul > li a:hover .profileImg-gallery-poster > img {
+  opacity: 1;
+}
+.profileImg-gallery > ul > li a .profileImg-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: background-color 0.15s ease 0s;
+  -o-transition: background-color 0.15s ease 0s;
+  transition: background-color 0.15s ease 0s;
+}
+.profileImg-gallery > ul > li a .profileImg-gallery-poster > img {
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: opacity 0.3s ease 0s;
+  -o-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+.profileImg-gallery > ul > li a:hover .profileImg-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.profileImg-gallery .justified-gallery > a > img {
+  -webkit-transition: -webkit-transform 0.15s ease 0s;
+  -moz-transition: -moz-transform 0.15s ease 0s;
+  -o-transition: -o-transform 0.15s ease 0s;
+  transition: transform 0.15s ease 0s;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  height: 100%;
+  width: 100%;
+}
+.profileImg-gallery .justified-gallery > a:hover > img {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+.profileImg-gallery .justified-gallery > a:hover .profileImg-gallery-poster > img {
+  opacity: 1;
+}
+.profileImg-gallery .justified-gallery > a .profileImg-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: background-color 0.15s ease 0s;
+  -o-transition: background-color 0.15s ease 0s;
+  transition: background-color 0.15s ease 0s;
+}
+.profileImg-gallery .justified-gallery > a .profileImg-gallery-poster > img {
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: opacity 0.3s ease 0s;
+  -o-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+.profileImg-gallery .justified-gallery > a:hover .profileImg-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.profileImg-gallery .video .profileImg-gallery-poster img {
+  margin-left: -24px;
+  height: 48px;
+  margin-top: -24px;
+  opacity: 0.8;
+  width: 48px;
+}
+.profileImg-gallery.dark > ul > li a {
+  border: 3px solid #04070a;
+}
+.home .profileImg-gallery {
+  padding-bottom: 80px;
+}*/
+/*Profile Image Gallery End*/
+
+/*Video Gallary Start*/
+/*.profileVideo-gallery{
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 25px;
+}
+
+.profileVideo-gallery > ul > li {
+  width: 100%;
+  display: inline-block;
+  list-style: outside none none;
+}
+
+.profileVideo-gallery > ul > li a {
+  display: block;
+    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 325px;
+
+}
+.profileVideo-gallery > ul > li a > img {
+  -webkit-transition: -webkit-transform 0.15s ease 0s;
+  -moz-transition: -moz-transform 0.15s ease 0s;
+  -o-transition: -o-transform 0.15s ease 0s;
+  transition: transform 0.15s ease 0s;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  height: 100%;
+  width: 100%;
+}
+
+.profileVideo-gallery > ul > li a:hover > img {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.profileVideo-gallery > ul > li a .profileVideo-gallery-poster {
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: background-color 0.15s ease 0s;
+  -o-transition: background-color 0.15s ease 0s;
+  transition: background-color 0.15s ease 0s;
+}
+
+.profileVideo-gallery > ul > li a .profileVideo-gallery-poster > img {
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: opacity 0.3s ease 0s;
+  -o-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+
+.profileVideo-gallery > ul > li a:hover .profileVideo-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileVideo-gallery .justified-gallery > a > img {
+  -webkit-transition: -webkit-transform 0.15s ease 0s;
+  -moz-transition: -moz-transform 0.15s ease 0s;
+  -o-transition: -o-transform 0.15s ease 0s;
+  transition: transform 0.15s ease 0s;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  height: 100%;
+  width: 100%;
+}
+
+.profileVideo-gallery .justified-gallery > a:hover > img {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.profileVideo-gallery .justified-gallery > a:hover .profileVideo-gallery-poster > img {
+  opacity: 1;
+}
+
+.profileVideo-gallery .justified-gallery > a .profileVideo-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: background-color 0.15s ease 0s;
+  -o-transition: background-color 0.15s ease 0s;
+  transition: background-color 0.15s ease 0s;
+}
+
+.profileVideo-gallery .justified-gallery > a .profileVideo-gallery-poster > img {
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: opacity 0.3s ease 0s;
+  -o-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+
+.profileVideo-gallery .justified-gallery > a:hover .profileVideo-gallery-poster {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileVideo-gallery .video .profileVideo-gallery-poster img {
+  height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
+  opacity: 1;
+  width: 48px;
+}
+
+.profileVideo-gallery.dark > ul > li a {
+  border: 3px solid #04070a;
+}*/
+/*Video Gallary End*/
+
+.PartyCard{
+  padding: 0;
+}

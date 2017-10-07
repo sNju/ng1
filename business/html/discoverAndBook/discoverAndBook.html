@@ -1,0 +1,173 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+    <img class="preloader" src="images/preloader-img.png">
+    <span class="preloader-text"></span>
+</div>
+
+<div ng-hide="show&&!loading" class="main-content-header" has-filter-toggle >
+    <div class="filters clearfix">
+        <button class="filters-toggle-btn" type="button"><i class="fa fa-filter"></i></button>
+        
+        <form action="" class="filters-frm dnb-filters-frm" method="post" name="dnbFiltersFrm">
+            <div class="search-by-name form-group">
+                <label class="sr-only">Search By Name</label>
+              <!--   <md-autocomplete placeholder="Search By Name" md-min-length=0 md-autoselect=true md-delay=0 md-selected-item="keyword" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.display">
+                    <md-item-template>
+                        <span md-highlight-text="searchText">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No matches found.
+                    </md-not-found>
+                </md-autocomplete> -->
+                <input class="form-control" type="text" name="" placeholder="Search By Name" ng-model="keyword.value">
+            </div>
+            <!-- 
+            <div class="date-range-picker form-group combined-form-group clearfix">
+                <label class="sr-only">Search By Date Range</label>
+                
+                <div class="input-group from-date-picker">
+                    <adm-dtp full-data="fromdate_detail" ng-model='fromdate' options="{placeholder:'Select Date'}">
+                      <input type="text" class="form-control" ng-model='fromdate' dtp-input placeholder="From Date" />
+                    </adm-dtp>
+                </div> 
+                <div class="input-group to-date-picker">  
+                    <adm-dtp  mindate="{{fromdate_detail.unix}}" ng-model='todate' options="{placeholder:'Select Date'}">
+                        <input type="text" class="form-control" ng-model='todate' dtp-input placeholder="To Date" />
+                    </adm-dtp>
+                </div>
+            </div>
+
+            <div class="by-price-range form-group price-range">
+                <div range-slider min="0" max="5000" model-min="price.min" model-max="price.max"></div>
+            </div>
+        -->
+        <div class="by-location form-group">
+            <label class="sr-only">Search By Location</label>
+            <input ng-model="location" id="txtlocation" class="form-control" id="" name="" type="text" placeholder="By Location">
+        </div>
+
+        <div class="dnb-filter-radio-toggle radio-toggle-form-group form-group">
+            <div class="radio-toggle-wrap" ng-class="isNearYou=='near'?'near':'recommended'">
+                <div class="clearfix">
+                    <div class="radio active">
+                        <label>
+                            <input type="radio" ng-model="isNearYou" name="optionsRadios" ng-change="radioValue('recommended')" id="optionsRadios1" value="recommended" checked>
+                            Recommended
+                        </label>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="isNearYou" name="optionsRadios" id="optionsRadios2" ng-change="radioValue('near')" value="near">
+                            Near You
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-primary-wrap form-group">
+            <button class="btn btn-primary call-to-action" ng-click="filterClick(fromdate,todate,keyword.value)" type="button">Apply Filter</button>
+        </div>
+<!-- <label ng-bind="todate"></label>
+<label ng-bind="fromdate"></label>
+<label ng-bind="keyword.value"></label> -->
+
+</form>
+</div>
+</div>
+
+<div class="container-fluid max-width">
+
+    <ul class="gp-cards-wrapper responsiveColumnLayout clearfix">
+        <discover-and-book-gp-card profile-obj="card" ng-repeat="card in cards"></discover-and-book-gp-card>
+        <!-- <upgrade-plan></upgrade-plan> -->
+    </ul><!-- /.card-wrapper -->
+</div>
+
+
+<!-- Show Interest Modal -->
+<div close-modal-directive class="modal fade" id="showInterestModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="showInterest">Show Interest</h4>
+            </div>
+            
+            <div class="modal-body">
+                <div class="interested-in">
+                    <a href="http://www.goparties.com/#/profile/{{profileObj.id}}" target="_blank" class="small-btn" data-id="{{profileObj.id}}">View Profile</a>    
+                    <div class="gp-user-profile-table">
+                        <div class="gp-user-pic-table-cell"> 
+                            <img alt="" src="{{profileObj.profilepic}}">
+                        </div>
+                        <div class="gp-user-info-table-cell">
+                            <h4>{{profileObj.name}}</h4>
+                            <p>{{profileObj.profiletype}}</p>
+                        </div>    
+                    </div>
+                </div> 
+
+                <div class="view-user-availability">
+
+                    <div class="user-availability-wrap">
+
+<!--                         <div class="user-availability-header">
+                            <div class="availability">Availability</div>
+                            <div class="price-range">Price Range</div>
+
+                            <a ng-click="showAvailabiltyToggle()" class="view-all-btn" href="#" role="button"><i ng-class="availCount==2?'fa-angle-down':'fa-angle-up'" class="fa"></i></a>
+                        </div>
+                    -->
+                    <ul class="user-availability-list example-animate-container">
+                        <li ng-show="{{$index<availCount}}"  ng-repeat="avail in availability track by $index" class="animate-repeat">
+                            <div class="availability">{{avail.startdate|timeStamptoProperDate}} -- {{avail.enddate|timeStamptoProperDate}}<!-- 12 Jul, 2016 - 18 Jul, 2016 --></div>
+                            <div class="price-range">${{avail.minprice}} - ${{avail.maxprice}}</div>
+                        </li>
+                    </ul>    
+                </div>    
+            </div>
+
+            <div class="preferred-time-slot">
+                <form action="" method="post" name="showIntersetForm">
+                    <fieldset>
+                        <h4 class="fieldset-legend">Preferred Time Slot</h4>
+
+                        <div class="date-range-picker form-group combined-form-group clearfix">
+                            <label class="sr-only">Preferred Date Range</label>
+                            <div class="input-group from-date-picker">
+                                <adm-dtp mindate="{{minfromdate}}" full-data="fromdate_detail" ng-model='interest.fromDate' options="{format: 'DD/MM/YYYY',calType:'gregorian'}">
+                                    <!-- <span class="input-group-addon" id="from-date"><i class="fa fa-calendar-o"></i></span> -->
+                                    <input ng-pattern="validate.date" name="fromDate" type="text" class="form-control" ng-model='interest.fromDate' dtp-input placeholder="From Date" required/>
+                                    <span class="invalidText" ng-show="(showIntersetForm.fromDate.$invalid && showIntersetForm.fromDate.$dirty)||(isSubmit==true && showIntersetForm.fromDate.$invalid)">*From Date Must be valid and mandatory</span>
+                                </adm-dtp>
+                            </div> 
+
+                            <div class="input-group to-date-picker">
+                                <adm-dtp  mindate="{{fromdate_detail.unix}}" ng-model='interest.toDate' options="{format: 'DD/MM/YYYY',calType:'gregorian'}">
+                                    <input ng-pattern="validate.date" name="toDate" type="text" class="form-control" ng-model='interest.toDate' dtp-input placeholder="To Date" required/>
+                                    <!-- <span class="input-group-addon input-group-addon-right" id="to-date"><i class="fa fa-calendar-o"></i></span> -->
+                                </adm-dtp>
+                                <span  class="invalidText" ng-show="(showIntersetForm.toDate.$invalid && showIntersetForm.toDate.$dirty)||(isSubmit==true && showIntersetForm.toDate.$invalid)">*From Date Must be valid and mandatory</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="sr-only">Add Personalised Message</label>
+                            <textarea name="txtMessage" ng-model="interest.txtMessage" class="form-control first-letter-caps" placeholder="Add Personalised Message" required></textarea>
+                            <span class="invalidText" ng-show="(showIntersetForm.txtMessage.$invalid && showIntersetForm.txtMessage.$dirty)||(isSubmit==true && showIntersetForm.txtMessage.$invalid)">*Message Field must be required</span>
+
+                        </div>
+                    </fieldset>
+
+                    <div class="align-center modal-btn-wrap">
+                        <button ng-click="showInterest(profileObj.id,showIntersetForm.$valid,showIntersetForm)" class="btn btn-lg btn-primary call-to-action" type="button">Show Interest</button>
+                    </div>
+                </form>    
+            </div>
+
+        </div>
+    </div>
+</div>
+</div><!-- /#showInterestModal -->

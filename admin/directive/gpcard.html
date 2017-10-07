@@ -1,0 +1,16 @@
+  <li class="details-list col-lg-3 col-md-3 col-sm-4 col-xs-12">
+    <div class="gpa-card gp-party-card">
+      <div class="card-figure" style="background-image: url({{party.banner}});">
+      </div>
+      <div class="card-title">
+        {{party.title}}{{party.name}}
+      </div>
+      <div class="card-detail-section">
+        <p class="card-types">{{party.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>                                  
+        <p class="card-types location">{{party.address}}</p>
+      </div>
+      <div class="name-and-status" ng-click="removeparty(parties.party,$index)">
+        Remove
+      </div>                              
+    </div>
+  </li>

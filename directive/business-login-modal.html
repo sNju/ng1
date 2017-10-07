@@ -1,0 +1,112 @@
+ <!-- business login popup -->
+<div login-directive class="modal fade business-login-modal" id="" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div ng-show="state=='login'" class="modal-content" id="#businessLogin">
+      <div class="modal-header">
+        <button type="button" class="close"  data-dismiss="modal" ><i class="fa fa-close"></i></button>
+        <h4 class="modal-title">Business Login</h4>
+      </div>
+      <div class="modal-body" ng-form="loginform">
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">Your Email:</label>
+          <input name="email" ng-model="email" type="email" class="form-control" placeholder="Enter EmailId" required>
+          <span  class="invalidText" ng-show="(loginform.email.$invalid&&loginform.email.$dirty)||(isloginClick==true && loginform.email.$invalid)">*Please Enter Valid Email ID</span>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">Password:</label>
+          <input name="password" ng-model="password" type="password" class="form-control" placeholder="Your Password" required>
+          <span  class="invalidText" ng-show="(loginform.password.$invalid&&loginform.password.$dirty)||(isloginClick==true && loginform.password.$invalid)">*Password field can't be empty</span>
+        </div>
+        <div class="form-group" align="center">
+          <label class="sr-only" for="Submit">Log-in:</label>
+          <button ng-click="login(email,password,loginform.$valid)" type="submit" class="btn btn-default gp-send-btn">Log-In</button>
+          <br><br>
+          <a href="#" ng-click="chnageState('forget')" id="forgotPasswordPopup">Forgot Password</a>
+        </div>
+      </div>
+    </div><!-- /.Business Login -->
+
+    <div ng-form="forgetform" ng-show="state=='forget'" class="modal-content" id="forgotPassword_popup">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Forgot Password</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">Email:</label>
+          <input name="emailforget" ng-model="email" type="email" class="form-control" placeholder="Your Email ID" required>
+          <span  class="invalidText" ng-show="(forgetform.emailforget.$invalid&&forgetform.emailforget.$dirty)||(isForgetClick==true && forgetform.emailforget.$invalid)">*Please Enter Valid Email ID</span>
+        </div>
+
+        <div class="form-group" align="center">
+          <label class="sr-only" for="Submit">Get Password:</label>
+          <button ng-click="forgetClick(email,'forgot',forgetform.$valid)" type="submit" class="btn btn-default gp-send-btn">Get Password</button>
+          <br><br>
+          <a href="#" ng-click="chnageState('login')" id="loginPopup">Log-In</a>
+        </div>
+      </div>
+    </div><!-- Forgot Password -->
+
+    <div ng-form="otpform" ng-show="state=='otp'" class="modal-content" id="otp_popup">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter OTP</h4>
+      </div>
+      <div class="modal-body">
+        <p class="align-center">Please Enter the OTP, just sent to your email and phone</p>
+
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">OTP:</label>
+          <input name="otp" ng-model="otp" type="password" class="form-control" placeholder="Enter OTP" required>
+          <span  class="invalidText" ng-show="(otpform.otp.$invalid&&otpform.otp.$dirty)||(isOtpClick==true && otpform.otp.$invalid)">*Please Enter valid Otp</span>
+        </div>
+
+        <div class="form-group" align="center">
+          <button type="submit" ng-click="verifyotp(otp,email,otpform.$valid)" class="btn btn-default gp-send-btn">Submit</button>
+          <br><br>
+          <a href="#" ng-click="forgetClick(email,'resend')">Resend OTP</a>
+        </div>
+      </div>
+    </div><!-- OTP PopUp -->
+
+    <div ng-form="passwordform" ng-show="state=='chnagepassword'" class="modal-content" id="change_pwd_popup">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change Password</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">New Password</label>
+          <input name="password" ng-model="password" type="password" class="form-control" placeholder="New Password" required>
+          <span  class="invalidText" ng-show="(passwordform.password.$invalid&&passwordform.password.$dirty)||(isPasswordClick==true && passwordform.password.$invalid)">*Password Field can't be empty</span>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="Your Name">Confirm New Password</label>
+          <input name="confirmpassword" ng-model="confirmpassword" type="password" class="form-control" placeholder="Confirm New Password" required>
+          <span  class="invalidText" ng-show="(passwordform.confirmpassword.$invalid&&passwordform.confirmpassword.$dirty)||(isPasswordClick==true && passwordform.confirmpassword.$invalid)">*Confirm Password field Can't be empty</span>
+        </div>
+        <span  class="invalidText" ng-show="(isPasswordClick==true)&&confirmpassword!=password">*Both field must be equal</span>
+        <div class="form-group" align="center">
+          <button type="submit" ng-click="submitChangePassword(otp,password,confirmpassword,email,passwordform.$valid)" class="btn btn-default gp-send-btn">Submit</button>
+        </div>
+      </div>
+    </div><!-- Change Password PopUp -->
+
+    <div ng-show="state=='success'" class="modal-content" id="success_msg_popup">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Password Changed Successfully</h4>
+      </div>
+      <div class="modal-body">
+        <p class="align-center">Your password has been successfully change.</p>
+        <br>
+
+        <div class="form-group" align="center">
+          <button ng-click="chnageState('login')" type="submit" class="btn btn-default gp-send-btn">Login</button>
+        </div>
+      </div>
+    </div><!-- Success Message PopUp -->
+  </div>
+</div><!-- /.business-login-modal -->

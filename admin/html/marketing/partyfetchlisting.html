@@ -1,0 +1,86 @@
+<div class="container-fluid" add-user-directive validation-directive>
+  <div class="sec-heading">
+    <h2 class="heading-type">Parties Fetch</h2>
+  </div>
+  <div class="card">
+    <div class="panel-header">
+      <h2 class="header-type">{{profile.name}}</h2>
+    </div>
+    <div class="body">
+      <form id="form_validation" name="fetchpartyform">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="form-line"  >
+                <div class="btn-fb" ng-show="!checkAccessToken()" ng-controller="authenticationCtrl">
+                  <button type="button" id="login" ng-click="login()" class="btn btn-fb bg-fb waves-effect">Login with Facebook</button>
+                </div>
+                <label>Facebook Access Token</label>
+                <input name="access_token" type="text" ng-model="filterobj.access_token" ng-value="getAccessToken()"  class="form-control"  placeholder="Either login with Facebook or write for Facebook Access Token" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">date_range</i>
+              </span>
+              <div class="form-line">
+                <input name="date" ng-model="filterobj.since" type="text" class="datepicker gpform" placeholder="Choose a Start date..." required>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <button type="submit" ng-click="getallparty(filterobj,fetchpartyform.$valid)" class="btn bg-dark btn-block waves-effect">Apply Filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="table-responsive">
+        <table class="table table-hover dashboard-task-infos">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Start Date Time</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  class="animate-repeat"  ng-repeat="party in parties">
+             <td>{{$index+1}}</td>
+             <td>{{party.title|limitTo:15}}</td>
+             <td>{{party.location|limitTo:20}}</td>
+             <td>{{party.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}
+             </td>
+
+             <td>
+               <button ng-click="saveparty(party)"  ng-class="(party.active!=true) ? 'bg-red':'bg-green'"  class="btn btn-xs bg-red waves-effect">{{party.active==true?'Saved':'Save'}}</button>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+       <div class="col-sm-5">
+        <div class="form-group">
+          <div class="form-line">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group">
+          <div class="form-line">
+            <button ng-show="parties.length>0" ng-click="saveallparty(0)" class="btn bg-teal btn-block waves-effect">Save All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- Close Card-->
+</div><!-- Close Container-->
+

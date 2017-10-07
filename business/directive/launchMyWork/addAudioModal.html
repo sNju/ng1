@@ -1,0 +1,53 @@
+<md-dialog class="gp-add-multimedia-dialog gp-modal-sm gp-basic-mdDialog" ng-cloak >
+
+
+    <md-dialog-content>
+
+        <button type="button" class="dialog-close-btn" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+        <div class="mdDialog-content-wrap">
+            
+            <ul class="add-multimedia-options">
+                <li class="add-multimedia-option from-soundCloud">
+                    <span class="option-icon">
+                        <i class="fa fa-soundcloud"></i>
+                    </span>
+
+                    <button ng-click="importFromSoundCloud()" class="btn btn-lg btn-primary call-to-action" type="button">
+                        Import From SoundCloud
+                    </button>
+                </li>
+
+                <li class="add-multimedia-option by-upload">
+                    <span class="option-icon">
+                        <i class="fa fa-desktop"></i>
+                    </span>
+
+                    <span class="gp-input-file" id="audioUpload">
+                        <span class="btn btn-lg btn-primary call-to-action btn-file">
+                            Add Audio
+                            <input type="file" accept="audio/*" file-upload>
+                        </span>
+                    </span> 
+                    
+                </li>
+            </ul>     
+        </div>
+
+
+
+
+        
+
+            
+            
+
+    </md-dialog-content>
+
+    <nav class="dialog-controls-nav hidden clearfix">
+        <a ng-click="prevObj()" class="dialog-control dialog-prev-control" href="#"><i class="fa fa-angle-left"></i></a>
+        <a ng-click="nextObj()" class="dialog-control dialog-next-control" href="#"><i class="fa fa-angle-right"></i></a>
+    </nav>
+
+
+</md-dialog>

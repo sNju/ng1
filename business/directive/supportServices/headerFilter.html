@@ -1,0 +1,69 @@
+<div class="main-content-header" has-filter-toggle >
+    <div class="filters service-provider-filters clearfix">
+        <button class="filters-toggle-btn" type="button"><i class="fa fa-filter"></i></button>
+
+        <form action="" class="filters-frm" method="post" name="dnbFiltersFrm">
+            <div class="search-by-name form-group">
+                <label class="sr-only">Search By Name</label>
+                <md-autocomplete placeholder="Search By Name" md-min-length=0 md-autoselect=true md-delay=0 md-selected-item="keyword" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.display">
+                    <md-item-template>
+                        <span md-highlight-text="searchText">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No matches found.
+                    </md-not-found>
+                </md-autocomplete>
+            </div>
+
+            <div class="by-location form-group">
+                <label class="sr-only">Search By Location</label>
+                <input ng-model="location" id="txtlocation" class="form-control" id="" name="" type="text" placeholder="By Location">
+            </div>
+
+            <div class="dnb-filter-radio-toggle radio-toggle-form-group form-group">
+                <div class="radio-toggle-wrap">
+                    <div class="clearfix">
+                        <div class="radio active">
+                            <label>
+                                <input type="radio" ng-model="isNearYou" name="optionsRadios" ng-change="radioValue('recommended')" id="optionsRadios1" value="recommended" checked>
+                                Recommended
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="isNearYou" name="optionsRadios" id="optionsRadios2" ng-change="radioValue('near')" value="near you">
+                                Near You
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="radio-toggle-form-group form-group hidden">
+                <div class="radio-toggle-wrap">
+                    <div class="clearfix">
+                        <div class="radio active">
+                            <label>
+                                <input type="radio" ng-model="isNearYou" name="optionsRadios" ng-change="radioValue('recommended')" id="optionsRadios1" value="recommended" checked>
+                                Recommended
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="isNearYou" name="optionsRadios" id="optionsRadios2" ng-change="radioValue('near')" value="near you">
+                                Near You
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary call-to-action apply-filter-btn" ng-click="filterClick()" type="button">Apply Filter</button>
+
+
+        </form>
+    </div>
+</div>
+

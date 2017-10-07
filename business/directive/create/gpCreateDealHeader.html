@@ -1,0 +1,16 @@
+	<div class="main-content-header page-header" has-search-filter-widget >
+		<nav id="secondary-navigation" class="secondary-navigation has-horizontal-scrollbar pull-left" has-custom-horizontal-scrollbar > 
+			<ul class="sub-menu clearfix">
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdStandAloneDeals/all'}"><a ui-sref="createdStandAloneDeals({category:'all'})">All <span class="badge">{{categoryObj.all}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdStandAloneDeals/live'}"><a ui-sref="createdStandAloneDeals({category:'live'})">Live <span class="badge">{{categoryObj.live}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdStandAloneDeals/archived'}"><a ui-sref="createdStandAloneDeals({category:'archived'})">Archived <span class="badge">{{categoryObj.archived}}</span></a></li>
+				<li ng-class="{active: activetab=='/createdStandAloneDeals/draft'}" class="nav-sub-tabs"><a ui-sref="createdStandAloneDeals({category:'draft'})">Drafts <span class="badge">{{categoryObj.draft}}</span></a></li>
+			</ul>
+		</nav>		
+		<form>
+			<button class="search-filter-toggle" role="button"><i class="fa fa-search"></i></button>
+			<div class="form-group view-specific-search">
+				<input ng-model="searchText" type="text" class="gp-search-control" placeholder="Search Deals">
+			</div>
+		</form>	
+	</div>

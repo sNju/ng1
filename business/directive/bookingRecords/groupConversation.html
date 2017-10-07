@@ -1,0 +1,16 @@
+	<li class="booking-conversation group-conversation">
+		<a ui-sref="broadcastgroup({id:party._key})" class="btn default-btn">Broadcast <span class="badge"></span></a>
+		<div class="media">
+			<div class="media-left">
+				<img alt="" class="hidden user-pic media-object" src="{{party.banner}}">
+				<img alt="" class="user-pic media-object" src="{{party.banner}}">
+			</div>
+			<div class="media-body">
+				<div class="media-header">
+					<time datetime="2016-01-05">{{party.startdate|timeStamptoProperDate}}</time>    
+					<h4 class="media-heading">{{party.title}} <span>{{type.type}}</span></h4>
+				</div>
+				<p class="conversation-text">{{party.description|limitTo:80}}{{party.description.length >80?'...': ''}}</p>
+			</div>
+		</div>
+	</li>

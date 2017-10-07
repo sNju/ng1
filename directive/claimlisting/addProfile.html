@@ -1,0 +1,36 @@
+
+            <section  class="register-with-goparties">
+                <div class="container-fluid min-width">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Your Name</label>
+                                <input ng-model="profileObj.name" class="form-control" type="text" placeholder="Your Name"> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Your Profile Type</label>
+                                <input ng-model="profileObj.profile_type" class="form-control" type="text" placeholder="Your Profile Type"> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Your Email</label>
+                                <input ng-model="profileObj.email" class="form-control" type="text" placeholder="Your Email"> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Your Number</label>
+                                <input ng-model="profileObj.phone" class="form-control" type="text" placeholder="Your Number"> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Website</label>
+                                <input ng-model="profileObj.website" class="form-control" type="text" placeholder="Website"> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="sr-only">Address</label>
+                                <input ng-model="profileObj.address" class="form-control" type="text" placeholder="Address"> 
+                            </div>
+                        </div>
+
+                        <button ng-click="addProfile(profileObj)" class="registration-action" type="button">Make me the part of GoParties</button>
+
+                    </form>
+                </div>
+            </section><!-- /.register-with-goparties -->

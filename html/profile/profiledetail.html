@@ -1,0 +1,137 @@
+<gpca-header date-value="false" search-strip="true"></gpca-header>
+<div id="main-container-profile" profile-fixed-el><!-- party-detail-directive -->
+	<!--Banner-->
+	<section id="top-banner">
+		<div class="partySpot-header">
+			<div ng-if="profile.profile_type=='Party Spot'" class="container-fluid partySpot-img" style="background-image: url('{{profile.cover}}');">
+			</div>
+			<!--Share Icon-->
+			<div class="container partySpot-content">
+				<div class="user-partySpot-details">
+					<h3 class="user-heading text-uppercase">{{profile.name}}</h3>
+					<div class="genreBtn">
+						<button type="button" class="btn" ng-repeat="genre in profile.genre.split(',')">{{genre}}</button>
+						<button type="button" class="btn" ng-repeat="theme in profile.theme.split(',')">{{theme}}</button>
+					</div>
+				</div>
+				<div class="rgt-share-icon">
+					<a href="http://www.facebook.com/sharer.php?u=http://www.goparties.com{{$root.getGpUrl(party)}}" target="_blank" class="shre-icon" data-toggle="tooltip" title="share on facebook" data-placement="top"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					<a href="https://twitter.com/intent/tweet?url=http://www.goparties.com{{$root.getGpUrl(party)}}" target="_blank" class="shre-icon" data-toggle="tooltip" title="share on Twitter" data-placement="top"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Content Area-->
+	<section class="contentSection">	
+		<div class="container">
+			<div class="row contentContainer">
+				<div class="col-lg-8 contentCol">
+					<!-- Parties Section -->
+					<section ng-show="live.length>0" class="row">
+						<div class="col-xs-12 upcomingParties">
+							<h4 class="download-heading">Upcoming Parties</h4>
+							<rdgp-card  class-name="card-load-half"  disable-obj="false" card-obj="{{obj}}" ng-repeat="obj in live track by $index"></rdgp-card>
+						</div>
+					</section>
+
+					<!--image gallery-->					
+					<section ng-show="works.length>0" image-gallery light-gallery-bind class="row">
+						<p class="download-heading">Media Gallery</p>
+						<div class="partySpot-gallery col-xs-12" ng-show="galleryshow">
+							<div id="mainGalleryContainer" class="profileImg-gallery">						
+								<div id="lightgallery" class="list-unstyled clearfix image-gallary-common">
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- image gallery End-->
+
+					<!-- Booking Section-->
+					<booking></booking>
+					<!-- Booking Section-->
+
+					<section class="row profileDescription">
+						<div class="col-xs-12">											
+							<h3 class="d-title" ng-show="profile.entry_terms!=undefined">Terms &amp; Condition</h3>
+							<p class="d-type" ng-show="profile.entry_terms!=undefined">{{profile.entry_terms}}</p>
+						</div>
+					</section>
+				</div>
+				<!--Aside Right section-->
+				<aside>
+					<div class="col-lg-4 rightColumn">
+						<h3 class="download-heading" ng-show="profile.description!=undefined && profile.description!=''">Description</h3>
+						<p class="profile-des-type" ng-show="profile.description!=undefined && profile.description!=''">
+							{{profile.description}}
+						</p>
+						<!-- Map Section -->
+						<section id="user-map" ng-show="(profile.profile_type=='DJ' || profile.profile_type=='Band' || profile.profile_type=='Artist')?false:true">
+							<div class="row">
+								<div class="col-xs-12 mapContainer">
+									<div class="map-container">
+										<div style="cursor:default !important;" class="map-control" id="map"></div>
+										<div class="address-panel">
+											<div ng-show="checkLocation(profile)" class="location">
+												<p>{{profile.location}}</p>
+											</div>
+											<p class="address">{{profile.address}}</p>
+										</div>
+									</div>
+								</div>
+							</div>			
+						</section>
+
+						<!-- Deal Section -->
+						<section ng-show="profile.hasdeal"  class="profileDeals">
+							<div class="row">
+								<div class="col-xs-12 dealsHeaderMain">
+									<div class="dealsHeader">										
+										<img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/icon_image/deal-icon.png">DEALS
+									</div>
+									<div class="dealsContent">
+										<p class="deal-title">{{profile.deal.title}}</p>
+										<p class="deal-type">{{profile.deal.description}}</p>
+										<p class="deal-date">offer valid till {{profile.deal.enddate|timeStamptoProperDate}}</p>
+									</div>
+								</div>
+							</div>
+						</section>					
+						<!-- Profile Detail section -->
+						<section id="profileDetail">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="profileCoverOuter">
+										<div class="profileDetailImg" style="background-image: url({{profile.profile_pic}});">
+										</div>
+										<div class="user-profile-img">
+											<img src="{{profile.profile_pic}}">
+										</div>
+									</div>
+									<div class="profileDetailText">
+										<p class="locate-type">
+											<span><i class="fa fa-map-marker locate" aria-hidden="true"></i></span>Venue
+										</p>
+										<p class="address-profile">{{profile.address}}</p>
+										<p class="profile-list-heading" ng-repeat="(key, value) in profile.booking.header">{{key}}: <span class="profile-result">{{value}}</span></p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<app-download-section></app-download-section>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+	<section ng-show="suggested.length>0" class="suggested">
+		<div class="container">
+			<div class="row">
+				<h4 class="section-title"><span class="bottomBorder">Suggested</span></h4>
+				<div class="col-lg-12 suggested-card">
+					<rdgp-card class-name="card-load-onethird" disable-obj="false" card-obj="{{obj}}" ng-repeat="obj in suggested track by $index"></rdgp-card>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

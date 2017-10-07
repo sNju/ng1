@@ -1,0 +1,97 @@
+<div class="gp-create-post-wrapper">
+	<div class="gp-create-post">
+		<textarea ng-model="postData.text" class="gp-create-post-control" placeholder="What's new with you"></textarea>
+
+		<ul class="added-media-listing" ng-show="isUpload">
+			<li>
+				<div class="thumb-wrap">
+					<img alt="" class="thumb" src="{{file.thumburl.length>0?file.thumburl:'images/launched-work/photos/thumbs/photo-thumb-1.jpg'}}">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+		</ul>	
+
+		<ul class="gp-create-post-options">
+			<li class="create-post-option">
+				<span class="gp-input-file">
+					<button class="btn-file">
+						<i class="fa fa-photo option-icon"></i> <span class="hidden-xs">Add Photo</span>
+						<input type="file" accept="image/*" file-upload-create-post>
+					</button>
+				</span>
+			</li>
+			<li class="create-post-option">
+				<span class="gp-input-file">
+					<button class="btn-file">
+						<i class="fa fa-music option-icon"></i> <span class="hidden-xs">Add Audio</span>
+						<input type="file" accept="audio/*" file-upload-create-post>
+					</button>
+				</span>
+			</li>
+			<li class="create-post-option">
+				<span class="gp-input-file">
+					<button class="btn-file">
+						<i class="fa fa-video-camera option-icon"></i> <span class="hidden-xs">Add Video</span>
+						<input type="file" accept="video/*" file-upload-create-post>
+					</button>
+				</span>
+			</li>
+		</ul>
+		<percentage-widget  ng-show="isUpload" percent={{file.progress}}></percentage-widget>	
+	</div><!-- /.gp-create-post -->
+	<!--
+	<div class="added-media-wrapper">
+		<ul class="added-media-listing">
+			<li>
+				<div class="thumb-wrap">
+					<img alt="" class="thumb" src="images/launched-work/photos/thumbs/photo-thumb-1.jpg">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+		
+			<li>
+				<div class="thumb-wrap">
+					<img alt="" class="thumb" src="images/launched-work/photos/thumbs/photo-thumb-1.jpg">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+			<li>
+				<div class="media-audio thumb-wrap">
+					<img alt="" class="thumb" src="images/launched-work/audio/posters/thumbs/audio-poster-thumb-2.jpg">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+			<li>
+				<div class="media-video thumb-wrap">
+					<img alt="" class="thumb" src="images/launched-work/audio/posters/thumbs/audio-poster-thumb-1.jpg">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+			<li>
+				<div class="media-video thumb-wrap">
+					<img alt="" class="thumb" src="images/launched-work/photos/thumbs/photo-thumb-1.jpg">
+					<button class="dismiss-thumb-btn" data-toggle="tooltip" title="Remove"><i class="fa fa-close"></i></button>
+				</div>
+			</li>
+		</ul>						
+	</div>
+-->
+</div><!-- /.gp-create-post-wrapper -->
+
+
+<div class="container-fluid min-width">
+
+	<div class="also-post-on-widget">
+		<h2 class="widget-heading">Also Post On</h2>
+		<social-media-button></social-media-button>
+	</div>
+
+	<div class="align-center cf-call-to-action">
+		<button ng-click="submitPost()" class="btn btn-lg btn-primary call-to-action" type="button">Publish</button>
+	</div>
+
+</div>
+
+
+
+

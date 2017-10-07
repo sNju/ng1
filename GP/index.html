@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <title>Claim your listing</title>
+    <link href="libcss/bootstrap.min.css" rel="stylesheet">
+    <link href="libcss/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="libcss/font-awesome.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <script type="text/javascript">
+          $(document).ready(function(){
+            $("#forgotPassword_popup").hide();
+              $("#forgotPasswordPopup").click(function(){
+                  $("#businessLogin_popup").hide();
+              $("#forgotPassword_popup").show();
+              });
+              $("#loginPopup").click(function(){
+                  $("#forgotPassword_popup").hide();
+               $("#businessLogin_popup").show();
+              });
+          });
+    </script>
+</head>
+<body>
+ <!-- business login popup -->
+  <div class="modal fade bd-example-modal-sm" id="businessLogin" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" id="businessLogin_popup">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Business Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+        <label class="sr-only" for="Your Name">Your Name:</label>
+        <input type="email" class="form-control" placeholder="Your User Name">
+        </div>
+
+        <div class="form-group">
+        <label class="sr-only" for="Your Name">Password:</label>
+        <input type="password" class="form-control" placeholder="Your Password">
+        </div>
+         <div class="form-group" align="center">
+        <label class="sr-only" for="Submit">Log-in:</label>
+        <button type="submit" class="btn btn-default gp-send-btn">Log-In</button>
+        <br><br>
+        <a href="#" id="forgotPasswordPopup">Forgot Password</a>
+        </div>
+
+        </div>
+       
+      </div>
+
+      <div class="modal-content" id="forgotPassword_popup">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password</h4>
+        </div>
+        <div class="modal-body">
+        
+        <div class="form-group">
+        <label class="sr-only" for="Your Name">Email:</label>
+        <input type="password" class="form-control" placeholder="Your Email ID">
+        </div>
+         <div class="form-group" align="center">
+        <label class="sr-only" for="Submit">Get Password:</label>
+        <button type="submit" class="btn btn-default gp-send-btn">Get Password</button>
+        <br><br>
+        <a href="#" id="loginPopup">Log-In</a>
+        </div>
+
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+<!-- popup end -->
+    <header id="site-header" class="clearfix">
+        <div class="container">       
+            <a class="logo" href="../home-static.html">
+                <img alt="GoParties - 1st Global Parties Network" class="hidden" src="images/go-parties-mobile-logo.png">
+                <img alt="GoParties - 1st Global Parties Network" class="gp-monogram" src="images/go-parties-logo.png">
+                <h1 class="gp-app-heading">
+                    GoParties
+                    <span>For Business</span>
+                </h1>
+            </a>                    
+                         
+		    <button class="sidebar-toggle-btn" role="button">
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+                <i class="gp gp-slick-line"></i>
+            </button>
+
+            <nav id="mySidenav" class="primary-navigation" role="navigation">
+                <ul class="main-menu clearfix">
+                  <li><a href="../home-static.html">Home</a></li>
+               </ul>
+            </nav>
+
+
+        </div>                                    
+    </header>
+    
+    <div class="content-wrapper">
+        <main class="main-content" role="main">
+
+            <figure class="claim-your-listing-banner"></figure>
+
+            <article class="gp-for-business-intro">
+                <div class="container-fluid min-width">
+                    <h1 class="intro-heading">Are You A <span>Party spot </span> ?</h1>
+                    <p>If you are a <span>PARTY SPOT</span>, then "GoParties For Business" has brought you 
+an one-stop tech solution to all the challenges being faced by you at the business-end in the 
+form of GoParties's Business Dashboard. We already have 5000+ Businesses using the GoParties's 
+Business Dashboard and taking competitive edge over their direct / indirect competitors. 
+Therefore, now it's your chance to turn the tables.</p>
+<p>To know the specific benefits of GoParties's Business Dashboard, please see below.</p>
+                </div>
+            </article>
+            <!--
+ 	   <div class="gpba-benefits">   
+                    <div class="container-fluid min-width">    
+                        <h2>Tab</h2>
+    					<p>What Are The Benefits Of GoParties Business Dashboard ?</p>
+                        <ul class="gpba-benefits-list">
+                            <li>
+                                <figure class="gpba-benefit">
+                                    <div class="img-wrap">
+                                        <img alt="" class="img-responsive" src="images/create-party-benefit.png">
+                                    </div>    
+                                    <figcaption>
+                                        <h3 class="gpba-benefit-title">Create Party & Deal</h3>
+                                    </figcaption>
+                                </figure>
+                            </li>        
+                            <li>
+                                <figure class="gpba-benefit">
+                                    <div class="img-wrap">
+                                        <img alt="" class="img-responsive" src="images/lmw-benefit.png">
+                                    </div>
+                                    <figcaption>
+                                        <h3 class="gpba-benefit-title">Launch Your Work</h3>
+                                    </figcaption>
+                                </figure>
+                            </li>        
+                            <li>
+                                <figure class="gpba-benefit">
+                                    <div class="img-wrap">
+                                        <img alt="" class="img-responsive" src="images/social-media-management.png">
+                                    </div>    
+                                    <figcaption>
+                                        <h3 class="gpba-benefit-title">Connect GP Business</h3>
+                                    </figcaption>
+                                </figure>
+                            </li>        
+                            <li>
+                                <figure class="gpba-benefit">
+                                    <div class="img-wrap">
+                                        <img alt="" class="img-responsive" src="images/user-chat-benefit.png">
+                                    </div>
+                                    <figcaption>
+                                        <h3 class="gpba-benefit-title">Any Business Clarification</h3>
+                                    </figcaption>
+                                </figure>
+                            </li>        
+    
+                        </ul>
+                    </div>
+                </div>
+-->
+    <!--
+	  <section class="cannot-find-yourself">
+                    <div class="container-fluid min-width">
+                        <h2>Get Started with US for Business</h2>
+                        <p>labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                       <div class="col-lg-4 col-md-4 col-md-4" align="center">
+                       <div class="round-social">
+                       <div class="social-cercial">
+                      
+                       </div>
+                       <p>labore et dolore magna aliqua. Ut ad minim veniam, quis  nostrud exercit.</p>
+                       </div>
+                       </div>
+                      
+                      <div class="col-lg-4 col-md-4 col-md-4" align="center">
+                       <div class="round-social">
+                       <div class="social-cercial">
+                       
+                       </div>
+                       <p>labore et dolore magna aliqua. Ut ad minim veniam, quis  nostrud exercit.</p>
+                       </div>
+                       </div>
+                       
+                       <div class="col-lg-4 col-md-4 col-md-4" align="center">
+                       <div class="round-social">
+                       <div class="social-cercial">
+                       
+                       </div>
+                       <p>labore et dolore magna aliqua. Ut ad minim veniam, quis  nostrud exercit.</p>
+                       </div>
+                       </div>
+                    </div>
+                </section><!-- /.cannot-find-yourself -->  
+                
+        <!--        
+            <div class="register-with-gp-options">
+				<div id="login_profile">
+                <section class="search-profile-wrapper">
+                    <div class="container-fluid min-width">
+                     <h2>Claim Your Business Dashboard</h2>
+                        <p>labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        
+                        <form>
+                            <div class="search-profile-box">
+                                <div class="form-group select-your-city">
+                                    <label class="sr-only">Your City</label>
+                                    <input class="form-control" type="text" placeholder="Your City">
+                                </div>
+                                
+                                <div class="form-group search-your-profile">
+                                    <label class="sr-only">Search Your Profile</label>
+                                    <input class="form-control" type="text" placeholder="Search Your Profile">
+                                </div>
+
+                                <button class="search-profile-btn" type="button">Search</button>
+                            </div>
+                        </form>            
+
+
+                        <div class="profile-listing-wrapper">
+                            <ul>
+                                <li>
+                                    <div class="profile clearfix">
+                                        
+                                        <div class="gp-user-profile-wrap">
+                                            <div class="gp-user-profile-table">
+                                                <div class="gp-user-pic-table-cell"> 
+                                                    <img alt="" class="gp-profile-pic" src="images/claim-profile-img.jpg">
+                                                </div>
+                                                <div class="gp-user-info-table-cell">
+                                                    <h4 class="profile-title">Profile Name</h4>
+                                                    <ul>
+                                                        <li>011 43561845, 011 43561846</li>
+                                                        <li>M-20, Outer Circle, Connaught Place, New Delhi</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>    
+
+                                        <button class="claim-profile-action">Claim Your Profile</button>
+
+                                    </div>    
+                                </li>
+
+                                <li>
+                                    <div class="profile clearfix">
+                                        <div class="gp-user-profile-wrap">
+                                            <div class="gp-user-profile-table">
+                                                <div class="gp-user-pic-table-cell"> 
+                                                    <img alt="" class="gp-profile-pic" src="images/claim-profile-img.jpg">
+                                                </div>
+                                                <div class="gp-user-info-table-cell">
+                                                    <h4 class="profile-title">Profile Name</h4>
+                                                    <ul>
+                                                        <li>011 43561845, 011 43561846</li>
+                                                        <li>M-20, Outer Circle, Connaught Place, New Delhi</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>    
+
+                                        <button class="claim-profile-action">Claim Your Profile</button>
+                                    </div>    
+                                </li>
+                            </ul>        
+                        </div>
+
+                    </div>
+
+                </section><!-- /.search-profile-wrapper -->
+                <!--
+               <section class="cannot-find-yourself">
+                    <div class="container-fluid min-width">
+                        <h2>Can't Find Yourself</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                        <button class="add-profile-action" id="add_profile_btn" type="button">Add Your Profile</button>
+                    </div>
+                </section><!-- /.cannot-find-yourself -->
+                </div>   
+                  <!--   
+                <div id="create_account">
+                <section class="register-with-goparties">
+                    <div class="container-fluid min-width">
+                     <h2>Add Your Profile</h2>
+                        <p>Please leave your contact details and we'll contact you sortly.</p>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Your Name</label>
+                                    <input class="form-control" type="text" placeholder="Your Name"> 
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Your Profile Type</label>
+                                    <input class="form-control" type="text" placeholder="Your Profile Type"> 
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Your Email</label>
+                                    <input class="form-control" type="text" placeholder="Your Email"> 
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Your Number</label>
+                                    <input class="form-control" type="text" placeholder="Your Number"> 
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Website</label>
+                                    <input class="form-control" type="text" placeholder="Website"> 
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="sr-only">Address</label>
+                                    <input class="form-control" type="text" placeholder="Address"> 
+                                </div>
+                              
+                            </div>
+
+                            <button class="registration-action" type="button">Make me the part of GoParties Businesses</button>
+
+                        </form>
+                    </div>
+                </section>
+                 <section class="cannot-find-yourself">
+                    <div class="container-fluid min-width">
+                        <h2>Already Have An Account</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+                        <button class="add-profile-action" type="button" id="claimlisting">Claim Your Listing</button>
+                    </div>
+                </section> 
+				</div>
+                -->
+                <section class="register-with-goparties">
+                    <div class="container-fluid min-width">
+                     <h2>Contact with Us</h2>
+                        <p>If you are a  <span class="app-base-color">Party Spot</span>, do drop in your contact detail below and our team will contact you to get the parties rolling. Welcome to Your Party App</p>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only">Your city</label>
+                                    <input class="form-control" type="text" placeholder="Your City"> 
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <label class="sr-only">Profile Name</label>
+                                    <input class="form-control" type="text" placeholder="Profile Name"> 
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only">Your Name</label>
+                                    <input class="form-control" type="text" placeholder="Your Name"> 
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only">Your Number</label>
+                                    <input class="form-control" type="text" placeholder="Your Number"> 
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only">Your Email</label>
+                                    <input class="form-control" type="text" placeholder="Your Email"> 
+                                </div>
+                              
+                            </div>
+
+                            <button class="registration-action" type="button">Contact Me Back</button>
+
+                        </form>
+                    </div>
+                </section><!-- /.register-with-goparties -->
+
+
+            </div><!-- /.register-with-gp-wrapper --> 
+
+
+            
+
+        </main><!-- /.main-content -->
+    </div>
+
+
+
+<!-- /.footer -->
+<div class="gp-footer-category">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>GoParties For Businesses</h3>
+                  <ul>
+                     <!-- <li><a href="#" data-toggle="modal" data-target="#businessLogin">Business Login</a></li> -->
+                      <li><a href="index.html">Tech Products For Party Spots</a></li>
+                     <li><a href="Bands.html">Tech Products For Bands</a></li>
+                     <li><a href="DJS.html">Tech Products For DJs</a></li>
+                     <li><a href="Artists.html">Tech Products For Artists</a></li>
+                     <li><a href="Concerts.html">Tech Products For Concerts</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>About US</h3>
+                  <ul>
+                     <li><a href="../faq.html">FAQ's</a></li>
+                     <li><a href="../Contact-Us.html">Contact Us</a></li>
+                     
+                    
+                  </ul>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>Our Policies</h3>
+                  <ul>
+                     <li><a href="../Privacy-Policy.html">Privacy Policy</a></li>
+                     <li><a href="../tnc.html">Terms &amp; Conditions</a></li>
+                      <!-- <li><a href="../SIte-Map.html">Sitemap</a></li> -->
+                  </ul>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <h3>Newsletter</h3>
+                  <input type="text" class="gpnews" placeholder="Enter Your Email For Newsletter">
+                  <button type="button" class="gp-send">SEND</button>
+                 
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8 col-md-8 col-sm-8">
+                  <p>Grooved in Silicon Valley While Partying</p>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center;">
+                   <ul class="pull-right social-nav">
+                        <li class="facebook-media"><a href="https://www.facebook.com/goparties/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter-media"><a href="https://twitter.com/go_parties" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus-media"><a href="https://plus.google.com/+Goparties" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="instagram-media"><a href="https://www.instagram.com/goparties/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+               </div>
+            </div>
+         </div>
+      </footer>
+    <!-- JavaScript
+    ================================================== -->
+    <script src="libjs/jquery.min.js"></script>
+
+    
+    <script src="libjs/bootstrap.min.js"></script>
+    <script src="libjs/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script type="text/javascript">
+$(document).ready(function(){
+	$("#create_account").hide();
+    $("#add_profile_btn").click(function(){
+        $("#login_profile").hide();
+		$("#create_account").show();
+    });
+    $("#claimlisting").click(function(){
+        $("#create_account").hide();
+		 $("#login_profile").show();
+    });
+});
+</script>
+    
+</body>
+</html>

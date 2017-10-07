@@ -1,0 +1,15 @@
+<li class="details-list col-lg-3 col-md-3 col-sm-4 col-xs-12"  ng-class="getclassnametype(obj.party!=undefined?'party':'profile')">
+    <div class="gpa-card gpa-card-booking">
+        <div class="card-title">
+            {{(obj.party!=undefined?obj.party.title:obj.profile.name)|limitTo:30}}
+        </div>
+        <div class="card-detail-section" ui-sref="/detail({type:obj.party!=undefined?'party':'profile',id:obj.party!=undefined?obj.party._key:obj.profile._key})">
+            <p class="card-types">{{(obj.party!=undefined?obj.party.startdate:obj.profile.createdat)|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>
+            <p class="card-value"><span>{{obj.headcount}}</span>/<span>{{obj.bookings}}</span></p>
+            <p class="card-types location">{{(obj.party!=undefined?obj.party.location:obj.profile.location)| limitTo:30}}</p>
+        </div>
+        <div ng-click="newBooking($event,obj)" class="name-and-status">
+          New Booking
+        </div>
+    </div>
+</li>

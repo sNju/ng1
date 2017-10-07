@@ -1,0 +1,22 @@
+<booking-records-header></booking-records-header>
+
+<div ng-show="isEmpty" class="booking-records-intro-banner intro-article-wrap">
+	<article class="intro-article gpca-theme">
+		<h2>Article Heading</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
+	</article>
+	<article class="intro-article gpba-theme">
+		<h2>Article Heading</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
+	</article>
+</div><!-- /.Booking Records Intro Banner -->
+
+
+<div class="container-fluid min-width">
+	<ul class="booking-conversation-list">
+		<booking-conversation data={{obj}}  ng-repeat="obj in bookingRequest | bookingStatusFilter:tabStatus|bookingRecordSearchFilter:searchText"></booking-conversation>
+	</ul>
+</div>
+
+<!-- First Time Screen for Booking Records -->
+

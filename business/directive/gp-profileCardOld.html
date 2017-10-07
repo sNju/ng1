@@ -1,0 +1,35 @@
+
+<li>
+    <div class="gp-card gp-profile-card">
+        <div class="gp-party gp-card-details">
+            <figure class="gp-card-figure gp-party-card-figure">
+                <a href="http://www.goparties.com/#/profile/{{id}}" target="_blank">
+                    <span>
+                        <div class="img-wrapper">
+                            <div class="data-img" style="background-image:url({{profilecover}})"></div>
+                        </div>
+                    </span>
+                </a>
+
+                <div class="crowd-quotient">2.5</div>
+
+                <div class="user-actions">
+                    <button class="user-bookmark-action call-of-action" role="button" ng-click="bookMarkToggle(isbookmarkedbyme,id,'profile')">
+                        <span><i ng-class="isbookmarkedbyme!='false'?'fa-bookmark':'fa-bookmark-o'" class="fa"></i> </span>
+                    </button>
+                </div>
+            </figure>    
+
+            <div class="details">
+                <h3 class="gp-card-heading">{{name}}</h3>
+                <p class="gp-user-type">
+                    <strong class="genre">{{profiletype}}</strong> 
+                    <!-- <span class="type">Band{{profiletype}}</span> -->
+                </p> 
+                <div class="gp-card-actions align-center clearfix">
+                    <button class="btn btn-lg btn-primary call-to-action" data-toggle="modal" data-target="#showInterestModal" ng-click="book(profiletype,username,profilepic,id)">Show Interest</button>
+                </div>  
+            </div>                        
+        </div>
+    </div>
+</li>

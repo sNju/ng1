@@ -1,0 +1,203 @@
+ <!--Booking Section Start-->
+ <section class="bookingSection" booking-directive>
+ 	<div class="row">
+ 		<div class="col-xs-12 buyTicket">
+ 			Buy Ticket
+ 			<span ng-hide="checkplanlength(dataobj.pricing)" class="pull-right">{{bookingobj.segment}}<i ng-if="bookingobj.segment!=undefined" class="fa fa-inr money-icon" aria-hidden="true"></i>{{bookingobj.price}}</span>
+ 		</div>
+ 	</div>
+ 	<div class="planSection row" ng-if="checkplanlength(dataobj.pricing)">
+ 		<div class="plan plan-heading">
+ 			<p>Choose a Plan That Suits You
+ 				<span class="bookingTooltip">
+ 					<i class="fa fa-info-circle" aria-hidden="true"></i>
+ 					<span class="bookingTooltipText">
+
+
+ 						<span class="basic">Gold: 
+ 							<span class="descriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+ 						</span></br>
+ 						<span class="basic">Silver: 
+ 							<span class="descriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+ 						</span></br>
+ 						<span class="basic">platinum: <span class="descriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+ 					</span></br>
+
+ 				</span>
+ 			</span>
+ 			<span class="basic">{{bookingobj.segment}}<i ng-if="bookingobj.segment!=undefined" class="fa fa-inr" aria-hidden="true"></i>{{bookingobj.price}}</span>
+ 			<a ng-if="checkplanlength(dataobj.pricing)" role="button" ng-click="$event.preventDefault()" role="button" href="#" ><span class="pull-right edit-plan"><i class="fa fa-pencil" aria-hidden="true"></i>Change Plan</span></a>
+ 		</p>
+ 	</div>
+ 	<div id="plancatagory">
+ 		<div class="col-xs-12 col-sm-6 plan" ng-if="checkplanlength(dataobj.pricing)" ng-click="choosesegment(obj,$index)" ng-repeat="obj in dataobj.pricing">
+ 			<div class="plan-container" ng-class="{'active':index==$index}" >
+ 				<p class="plan-content">{{obj.segment}}<span class="pull-right price"><i class="fa fa-inr"></i>{{obj.amount}}</span></p>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+
+ <div class="row formInputs" date-picker>
+ 	<div class="col-xs-12 ">
+ 			<!-- <p class="formText">Select Date/Time</p>
+ 			<form>
+ 				<div class="form-group fil-date row">
+ 					<div class="col-xs-4">
+ 						<i class="fa fa-calendar fil-cal-icon" aria-hidden="true"></i>
+ 						<input name="date" type="text" class="datepicker ng-pristine ng-valid ng-empty ng-touched" ng-model="filterobj.date" placeholder="Select Date & Time" aria-invalid="false" data-dtp="dtp_2vOz1">	
+ 					</div>						    		
+ 				</div>
+ 			</form> -->
+
+ 			<!-- <p class="formText">Select Number of People</p>
+ 			<div class="btn-group">
+ 				<button type="button" class="btn">1</button>
+ 				<button type="button" class="btn">2</button>
+ 				<button type="button" class="btn">3</button>
+ 				<button type="button" class="btn">4</button>
+ 				<button type="button" class="btn">5</button>
+ 				<button type="button" class="btn">6</button>
+ 				<button type="button" class="btn">7</button>
+ 				<button type="button" class="btn">8</button>
+ 				<button type="button" class="btn">9</button>
+ 				<button type="button" class="btn">10</button>
+ 				<button type="button" class="btn">11</button>
+ 				<button type="button" class="btn">12</button>
+ 				<button type="button" class="btn">13</button>
+ 				<button type="button" class="btn">14</button>
+ 				<button type="button" class="btn">15</button>
+ 			</div>
+ 		-->
+ 		<div class="preference">
+ 			<p class="formText" ng-if="dataobj.booking.tablebooking || dataobj.booking.guestlist">Select Your Preference</p>
+ 			<button ng-class="{'active':bookingobj.bookingtype=='tablebooking'}" ng-click="selectbookingtype(bookingobj,'tablebooking')" ng-if="dataobj.booking.tablebooking || dataobj.booking.guestlist" class="btn radio-btn">Book me a table</button>
+ 			<button ng-class="{'active':bookingobj.bookingtype=='guestlist'}" ng-click="selectbookingtype(bookingobj,'guestlist')"  ng-if="dataobj.booking.tablebooking || dataobj.booking.guestlist"  class="btn radio-btn">Get me on guest list</button>
+ 			<span ng-if="dataobj.booking.selectdate" class="date-ranger clearfix">
+ 				<input form="userinfo"  ng-model="bookingobj.selectdate" name="date" type="text" class="datetimepicker form-control" placeholder="Select Date" required/>
+ 			</span>
+ 		</div>
+ 		<div ng-if="plan.male.available==true||plan.couple.available==true||plan.female.available==true">
+ 			<p class="formText">Select Number of People</p>
+ 			<div class="row userInfoBooking">
+ 				<div ng-if="plan.male.available==true" class="col-xs-12 col-sm-4 userInfoCol">
+ 					<div class="col-xs-6 col-sm-6 userInfoMale">
+ 						<span>Male</span>
+ 					</div>
+ 					<div class="col-xs-6 col-sm-6 userInfoBtn">
+ 						<span>
+ 							<button ng-click="decrement('nop_male')" class="btn btn-default btn-form">
+ 								<i class="fa fa-minus edit-value"></i>
+ 							</button>
+ 							<span class="value-show">{{bookingobj.nop_male|formatbookingnumber}}</span>
+ 							<button ng-click="increment('nop_male')" class="btn btn-default btn-form">
+ 								<i class="fa fa-plus edit-value"></i>
+ 							</button>
+ 						</span>
+ 					</div>
+ 				</div>
+
+ 				<div ng-if="plan.female.available==true" class="col-xs-12 col-sm-4 userInfoCol">
+ 					<div class="col-xs-6 col-sm-6 userInfoFemale">
+ 						<span>Female</span>
+ 					</div>
+ 					<div class="col-xs-6 col-sm-6 userInfoBtn">
+ 						<span>
+ 							<button ng-click="decrement('nop_female')" class="btn btn-default btn-form">
+ 								<i class="fa fa-minus edit-value"></i>
+ 							</button>
+ 							<span class="value-show">{{bookingobj.nop_female|formatbookingnumber}}</span>
+ 							<button ng-click="increment('nop_female')" class="btn btn-default btn-form">
+ 								<i class="fa fa-plus edit-value"></i>
+ 							</button>
+ 						</span>
+ 					</div>
+ 				</div>
+ 				<div ng-if="plan.couple.available==true" class="col-xs-12 col-sm-4 userInfoCol">
+ 					<div class="col-xs-6 col-sm-6 userInfoCouple">
+ 						<span>Couple</span>
+ 					</div>
+ 					<div class="col-xs-6 col-sm-6 userInfoBtn">
+ 						<span>
+ 							<button ng-click="decrement('nop_couple')" class="btn btn-default btn-form">
+ 								<i class="fa fa-minus edit-value"></i>
+ 							</button>
+ 							<span class="value-show">{{bookingobj.nop_couple|formatbookingnumber}}</span>
+ 							<button ng-click="increment('nop_couple')" class="btn btn-default btn-form">
+ 								<i class="fa fa-plus edit-value"></i>
+ 							</button>
+ 						</span>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 		<p ng-if="$root.userinfo._key==undefined" class="formText">Select Your Contact Details</p>
+ 		<form id="userinfo" name="userinfo" ng-show="$root.userinfo._key==undefined">
+ 			<div class="form-group row">
+ 				<div class="col-xs-4 userInput">
+ 					<input ng-disabled="txtdisable" ng-model="bookingobj.details.name" class="form-control inputText" type="text" placeholder="Enter Your Name">
+ 				</div>
+ 				<div class="col-xs-4 userInput">
+ 					<input ng-disabled="txtdisable" ng-model="bookingobj.details.email" class="form-control inputText" type="email" placeholder="Enter Your Email Id *" required>
+ 				</div>
+ 				<div class="col-xs-4 userInput">
+ 					<input ng-disabled="txtdisable" ng-model="bookingobj.details.phone" class="form-control inputText" type="text" pattern="[0-9]{10,10}" placeholder="Enter Your Mobile No *" required>
+ 				</div>
+ 			</div>
+ 		</form>
+ 		<div class="payment-box">
+ 			<p>Mode Of Payments: 
+ 				<span ng-if="(dataobj.isonline==undefined || dataobj.isonline==false)&&dataobj.ispoa==true" class="venue">At Venue</span>
+ 				<span ng-if="dataobj.isonline==true && (dataobj.ispoa==false || dataobj.ispoa==undefined)" class="venue">Credit/Debit Card/ Netbanking</span>
+ 				<span class="venue" ng-if="dataobj.isonline==true&&dataobj.ispoa==true">
+ 					<select ng-model="bookingobj.mode">
+ 						<option value="poa">At Venue</option>
+ 						<option value="online">Credit/Debit Card Netbanking</option>
+ 					</select>
+ 				</span>
+ 			</span>
+ 		</p>
+ 		<p ng-if="dataobj.handling>0">Convienience Charge:<span class="price"><i class="fa fa-inr"></i>{{dataobj.handling}}</span></p>
+ 	</div>
+
+ </div>
+</div>
+<div class="row totalAmount">
+	<div class="col-xs-12 ">
+		<div>
+			<p>Total Amount<span class="price pull-right"><i class="fa fa-inr"></i>{{bookingobj.total}}</span></p>
+
+			<div class="pull-right">
+				<button type="submit" form="userinfo" ng-click="submitbooking(bookingobj,userinfo.$valid)" class="btn-proceed btn-block text-uppercase" ><span>Proceed</span></button>
+			</div>
+
+		</div>
+	</div>
+</div>
+</section>
+<!-- Booking Section Start End-->
+
+<!--Login Modal -->
+<div id="login-confirm" class="modal fade" role="dialog">
+	<div class="modal-dialog login-modal">
+		<!-- Verify Account-->
+		<form name="otpform" class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Please Verify your mobile Number</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form" name="verifyotp">
+					<p class="tost-msg">A text message with a verification code was just sent to your email id </p>
+					<div class="form-group">
+						<input ng-model="otp" name="otp" type="text" name="one time password"  placeholder="Enter OTP (One Time Password)" class="form-control" required>
+						<p ng-if="wrongcodesend" class="text-danger">Wrong Code Try Again</p>
+					</div>
+					<p ng-if="resendotp==true">OTP Sent Successfully</p>
+					<p class="otp"><a href="" ng-click="resend()">Resend <span class="text-uppercase">OTP</span></a></p>
+					<button type="submit" ng-click="verify(otp,otpform.$valid)" class="btn btn-login btn-block">Submit</button>
+				</form>
+			</div>
+		</form>
+	</div>
+</div>

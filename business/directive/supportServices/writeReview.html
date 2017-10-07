@@ -1,0 +1,24 @@
+<md-dialog id="add-new-card-dialog" class="gp-modal-sm add-new-card-dialog" ng-cloak layout="row">
+    <form>
+        <div class="gp-modal-header-sm">
+            <button type="button" class="close" ng-click="cancel('yes')" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+            <h2 class="modal-title">Write A Review</h2>
+        </div>
+        
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="write-a-review">
+                    <form>
+                        <rating-directive rating="{{profile.rating}}"></rating-directive> 
+                        <textarea class="form-control write-a-review-control" placeholder="Review Message"></textarea>
+
+                        <div class="align-center">
+                            <button class="btn btn-lg btn-primary call-to-action">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </md-dialog-content>
+
+    </form>
+</md-dialog>

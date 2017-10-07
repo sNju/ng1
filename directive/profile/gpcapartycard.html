@@ -1,0 +1,12 @@
+  
+<div class="gpca-card gpca-party-card ">
+    <a ui-sref="partydetail({id:party._key})" class="card-figure" style="background-image:url('{{party.banner}}');">
+        <span class="distance">{{distanceCalculate(party.latitude,party.longitude)}}</span>
+        <span class="crowd-quotient">{{party.crowd_quotient==undefined?0:party.crowd_quotient}}</span>
+    </a>
+    <div class="card-details">
+        <h3 class="card-title party-title">{{party.title}}</h3>
+        <p class="card-date-time party-time">{{getRemainTime(party.startdate)}}</p>
+        <button data-toggle="modal" data-target="#gpAppModal" class="btn call-of-action" type="button">Book</button>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<aside id="leftsidebar"  class="sidebar">
+    <div class="user-info">
+        <div class="image">
+            <img src="{{$root.userinfo.profile_pic}}" width="48" height="48" alt="User" />
+        </div>
+        <div class="info-container">
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$root.userinfo.name}}</div>
+            <div class="email">{{$root.userinfo.email}}</div>
+            <div class="btn-group user-helper-dropdown">
+                <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                <ul  class="dropdown-menu login-panel pull-right">
+                    <li ng-click="signout()"><a href="javascript:void(0);" class="LeftNav"><i class="material-icons logout">input</i>Sign Out</a></li>
+                    <li><a ui-sref="/changepassword" class="leftNav"><i class="material-icons logout">lock_outline</i>Change Password</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- <div class="info-container">
+            <div class="name" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">Ravi Kumar Guru</div>
+            <div class="email">raviguruiitr@gmail.com</div>
+            <div class="btn-group user-helper-dropdown">
+                <i class="material-icons" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                <ul ng-click="signout()" class="dropdown-menu pull-right">
+                    <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="signout-panel">
+            Sign Out
+        </div>-->
+    </div>
+    <!-- #User Info -->
+    <!-- Menu -->
+    <div class="menu">
+        <ul class="list">
+         <div ng-if="userinfo.role=='admin'" ng-include="'directive/admin.html'" scope="" onload=""></div>
+         <div ng-if="userinfo.role=='admin'||userinfo.role=='marketing'" ng-include="'directive/marketing.html'" scope="" onload=""></div>
+         <div ng-if="userinfo.role=='admin'||userinfo.role=='sales'" ng-include="'directive/sales.html'" scope="" onload=""></div>
+         <div ng-if="userinfo.role=='admin'||userinfo.role=='finance'" ng-include="'directive/finance.html'" scope="" onload=""></div>
+         <div ng-if="userinfo.role=='business'" ng-include="'directive/business.html'" scope="" onload=""></div>
+          <!--  <li>
+            <a href="pages/changelogs.html">
+                <i class="material-icons">update</i>
+                <span>Changelogs</span>
+            </a>
+        </li> -->
+        <!-- <li class="header"></li>
+        <li class="header"></li>
+        <li class="header"></li>
+        <li class="header"></li>
+        <li class="header"></li>
+        <li class="header"></li> -->
+    </ul>
+</div>
+</aside> 

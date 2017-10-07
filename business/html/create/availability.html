@@ -1,0 +1,148 @@
+<div master-calendar-directive>
+    <div class="main-content-header page-header">
+     <h1 class="page-heading pull-left">Availability</h1>
+
+     <ul class="page-header-right-nav pull-right clearfix">
+        <li>
+            <button ng-click="getAvail()" data-toggle="modal" data-target="#manageAvailabilityModal" class="btn btn-lg btn-primary call-to-action" type="button"> 
+                <i class="gp-add-icon visible-xs"></i>
+                <span class="hidden-xs">Manage Availability</span>
+            </button>
+        </li>
+        <li>
+            <button data-toggle="modal" data-target="#insertAvailabilityModal" class="btn btn-lg btn-primary call-to-action" type="button"> 
+                <i class="gp-add-icon visible-xs"></i>
+                <span class="hidden-xs">Insert Availability</span>
+            </button>
+        </li>
+    </ul>
+
+
+</div>
+
+<div class="container-fluid create-container max-width">
+	<div id="calendar"></div> <!-- /.GP Availability Calendar -->	
+</div>
+
+
+<!-- Insert Availability Modal -->
+<div close-modal-directive class="modal fade" id="insertAvailabilityModal" tabindex="-1" role="dialog" aria-labelledby="insertAvailability">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="insertAvailability">{{isEdit==false?"Insert Availability":"Update Availability"}}</h4>
+            </div>
+            
+            <div class="modal-body">
+                <div class="preferred-time-slot">
+                    <form action="" method="post" name="availabilityForm">
+                        <fieldset style="margin-bottom:50px;">
+                            <h4 class="fieldset-legend">Availability Date Time</h4>
+
+                            <div class="date-range-picker form-group combined-form-group clearfix">
+                                <label class="sr-only">Preferred Date Range</label>
+                                <div class="input-group from-date-picker">
+                                    <adm-dtp mindate="{{minfromdate}}" full-data="startdate_detail"  ng-model='obj.startdate' options="{format: 'DD/MM/YYYY',calType:'gregorian'}">
+                                        <input  name="fromDate" ng-pattern="validate.date" type="text" class="form-control" ng-model='obj.startdate' dtp-input placeholder="Start Date Time" required/>
+                                        <span class="invalidText" ng-show="(availabilityForm.fromDate.$invalid && availabilityForm.fromDate.$dirty)||(isSubmit==true && availabilityForm.fromDate.$invalid)">*From Date Must be valid and mandatory</span>
+                                    </adm-dtp>
+                                </div> 
+
+                                <div class="input-group to-date-picker">
+                                    <adm-dtp mindate="{{startdate_detail.unix}}" ng-model='obj.enddate' options="{format: 'DD/MM/YYYY',calType:'gregorian'}">
+                                        <input ng-pattern="validate.date" name="toDate" type="text" class="form-control" ng-model='obj.enddate' dtp-input placeholder="End Date Time" required/>
+                                        <span class="invalidText" ng-show="(availabilityForm.toDate.$invalid && availabilityForm.toDate.$dirty)||(isSubmit==true && availabilityForm.toDate.$invalid)">*End Date Must be valid and mandatory</span>
+                                    </adm-dtp>
+
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <h4 class="fieldset-legend">Price Range</h4>
+                            <div class="by-price-range form-group price-range" style="margin-bottom:30px;">
+                                <div range-slider min="0" max="5000" model-min="obj.minprice" model-max="obj.maxprice"></div>
+                            </div>
+                            
+                        </fieldset>
+
+                        <div class="align-center modal-btn-wrap">
+                            <button ng-click="postAvailability(obj,availabilityForm.$valid,availabilityForm)" class="btn btn-lg btn-primary call-to-action" type="button">{{isEdit==false?"Add Availability":"Update Availability"}}</button>
+                        </div>
+                    </form>    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Manage Availability Modal -->
+<div class="modal fade" id="manageAvailabilityModal" tabindex="-1" role="dialog" aria-labelledby="manageAvailability">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="manageAvailability">Manage Availability</h4>
+            </div>    
+            
+            <div class="modal-body" style="padding:20px;">
+                <div class="preferred-time-slot gp-user-availabilities">
+                    <form action="" method="post" name="">
+                        <section class="view-user-availability gp-flex-table">
+
+                            <header class="gp-flex-thead hidden-xs">
+                                <h3 class="gp-flex-column-heading">Availability</h3>
+                                <h3 class="gp-flex-column-heading">Price Range</h3>
+                                <h3 class="gp-flex-column-heading gp-actions-heading">User Actions</h3>
+                            </header>
+
+                            <div class="gp-flex-row animate-repeat"  ng-repeat="availability in availabilities">
+                                <div class="gp-table-column gp-first-column">
+                                    <span class="item-title visible-xs">Availability</span>
+                                    <p>{{availability.startdate|timeStampToDate:dd-mm-yyyy:'-':0:true}} to {{availability.enddate|timeStampToDate:dd-mm-yyyy:'-':0:true}}</p>
+                                </div>
+                                <div class="gp-table-column">
+                                    <span class="item-title visible-xs">Price Range</span>
+                                    <p>INR {{availability.minprice}} - INR {{availability.maxprice}}</p>
+                                </div>
+                                <div class="gp-table-column gp-table-action-column">
+                                    <button ng-click="edit(availability)" class="small-btn" type="button">Edit</button>
+                                    <button ng-click="delete(availability._key,$event,$index)" class="small-btn" type="button">Delete</button>
+                                </div>
+                            </div>
+
+                            <!--
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4>Availability</h4>
+                                    <p>12 May, 2016 - 18 May, 2016</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Price Range</h4>
+                                    <p>INR 15000 - INR 30000</p>
+                                </div>
+                                <div class="col-sm-4" style="text-align:right">
+                                	<button class="small-btn" type="button">Edit</button>
+                                	<button class="small-btn" type="button">Delete</button>
+                                </div>
+                            </div>
+                        -->
+                    </section>
+
+                    
+                </form>    
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,393 @@
+<div class="main-content-header page-header">
+    <h1 class="page-heading">Create Party</h1>
+</div>
+
+<div class="container-fluid create-container max-width">
+
+    <!-- <aside class="create-frm-sidebar" create-form-sidebar > -->
+    <aside class="create-frm-sidebar">
+
+        <fieldset class="gp-fieldset clearfix">
+            <legend class="hidden-xs">Search Relevancy Bar</legend>
+            <percentage-widget percent={{percent}}></percentage-widget>
+            <!-- <label>progress={{fileprogress.loadingPercent}}</label> -->
+        </fieldset>
+
+        <div class="align-center cf-call-to-action">
+            <button ng-click="createparty.isactive=!createparty.isactive;publishParty(createpartyform)" class="btn btn-lg btn-primary call-to-action">Save As Draft</button>
+        </div>
+
+    </aside>
+
+    <div id="gp-create" class="create-frm-wrapper" has-scrolling-tabs>
+        <nav id="create-frm-toggle-nav" class="create-frm-toggle-nav">
+            <ul role="tablist">
+                <li class="active"><a class="create-frm-toggle" href="#" data-target="#essentials" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i> <span>Essentials</span></a></li>
+                <li><a class="create-frm-toggle" href="#" data-target="#commercials" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-cogs"></i> <span>Commercials</span></a></li>
+                <li><a class="create-frm-toggle" href="#" data-target="#contact-details" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-user"></i> <span>Contact Details</span></a></li>
+                <li><a class="create-frm-toggle" href="#" data-target="#increase-relevancy" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-line-chart"></i> <span>Increase Relevancy</span></a></li>
+            </ul>
+        </nav><!-- /.create-frm-toggle-nav -->
+
+        <form name="createpartyform">
+            <div class="create-frm-panel tab-content">
+
+                <div id="essentials" class="create-frm-content tab-pane fade in active" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Essentials</h2>
+                    </div>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="party-title">Party Title *</label>
+                        <input  name="title" ng-model="createparty.title" class="form-control" id="party-title" type="text" placeholder="" required>
+                        <span class="invalidText" ng-show="(createpartyform.title.$invalid && createpartyform.title.$dirty)||(issubmit==true && createpartyform.title.$invalid)">*Title is required</span>
+                    </div>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="party-location">Location *</label>
+                        <input  name="location" ng-model="createparty.location" google-location-autocomplete class ="form-control location" id="partyLocation" id="party-location" type="text" placeholder="" required>
+                        <span class="invalidText" ng-show="(createpartyform.location.$invalid && createpartyform.location.$dirty)||(issubmit==true && createpartyform.location.$invalid)">*Location required</span>
+                    </div>
+
+                    <figure class="gp-card-preview">
+                        <div class="previewed-details">    
+                            <div  class="preview-card-figure" style="background-image:url({{createparty.banner}});"></div>
+                            <div class="details"> 
+                                <span class="gp-input-file" data-toggle="tooltip" title="Insert Banner">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="fa fa-camera"></i> <input  accept="image/*"  formType="createparty" type="file" name="banner" id="partypic" title=" " cover-pic-upload>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <figcaption class="more-details">
+                            <div class="date-range-picker form-group gp-form-group combined-form-group">
+                                <label class="sr-only">Search By Date Range</label>
+                                <div class="clearfix">
+                                    <div  class="input-group from-date-picker">
+                                        <adm-dtp  mindate="{{minfromdate}}" full-data="startdate_detail" ng-model="createparty.startdate" options="{ format: 'DD/MM/YYYY hh:mm'}">
+                                            <input type="text" class="gp-input-control" ng-model="createparty.startdate" dtp-input placeholder="Start Date Time" />
+                                        </adm-dtp>
+                                    </div> 
+
+                                    <div class="input-group to-date-picker">
+                                        <adm-dtp mindate="{{startdate_detail.unix}}" ng-model="createparty.enddate" options="{ format: 'DD/MM/YYYY hh:mm'}">
+                                            <input type="text" class="gp-input-control" ng-model="createparty.enddate" dtp-input placeholder="End Date Time" />
+                                        </adm-dtp>
+                                    </div>
+                                </div>
+                            </div>
+                        </figcaption>
+                    </figure><!-- /.gp-card-preview -->
+                    <hr>
+
+                    <div class="form-group gp-form-group gp-checkbox-wrap">
+                        <div ng-class="{'checked':createparty.isconcert==true}" ng-init="createparty.isconcert=false"  ng-click="createparty.isconcert=!createparty.isconcert" class="gp-checkbox-control"><input class="gp-checkbox" type="checkbox"></div>
+                        <div class="gp-checkbox-label"><strong>Select If A Concert</strong> <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter Concert details. Ping us if you want us to handle your ticketing as well."></i></div>
+                    </div>  
+                    <hr>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="party-description">Description</label>
+                        <textarea   ng-model="createparty.description" class="form-control" id="party-description"></textarea>
+                    </div>            
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="party-terms">Terms*</label>
+                        <textarea  name="term" ng-model="createparty.entry_terms" id="party-terms" class="form-control" required></textarea>
+                        <span class="invalidText" ng-show="(createpartyform.term.$invalid && createpartyform.term.$dirty)||(issubmit==true && createpartyform.term.$invalid)">*T&C required</span>
+                    </div>
+
+                </div>
+
+                <div id="commercials" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Commercials</h2>
+                    </div>
+
+                    <section class="customize">
+                        <h3 class="section-heading">Type Of Class <i class="fa fa-question-circle" data-toggle="tooltip" title="Please select the amount & the number of seats you want to enter against each class"></i></h3>
+
+                        <div class="ticketing-class">
+                            <div class="class-type">
+                                <div class="class-title">VIP</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-pattern="validate.onlyDigit" name="vipseatrate" ng-model="createparty.pricing[4].amount" type="text" class="form-control" placeholder="Rupee/Coin" ng-required="createparty.pricing[4].seatlimit">
+
+                                    <span class="invalidText" ng-show="(createpartyform.vipseatrate.$invalid && createpartyform.vipseatrate.$dirty)||(issubmit==true && createpartyform.vipseatrate.$invalid)">*Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-pattern="validate.onlyDigit" name="vipseatlimit" ng-model="createparty.pricing[4].seatlimit" type="text" class="form-control" placeholder="Seat Limit" ng-required="createparty.pricing[4].amount">
+
+                                    <span class="invalidText" ng-show="(createpartyform.vipseatlimit.$invalid && createpartyform.vipseatlimit.$dirty)||(issubmit==true && createpartyform.vipseatlimit.$invalid)">*Conditional</span>
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Platinum</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-pattern="validate.onlyDigit" name="platinumseatlimit" ng-model="createparty.pricing[2].amount" type="text" class="form-control" placeholder="Rupee/Coin"  ng-required="createparty.pricing[2].seatlimit">
+
+                                    <span class="invalidText" ng-show="(createpartyform.platinumseatlimit.$invalid && createpartyform.platinumseatlimit.$dirty)||(issubmit==true && createpartyform.platinumseatlimit.$invalid)">*Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-pattern="validate.onlyDigit" name="platinimseatrate" ng-model="createparty.pricing[2].seatlimit" type="text" class="form-control" placeholder="Seat Limit" ng-required="createparty.pricing[2].amount">
+
+                                    <span class="invalidText" ng-show="(createpartyform.platinimseatrate.$invalid && createpartyform.platinimseatrate.$dirty)||(issubmit==true && createpartyform.platinimseatrate.$invalid)">*Required</span>
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Gold</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-pattern="validate.onlyDigit" name="goldseatrate" ng-model="createparty.pricing[1].amount" type="text" class="form-control" placeholder="Rupee/Coin" ng-required="createparty.pricing[1].seatlimit">
+
+                                    <span class="invalidText" ng-show="(createpartyform.goldseatrate.$invalid && createpartyform.goldseatrate.$dirty)||(issubmit==true && createpartyform.goldseatrate.$invalid)">*Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-pattern="validate.onlyDigit" name="goldseatlimit" ng-model="createparty.pricing[1].seatlimit" type="text" class="form-control" placeholder="Seat Limit" ng-required="createparty.pricing[1].amount">
+
+                                    <span class="invalidText" ng-show="(createpartyform.goldseatlimit.$invalid && createpartyform.goldseatlimit.$dirty)||(issubmit==true && createpartyform.goldseatlimit.$invalid)">*Required</span>
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Silver</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-pattern="validate.onlyDigit" name="silverseatrate" ng-model="createparty.pricing[3].amount" type="text" class="form-control" placeholder="Rupee/Coin" ng-required="createparty.pricing[3].seatlimit">
+
+                                    <span class="invalidText" ng-show="(createpartyform.silverseatrate.$invalid && createpartyform.silverseatrate.$dirty)||(issubmit==true && createpartyform.silverseatrate.$invalid)">*Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-pattern="validate.onlyDigit" name="silverseatlimit" ng-model="createparty.pricing[3].seatlimit" type="text" class="form-control" placeholder="Seat Limit" ng-required="createparty.pricing[3].amount">
+
+                                    <span class="invalidText" ng-show="(createpartyform.silverseatlimit.$invalid && createpartyform.silverseatlimit.$dirty)||(issubmit==true && createpartyform.silverseatlimit.$invalid)">*Required</span>
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Bronze</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-pattern="validate.onlyDigit" name="bronzeseatrate" ng-model="createparty.pricing[0].amount" type="text" class="form-control" placeholder="Rupee/Coin" ng-required="createparty.pricing[0].seatlimit">
+
+                                    <span  class="invalidText" ng-show="(createpartyform.bronzeseatrate.$invalid && createpartyform.bronzeseatrate.$dirty)||(issubmit==true && createpartyform.bronzeseatrate.$invalid)">*Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-pattern="validate.onlyDigit" name="bronzeseatlimit" ng-model="createparty.pricing[0].seatlimit" type="text" class="form-control" placeholder="Seat Limit" ng-required="createparty.pricing[0].amount">
+
+                                    <span class="invalidText" ng-show="(createpartyform.bronzeseatlimit.$invalid && createpartyform.bronzeseatlimit.$dirty)||(issubmit==true && createpartyform.bronzeseatlimit.$invalid)">*Required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <hr>
+
+                    <section class="customize">
+                        <h3 class="section-heading">Mode Of Payment <i class="fa fa-question-circle" data-toggle="tooltip" title="Select Payment Mode"></i></h3>
+
+                        <ul class="payment-options">
+                            <li> 
+                                <div ng-class="{'checked':createparty.isonline}" ng-init="createparty.isonline=false" ng-click="createparty.isonline=!createparty.isonline" class="pseudo-checkbox">Online <i class="fa fa-question-circle" data-toggle="tooltip" title="Pay Online"></i></div>
+                            </li>
+                            <li> 
+                                <div ng-class="{'checked':createparty.ispoa}" ng-init="createparty.ispoa=false" ng-click="createparty.ispoa=!createparty.ispoa" class="pseudo-checkbox">POA <i class="fa fa-question-circle" data-toggle="tooltip" title="Pay on Arrival at the Venue. Subject to terms and conditions."></i></div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <hr>
+
+                    <section class="customize"> 
+                        <div class="form-group gp-form-group gp-checkbox-wrap">
+                            <div ng-class="{'checked':createparty.instore==true}" ng-init="createparty.instore=false" ng-click="createparty.instore=!createparty.instore" class="gp-checkbox-control"><input class="gp-checkbox" type="checkbox"></div>
+                            <div class="gp-checkbox-label"><strong>Available / Sell On Party-Store</strong> <i class="fa fa-question-circle" data-toggle="tooltip" title="Upload your inventory to be sold on our exclusive Party Store."></i></div>
+                        </div>
+
+                        <div ng-hide="createparty.instore==false">
+                            <div class="class-type">
+                                <div class="class-title">VIP</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-model="createparty.pricing[4].amount"  type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-model="createparty.pricing[4].gpcoinslimit"  type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Platinum</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input  ng-model="createparty.pricing[2].amount"  type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-model="createparty.pricing[2].gpcoinslimit" type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Gold</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-model="createparty.pricing[1].amount" type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-model="createparty.pricing[1].gpcoinslimit" type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Silver</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-model="createparty.pricing[3].amount" type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-model="createparty.pricing[3].gpcoinslimit" type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Bronze</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input ng-model="createparty.pricing[0].amount" type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input ng-model="createparty.pricing[0].gpcoinslimit" type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+                        </div>  
+                    </section>
+                </div><!-- / #customization -->
+
+                <div id="contact-details" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Contact Details</h2>
+                    </div>
+
+                    <div class="contact-person">
+                        <!-- <div class="custom-label">Contact Person <i class="fa fa-question-circle" data-toggle="tooltip" title="Need explanatory text"></i> </div> -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-person">Name *</label>
+                                    <input name="name" ng-pattern="validate.onlyLetttrs" ng-model="createparty.contactname" class="form-control" id="contact-person" type="text" required>
+                                    <span class="invalidText" ng-show="(createpartyform.name.$invalid && createpartyform.name.$dirty)||(issubmit==true && createpartyform.name.$invalid)">*Name Must be required</span>
+                                </div>      
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-number">Contact Number *</label>
+                                    <input ng-pattern="validate.phone" name="phone" ng-model="createparty.contactphone" class="form-control" id="contact-number" type="text" required>
+                                    <span class="invalidText" ng-show="(createpartyform.phone.$invalid && createpartyform.phone.$dirty)||(issubmit==true && createpartyform.phone.$invalid)">*Contact number must be valid</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-email">Contact Email *</label>
+                                    <input ng-pattern="validate.email" name="email" ng-model="createparty.contactemail" class="form-control" id="contact-email" type="text" required>
+                                    <span class="invalidText" ng-show="(createpartyform.email.$invalid && createpartyform.email.$dirty)||(issubmit==true && createpartyform.email.$invalid)">*Email must be valid</span>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div><!-- / #key-info -->
+
+                <div id="increase-relevancy" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Increase Relevancy</h2>
+                    </div>
+                    <div class="form-group gp-form-group">
+                        <label class="" for="party-theme">Theme(s) <i class="fa fa-question-circle" data-toggle="tooltip" title="This means to signify the relevant theme of the Party / Concert (if any)"></i></label>
+
+                        <md-content class="autocomplete form-control" layout="column">
+                            <md-contact-chips
+                            ng-model="createparty.theme"
+                            md-contacts="searchTheme($query)"
+                            md-contact-name="name"
+                            md-contact-image="image"
+                            md-contact-email="email"
+                            md-require-match="true"
+                            md-highlight-flags="i"
+                            filter-selected="true">
+                        </md-contact-chips>
+                    </md-content>
+
+                </div>      
+
+                <div class="form-group gp-form-group">
+                    <label class="" for="party-artist-dj-band">Performing Artist(s)/DJ(s)/Band(s) <i class="fa fa-question-circle" data-toggle="tooltip" title="This means to signify the 'Performing Artists/DJs/Bands' playing at the Party / Concert (if any)"></i></label>
+                    <md-content class="autocomplete form-control" layout="column">
+                        <md-contact-chips
+                        ng-model="createparty.performing"
+                        ng-change="calculatePercentage('createparty',performing,createparty.performing[0])"
+                        md-contacts="searchProfile($query)"
+                        md-contact-name="name"
+                        md-contact-image="image"
+                        md-contact-email="email"
+                        md-require-match="true"
+                        md-highlight-flags="i"
+                        filter-selected="true" >
+                    </md-contact-chips>
+                </md-content>
+            </div>
+
+            <div class="form-group gp-form-group">
+                <label class="" for="party-genre">Genre(s) <i class="fa fa-question-circle" data-toggle="tooltip" title="This means to signify the relevant Genres of the Party / Concert (if any)"></i></label>
+                <!-- <input class="gp-input-control" id="party-genre" type="text" placeholder="Select Genre">-->
+                <md-content class="autocomplete form-control" layout="column">
+                    <md-contact-chips
+                    ng-model="createparty.genre"
+                    ng-change="calculatePercentage('createparty',genre,createparty.genre[0])"
+                    md-contacts="searchGenre($query)"
+                    md-contact-name="name"
+                    md-contact-image="image"
+                    md-contact-email="email"
+                    md-require-match="true"
+                    md-highlight-flags="i"
+                    filter-selected="true" >
+                </md-contact-chips>
+            </md-content>
+        </div>
+    </div><!-- / #increase-relevancy -->
+</div><!-- /.create-frm-content -->
+
+
+<div class="align-center cf-call-to-action">
+    <button ng-click="publishParty(createpartyform)" class="btn btn-lg btn-primary call-to-action">{{isedit==true?'Update Party':'Publish'}}</button>
+</div>
+
+
+
+
+
+</form>
+</div><!-- /.create-frm-wrapper -->
+</div>
+
+
+
+
+
+
+
+
+

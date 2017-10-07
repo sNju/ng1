@@ -1,0 +1,83 @@
+<div footer-directive>
+    <footer>
+        <section id="footer" class=""> 
+            <div class="footer-bg">
+                <div class="container-section">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">GoParties For Businesses</h3>
+                            <ul class="list-unstyled">
+                                <li class="loginmodal"><a href="#" data-toggle="modal" data-target="#businessLogin" stop-flickering>Business Login</a></li>
+                                <li><a ui-sref="partyspot">Are You A Party Spot?</a></li>
+                                <li><a ui-sref="band">Are You A Band?</a></li>
+                                <li><a ui-sref="dj">Are You A DJ?</a></li>
+                                <li><a ui-sref="artist">Are You An Artist?</a></li>
+                                <li><a ui-sref="concerts">Are You Concert?</a></li>
+                                <li><a ui-sref="checkstatus">Check Status</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">About US</h3>
+                            <ul class="list-unstyled">
+                                <li><a ui-sref="faq">FAQ's</a></li>
+                                <li><a ui-sref="contact">Contact Us</a></li>
+                                <li><a ui-sref="sendfeedback">Send Feedback</a></li>
+                                <li><a ui-sref="career">Career</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-lg-3 col-sm-4">
+                            <h3 class="footer-list-title text-uppercase">Our Policies</h3>
+                            <ul class="list-unstyled">
+                                <li><a ui-sref="privacyPolicy">Privacy Policy</a></li>
+                                <li><a ui-sref="tnc">Terms &amp; Conditions</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-8" ng-form="newslatterForm">
+                            <h3 class="footer-list-title text-uppercase">Newsletter</h3>
+                            <input name="email" ng-model="obj.params" type="email" class="form-control" placeholder="Enter Your Email Id For Newsletter" required>
+                            <span  class="invalidText" ng-show="(newslatterForm.email.$invalid&&newslatterForm.email.$dirty)||(isSubmit==true && newslatterForm.email.$invalid)">*Please Enter Valid Email ID</span>
+                            <button ng-click="submit(obj,newslatterForm.$valid)" type="button"  class="btn btn-news text-uppercase">SEND</button>
+                            <p><button  type="button"  class="btn btn-promotionalAlert" data-toggle="modal" data-target="#promotionalAlert">Promotional SMS Alert</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <div class="container-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="copyright-content">
+                                    <div class="copyright-details">Grooved in Silicon Valley While Partying</div>
+                                    <div class="pull-right socialmedia first">
+                                        <a href="https://www.facebook.com/goparties/" target="_blank" title="facebook"><i class="fa fa-icon fa-facebook"></i></a>
+                                        <a href="https://twitter.com/go_parties" target="_blank" title="Twitter"><i class="fa fa-icon fa-twitter"></i></a>
+                                        <a href="https://plus.google.com/+Goparties" target="_blank" title="Google Plus"><i class="fa fa-icon fa-google-plus"></i></a>
+                                        <a href="https://www.instagram.com/goparties/" target="_blank" title="Instagram"><i class="fa fa-icon fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- promotional alert popup start-->
+             <div class="modal fade" id="promotionalAlert" role="dialog">
+               <div class="modal-dialog">
+                     <div class="modal-content promotional-alert-content">
+                   <div class="modal-header modelHeader">
+                       <button type="button" class="close closeBtn" data-dismiss="modal">&times;</button>
+                       <h4 class="modal-title p-alert-title">Promotional SMS Alert</h4>
+                   </div>
+                       <div class="modal-body modelBody">                         <div class="form-group">
+                            <p class="text-center alertText">To be updated on the party<br/>scene please SMS<br>'<span class="gpText"><strong>GParty</strong></span>' to <span class="gpText"><strong>9891726565</strong></span></p>
+                        </div>                        </div>
+                 </div>
+                 
+               </div>
+             </div>
+           <!-- promotional alert popup end-->
+        </section>
+    </footer>
+</div>

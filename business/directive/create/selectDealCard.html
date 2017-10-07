@@ -1,0 +1,46 @@
+ <li>
+     <a ng-click="selectDeal(dealObj)" href="#">
+        <div class="gp-card gp-party-card">
+            <div class="gp-party gp-card-details">
+
+                <figure class="gp-party-card-figure" style="cursor:pointer">
+                    <span>
+                        <div class="img-wrapper">
+                            <div class="data-img" style="background-image:url({{dealObj.thumburl.length>0?dealObj.thumburl:'images/wiki-princess-nokia.jpg'}});"></div>
+                        </div>
+                    </span>
+
+                    <figcaption>
+                        <h3 class="gp-card-heading">{{dealObj.title}}</h3>
+                        <p>{{dealObj.locaiton}}</p>
+                    </figcaption>
+
+                    <div class="user-actions">
+                        <button class="user-actions-toggle" role="button">
+                            <span>
+                                <i class="gp gp-slick-line"></i>
+                                <i class="gp gp-slick-line"></i>
+                                <i class="gp gp-slick-line"></i>
+                            </span>
+                        </button>
+
+                        <div gp-media-player-pagination class="align-center user-action-options">
+                            <a ng-click="getDeal(dealObj._key)" class="user-action edit-deal-action"><i class="fa fa-pencil"></i>
+                                <span>Edit</span></a>
+                            </div>
+                        </div>
+                    </figure>                       
+
+                    <div class="gp-party-details clearfix">
+                        <time class="gp-party-date-time">
+                            <span class="gp-party-date"><i class="fa fa-calendar-o"></i><strong>{{(dealObj.startdate/1000)|timeStampToDate|dateFormat}}</strong></span>
+                            <span class="gp-party-time"><i class="fa fa-clock-o"></i><strong>{{(dealObj.startdate/1000)|timeStampToDate|timeFormat}}</strong></span>
+                        </time>
+
+                    </div>
+
+
+                </div>
+            </div><!-- /.gp-small-party-card -->    
+    </a>
+    </li>

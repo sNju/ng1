@@ -1,0 +1,34 @@
+  <form class="modal fade" id="clicktocall" name="clicktocallform">
+    <div class="modal-dialog request-box">
+      <div class="modal-content">
+        <div class="modal-header rheader img-responsive">
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body body-base img-responsive">
+          <div class="row body-content">
+            <div class="col-lg-11">
+              <div class="row">
+                <div class="col-lg-5 col-xs-5">
+                 <img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/mobile-view.jpg" class="img-responsive removeImage">
+               </div>
+               <div class="text-center col-lg-6 col-xs-6 increaseWidth">
+                <h1 class="r-heading">9711-971-244</h1>
+                <p class="r-type">We will make you shine</p>
+                <p class="text-base">or</p>
+                <form>
+                  <div class="form-group">
+                    <input ng-model="name" type="text" class="form-control" placeholder="enter your name" required>
+                  </div>
+                  <div class="form-group">
+                    <input pattern="^\d{10}" ng-model="phone" type="tel" class="form-control" placeholder="enter your phone no" required>
+                  </div>
+                  <button ng-click="submitquery(name,phone,clicktocallform.$valid)" class="btn btn-app btn-request btn-block text-uppercase" type="submit">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

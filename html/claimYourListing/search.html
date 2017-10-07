@@ -1,0 +1,114 @@
+<div class="content-wrapper">
+    <main class="main-content" role="main">
+
+        <figure class="claim-your-listing-banner"></figure>
+
+        <article class="gp-for-business-intro">
+            <div class="container-fluid min-width">
+                <h1 class="intro-heading"><span>GoParties</span> for Business</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+            </div>
+        </article>
+        <div class="register-with-gp-options">
+
+            <section ng-hide="isAddProfile" class="search-profile-wrapper">
+                <div class="container-fluid min-width">
+                    <form>
+                        <div class="search-profile-box">
+                            <div class="form-group select-your-city">
+                                <label class="sr-only">Your City</label>
+                                <input google-location-autocomplete class ="gp-input-control location" id="searchLocation" ng-model="location"  type="text" placeholder="Enter Location">
+                            </div>
+
+                            <div class="form-group search-your-profile">
+                                <label class="sr-only">Search Your Profile</label>
+                                <input ng-model="keyword" class="form-control" type="text" placeholder="Search Your Profile">
+                            </div>
+
+                            <button ng-click="getProfile(keyword)" class="search-profile-btn" type="button">Search</button>
+                        </div>
+                    </form>            
+
+
+                    <div class="profile-listing-wrapper">
+                        <ul>
+                         <claim-profile profile-obj="profile"  ng-repeat="profile in profiles"></claim-profile>
+                     </ul>        
+                 </div>
+
+             </div>
+
+         </section><!-- /.search-profile-wrapper -->
+
+         <section ng-hide="isAddProfile" class="cannot-find-yourself">
+            <div class="container-fluid min-width">
+                <h2>Can't Find Yourself</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                <button ng-click="addProfileClick()" class="add-profile-action" type="button">Add Your Profile</button>
+            </div>
+        </section><!-- /.cannot-find-yourself -->    
+
+
+        <add-profile ng-show="isAddProfile"></add-profile>
+
+    </div><!-- /.register-with-gp-wrapper --> 
+
+
+    <div class="gpba-benefits">   
+        <div class="container-fluid min-width">    
+            <h2>Benefits Of Business Profile</h2>
+
+            <ul class="gpba-benefits-list">
+                <li>
+                    <figure class="gpba-benefit">
+                        <div class="img-wrap">
+                            <img alt="" class="img-responsive" src="images/create-party-benefit.png">
+                        </div>    
+                        <figcaption>
+                            <h3 class="gpba-benefit-title">Create Party &amp;  Deal</h3>
+                        </figcaption>
+                    </figure>
+                </li>        
+                <li>
+                    <figure class="gpba-benefit">
+                        <div class="img-wrap">
+                            <img alt="" class="img-responsive" src="images/lmw-benefit.png">
+                        </div>
+                        <figcaption>
+                            <h3 class="gpba-benefit-title">Launch My Work</h3>
+                        </figcaption>
+                    </figure>
+                </li>        
+                <li>
+                    <figure class="gpba-benefit">
+                        <div class="img-wrap">
+                            <img alt="" class="img-responsive" src="images/social-media-management.png">
+                        </div>    
+                        <figcaption>
+                            <h3 class="gpba-benefit-title">Manage Social Media</h3>
+                        </figcaption>
+                    </figure>
+                </li>        
+                <li>
+                    <figure class="gpba-benefit">
+                        <div class="img-wrap">
+                            <img alt="" class="img-responsive" src="images/user-chat-benefit.png">
+                        </div>
+                        <figcaption>
+                            <h3 class="gpba-benefit-title">B2B &amp; B2C Chat</h3>
+                        </figcaption>
+                    </figure>
+                </li>        
+
+            </ul>
+        </div>
+    </div>
+
+</main><!-- /.main-content -->
+</div>
+
+<style>
+    md-autocomplete button {
+        display:none;
+    }
+</style>

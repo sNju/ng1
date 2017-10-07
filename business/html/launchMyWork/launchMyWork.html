@@ -1,0 +1,180 @@
+<div ng-show="!isSelect">
+	<div class="main-content-header page-header" >
+		<h1 class="page-heading">Launch My Work</h1>
+	</div>
+	<div class="container-fluid no-padding-xs launch-my-work has-bg-img">
+		<div class="container-fluid max-width" has-add-multimedia-dialog >
+			<div class="launch-my-work-option album-option">
+				<div>
+					<span class="has-gp-icon has-album-icon">
+						<i class="gp-icon gp-album-icon"></i>
+					</span>
+				</div>
+				<div class="option-details">
+					<p>Upload your work in the form of album</p>
+					
+					<a ui-sref="launchAlbum" class="btn btn-lg btn-primary call-to-action">
+						Add Album
+					</a>
+				</div>
+			</div>
+
+			<ul class="launch-my-work-options">
+				
+
+				<li class="launch-my-work-option">
+					<div>
+						<span class="has-gp-icon has-pseudo-icon has-audio-icon">
+							<!-- <i class="gp-icon gp-album-icon"></i> -->
+						</span>
+					</div>
+					<!-- <div class="option-details" id="audioUpload"> -->
+					<div class="option-details">
+
+						<button ng-click="addAudioModal($event)" class="btn btn-lg btn-primary call-to-action" type="button">
+							Add Audio
+						</button>
+							<!--
+							<span class="gp-input-file">
+								<button class="btn btn-lg btn-primary call-to-action btn-file">
+									Add Audio
+									<input type="file" accept="audio/*" file-upload>
+								</button>
+							</span>	
+						-->
+						<p class="note">* Upload MP3 File for Best results</p>
+					</div>
+				</li>
+
+				<li class="launch-my-work-option">
+					<div>
+						<span class="has-gp-icon has-pseudo-icon has-video-icon">
+							<!-- <i class="gp-icon gp-album-icon"></i> -->
+						</span>
+					</div>
+					<div class="option-details">
+						<!-- <p>Upload your work in the form of video</p> -->
+						<button ng-click="addVideoModal($event)" class="btn btn-lg btn-primary call-to-action" type="button">
+							Add Video
+						</button>
+
+							<!--
+							<span class="gp-input-file">
+								<button class="btn btn-lg btn-primary call-to-action btn-file">
+									Add Video
+									<input type="file" accept="video/*" file-upload>
+								</button>
+							</span>
+						-->
+
+						<p class="note">* Upload MP4 File for best results</p>
+					</div>
+				</li>
+
+				<li class="launch-my-work-option">
+					<div>
+						<span class="has-gp-icon has-pseudo-icon has-image-icon">
+							<!-- <i class="gp-icon gp-album-icon"></i> -->
+						</span>
+					</div>
+					<div class="option-details">
+						<!-- <p>Upload your work in the form of image</p> -->
+						<span class="gp-input-file">
+							<span class="btn btn-lg btn-primary call-to-action btn-file">
+								Add Image
+								<input type="file" accept="image/*" file-upload>
+							</span>
+						</span>
+
+						<p class="note">* Upload JPEG, JPG, PNG , GIF File for best results</p>
+
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- After file select then this content will show -->
+<div ng-show="isSelect">
+	<div class="main-content-header page-header">
+		<h1 class="page-heading">Launch Media</h1>
+	</div>
+	<div class="container-fluid no-padding-xs launch-my-work has-bg-img">
+		<div class="container-fluid upload-launching-media">
+			<form name="mediaform">
+				<figure class="launching-media">
+					<div class="media-wrap">
+						<span data-toggle="tooltip" data-placement="bottom" title="Update Track Poster">
+							<!-- <div class="data-audio-img data-img data-photo" style="background-image:url({{uploadContainer.thumburl}})"></div> -->
+							<div class="data-img" style="background-image:url({{uploadContainer.thumburl}})"></div>
+							<!-- <div class="data-img data-video-img" style="background-image:url({{uploadContainer.thumburl}})"></div> -->
+							<span ng-hide="uploadContainer.worktype=='image'" class="gp-input-file">
+								<button class="btn btn-primary btn-file">
+									<i class="fa fa-camera" id="thumburl"></i> <input type="file" name="banner" id="partyCover" accept="image/*" file-upload-in-server-and-link-emit>
+								</button>
+								<!-- <input tyep="file" file-upload-in-server-and-link-emit> -->
+								<!-- file-upload-in-server-and-link-emit -->
+							</span>
+						</span>
+					</div>
+					<figcaption>
+						<div class="form-group gp-form-group">
+							<label class="" for="audio-track-title">Title *</label>
+							<input name="title" class="form-control" id="audio-track-title" type="text" placeholder="" ng-model="uploadContainer.title" required>
+							<span class="invalidText" ng-show="(mediaform.title.$dirty&&mediaform.title.$invalid)||(mediaform.title.$invalid&&isSubmit)">*title must be required</span>
+						</div>
+
+						<div ng-hide="uploadContainer.worktype=='image'" class="form-group gp-form-group">
+							<label class="" for="audio-track-genre">Genre(s) </label>
+							<md-content class="form-control autocomplete" layout="column">
+								<md-contact-chips
+								ng-model="uploadContainer.genre"
+								md-min-length="1"
+								md-contacts="searchGenre($query)"
+								md-contact-name="name"
+								md-contact-image="image"
+								md-contact-email="email"
+								md-require-match="true"
+								md-highlight-flags="i"
+								filter-selected="true"
+								ng-required="true"
+								placeholder="">
+							</md-contact-chips>
+						</md-content>
+						
+					</div>
+					<div ng-hide="uploadContainer.worktype=='image'" class="form-group gp-form-group">
+						<label class="" for="audio-track-genre">Theme </label>
+						<md-content  class="form-control autocomplete" layout="column">
+							<md-contact-chips
+							ng-model="uploadContainer.theme"
+							md-contacts="searchTheme($query)"
+							md-contact-name="name"
+							md-contact-image="image"
+							md-contact-email="email"
+							md-require-match="true"
+							md-highlight-flags="i"
+							filter-selected="true"
+							placeholder="">
+						</md-contact-chips>
+					</md-content>
+				</div>
+				<div class="form-group gp-form-group">
+					<label class="" for="audio-track-description">Description </label>
+					<textarea class="form-control" id="audio-track-description" placeholder="" ng-model="uploadContainer.description"></textarea>
+				</div>
+			</figcaption>
+		</figure>
+		
+		<div  class="align-center cf-call-to-action">
+			<percentage-widget ng-hide="isEdit" percent={{uploadStatus.progress}}></percentage-widget>	
+			<!-- <label>{{uploadStatus.progress!='100'}}</label> -->
+			<button class="btn btn-lg btn-primary call-to-action"  ng-click="publishTrack(mediaform.$valid)">{{isEdit==true?'Update Media':'Publish Media'}}</button>
+		</div>
+
+	</form>
+</div>
+</div>
+

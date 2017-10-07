@@ -1,0 +1,39 @@
+<form id="chatForm">
+	<section class="main-left-content booking-chat-wrapper" booking-chat>
+		<header class="booking-details-header clearfix">
+			<ul class="booking-details hidden">
+				<li>
+					<h3>Preferred Time Slot</h3>
+					<p>{{bookingStatus.startdate|timeStamptoProperDate}} - {{bookingStatus.enddate|timeStamptoProperDate}}</p>
+				</li>
+			</ul>
+
+			<a ng-show="isviewProfileShow" class="btn btn-lg btn-primary call-to-action view-profile-action pull-right" href="http://www.goparties.com/#/profile/{{bookedUser._key}}" target="_blank">View Profile</a>
+
+			<div class="booking-for media">
+				<div class="media-left">
+					<img alt="" class="user-pic media-object" src={{bookedUser.profile_pic}}>
+				</div>
+				<div class="media-body">
+					<h2 class="media-heading">{{bookedUser.name}}</h2>
+					<p class="gp-user-type">{{bookedUser.profile_type}}</p>
+				</div>
+			</div>
+		</header>
+		<div class="booking-chat">
+			<div class="chat-history-window"  id="chatbox" scroll-glue-bottom>
+				<!-- <div class="chat-time-stamp"><span>12 Aug, 2016</span></div> -->
+				<chat-messages message-obj={{message}} ng-repeat="message in messages"></chat-messages>
+			</div>
+
+			<div class="new-chat clearfix">
+				<button class="btn default-btn pull-right" type="submit" id="btnsubmit"><i class="fa fa-send"></i></button>
+				<div class="chat-text-wrap">
+					<textarea class="" id="txtmessage"  style="resize: none;" placeholder="Enter your message"></textarea>
+				</div>
+			</div>
+
+
+		</div>
+	</section><!-- /.booking-chat-wrapper -->
+</form>

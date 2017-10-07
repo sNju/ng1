@@ -1,0 +1,125 @@
+<form method="POST" index-page-directive>
+    <div class="container-fluid">
+        <!-- Widgets -->
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+                <div class="info-box bg-pink hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">playlist_add_check</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL SENT</div>
+                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">125</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+                <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">help</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL READ</div>
+                        <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">257</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+                <div class="info-box bg-light-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">forum</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL SEEN</div>
+                        <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">243</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 dashBox">
+                <div class="info-box bg-orange hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">person_add</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">CLICKS</div>
+                        <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">1225</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Widgets -->
+        
+        <div class="row">
+            <!-- Task Info -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="sec-heading respNotif">
+                    <h2 class="heading-type">MARKETING NOTIFICATIONS</h2>
+                    <button ui-sref="/sendnotification" class="btn bg-pink pull-right waves-effect">Send Notification</button>
+                        <!-- <div class="pull-right">
+                            <div class="switch panel-switch-btn">
+                                <span class="m-r-10 font-12">REAL TIME</span>
+                                <label>OFF<input type="checkbox" id="realtime" checked=""><span class="lever switch-col-cyan"></span>ON</label>
+                            </div>
+                        </div> -->
+                </div>
+                <div class="card">
+                    <div class="panel-header">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12">
+                                <h2 class="header-type">Recent Notifications</h2>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <i class="material-icons">date_range</i>
+                                    </span>
+                                    <div class="form-line">
+                                        <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">date_range</i>
+                                    </span>
+                                    <div class="form-line">
+                                        <input name="enddate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date ">
+                                    </div>
+                                </div>
+                            </div>                
+                            <div class="col-sm-3 col-xs-12">
+                                <button type="submit" ng-click="getallnotification(filterobj)" class="btn bg-dark pull-right waves-effect">Apply Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover dashboard-task-infos">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Sent</th>
+                                        <th>Seen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="animate-repeat" ng-repeat="notification in notifications">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{notification.title}}</td>
+                                        <td><span ng-class="getclassname(notification.typ)" class="label">{{notification.type}}</span></td>
+                                        <td>{{notification.sent}}</td>
+                                        <td>{{notification.seen}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

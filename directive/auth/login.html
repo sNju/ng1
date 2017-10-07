@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Login With Mobile Number</h4>
+</div>
+<div class="modal-body">
+  <form class="form"  name="loginform">            
+    <div class="form-group">
+      <p  class="otp-text">Enter your mobile number here, we will send you one Time Password (OTP) to verify your mobile number for login</p>
+
+      <input  name="text" pattern="^[7-9][0-9]{9}$" ng-model="loginobj.phone" type="tel"  class="form-control" id="phone" placeholder="Enter Your Mobile Number" message="Phone number should be correct and manadatory"  required>
+    </div>
+    <p class="text-danger return-msg" style="display: none;">Please enter valid mobile number</p>
+
+    <p class="promo-text" ng-click="gotPromocode()" ng-if="!promoCodeStatus">Got a Promo Code?</p>
+    <div class="form-group promo-code-input" ng-if="promoCodeStatus">
+      <div class="promo-code-tooltip promo-hover">?
+        <span class="promo-code-tooltiptext">Enter your promo code to avail the benefits</span>
+      </div>
+      
+      <input  name="text" type="text" class="form-control" ng-model="loginobj.promocode" id="promo-code" placeholder="Enter promo code (Optional)">
+    </div>
+    <button class="btn btn-login btn-block" ng-class="{'btn-login-disable': loginform.$invalid}" ng-disabled="loginform.$invalid" ng-click="sendOtp(loginobj,loginform.$valid)" >Send OTP</button>
+  </form>
+</div>
+<div class="modal-footer">
+ <ul class="term-secton">
+  <li>By login, you agree to GoParties’s</li>
+  <li><span><a ng-href="/tnc" class="link-color hide-model" target="_blank">Terms of Service</a></span> and <span> <a ng-href="/privacyPolicy" class="link-color hide-model" target="_blank">Privacy Policy</a></span></li>
+</ul>
+</div>

@@ -1,0 +1,13 @@
+<div class="gp-card gp-profile-card">
+	<a href="/profile/{{profile._key}}">
+		<div class="card-figure" style="background-image: url('{{profile.profile_pic}}');">
+			<div class="distance text-uppercase">{{isdistance==true?distance(profile.latitude,profile.longitude):''}}</div>
+			<div class="crowd-rating" ng-class="{'cq-1':profile.crowd_quotient>=0&&profile.crowd_quotient<1,'cq-2':profile.crowd_quotient>=1&&profile.crowd_quotient<2,'cq-3':profile.crowd_quotient>=2&&profile.crowd_quotient<3,'cq-4':profile.crowd_quotient>=3&&profile.crowd_quotient<4,'cq-5':profile.crowd_quotient>=4&&profile.crowd_quotient<5}">{{profile.crowd_quotient}}</div>
+		</div>
+	</a>
+	<div class="card-details">
+		<a href="#"><h4 class="card-title">{{profile.name}}</h4></a>
+		<p  class="card-type">{{profile.profile_type}}</p>
+		<button data-toggle="modal" data-target="#gpAppModal" class="btn call-of-action text-uppercase">SHADOW</button>
+	</div>
+</div>

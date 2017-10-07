@@ -1,0 +1,58 @@
+.inner-list li {
+  font-size:1.6em!important;
+}
+
+.gp-privacy-policy{
+  padding: 50px 0px 50px 0px;
+  background-color: #fff;
+
+  & p{
+    text-align: justify;
+    color: #1d1d26;
+  }
+  & h3{
+    font-weight: normal;
+    font-size: 20px !important;
+    color: #1d1d26;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  & .policies-list .inner-list, .policies-list .inner-list ul li {
+    position: relative;
+    padding-left: 35px;
+}
+& .policies-list .inner-list {
+    margin-bottom: 25px;
+
+
+}
+& .policies-list .inner-list .list-point {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: normal;
+    font-size:1.6em;
+}
+& .policies-list .inner-list ul li {
+    margin-bottom: 10px;
+}
+&.policies-list .inner-list, .policies-list .inner-list ul li {
+    position: relative;
+    padding-left: 35px;
+    list-style: none;
+}
+
+.policies-list h3{
+  font-size: 22px;
+}
+}
+
+@media screen and (max-width: 480px) and (min-width: 300px) {
+.gp-privacy-policy .policies-list .inner-list, .gp-privacy-policy .policies-list .inner-list ul li {
+ padding-left: 0px;  
+}
+.gp-privacy-policy .policies-list .inner-list .list-point {
+   left: -35px;
+   }
+
+}

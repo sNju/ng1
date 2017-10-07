@@ -1,0 +1,90 @@
+	<article class="gp-for-business-intro setMargin">
+		<div class="container">
+			<h1 class="intro-heading"><span>VERIFY STATUS</span></h1>
+			<p>In order to verify the status of the Partymon presenting the booked-item, we request you to please punch in the relevant Booking ID below:</p>
+		</div>
+	</article>
+
+	<section class="check-status-frm">
+		<div class="container-fluid min-width">
+			<form>
+				<div class="booking-id-box">
+					<div class="form-group">
+						<label class="sr-only">Enter Your Booking ID</label>
+						<input ng-model="ticketid" class="form-control" type="text" placeholder="Enter Your Booking ID">
+					</div>
+				</div>
+			</form>  
+
+
+			<div  ng-hide="!show" class="booking-ticket-wrap animate-show">
+				<div class="ticket-header">
+					<img src="images/ticket-header-logo.png">
+					<img class="ticket-status-img" src="{{details.status=='cancelled'?'images/cancelled-ticket-status-img.png':
+					details.status=='confirmed'?'images/ticket-status-img.png':'images/pending-ticket-status-img.png'}}">
+				</div>
+
+				<div class="white-bg-box booking-short-details">
+
+					<h3 class="detail">
+						<span>Booking ID</span>
+						{{details.orderid}}
+					</h3>
+					<h3 class="detail no-of-tickets">
+						<span>Ticket(s)</span>
+						{{details.segment}}
+					</h3>
+
+				</div>
+
+				<div class="white-bg-box">
+					<p class="item-description">{{details.to.title}}</p>	
+					<ul class="more-details">
+						<li class="party-datetime">
+							<span class="item-label">Time</span> 
+							<span class="remaining-days"></span> {{details.to.startdate|timeStamptoProperDate}}
+						</li>
+						<li class="party-venue">
+							<span class="item-label">Venue</span>
+							{{details.to.locaiton}}               
+						</li>
+					</ul>
+				</div>
+
+				<div class="white-bg-box full-detail">
+					<div class="item">
+						<h3 class="item-title">Male</h3>
+						<p class="item-value">{{details.nop_male}} </p>
+					</div>
+					<div class="item">
+						<h3 class="item-title">Female</h3>
+						<p class="item-value">{{details.nop_female}}</p>
+					</div>
+					<div class="item">
+						<h3 class="item-title">Couple</h3>
+						<p class="item-value">{{details.nop_couple}}</p>
+					</div>
+					<hr>
+
+					<div class="item">
+						<h3 class="item-title">Sub-Total</h3>
+						<p class="item-value">{{details.subtotal}}</p>
+					</div>
+					<div class="item">
+						<h3 class="item-title">Internet Handing Fees</h3>
+						<p class="item-value">{{details.handling}}</p>
+					</div>
+					<div class="item">
+						<h3 class="item-title">Total Amount</h3>
+						<p class="item-value">{{details.amount}}</p>
+					</div>
+					<hr>
+					<div class="item">
+						<h3 class="item-title">Mode of Payment</h3>
+						<p class="item-value">{{details.mode}}</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>

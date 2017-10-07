@@ -1,0 +1,85 @@
+<form id="form_validation" name="partyform" validation-directive add-user-directive upload-click-directive>
+ <!-- add-user-directive -->
+ <div class="container-fluid">
+    <!-- Cover Image Upload -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div  class="cover-img" style="background-image:url('{{blogobj.cover}}');">
+          <span class="fb-content">Update Cover Picture</span>
+          <span class="img-upload">
+            <label for="update-img">
+              <i class="fa fa-camera camera-icon" aria-hidden="true"></i>
+            </label>
+            <input  image-upload='uploadCover' id="update-img" type="file"/>
+          </span>
+        </div><!-- Cover Image Panel End-->
+        
+        <!-- blog detail-->
+        <div class="card">
+          <div class="body">
+            <!-- Title-->
+            <div class="row">
+              <div class="col-sm-6 col-xs-12 col-md-6">
+                <label>Title:</label>
+                <div class="form-group" style="display:flex;justify-content:center;">
+                  <div class="form-line">
+                    <input ng-model="blogobj.title" type="text" class="form-control" placeholder="" required/>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Title End-->
+
+            <!--Description-->
+            <div class="row">
+               <div class="col-sm-12">
+                <label>Description</label>
+                <div class="form-group">
+                  <div class="form-line">
+                    <textarea ng-model="blogobj.description" name="description" rows="1" class="form-control no-resize" placeholder="Description..." maxlength="50" maxlength="100" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div><!--Description End-->
+
+            <div class="row">
+               <div class="col-sm-12">
+                 <label>Html</label>
+                 <div class="form-group">
+                  <div class="form-line">
+                    <textarea ng-model="blogobj.html" ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Galary-->
+            <div class="row">
+              <div class="col-sm-12">
+                <label>Update Galary Picture:</label>
+                <div class="form-inline">
+                  <div class="form-group">
+                    <input image-upload='uploadblogFiles' type="file" id="uploadFiles" multiple>
+                  </div>
+                </div>
+                <div ng-show="blogobj.gallery.length>0" class="col-xs-12 col-sm-12" id="uploadedImg">
+                  <div ng-repeat="data in blogobj.gallery" class="addPosition">
+                    <img class="col-sm-4 thumbnail img-responsive imgPath" ng-src="{{data.thumburl}}">
+                    <span ng-click="remove($index)" class="fa fa-times iconPosition"></span>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Galary End-->    
+            <hr>
+
+            <!-- Upload Blog-->
+            <div class="row">
+              <div class="col-sm-2 col-xs-4 col-md-2">
+                <button ng-class="(isedit==true) ? 'bg-red':'bg-base'" ng-click="submitblog(blogobj,true)" class="btn btn-lg waves-effect">{{isedit==true?'Update Blog':'Save Now'}}</button>
+              </div>
+            </div><!-- Upload Blog End-->
+          </div>
+        </div><!--Close Card-->
+      </div><!--Close Cols-->
+    </div><!--Close Row-->
+  </div><!--Close Container-->
+</form>

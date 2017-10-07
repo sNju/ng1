@@ -1,0 +1,63 @@
+<md-dialog class="gp-add-multimedia-dialog gp-modal-sm gp-basic-mdDialog" aria-label="Mango (Fruit)"  ng-cloak >
+
+
+    <md-dialog-content>
+
+        <button type="button" class="dialog-close-btn" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+        <div class="mdDialog-content-wrap">
+
+            <article class="hidden">
+                <div class="align-center gp-preloader">
+                    <img src="images/general-preloader.gif">
+                    <h4>Please Wait</h4>
+                </div>
+
+                <p>We're importing your videos from your <strong>Youtube</strong> Channel</p>
+            </article>
+            <!-- /. Preloader -->
+            
+            <ul class="add-multimedia-options">
+                <li class="add-multimedia-option from-youtube">
+                    <span class="option-icon">
+                        <i class="fa fa-youtube"></i>
+                    </span>
+
+                    <button ng-click="importFromYouTube()" class="btn btn-lg btn-primary call-to-action" type="button">
+                        Import From Youtube
+                    </button>
+                </li>
+
+                <li class="add-multimedia-option by-upload">
+                    <span class="option-icon">
+                        <i class="fa fa-desktop"></i>
+                    </span>
+
+                    <span class="gp-input-file">
+                        <span class="btn btn-lg btn-primary call-to-action btn-file">
+                            Add Video
+                            <input type="file" accept="video/*" file-upload>
+                        </span>
+                    </span> 
+                    
+                </li>
+            </ul>     
+        </div>
+
+
+
+
+        
+
+            
+            
+
+    </md-dialog-content>
+
+    <nav class="dialog-controls-nav hidden clearfix">
+        <a ng-click="prevObj()" class="dialog-control dialog-prev-control" href="#"><i class="fa fa-angle-left"></i></a>
+        <a ng-click="nextObj()" class="dialog-control dialog-next-control" href="#"><i class="fa fa-angle-right"></i></a>
+    </nav>
+
+
+</md-dialog>

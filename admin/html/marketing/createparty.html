@@ -1,0 +1,481 @@
+<form id="form_validation" name="partyform"  validate-date add-user-directive upload-click-directive>
+ <!-- add-user-directive -->
+ <div class="container-fluid">
+  <!-- Cover Image Upload -->
+
+  <div class="row clearfix">
+    <div  class="cover-img" style="background-image:url('{{partyobj.banner}}');">
+      <span class="fb-content">Update Cover Picture</span>
+      <span class="img-upload">
+        <label for="update-img">
+          <i class="fa fa-camera camera-icon" aria-hidden="true"></i>
+        </label>
+        <input id="update-img" type="file" image-upload='createparty'/>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- Cover Image Panel End-->
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="panel-header">
+        <h2 class="header-type">
+          Details of the Party
+        </h2>
+      </div>
+      <div class="body">
+        <p class="font-bold m-b-30 base-label">Some quick actions</p>
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 col-md-6">
+            <label>Title</label>
+            <div class="form-group">
+              <div class="form-line">
+                <input name="title" ng-model="partyobj.title" type="text" class="form-control" placeholder="Title" required/>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12 col-md-6">
+            <label>Location</label>
+            <div class="form-group">
+              <div class="form-line">
+                <input name="location" id="txtlocation"  google-location-autocomplete ng-model="partyobj.location" type="text" class="form-control" placeholder="Location" required/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+         <div class="col-sm-6 col-xs-12 col-md-6">
+           <label>Address</label>
+           <div class="form-group">
+            <div class="form-line">
+              <input name="location" id="txtaddress"  ng-model="partyobj.address" type="text" class="form-control" placeholder="Enter Complete Address" required/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Start Date Time</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">date_range</i>
+            </span>
+            <div class="form-line">
+              <input id="startdate" ng-model="partyobj.startdate" type="text" class="datetimepicker form-control" placeholder="Start Date " required>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label>End Date Time</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">date_range</i>
+            </span>
+            <div class="form-line">
+              <input id="enddate" ng-model="partyobj.enddate" type="text" class="datetimepicker form-control" placeholder="End Date" required>
+            </div>
+          </div>
+        </div>
+        <!--<span ng-show="partyobj.startdate>partyobj.enddate">Start Date must be lessthan EndDate</span>-->
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-xs-12 col-md-4">
+          <input ng-model="partyobj.isconcert" type="checkbox" id="gpb_concert" class="filled-in chk-col-pink" checked="">
+          <label for="gpb_concert">Select if Concert</label>
+        </div>
+        <div class="col-sm-4 col-xs-12 col-md-4">
+          <input ng-model="partyobj.active" type="checkbox" id="gpb_active" class="filled-in chk-col-pink" checked="">
+          <label for="gpb_active">Publish</label>
+        </div>
+      </div>
+      <!--Select Deal Start-->
+      <div class="heading-panel">
+        <label ng-show="partyobj.deal!=undefined" class="font-bold m-b-30 base-label">Deal Information as required..!!!</label>
+        <button formnovalidate ng-click="toggleDeal()" class="btn bg-red waves-effect pull-right">{{partyobj.deal==undefined?'Add Deal':'Remove Deal'}}</button>
+      </div>
+
+      <div class="row" ng-show="partyobj.deal!=undefined">
+        <div class="col-sm-6 col-xs-12 col-md-6">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-12">
+              <label>Title</label>
+              <div class="form-group" >
+                <div class="form-line">
+                  <input ng-model="partyobj.deal.title" type="text" class="form-control" placeholder="The attractive title of the deal" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6">
+              <label>Start Date</label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">date_range</i>
+                </span>
+                <div class="form-line">
+                  <input id="dealstartdate" ng-model="partyobj.deal.startdate" type="text" class="datetimepicker form-control" placeholder="Start Date Time" >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6">
+              <label>End Datetime</label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">date_range</i>
+                </span>
+                <div class="form-line">
+                  <input id="dealenddate" ng-model="partyobj.deal.enddate" type="text" class="datetimepicker form-control" placeholder="End Date Time" >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 col-md-6">
+          <label>description</label>
+          <div class="form-group">
+            <div class="form-line">
+              <textarea ng-model="partyobj.deal.description" rows="6" class="form-control description no-resize" placeholder="Please type the deal in detail..." style="margin-bottom: 10px;"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" ng-show="partyobj.deal!=undefined">
+        <div class="col-sm-6 col-xs-12 col-md-6">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-12">
+              <label>Type</label>
+              <div class="form-group" >
+                <div class="form-line">
+                  <select ng-model="partyobj.deal.type" class="form-control show-tick">
+                    <option value="cashback">Cashback in terms of GP Coins</option>
+                    <option value="percent">A percentage of the total bill</option>
+                    <option value="amount">A Fix Amount</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <label>Amount to be waived off</label>
+              <div class="input-group">
+                <div class="form-line">
+                  <input ng-model="partyobj.deal.value" type="text" class="form-control" placeholder="Matrix" />
+                </div>
+                <span class="input-group-addon">{{partyobj.deal.type=="percent"?"% of on Total Bill":partyobj.deal.type=="cashback"?"Gp Coins on Total Bill":"INR on Total Bill"}}</span>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <label>Minimum Billing Amount</label>
+              <div class="form-group" >
+                <div class="form-line">
+                  <input ng-model="partyobj.deal.minimum" type="text" class="form-control" placeholder="0 INR" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 col-md-6">
+          <label>Category</label>
+          <div class="form-group" >
+            <div class="form-line">
+              <select ng-model="partyobj.deal.category" class="form-control show-tick">
+                <option value="daily">Daily</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--End Select Concert-->
+      <p class="font-bold m-b-30 base-label">Commercials</p>
+      <hr>
+      <div class="row">
+        <div class="col-sm-8 col-xs-12 col-md-8">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon revenue-stream">Revenue Matrix for GoParties :</span>
+              <select  ng-model="partyobj.revenue.stream" class="form-control show-tick" selectpicker>
+                <option value="">Select the revenue stream</option>
+                <option value="perhead">X Amount on Per Head</option>
+                <option value="totalbill">% of the Total Bill</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 col-md-4">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <div class="form-line">
+                <input ng-model="partyobj.revenue.value" type="text" class="form-control" placeholder="Matrix" />
+              </div>
+              <span class="input-group-addon">{{partyobj.revenue.stream=="perhead"?"INR per head":"% of the bill"}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class=".font-20 font-bold ">Pricing with the types of class</p>
+      <div class="row" ng-repeat="segmentobj in partyobj.pricing track by $index">
+        <div class="col-xs-12">
+          <div class="col-sm-3 col-xs-12 col-md-3">
+            <div class="form-group">
+              <div class="form-line">
+                <input ng-model="segmentobj.segment"  type="text" class="form-control" placeholder="Type of class"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12 col-md-3">
+            <div class="form-group">
+              <div class="form-line">
+                <input ng-model="segmentobj.amount" name="username" type="text" class="form-control" placeholder="Rupees"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 col-xs-12 col-md-2">
+            <div class="form-group">
+              <div class="form-line">
+                <input ng-model="segmentobj.seatlimit" name="username" type="text" class="form-control" placeholder="Seat Limit"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 col-xs-8 col-md-2">
+            <div class="form-group">
+              <input ng-model="segmentobj.available" type="checkbox" id="gpb_active_{{$index}}" class="filled-in chk-col-light-blue" checked="">
+              <label for="gpb_active_{{$index}}">Available</label>
+            </div>
+          </div>
+          <div ng-click="deletesegment($index)" class="col-sm-2 col-xs-4 col-md-2">
+           <div class="form-group">
+             <div class="demo-google-material-icon"> <i class="material-icons">delete</i></div>
+           </div>
+         </div>
+       </div>
+       <div class="col-xs-12">
+        <div class="col-sm-2 col-xs-6 col-md-2">
+          <div class="form-group">
+            <input ng-model="segmentobj.male.available" type="checkbox" id="malecheck" class="filled-in chk-col-light-blue" checked="">
+            <label for="malecheck">Male</label>
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-6 col-md-2">
+          <div class="form-group">
+            <div class="form-line">
+              <input ng-model="segmentobj.male.amount"  type="text" class="form-control" placeholder="Price"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2 col-xs-7 col-md-2">
+          <div class="form-group">
+            <input id="femalecheck" ng-model="segmentobj.female.available" type="checkbox"  class="filled-in chk-col-light-blue" checked="">
+            <label for="femalecheck">Female</label>
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-5 col-md-2">
+          <div class="form-group">
+            <div class="form-line">
+              <input ng-model="segmentobj.female.amount"  type="text" class="form-control" placeholder="Price"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2 col-xs-6 col-md-2">
+          <div class="form-group">
+            <input id="couplecheck" ng-model="segmentobj.couple.available" type="checkbox"  class="filled-in chk-col-light-blue" checked="">
+            <label for="couplecheck">Couple</label>
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-6 col-md-2">
+          <div class="form-group">
+            <div class="form-line">
+              <input ng-model="segmentobj.couple.amount"  type="text" class="form-control" placeholder="Price"/>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="heading-panel switch">
+      <button ng-click="addsegment()"  class="btn bg-dark pull-right waves-effect" formnovalidate>Add Pricing/Class</button>
+    </div>
+    <hr>
+    <label class="font-bold m-b-30 base-label">Mode of Payment</label>
+    <div class="row">
+      <div class="col-sm-2 col-xs-12 col-md-2">
+        <div class="form-group">
+          <input ng-model="partyobj.isonline" type="checkbox" name="modeonline"  id="isonline" class="filled-in chk-col-light-blue"  checked="">
+          <label for="isonline">Online</label>
+        </div>
+      </div>
+      <div class="col-sm-2 col-xs-12 col-md-2">
+        <div class="form-group">
+          <input ng-model="partyobj.ispoa" type="checkbox" name="modepoa" id="ispoa" class="filled-in chk-col-light-blue"  checked="" >
+          <label for="ispoa">POA</label>
+        </div>
+      </div>
+    </div>
+    <div ng-show="partyobj.pricing.length>0" class="row">
+      <hr>
+      <div class="col-sm-6 col-xs-12 col-md-6">
+        <input ng-model="partyobj.instore" type="checkbox" id="instore" class="filled-in chk-col-light-blue" checked="">
+        <label for="instore">Available/Sell on party store</label>
+      </div>
+    </div>
+    <hr>
+    <div ng-show="partyobj.instore" class="row" ng-repeat="segmentobj in partyobj.pricing track by $index">
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line" style="margin-top: 13px;">
+            <label style="margin-bottom: 0px;">{{segmentobj.segment}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line">
+            <input ng-model="segmentobj.amount" name="username" type="text" class="form-control" placeholder="Rupess/Coin"  disabled/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="form-group">
+          <div class="form-line">
+            <input ng-model="segmentobj.gpcoinslimit" name="username" type="text" class="form-control" placeholder="Seat Limit"  />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="font-bold m-b-30 base-label">Contact Person information</p>
+    <div class="row">
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">person</i>
+          </span>
+          <div class="form-line">
+            <input name="contactname" ng-model="partyobj.contactname"  type="text" class="form-control" placeholder="Contact Name" required>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">email</i>
+          </span>
+          <div class="form-line">
+            <input name="contactemail" ng-model="partyobj.contactemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" class="form-control email" placeholder="Ex: example@example.com" >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">phone</i>
+          </span>
+          <div class="form-line">
+            <input name="contactphone" ng-model="partyobj.contactphone"   type="text" class="form-control mobile-phone-number" placeholder="Ex: +91 9899203841" required >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="font-bold m-b-30 base-label">Increase Relevancy</p>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12 col-md-12">
+        <div class="form-group">
+          <label class="" for="party-genre">Genre</label>
+          <md-content class="autocomplete form-control height-control" layout="column">
+           <md-contact-chips
+           ng-model="partyobj.genre"
+           md-contacts="searchGenre($query)"
+           md-contact-name="name"
+           md-contact-image="image"
+           md-contact-email="email"
+           md-require-match="true"
+           md-highlight-flags="i"
+           filter-selected="true">
+         </md-contact-chips>
+       </md-content>
+     </div>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="form-group">
+      <label class="" for="party-theme">Theme</label>
+      <md-content class="autocomplete form-control height-control" layout="column">
+       <md-contact-chips
+       ng-model="partyobj.theme"
+       md-contacts="searchTheme($query)"
+       md-contact-name="name"
+       md-contact-image="image"
+       md-contact-email="email"
+       md-require-match="true"
+       md-highlight-flags="i"
+       filter-selected="true">
+     </md-contact-chips>
+   </md-content>
+ </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-12">
+   <div class="form-group">
+     <label class="" for="party-performing">Performing Artist</label>
+     <md-content class="autocomplete form-control height-control" layout="column">
+       <md-contact-chips
+       ng-model="partyobj.performing"
+       md-contacts="searchProfile($query)"
+       md-contact-name="name"
+       md-contact-image="image"
+       md-contact-email="email"
+       md-require-match="true"
+       md-highlight-flags="i"
+       filter-selected="true">
+     </md-contact-chips>
+   </md-content>
+ </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <p class="font-bold">Party Description</p>
+    <div class="form-group">
+      <div class="form-line">
+        <textarea ng-model="partyobj.description" rows="4" class="form-control no-resize" placeholder="Please type in the description..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <p class="font-bold">Always put down the Entry Terms &amp; Conditions..!!</p>
+    <div class="form-group">
+      <div class="form-line">
+        <textarea name="entry_terms" ng-model="partyobj.entry_terms" rows="4" class="form-control no-resize" placeholder="I hope you don't want leave it blank..." required></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8 col-xs-1 col-md-8">
+  </div>
+  <div class="col-sm-2 col-xs-4 col-md-2">
+    <button ui-sref="/partieslisting/{{partyobj.user}}" class="btn bg-dark btn-block btn-lg waves-effect">Later</button>
+  </div>
+  <div class="col-sm-2 col-xs-6 col-md-2">
+    <button ng-class="(isedit==true) ? 'bg-red':'bg-base'" ng-click="makepartyobject(partyobj,partyform.$valid)"   class="btn btn-block btn-lg waves-effect">{{isedit==true?'Update party':'Save Now'}}</button>
+  </div>
+</div>
+</div>
+</div><!--card Close-->
+</div><!--col Close-->
+</div><!--row Close-->
+</form>
+

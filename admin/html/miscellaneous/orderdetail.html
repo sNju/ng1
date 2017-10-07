@@ -1,0 +1,194 @@
+<div class="container-fluid" add-user-directive>
+  <nav class="print-nav">
+    <div class="print-header">
+      <img src="/images/ticket-header-logo-business.png" width="auto" height="40" alt="GoParties" class="print-logo" />
+    </div>
+  </nav>
+
+  <div class="sec-heading bkngHdr">
+    <a target="_blank" ng-href="{{getRedirectUrl(orderdetail.to)}}" class="redirect-url">
+      <h2 class="heading-type">{{orderdetail.to.title}}</h2>
+    </a>     
+    <div class="mobile-bkg-panel">
+      <button class="btn bg-dark edit-booking waves-effect" ng-click="editBooking(orderdetail)">Edit Booking</button>
+      <div class="btn-group user-helper-dropdown">
+        <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn bg-teal waves-effect btn-block" href="#/adduser/">Change Status</button>
+        <ul class="dropdown-menu pull-right">
+          <button ng-hide="orderdetail.status=='confirmed'" ng-click="changestatus(orderdetail._key,'confirmed')" class="btn bg-green btn-block waves-effect style="cursor: pointer;">Confirm</button>
+          <button ng-hide="orderdetail.status=='pending'" ng-click="changestatus(orderdetail._key,'pending')" class="btn bg-orange btn-block waves-effect style="cursor: pointer;">Pending</button>
+          <button ng-hide="orderdetail.status=='cancelled'" ng-click="changestatus(orderdetail._key,'cancelled')" class="btn bg-red btn-block waves-effect style="cursor: pointer;">Cancel</button>
+          <button ng-hide="orderdetail.status=='confirmed'" ng-click="delete(orderdetail._key)" class="btn bg-blue btn-block waves-effect style="cursor: pointer;">Disable</button>
+        </ul>
+      </div>
+      <span ng-show="$root.userinfo.role=='business'" class="chat-icon bg-dark pull-right live-chat" ui-sref="/chat({'id':orderdetail.from._key})">Live Chat <i class="fa fa-comments" aria-hidden="true"></i></span>  
+    </div>
+
+  </div>
+  <div class="row">
+    <!-- Task Info -->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">        
+        <div class="body">          
+          <!--Ticket Details Start-->
+          <div class="row">
+            <!--Booking Details-->
+            <div class="col-lg-9 col-md-9 col-sm-12 col-lg-12 order-details-section">
+              <div id="ticket"> 
+                <h3 class="booking-head">{{orderdetail.user.name!=undefined?orderdetail.user.name:orderdetail.user.username}}</h3>
+                <div class="row" ng-show="orderdetail.bookingtype">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+                   <div class="booking-section">
+                    <label class="booking-label">Preference</label>
+                    <p class="booking-type">{{orderdetail.bookingtype}}</p>
+                  </div>
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+                  <div class="booking-section ticket-confirmation">
+                    <label class="booking-label">Ticket <span class="confirm">Confirmation</span></label>
+                    <p class="booking-type"><span class="confirm">{{orderdetail.status}}</span> ({{orderdetail.segment}})
+                      <!--Confirm Icon-->
+                      <i class="fa fa-check-circle confirmIcon" ng-show="orderdetail.status=='confirmed'" aria-hidden="true"></i>
+                      <!--Pending Icon-->
+                      <i class="fa fa-info-circle pending-icon" ng-show="orderdetail.status=='pending'" aria-hidden="true"></i>
+                      <!--Cancel Icon-->
+                      <i class="fa fa-times canceled-icon" ng-show="orderdetail.status=='cancelled'" aria-hidden="true"></i>                          
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView" ng-show="orderdetail.orderid!=undefined">
+                  <div class="booking-section">
+                    <label class="booking-label">Order Id</label>
+                    <p class="booking-type">{{orderdetail.orderid}}</p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+                  <div class="booking-section">
+                    <label class="booking-label">Date &amp; Time</label>
+                    <div ng-show="!checktype(orderdetail.type)">
+                      <p class="booking-type">{{orderdetail.to.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>
+                    </div>
+                    <div ng-show="checktype(orderdetail.type)">
+                      <p>{{orderdetail.startdate|timeStampToDate|calendarDateTimeFormat:' ':true}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+                  <div class="booking-section">
+                    <label class="booking-label">Ticket (s)</label>
+                    <p class="booking-type">
+                      <span ng-show="orderdetail.nop_male>0">{{orderdetail.nop_male}} male,</span>
+                      <span ng-show="orderdetail.nop_female>0">{{orderdetail.nop_female}} female,</span>
+                      <span ng-show="orderdetail.nop_couple>0">{{orderdetail.nop_couple}} couple</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView">
+                  <div class="booking-section">
+                    <label class="booking-label">Venue</label>
+                    <p class="booking-type">{{orderdetail.to.address}}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- User info -->
+              <div class="row">
+                <h3 class="user-details-head">User Details ({{orderdetail.source}})</h3>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView" ng-show="orderdetail.from.name!=undefined">
+                  <div class="booking-section">
+                    <label class="booking-label">Name</label>
+                    <p class="booking-type height-control">
+                      {{orderdetail.from.name}}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView" ng-if=checkuserData(orderdetail.from.email) ng-show="orderdetail.from.name!=undefined">
+                  <div class="booking-section">
+                    <label class="booking-label">Email Id</label>
+                    <p class="booking-type height-control">
+                      {{orderdetail.from.email}}
+                    </p>                        
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView"  ng-if=checkuserData(orderdetail.from.phone) ng-show="orderdetail.from.name!=undefined">
+                  <div class="booking-section">
+                    <label class="booking-label">Phone Number</label>                         
+                    <p class="booking-type height-control">
+                      {{orderdetail.from.phone}}
+                    </p>                        
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 respView" ng-show="orderdetail.from.fbid">
+                  <div class="booking-section">
+                    <label class="booking-label">Facebook</label>  
+                    <p class="booking-type height-control"><a href="https://facebook.com/{{orderdetail.from.fbid}}" target="_blank"><span class="fb-print">See FB Account</span></a></p>                        
+                  </div>
+                </div>  
+              </div>                
+            </div>  
+            <p><button id="download" class="btn btn-tckt-download" ng-click="download()">Download/Print <i class="fa fa-download downloadicon" aria-hidden="true"></i></button></p>
+          </div>
+
+              <!-- <div class="row print-footer-row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="print-footer">
+                                <p>www.goparties.com</p>
+                    </div>
+                </div>
+              </div> -->
+
+              <!--Payment Details-->
+              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 payment-details-section">
+                <div class="row">
+                  <div class="col-lg-12 booking-payment-section">
+                    <div class="booking-title-container">
+                      <h3 class="booking-payment-title">Payment Details</h3>  
+                    </div>
+                    <ul>
+                      <li>
+                        <span>Sub Total</span>
+                        <span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderdetail.amount}}</span>
+                      </li>
+                      <li>
+                        <span>Convienience Charge</span>
+                        <span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderdetail.handling}}</span>
+                      </li>
+                      <li>
+                        <span>Discount</span>
+                        <span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderdetail.discount}}</span>
+                      </li>
+                      <li>
+                        <span>Payment Mode </span>
+                        <span class="pull-right">{{orderdetail.mode}}</span>
+                      </li>
+                      <li>
+                        <span>Total Amount</span>
+                        <span class="pull-right"><i class="fa fa-inr rupee-icon" aria-hidden="true"></i>{{orderdetail.amount}}</span>
+                      </li>
+                    </ul>
+                    <div class="deal-section" ng-if="orderdetail.deal">
+                      <label class="deal-label">Deal</label>
+                      <p class="deal-details">{{orderdetail.deal.title}}</p>
+                      <p class="deal-details">{{orderdetail.deal.description}}</p>
+                    </div>
+                  </div>        
+                </div>
+              </div>
+            </div>
+            <!--Ticket Details End-->
+          </div><!--body Close-->
+        </div><!--Card Close-->
+      </div><!--Col Close-->
+
+
+    </div><!--Row Close-->
+
+    <div class="row print-footer-row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="print-footer">
+          <p>www.goparties.com</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!--Container Close-->

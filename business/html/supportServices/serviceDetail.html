@@ -1,0 +1,99 @@
+<div has-write-review-dialog >	
+	<!-- <header-filter></header-filter> 
+
+	<div class="main-content-header page-header support-services-header clearfix">
+		<h1 class="page-heading">Support Service</h1>
+	</div>
+	-->
+
+	<section class="service-provider-profile-banner page-banner" style="background:url('images/service-provider-profile-cover.jpg') no-repeat; background-size:cover;">
+	<!-- <section class="service-provider-profile-banner page-banner" style="background:url({{profile.cover}}) no-repeat; background-size:cover;"> -->
+
+		<header class="service-provider-header gp-user-profile-header clearfix">
+			<div class="article-content pull-left">
+				<h1 class="service-provider-title">{{profile.about}}</h1>	
+				<p>
+					<rating-directive rating="{{profile.rating}}"></rating-directive> 
+					Rated {{profile.rating}} out of 5
+				</p>
+			</div>
+
+			<ul class="user-profile-actions pull-right clearfix">
+				<li><button class="btn btn-primary call-to-action" type="button">Enquiry By Email</button></li>
+			</ul>
+
+		</header>
+
+	</section>
+
+
+	<div class="container-fluid max-width">
+		<article class="service-provider-profile">
+			<div class="more-details clearfix">
+
+				<aside class="more-detail-sidebar contact-service-provider">
+					<ul>
+						<li>
+							<address class="address">{{profile.address}}</address>
+							<a class="link-txt" href="#">View Map</a>
+						</li>
+						<li>
+							<tel class="telephone">{{profile.phone}}</tel>	
+						</li>
+						<li class="hours-of-operations">
+							<span><time datetime="">Mon - Sat</time></span>
+							<time datetime="">07:00AM - 11:30PM</time>
+						</li>
+					</ul>	
+				</aside>	
+
+				<div class="main-details">
+					<div class="service-provider-description">
+						<p>{{profile.description}}</p>
+					</div>
+					
+					<section class="recent-customer-reviews">
+						<header class="clearfix">
+							<h2 class="recent-reviews-heading">All Reviews</h2>
+							<button ng-click="writeReviewDialog($event)" class="btn btn-lg btn-primary call-to-action">Write A Review</button>
+						</header>
+						<div class="customer-review">
+							<figure>
+								<img alt="" class="reviewer-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+							</figure>
+
+							<div class="review">
+								<h3 class="review-title"><span>John Doe</span> <rating-directive rating="{{profile.rating}}"></rating-directive> </h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
+							</div>	
+						</div>
+
+						<div class="customer-review">
+							<figure>
+								<img alt="" class="reviewer-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+							</figure>
+
+							<div class="review">
+								<h3 class="review-title"><span>John Doe</span> <rating-directive rating="{{profile.rating}}"></rating-directive> </h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
+							</div>	
+						</div>
+						<div class="customer-review">
+							<figure>
+								<img alt="" class="reviewer-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+							</figure>
+							<div class="review">
+								<h3 class="review-title"><span>John Doe</span> <rating-directive rating="{{profile.rating}}"></rating-directive> </h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
+							</div>	
+						</div>
+
+					</section>
+				</div>
+
+				
+			</div>
+		</article>			
+	</div>	
+</div>
+

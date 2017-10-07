@@ -1,0 +1,80 @@
+<header id="site-header" get-header-height>
+  <div class="container-fluid navbar navbar-fixed-top">
+    <div class="row">
+      <div id="primarynav" class="primary-navbar">
+        <div class="container">
+          <div class="head-container">
+            <div class="navbar-header col-sm-2">              
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobileNavCa" >
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" ui-sref="/">
+                <div class="logo-img"><img src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/goparties-logo.png" alt="GoParties- Your Party App"></div>
+                <div class="logo-text">
+                 <p class="text-uppercase text-brend">GOPARTIES</p>
+                 <p class="text-capitalize">Your Party App</p>
+               </div>
+              </a>
+            </div>
+
+            <div class="searchinput col-sm-8 header-search-box">
+              <search-box stop-flickering></search-box>
+            </div>
+
+
+
+            <div class="collapse navbar-collapse" id="mobileNavCa">
+                <ul class="right-nav-panel pull-right">
+                    <li ng-if="!islogin"><a ng-click="signin()" data-toggle="modal" data-target="#loginPopupModal" class="top-link RightNav">Sign In</a></li>
+                    <li ng-if="islogin" ng-include="'directive/auth/loginstatus.html'" class="dropdown profile-dropdown "></li>
+                    <li class="location">
+                      <a href="" data-toggle="modal" data-target="#location-box" class="addLocationAfterSubmit text-uppercase RightNav">
+                        <span class="fa fa-map-marker locationIcon" aria-hidden="true"></span>
+                        {{$root.cityname}}
+                      </a>
+                    </li>
+                </ul>
+            </div>
+         </div>
+        </div>        
+      </div>    
+    </div>
+  <div class="modal fade" id="clicktocall">
+    <div class="modal-dialog request-box">
+      <div class="modal-content">
+        <div class="modal-header rheader img-responsive">
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body body-base img-responsive">
+          <div class="row body-content">
+            <div class="col-lg-11">
+              <div class="row">
+                <div class="col-lg-5 col-xs-5">
+                   <img src="/images/mobile-view.jpg" class="img-responsive removeImage">
+                </div>
+                <div class="text-center col-lg-6 col-xs-6 increaseWidth">
+                  <h1 class="r-heading">9711-971-244</h1>
+                  <p class="r-type">We will make you shine</p>
+                  <p class="text-base">or</p>
+                  <form>
+                    <div class="form-group">
+                      <input ng-model="name" type="text" class="form-control" placeholder="enter your name">
+                    </div>
+                    <div class="form-group">
+                      <input ng-model="phone" type="text" class="form-control" placeholder="enter your phone no">
+                    </div>
+                    <button ng-click="submitquery(name,phone)" class="btn btn-app btn-request btn-block text-uppercase" type="submit">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+

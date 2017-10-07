@@ -1,0 +1,207 @@
+/* Calendar CSS */
+#calendar {
+	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.deal,
+.deal div,
+.deal span {
+    background-color: #fff; /* background color */
+    border-color: #f65016;     /* border color */
+    color: #f65016;           /* text color */
+}
+
+.party,
+.party div,
+.party span {
+    background-color: #fff; /* background color */
+    border-color: #b780d8;     /* border color */
+    color: #a76fc9;          /* text color */
+}
+
+.party, .deal, .party div, .deal div {
+	background-color:transparent;
+	border-color:transparent;
+	text-align:center;
+}
+
+.party, .deal, .dj, .band, .artist {
+	background-color:transparent;
+	border:none;
+	padding:0;
+}
+
+.party div, .deal div, .dj div, .band div, .artist div {
+	background-color:transparent;
+	border:none;
+	text-align:center;
+}
+
+.party span, .deal span, .dj span, .band span, .artist span {
+
+	display:inline-block;
+	background-color:rgb(239, 157, 28);
+	/*border:1px #b31e1e solid;*/
+	width:10px;
+	height:10px;
+	line-height:25px;
+	text-align:center;
+	padding:0;
+	border-radius:50%;
+}
+
+.party span {
+	border-color:#b780d8;
+	color:#b780d8!important;
+}
+
+.artist span { border-color:#6caaea; color:#6caaea!important;}
+.dj span { border-color:#f65016; color:#f65016!important;}
+.band span { border-color:#6ceac8; color:#6ceac8!important;}
+
+
+.deal span {
+	border-color:#b31e1e;
+	color:#b31e1e;
+}
+
+.fc-sat,.fc-sun,.fc-mon,.fc-tue,.fc-wed,.fc-thu,.fc-fri{
+    background-color: #ffffff;
+	color:#333;
+}
+
+.fc-partiesIndicator-button,
+.fc-dealsIndicator-button,
+.fc-djIndicator-button,
+.fc-artistIndicator-button,
+.fc-bandsIndicator-button {
+	position:relative;
+	background:#fff;
+	padding-left:30px!important;
+}
+
+
+.fc-partiesIndicator-button:before,
+.fc-dealsIndicator-button:before,
+.fc-djIndicator-button:before,
+.fc-artistIndicator-button:before,
+.fc-bandsIndicator-button:before {
+	position:absolute;
+	top:5px;
+	left:8px;
+	width:16px;
+	height:16px;
+	content:" ";
+	border:2px #b780d8 solid;
+	border-radius:50%;
+}
+
+.fc-dealsIndicator-button:before { border:2px #b31e1e solid; }
+.fc-artistIndicator-button:before { border:2px #6caaea solid; }
+.fc-bandsIndicator-button:before { border:2px #6ceac8 solid; }
+.fc-djIndicator-button:before { border:2px #f65016 solid; }
+
+
+
+
+@media (min-width:768px) {
+
+	.fc-center > h2 {
+		float:none!important;
+	}
+
+	.fc-day-number {
+		font-size:18px;
+	}
+
+	.fc td {
+		padding-top:5px;
+		padding-bottom:10px;
+	}
+
+	.fc td.fc-widget-content {
+		padding-top:0;
+	}
+
+	.fc td.fc-head-container {
+		padding-top:0;
+		padding-bottom:0
+	}
+
+	.fc-day-grid .fc-row .fc-bg > table,
+	.fc-content-skeleton > table{
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+/*
+	.fc-day-grid .fc-row:nth-child(2n) .fc-bg > table {
+		border-collapse:separate;
+		border-spacing:10px 0px;
+	}
+
+	.fc-content-skeleton > table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+*/
+	.fc-body > tr > td.fc-widget-content {
+		border:none;
+	}
+
+	.fc-day-grid .fc-row {
+		margin-top:-10px;
+	}
+
+	.fc-day-grid-container {
+		padding-top:20px;
+	}
+
+	.fc-basic-view .fc-content-skeleton .fc-day-number {
+		padding:17px 0 0;
+	}
+
+	.go-parties-mcalendar .fc-head-container {
+		box-shadow:0 4px 8px rgba(0, 0, 0, .08);
+	}
+
+	.fc-head-container,
+	.fc-head-container .fc-day-header {
+		border-color:#bbb!important;
+	}
+
+	.go-parties-mcalendar {
+		/*background-color:#eee;*/
+		padding:50px 0;
+	}
+
+	.fc-other-month {
+		background-color:transparent!important;
+		border:none!important;
+		opacity:1!important;
+		color:#999!important;
+	}
+}
+
+@media (max-width:767px) {
+	.fc-sat,.fc-sun,.fc-mon,.fc-tue,.fc-wed,.fc-thu,.fc-fri{
+		padding:8px 0!important;
+	}
+
+	.fc-toolbar .fc-right {
+		float: none;
+    }
+
+    .fc-toolbar .fc-right h2 {
+    	margin-top:15px;
+    	font-size:18px;
+    }
+
+    .party span, .deal span {
+    	width:10px;
+    	height:10px;
+    	text-indent:-999px;
+    	border-radius:50%;
+    }
+}

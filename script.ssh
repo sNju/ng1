@@ -1,0 +1,15 @@
+#!/bin/bash
+echo 'Enter file to add'
+read addFile
+
+git add $addFile
+
+echo 'Enter the commit message'
+read commitMsg
+
+git commit -m "$commitMsg"
+
+git push 
+
+
+

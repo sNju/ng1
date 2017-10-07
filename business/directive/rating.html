@@ -1,0 +1,7 @@
+
+<div class="gp-profile-rating">
+	<i ng-class="{'fa fa-star' : $index+1 <= rating, 
+	'fa fa-star-half-o' : rating < $index+1 && rating > $index,
+	'fa fa-star-o' : $index+1 > rating}"
+	 ng-repeat="i in counter(5) track by $index"></i>
+</div>

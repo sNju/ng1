@@ -1,0 +1,257 @@
+/*
+ *  GP Modal
+ */
+.gp-modal-content {
+    background-color:#eee;
+    border:none;
+    .RoundShape(0);
+    min-height:300px;
+
+    & > .close-btn {
+        position:absolute;
+        top:-20px;
+        right:-20px;
+        width:40px;
+        height:40px;
+        text-align:center;
+        font-size:17px;
+        background:none #fff;
+        border:none;
+        color:#999;
+        cursor:pointer;
+        z-index:10; 
+        .RoundShape();
+
+        .fa {
+            font-size:1em!important;
+        }
+
+        &:hover {
+            background-color:#000;
+            color:#fff;
+        }
+    }
+}
+
+.gp-modal-body {
+    padding:30px;
+}
+
+.gp-modal-footer {
+    padding:0 30px 30px;
+    border:none;
+    
+    .btn {
+        .RoundShape(2px);
+        text-transform:uppercase;
+    }
+}
+
+.section-title {
+    font-family:@headingfont;
+    font-size:2.3em;
+    font-weight:normal;
+    margin:0 0 15px;
+}
+
+.white-bg-box {
+    background-color:#fff;
+    padding:20px;
+}
+
+
+
+/*
+ *  GP APP Modal
+ */
+.gp-app-modal {
+
+    @media (min-width:768px) {
+        .modal-dialog {
+            width:700px;
+        }
+    }
+
+    @media (min-width:1024px) {
+        .modal-dialog {
+            width:800px;
+        }
+    }
+
+    .modal-content {
+        .RoundShape(0);
+    }
+
+    .modal-body {
+        position:relative;
+        background:url('../images/banner-background.jpg') no-repeat;
+        background-size:cover;
+        padding:0;
+        min-height:450px;
+        overflow:hidden;
+        z-index:0;
+
+
+        .close-btn {
+            position:absolute;
+            top:15px;
+            right:15px;
+            background-image:none;
+            background-color:rgba(0, 0, 0, .75);
+            color:#fff;
+            font-size:20px;
+            width:40px;
+            height:40px;
+            line-height:40px;
+            text-align:center;
+            z-index:3; 
+            border:none;
+            .RoundShape(50%);
+
+            .fa{
+              font-size: 1em!important;
+            }
+        }
+
+        &:before {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color:rgba(0, 0, 0, .5);
+            content:"";
+            z-index:-1; 
+        }
+
+        .gp-app-img {
+            position:absolute;
+            bottom:-50px;
+            left:5%;
+            max-width:90%;
+            margin-left:-5px;
+
+            @media (min-width:768px) {
+                left:0;
+                bottom:0;
+                max-width:50%;
+                margin:0;
+            }
+
+        }
+
+        .app-download-article {
+            padding:80px 15px 0 15px;
+            font-family:'misoregular';                
+            color:#fff;
+
+            @media (min-width:768px) {
+                display:-webkit-flex;
+                display:flex;
+                min-height:450px;
+                padding:0 15px 0 15px;
+                text-align:left; 
+
+                -webkit-align-items:center;
+                        align-items:center;
+
+                -webkit-justify-content:center;
+                        justify-content:center;        
+
+                -webkit-flex-direction:column;       
+                        flex-direction:column;       
+            }        
+
+            @media (min-width:1024px) {
+                padding:0 20px;    
+            }
+
+            h2 {
+                margin:0 0 25px;
+                font-size:23px;
+                font-weight:bold;
+                line-height:1.5em;
+                text-align:center; 
+
+                @media (min-width:768px) {
+                    font-size:28px;    
+                    text-align:left;
+                    line-height:40px;
+                }
+
+                @media (min-width:1024px) {
+                    font-size:32px;    
+                }
+            }
+
+            ul {
+                list-style-type:none;
+                padding-left:0;
+                margin:0 -10px;
+
+                & > li {
+                    float:left;
+                    width:50%;
+                    padding:0 10px;
+
+                }
+            }
+            
+
+        }
+    }
+} 
+
+/*business login*/
+#businessLogin {
+    padding: 30px 30px 30px 30px;
+    font-family:'misoregular';
+}
+#businessLogin .modal-header {
+    padding: 20px 30px;
+}
+#businessLogin .modal-body {
+    padding: 20px 50px 20px 50px;
+}
+#businessLogin h4 {
+    font-size: 24px;
+}
+#businessLogin .close {
+    padding-top:8px;
+    .fa {
+      font-size:20px!important;
+    }
+}
+#businessLogin input {
+    height: 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    color: #000;
+    margin: 20px 0 30px 0
+}
+#businessLogin .gp-send-btn {
+    background-color: #ef9d1c;
+    border: solid 1px #ef9d1c;
+    height: 40px;
+    width: 100%;
+    margin: 0 aoto;
+    border-radius: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: 'misoregular';
+    max-width: 245px;
+}
+#businessLogin .gp-send-btn:hover {
+    background-color: #fbb547;
+    border: solid 1px #fbb547
+}
+#businessLogin a {
+    font-size: 22px;
+    color: #ef9d1c
+}
+#businessLogin a:hover {
+    color: #965fb8
+}
+/*end login*/   
+

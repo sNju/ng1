@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Error Internet Connection</title>
+<link href="/libcss/bootstrap.min.css" rel="stylesheet">
+<style>
+html, body {height:100%;}
+html {display:table; width:100%;}
+body {display:table-cell; text-align:center; vertical-align:middle;}
+#intetIssue{
+background: -webkit-linear-gradient(right, #7633a1, #b26957);
+}
+#Disc{
+text-align: center;	
+color: white;
+margin-top: 10px;
+font-size: 20px;
+font-weight: bold;
+text-transform: uppercase;
+}
+#error{
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+#imgDiv{
+text-align: center;
+}
+#networkNotFound{
+width: 8%;
+}
+</style>
+
+<script type="text/javascript">
+	function InternetTrue(){
+		window.location.href="https://www.goparties.com";
+
+	}
+</script>
+</head>
+
+<body  ononline="InternetTrue()" id="intetIssue">
+<div class="container" id="mainDiv">
+
+<div id="imgDiv">
+	<img alt="Internet Error-GoParties" src="https://s3.ap-south-1.amazonaws.com/gpcaweb/images/networkNotFound.png" id="networkNotFound">
+</div>
+
+<h1 id="Disc">Disconnected</h1>
+<h2 id="error">Internet not found. Please check your internet connection or try again</h2>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<form id="form_validation" name="sendmessageform" add-user-directive validation-directive>
+  <div class="container-fluid">
+    <div class="sec-heading">
+      <h2 class="heading-type">The list shows all the Partymons who are helping in expading the community</h2>
+    </div>
+    <div class="row">      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="panel-header contactHdr">
+            <h2 class="header-type">Type in the message, select all or select the few as required and I will do the rest</h2>
+            <button type="submit" ng-click="sendmessage(contacts,sendmessageform.$valid)" class="btn bg-dark pull-right waves-effect">Send Now</button>
+          </div>
+          <div class="body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <div class="form-line">
+                    <textarea ng-model="message" rows="1" class="form-control no-resize auto-growth" placeholder="Please type what you want... And please don't forget the ENTER key press multiple times :)" style="overflow: hidden; word-wrap: break-word; height: 32px;" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover dashboard-task-infos">
+                <thead>
+                  <tr>
+                    <th><input  ng-model="isallcheck"  type="checkbox" id="basic_checkbox" class="filled-in" /><label class="gpcheckbox" for="basic_checkbox"></label></th>
+                    <th>Name</th>
+                    <th>Synced On</th>
+                    <th>Contacts</th>
+                    <th>Last Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="animate-repeat" ng-class="{'active':$index%2==0}"  ng-init="contact.check=false" ng-repeat="contact in contacts">
+                    <td><input ng-model="contact.check" type="checkbox" id="basic_checkbox_{{$index+1}}" /><label for="basic_checkbox_{{$index+1}}"></label></td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.syncedon|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+                    <td>{{contact.contacts}}</td>
+                    <td>{{contact.lastmessage}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!-- Close Card -->
+      </div><!-- Close Cols -->
+    </div><!-- Close Row -->
+  </div><!-- Close Conatiner -->
+</form>

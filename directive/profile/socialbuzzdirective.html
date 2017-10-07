@@ -1,0 +1,16 @@
+   <li>
+    <div class="other-detail">
+        <time class="date-time" datetime="">{{mediaObj.created_at|timeStamptoProperDate}}</time>
+    </div>
+    <div class="media user-detail">
+        <div class="media-left">
+            <img class="media-object user-profile-pic" src="{{mediaObj.userimage}}">
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"> <span>{{mediaObj.user}}</span></h4>
+            <p>{{mediaObj.profile_type}}</p>
+        </div>
+    </div>
+
+    <p>{{mediaObj.comment}}</p>
+</li>

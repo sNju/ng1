@@ -1,0 +1,23 @@
+<div class="gp-card gp-small-card gp-profile-card">
+    <div class="gp-card-actions clearfix">
+        <button class="btn btn-primary call-to-action" data-toggle="modal" data-target="#showInterestModal" ng-click="book(profiletype,name,profilepic,id)">Show Interest</button>
+    </div>
+    <div class="gp-profile gp-card-details">
+        <div class="gp-user-pic">
+            <img alt="" src="{{profilepic}}">
+        </div>        
+        <div class="gp-user-details">
+            <h3 class="gp-card-heading">{{name}}</h3>
+            <p class="gp-user-type">
+                <span class="genre">{{profiletype}}</span>
+            </p> 
+            <div class="gp-profile-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>  
+        </div>                            
+    </div>
+</div>

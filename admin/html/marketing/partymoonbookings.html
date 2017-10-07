@@ -1,0 +1,92 @@
+<form method="POST" add-user-directive>
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2></h2>
+    </div>
+
+    <div class="row">
+      <!-- Task Info -->
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="panel-header">
+            <h2 class="header-type">List of Bookings</h2>
+            <button type="submit" ng-click="getallorders(filterobj)" class="btn bg-teal pull-right waves-effect">Apply Filters</button>
+          </div>
+          <div class="body">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <div class="form-line">
+                    <input ng-model="filterobj.keyword" type="text" class="form-control" placeholder="Keyword" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <div class="form-line">
+                    <select ng-model="filterobj.status" class="form-control show-tick">
+                      <option value="">Status</option>
+                      <option value="all">All</option>
+                      <option value="confirmed">Confirmed</option>
+                      <option value="pending">Pending</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">date_range</i>
+                  </span>
+                  <div class="form-line">
+                    <input name="startdate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date " >
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="table-responsive">
+                    <table class="table table-hover dashboard-task-infos">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Title</th>
+                          <th>Date/Time</th>
+                          <th>Status</th>
+                          <th>Partymon</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="animate-repeat"  ng-class="{'active':$index%2==0}" ng-class="{'active':$index%2==0}" ng-repeat="sale in sales" ui-sref="orderdetail({id:sale._key})">
+                          <td>{{$index+1}}</td>
+                          <td>{{sale.type=='party'?sale.to.title:sale.to.name|limitTo:40}}</td>
+                          <td>{{sale.createdat|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+                          <td>
+                            <span ng-class="getclassname(sale.status)" class="label">{{sale.status}}</span>
+                          </td>
+                          <td>{{sale.from.name}}</td>
+                          <td>INR {{sale.subtotal}}.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div><!--Close Card-->
+      </div><!--Close Cols-->
+    </div><!--Close row-->
+  </div><!--Close Container-->
+</form>
+        

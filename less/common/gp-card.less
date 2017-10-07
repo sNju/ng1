@@ -1,0 +1,225 @@
+.gp-card {
+	overflow:hidden;
+	margin-bottom: 15px;
+	border:1px solid #f1f1f1;
+	background: -moz-linear-gradient(right, #7633a1, #b26957);
+	background: -webkit-linear-gradient(right, #7633a1, #b26957);
+	background: -o-linear-gradient(right, #7633a1, #b26957);
+	background: -ms-linear-gradient(right, #7633a1, #b26957);
+	background: linear-gradient(right, #7633a1, #b26957);
+	filter: progid:DXImageTransform.Microsoft.gradient(right, #7633a1, #b26957);	
+	
+	@media(min-width: 768px){
+		margin-bottom: 0px;
+	}
+	.card-zoom{
+		min-height: 200px;
+		max-height: 200px;
+		overflow:hidden;
+		position: relative;
+		&:hover{
+			.overbox{
+				opacity:1;
+				
+				.call-of-action{
+					transform: translateY(-80px);
+					    -webkit-transform: translateY(-80px);
+					    .default-transition(@transition-duration:0.3s);		   
+				}
+			}
+			.card-figure{
+				-moz-transform: scale(1.5);
+				-webkit-transform: scale(1.5);
+				transform: scale(1.5);
+			}
+		}
+		.overbox {
+			background-color: rgba(0,0,0,.2);
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: #fff;
+			z-index: 1;
+			.default-transition(@transition-duration:0.3s);
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			.flex-center();
+			align-items: flex-end;
+			-webkit-align-items: flex-end;			
+
+			.call-of-action{
+				background-color: transparent;				
+				border: 1px solid #fff;				
+				font-size: 14px;
+				font-family: @rmedium;
+				padding: 8px 50px;
+				color: #fff;	
+				border-radius:0;
+				.default-transition(@transition-duration:0.3s);
+				&:hover{
+					border-color:#fff;
+				}
+			}
+			.status{
+			    position: absolute;
+			    top: 10px;
+			    left: 10px;
+			    background-color: rgba(0,0,0,0.8);
+			    color: #fff;
+			    font-size: 13px;
+			    padding: 2px 6px;
+			}
+		}	
+	}
+	.card-figure {
+		min-height: 200px;
+		background-repeat:no-repeat;
+		background-size:cover;
+		background-position:center center;		
+		cursor: pointer;  
+		overflow: hidden;
+		.flex-center();
+		flex-direction: column;
+		border-bottom: 1px solid #ececec;
+		transition: all .7s ease;
+		  -moz-transition: all .7s ease;
+		  -ms-transition: all .7s ease;
+		  -webkit-transition: all .7s ease;
+		  -o-transition: all .7s ease;    
+	}
+	.overlay{
+		position: absolute;
+		bottom: 0;
+		background-color: rgba(0, 0, 0,0.3);
+		height: 100%;
+		width: 100%;	
+	}	
+	.card-type{
+		min-height: 60px;
+		padding: 10px 15px;
+		background-color: #fff;		
+		.flex-center();
+
+		.profileTitle{
+			width: 75%;
+		    /*.flex-center();
+			flex-direction: column;
+			align-items: initial;
+		    -webkit-align-items: initial;*/
+		    display: block;
+
+			.card-title{				
+				padding-right: 20px;
+				margin-top: 0;
+				margin-bottom:0px;				
+				text-overflow:ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				font-size: 16px;
+				font-weight: normal;
+				font-family: @rregular;
+				color: #000;
+			}
+			.party-location{
+				color: #666;
+				font-size: 12px;
+				margin-top: 5px;
+				margin-bottom: 0;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				padding-right: 20px;
+				
+				&.type-details{
+					color: #e68a00;
+				}
+			}
+		}
+		.date-likes-panel{
+			/*border-left: 1px solid #959595;	*/
+			width: 25%;
+			.flex-center();
+			justify-content: center;
+			text-align:center;
+			font-size: 14px;
+			font-family: @rmedium;
+			color: #666;
+			
+			.btn-book{
+			    color: #fff;
+			    border-radius: 0;
+			    background-color: #e89519;
+			    transition: all 0.5s;
+
+			    span {
+				  cursor: pointer;
+				  display: inline-block;
+				  position: relative;
+				  transition: 0.5s;
+				  	&:after {
+					  content: '\f0a9';
+					  position: absolute;
+					  opacity: 0;
+					  top: -4px;
+					  right: -20px;
+					  -webkit-transition:0.5s;
+				       -moz-transition:0.5s;				            
+					  transition: 0.5s;
+					  font-size: 20px;
+					  font-family: FontAwesome;
+					}
+				}
+				&:hover{
+					span {
+					  padding-right: 25px;
+					  	&:after {
+						  opacity: 1;
+						  right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.call-of-action{
+		background-color: @base-color;
+		padding: 0px;		
+		font-size: 1.5em;
+		margin:0 auto;
+		font-family: @headingfont;
+		.RoundShape(25px);
+
+		&:hover {
+			background-color:@base-color-light;
+			color: #fff;
+		}
+	}
+	&.gp-deal-card{
+
+		.deal{
+			background-color: #df332b;
+			z-index: 2;
+		    position: absolute;
+		    color: #fff;
+		    padding: 6px 12px;
+			right: 10px;
+			top: 12px;
+		    text-align: center;
+		    font-family: @profiletypefont;
+		    font-weight: bold;
+		    border-radius: 4px;
+
+		    p{
+				margin-bottom: 0;
+				font-size: 1.1em
+		    }
+		}
+	}
+}
+.suggested-card{
+	@media(min-width: 768px){
+		padding: 0;
+	}
+}

@@ -1,0 +1,84 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>
+<div ng-hide="show&&!loading">
+	<div class="main-content-header page-header support-services-header clearfix" has-search-filter-widget >
+		<h1 class="page-heading">Payout Settings</h1>
+
+		<button data-toggle="modal" data-target="#requestPayoutModal" class="btn btn-primary pull-right call-to-action" type="button">Request Payout</button>
+		<div class="payout-balance">Balance : {{balance}} {{balance>=0?'Cr.':'Dr.'}}</div>
+	</div>
+
+
+	<div class="container-fluid min-width">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<form>
+					<section class="payout-settings-frm">
+
+						<header class="section-header flexLayout has-two-elements">
+							<h5 class="section-heading">Payout Settings</h5>
+							<button type="button" class="small-btn" ng-click="isEdit==false?isEdit=!isEdit:updateDetail()">{{isEdit==false?'Edit':'Update'}}</button>	
+						</header>
+
+						<div class="row">
+
+							<div class="form-group col-md-12">
+								<label>Your Bank Account Number</label>
+								<input class="form-control" ng-model="accountInfo.accountnumber" type="text" name="" placeholder="" ng-disabled="!isEdit">		
+							</div>
+
+							<div class="form-group col-md-6">
+								<label>Account Holder Name</label>
+								<input class="form-control" ng-model="accountInfo.accountname" type="text" name="" placeholder="" ng-disabled="!isEdit">
+							</div>
+
+							<div class="form-group col-md-6">
+								<label>Your Bank IFSC Code</label>
+								<input class="form-control" ng-model="accountInfo.bankifsc" ng-disabled="!isEdit" type="text" placeholder="">
+							</div>
+
+							<div class="form-group col-md-12">
+								<label>Address on Payout Invoice</label>
+								<textarea ng-model="accountInfo.address" class="form-control" ng-model="" ng-disabled="!isEdit" placeholder=""></textarea>
+							</div>
+						</div>
+					</section>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal fade request-payout-modal" id="requestPayoutModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Request Payout</h4>
+				</div>
+				<div class="modal-body">
+					<p class="desc-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<form>
+						<div class="form-group payout-amount-wrap flexLayout has-two-elements">
+							<label>Amount for Payout</label>
+							<input  ng-model="amount"  class="form-control" type="text">
+						</div>
+
+						<div class="align-center modal-btn-wrap">
+							<button ng-click="claimBalance()" class="btn btn-lg btn-primary call-to-action" type="button">Submit</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

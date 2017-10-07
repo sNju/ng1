@@ -1,0 +1,26 @@
+<div class="chat-section" chat-directive >
+	<div class="profile-section">
+		<div class="user-details">
+			<div class="user-figure">
+				<img src="{{bookeduser.profile_pic}}">
+			</div>
+			<div class="user-content">
+				<p>{{bookeduser.name}}</p>
+				<p>Online</p>
+			</div>	
+			<div class="close-chat pull-right">
+				<i class="fa fa-times" ui-sref="/bmessages" aria-hidden="true"></i></div>		
+			</div>
+		</div>
+		<div class="chat-content" id="chatbox" scroll-glue-bottom>
+			<chat-messages message-obj="{{messageobj}}" ng-repeat="messageobj in messages"></chat-messages>
+		</div>	
+		<div class="chat-fotter">		
+			<div class="form-group">			
+				<textarea rows="2" id="txtmessage" ng-model="message" class="form-control" rows="1" placeholder="Type A message"></textarea>
+				<button type="submit" ng-click="sendchat(message)" class="btn-send-icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+				<!-- <a href="#" ng-click="sendchat(message)"><i class="fa fa-paper-plane btn-send-icon" aria-hidden="true"></i></a>		   -->
+			</div>				
+		</div>
+	</div>
+</div>	

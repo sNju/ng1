@@ -1,0 +1,19 @@
+	<div class="main-content-header page-header booking-records-page-header clearfix" has-search-filter-widget >
+		<nav id="secondary-navigation" class="secondary-navigation has-horizontal-scrollbar pull-left" has-custom-horizontal-scrollbar >
+			<ul class="sub-menu clearfix">
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/bookingRecords/all'}"><a ui-sref="bookingRecords({category:'all'})">All <span class="badge">{{recordCount.all}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/bookingRecords/pending'}"><a ui-sref="bookingRecords({category:'pending'})" >Pending <span class="badge">{{recordCount.pending}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/bookingRecords/confirmed'}"><a ui-sref="bookingRecords({category:'confirmed'})">Confirmed <span class="badge">{{recordCount.Confirmed}}</span></a></li>
+				<li class="nav-sub-tabs" ng-class="{active: activetab=='/bookingRecords/cancelled'}"><a  ui-sref="bookingRecords({category:'cancelled'})">Withdrawn <span class="badge">{{recordCount.Cancelled}}</span></a></li>
+			</ul>
+		</nav>		
+
+		<form class="" ng-hide="isSearch()">
+			<button class="search-filter-toggle" role="button"><i class="fa fa-search"></i></button>
+			<div class="form-group view-specific-search">
+				<label class="sr-only">Search Booking Records</label>
+				<input ng-model="searchText" class="gp-search-control" type="text" placeholder="Search Records">
+			</div>
+		</form>
+
+	</div>

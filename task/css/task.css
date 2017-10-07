@@ -1,0 +1,177 @@
+    html, body {
+     height:100%;
+   }
+   html {
+     display:table; 
+     width:100%;
+   }
+   body {
+     display:table-cell; 
+     text-align:center; 
+     vertical-align:middle;
+     background: -webkit-linear-gradient(right, #7633a1, #b26957);  
+     font-family: 'Open Sans', sans-serif;
+     padding: 0;
+     margin:0;
+   }
+   *{
+     padding: 0;
+     margin:0;
+   }
+
+   .taskbox{
+     background-color: #fff;
+     padding: 30px;
+     margin: 0 auto;
+     border-radius: 4px;
+     box-shadow: 0px 2px 14px #333;
+   }
+
+.responsiveRow{
+width: 40%;
+margin:0 auto; 
+}
+
+@media (max-width:850px){
+.responsiveRow{
+width: 85%;
+}
+}
+
+   .task-title{
+     margin-bottom: 10px;
+     font-size:22px;
+     margin-top: 10px;
+   }
+   .task-type{
+     font-size: 14px;
+     line-height: 22px;
+     margin-bottom: 25px;
+   }
+   .btn-task{
+    background-color: #9660b8;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  /*Check Canvas*/
+  @-webkit-keyframes checkmark {
+    0% {
+      stroke-dashoffset: 50px
+    }
+
+    100% {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @-ms-keyframes checkmark {
+    0% {
+      stroke-dashoffset: 50px
+    }
+
+    100% {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @keyframes checkmark {
+    0% {
+      stroke-dashoffset: 50px
+    }
+
+    100% {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @-webkit-keyframes checkmark-circle {
+    0% {
+      stroke-dashoffset: 240px
+    }
+
+    100% {
+      stroke-dashoffset: 480px
+    }
+  }
+
+  @-ms-keyframes checkmark-circle {
+    0% {
+      stroke-dashoffset: 240px
+    }
+
+    100% {
+      stroke-dashoffset: 480px
+    }
+  }
+
+  @keyframes checkmark-circle {
+    0% {
+      stroke-dashoffset: 240px
+    }
+
+    100% {
+      stroke-dashoffset: 480px
+    }
+  }
+
+  .inlinesvg .svg svg {
+    display: inline
+  }
+
+  .icon--order-success svg path {
+    -webkit-animation: checkmark 0.25s ease-in-out 0.7s backwards;
+    animation: checkmark 0.25s ease-in-out 0.7s backwards
+  }
+
+  .icon--order-success svg circle {
+    -webkit-animation: checkmark-circle 0.6s ease-in-out backwards;
+    animation: checkmark-circle 0.6s ease-in-out backwards
+  }
+
+  /*Cross Canvas*/
+  .crossmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #f00;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  .crossmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin:0 auto 15px ;
+    box-shadow: inset 0px 0px 0px #f00;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+  .crossmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 29;
+    stroke-dashoffset: 29;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes scale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 30px #f00;
+    }
+  }

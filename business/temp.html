@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="libcss/ADM-dateTimePicker.min.css">
+	<script src="libjs/jquery.min.js"></script>
+	<script src="libjs/angular.min.js"></script>
+	<script type="text/javascript" src="libjs/ADM-dateTimePicker.min.js"></script>
+	<script type="text/javascript">
+		var app=angular.module("test",["ADM-dateTimePicker"]);
+		app.config(['ADMdtpProvider', function(ADMdtp) {
+			ADMdtp.setOptions({
+				calType: 'gregorian',
+				format: 'DD/MM/YYYY',
+			});
+		}]);
+		app.controller("test.ctrl",["$scope",function($scope){
+
+		}])
+	</script>
+</head>
+<body ng-controller="test.ctrl" style="margin-top: 300px">
+	<h1>Hello</h1>
+	<adm-dtp ng-model="fromdate" options="{default:'today'}" mindate="1449866902553" maxdate="'2015/12/18'">
+		<input type="text" class="form-control" ng-model='fromdate' dtp-input placeholder="From Date" />
+	</adm-dtp>
+	<adm-dtp full-data="fromdate_detail" ng-model='fromdate' options="{placeholder:'Select Date'}">
+		<!-- <span class="input-group-addon" id="from-date"><i class="fa fa-calendar-o"></i></span> -->
+		<input type="text"  ng-model='fromdate' dtp-input placeholder="From Date" />
+	</adm-dtp>
+
+
+	<adm-dtp  mindate="{{fromdate_detail.unix}}" ng-model='todate' options="{placeholder:'Select Date'}">
+		<input type="text"  ng-model='todate' dtp-input placeholder="To Date" />
+		<!-- <span class="input-group-addon input-group-addon-right" id="to-date"><i class="fa fa-calendar-o"></i></span> -->
+	</adm-dtp>
+</body>
+</html>

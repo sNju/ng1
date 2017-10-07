@@ -1,0 +1,14 @@
+<div class="gp-card">
+	<a href="/party/{{party._key}}">
+		<div class="card-figure" style="background-image: url('{{party.banner}}');">
+			<div class="distance text-uppercase">{{distance(party.latitude,party.longitude)}}</div>
+			<div class="crowd-rating" ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{party.crowd_quotient}}</div>
+		</div>
+	</a>
+	<div class="card-details">
+		<a href="#"><h4 class="card-title">{{party.title}}</h4></a>
+		<p  class="card-type">{{party.startdate|getremaintimecalculate:party.enddate}}</p>
+		<button ng-disabled="disableObj=='true'" ng-click="ismodalopen(party.webpaymentlink)"  class="btn call-of-action text-uppercase">Book</button>
+		
+	</div>
+</div>

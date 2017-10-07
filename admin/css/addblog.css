@@ -1,0 +1,28 @@
+#uploadedImg{
+margin-top: 15px;
+margin-bottom: 15px;
+background-color:#666;
+padding-top: 15px;
+padding-left: 15px;
+}
+.imgPath{
+ width: 150px;
+    height: 150px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 3px;
+}
+#uploadFileBotton{
+margin-top: 15px;
+}
+.iconPosition{
+    color: white;
+    background-color: red;
+    margin-left: -28px;
+    position: absolute;
+    margin-top: 16px;
+  }
+.addPosition{
+position: relative;
+float: left;
+}

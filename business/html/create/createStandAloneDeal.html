@@ -1,0 +1,346 @@
+<div class="main-content-header page-header">
+    <h1 class="page-heading">Create Deal</h1>
+</div>
+<form name="dealForm">
+    <div class="container-fluid create-container max-width">
+
+        <aside class="create-frm-sidebar">
+            <fieldset class="gp-fieldset">
+                <legend>Search Relevancy Bar</legend>
+                <percentage-widget percent={{percent}}></percentage-widget>
+            </fieldset>
+
+            <div class="align-center cf-call-to-action">
+                <button class="btn btn-lg btn-primary call-to-action">Save As Draft</button>
+            </div>
+        </aside>
+
+
+        <div id="gp-create" class="create-frm-wrapper" has-scrolling-tabs>
+            <nav id="create-frm-toggle-nav" class="create-frm-toggle-nav">
+                <ul role="tablist">
+                    <li class="active"><a class="create-frm-toggle" href="#" data-target="#essentials" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i> <span>Essentials</span></a></li>
+                    <li><a class="create-frm-toggle" href="#" data-target="#commercials" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-cogs"></i> <span>Commercials</span></a></li>
+                    <li><a class="create-frm-toggle" href="#" data-target="#contact-details" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-user"></i> <span>Contact Details</span></a></li>
+                    <li><a class="create-frm-toggle" href="#" data-target="#increase-relevancy" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-line-chart"></i> <span>Increase Relevancy</span></a></li>
+                    <li><a class="create-frm-toggle" href="#" data-target="#third-party-redemption" data-target-container=".create-frm-panel" role="tab" data-toggle="tab"><i class="fa fa-credit-card"></i> <span>Third Party Redemption</span></a></li>
+                </ul>
+            </nav><!-- /.create-frm-toggle-nav -->
+
+            <div class="create-frm-panel tab-content">
+                <div id="essentials" class="create-frm-content tab-pane fade in active" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Essentials</h2>
+                    </div>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="deal-title">Title *</label>
+                        <input class="form-control" id="deal-title" type="text" placeholder="">
+                    </div>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="deal-location">Location *</label>
+                        <input google-location-autocomplete class="form-control location"  id="standAlonedealLocation" type="text" placeholder="">
+                    </div>
+
+                    <figure class="gp-card-preview">
+                        <div class="previewed-details">    
+
+                            <div class="preview-card-figure gp-deal-figure" style="background-image:url({{standAloneDeal.coverShow}});"></div>
+
+                            <div class="details"> 
+                                <span class="gp-input-file" data-toggle="tooltip" title="Insert Banner">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="fa fa-camera"></i> <input formtype="standAloneDeal" type="file" id="deal-cover-image"  cover-pic-upload accept="image/*">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <figcaption class="more-details">
+                            <div class="date-range-picker form-group gp-form-group combined-form-group">
+                                <label class="sr-only">Search By Date Range</label>
+                                <div class="clearfix">
+                                    <div  class="input-group from-date-picker">
+                                        <input type="text" class="gp-input-control" dtp-input placeholder="Start Date Time" />
+                                    </div> 
+
+                                    <div class="input-group to-date-picker">
+                                        <input type="text"  class="gp-input-control" dtp-input placeholder="End Date Time" />
+                                    </div>
+                                </div>
+                            </div>
+                        </figcaption>
+                    </figure>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="deal-description">Description *</label>
+                        <textarea class="form-control" id="deal-description" placeholder=""></textarea>
+                        <!-- <input type="text" ng-model="standAloneDeal.description" name=""> -->
+                    </div>
+
+                    <div class="form-group gp-form-group">
+                        <label class="" for="deal-terms">Terms</label>
+                        <textarea class="form-control" id="deal-terms"></textarea>
+                        <!-- <input type="text" ng-model="standAloneDeal.terms" name=""> -->
+                    </div>
+                </div><!-- /#essentials -->
+
+                <div id="commercials" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Commercials</h2>
+                    </div>
+
+                    <section class="customize">
+                        <h3 class="section-heading">Type Of Class <i class="fa fa-question-circle" data-toggle="tooltip" title="Please select the amount & the number of seats you want to enter against each class"></i></h3>
+
+                        <div class="ticketing-class">
+                            <div class="class-type">
+                                <div class="class-title">VIP</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Platinum</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Gold</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Silver</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Bronze</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <hr>
+
+                    <section class="customize">
+                        <h3 class="section-heading">Mode Of Payment <i class="fa fa-question-circle" data-toggle="tooltip" title="Select Payment Mode"></i></h3>
+
+                        <ul class="payment-options">
+                            <li> 
+                                <div class="pseudo-checkbox checked">Online <i class="fa fa-question-circle" data-toggle="tooltip" title="Pay online"></i></div>
+                            </li>
+                            <li> 
+                                <div class="pseudo-checkbox">POA <i class="fa fa-question-circle" data-toggle="tooltip" title="Pay on Arrival at the Venue. Subject to terms and conditions."></i></div>
+                            </li>
+                        </ul>
+
+                    </section>
+
+                    <hr>
+
+                    <section class="customize"> 
+                        <div class="form-group gp-form-group gp-checkbox-wrap">
+                            <div class="gp-checkbox-control"><input class="gp-checkbox" type="checkbox"></div>
+                            <div class="gp-checkbox-label"><strong>Available / Sell On Party-Store</strong> <i class="fa fa-question-circle" data-toggle="tooltip" title="Upload your inventory to be sold on our exclusive Party Store."></i></div>
+                        </div>
+
+                        <div class="ticketing-class">
+                            <div class="class-type">
+                                <div class="class-title">VIP</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Platinum</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Gold</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Silver</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+
+                            <div class="class-type">
+                                <div class="class-title">Bronze</div>
+                                <div class="form-group">
+                                    <label class="sr-only">Rupee/Coin</label>
+                                    <input type="text" class="form-control" placeholder="Rupee/Coin" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Seat Limit</label>
+                                    <input type="text" class="form-control" placeholder="Seat Limit">
+                                </div>
+                            </div>
+                        </div>  
+
+                    </section>
+                </div><!-- /#commercials -->
+
+                <div id="contact-details" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Contact Details</h2>
+                    </div>
+
+                    <div class="contact-person">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-person">Name *</label>
+                                    <input class="form-control" id="contact-person" type="text" >
+                                </div>      
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-number">Contact Number *</label>
+                                    <input class="form-control" id="contact-number" type="text" >
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group gp-form-group">
+                                    <label class="" for="contact-email">Contact Email *</label>
+                                    <input class="form-control" id="contact-email" type="text" >
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div><!-- /#contact-details -->
+
+                <div id="increase-relevancy" class="create-frm-content tab-pane fade" role="tabpanel">
+                    <div class="frm-content-header">
+                        <h2 class="frm-content-heading">Increase Relevancy</h2>
+                    </div>
+                    <div class="form-group gp-form-group">
+                        <label class="" for="deal-theme">Theme(s) <i class="fa fa-question-circle" data-toggle="tooltip" title="This means to signify the relevant theme"></i></label>
+                        <md-content class="autocomplete form-control" layout="column">
+                            <md-contact-chips
+                            ng-model="standAloneDeal.themes"
+                            md-contacts="searchTheme($query)"
+                            md-contact-name="name"
+                            md-contact-image="image"
+                            md-contact-email="email"
+                            md-require-match="true"
+                            md-highlight-flags="i"
+                            filter-selected="true">
+                        </md-contact-chips>
+                    </md-content>
+                </div>      
+
+                <div class="form-group gp-form-group">
+                    <label class="" for="deal-genre">Genre(s) <i class="fa fa-question-circle" data-toggle="tooltip" title="This means to signify the relevant Genres"></i></label>
+                    <md-content class="autocomplete form-control" layout="column">
+                        <md-contact-chips
+                        ng-model="standAloneDeal.genres"
+                        ng-change="calculatePercentage('standAloneDeal',genres,standAloneDeal.genres[0])"
+                        md-contacts="searchGenre($query)"
+                        md-contact-name="name"
+                        md-contact-image="image"
+                        md-contact-email="email"
+                        md-require-match="true"
+                        md-highlight-flags="i"
+                        filter-selected="true">
+                    </md-contact-chips>
+                </md-content>
+            </div>
+        </div><!-- /#increase-relevancy -->
+
+        <div id="third-party-redemption" class="create-frm-content tab-pane fade" role="tabpanel">
+            <div class="frm-content-header">
+                <h2 class="frm-content-heading">Third Party Redemption</h2>
+            </div>
+
+            <div class="form-group gp-form-group">
+                <label class="" for="">Expiration Date <i class="fa fa-question-circle" data-toggle="tooltip" title="Insert date of expiry of the deal"></i></label>
+                <adm-dtp full-data="" options="">
+                    <input type="text" class="form-control" dtp-input placeholder="">
+                </adm-dtp>
+            </div>      
+
+            <div class="form-group gp-form-group">
+                <label class="" for="deal-redeem-link">Redeem Link <i class="fa fa-question-circle" data-toggle="tooltip" title="Insert the link for users to redeem the deal"></i></label>
+                <input class="form-control" id="deal-redeem-link" type="text" placeholder="">
+            </div>
+
+            <div class="form-group gp-form-group">
+                <label class="" for="deal-redeem-code">Redeem Code <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter the Code to be used for redeeming the deal by the user"></i></label>
+                <input class="form-control" id="deal-redeem-code" type="text" placeholder="">
+            </div>
+        </div><!-- /#third-party-redemption -->
+
+    </div><!-- /.create-frm-panel -->
+
+    <div class="align-center cf-call-to-action">
+        <button class="btn btn-lg btn-primary call-to-action">Publish</button>
+    </div>
+
+</div><!-- /.create-frm-wrapper -->
+</div>
+</form>

@@ -1,0 +1,29 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Verify Your Mobile Number</h4>
+</div>
+
+<div class="modal-body">              
+	<form class="form" name="signupotpform">
+		<div class="form-group resend-otp">
+			<p class="otp-text" ng-show="otpmsg">OTP sent successfully. If you don’t receive in 30 seconds,
+				click on Resend OTP.</p>
+				<p  class="otp-text" ng-show="resendotp">OTP resent successfully. If you don’t receive in 30 seconds,
+					click on Resend OTP.</p>
+					<div class="otp-field">
+						<p ng-hide="blink" class="otp"><a ng-click="resendOtp()" href="">Resend <span class="text-uppercase">OTP</span></a></p>
+						<input name="otp" pattern="[0-9]{4}" type="text" ng-model="loginobj.otp" name="one time password"   placeholder="Enter OTP" class="form-control" required>
+					</div>
+					<p ng-show="otpverification" class="text-danger return-msg">Please enter valid OTP</p>
+
+				</div>
+				<button type="submit" class="btn btn-login btn-block btn-login-disable" ng-class="{'btn-login-disable': signupotpform.$invalid}" ng-disabled="signupotpform.$invalid" ng-click="confirmOtp(loginobj,signupotpform.$valid)">Login</button>
+
+			</form>     
+		</div>      
+		<div class="modal-footer">
+			<ul class="term-secton">
+				<li>By login, you agree to GoParties’s</li>
+				<li><span><a ng-href="/tnc" class="link-color hide-model" target="_blank">Terms of Service</a></span> and <span> <a ng-href="/privacyPolicy" class="link-color hide-model" target="_blank">Privacy Policy</a></span></li>
+			</ul>
+		</div>

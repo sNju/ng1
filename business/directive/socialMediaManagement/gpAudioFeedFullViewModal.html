@@ -1,0 +1,351 @@
+<md-dialog class="gp-feed-full-view-dialog gp-modal-sm" aria-label="Mango (Fruit)"  ng-cloak >
+
+
+    <md-dialog-content class="gp-full-feed goParties-feed" layout="row" layout-sm="column">
+        
+        <button type="button" class="dialog-close-btn" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+        
+        <div class="gp-feed-media-wrapper flex" flex>
+            <section class="gp-media-player gp-audio-media-player" class="gp-media-player gp-audio-media-player" gp-media-player >
+                <div class="gp-media-player-body">
+                    <div class="img-wrap" layout="column" layout-align="center center">
+                        <img alt="" class="has-animation" src="images/feeds/feed-dummy-img3.jpg">        
+                    </div>
+                </div><!-- /.gp-media-player-body -->
+
+                <div  class="gp-media-wrap">
+                    <div class="gp-media-player-controls clearfix">
+                        <div class="gp-media-player-progress-bar">
+                            <form>
+                                <nav class="gp-media-player-controls-nav" gp-media-player-controls-nav >
+                                    <a class="gp-media-control play-pause-media" href="#" ng-class="{'media-playing':isAudioPlay==true}" ng-click="audioToggle()">Play / Pause</a>
+                                </nav>
+
+                                <div class="gp-media-controls-group clearfix">
+                                    <div class="gp-media-volume-control pull-right">
+                                        <button class="small-btn media-volume-btn" type="button"><i class="fa fa-volume-up"></i></button>
+                                        <div class="gp-media-volume-bar">
+                                            <span class="current-progress" id="audioVolumeSeek" ng-click="audioVolumeSeekClick($event)" style="width:50%"></span>
+                                            <input type="range" min="0" max="1" step="0.01" ng-click="audioVolumeChange($event)" id="audioVolumn" eventName="audioVolumeChange"/>
+                                        </div>  
+                                    </div>
+
+                                    <div class="gp-media-progress-bar" data-media-progress="03:50" data-media-total-length="05:00">
+                                        <span ng-click="bufferedClick($event)" id="buffered" class="buffering current-progress" style="width:80%"></span>
+                                        <span ng-click="backWardAudioClick($event)" id="elapsedSpan" class="current-progress" style="width:30%;"></span>
+                                        <input  id="gp-media-status" ng-click="audioSeekClick($event)" type="range" min="0" max="{{audioPlayer.duration}}" value="30" step="1"> 
+                                    </div>
+                                </div>
+
+
+
+                            </form>
+                        </div>
+
+                        
+                        
+                    </div>
+                    <audio  preload='auto' id="audioPlayer" src="http://gopartiesstatic.s3.amazonaws.com/images/1468147278_GehraIshqDownloadMingSE.mp3" class="gp-media gp-launched-media hidden" controls></audio>
+
+                </div>
+            </section><!-- /.gp-audio-media-player -->
+        </div>            
+    
+        <div class="gp-feed-details">
+
+            <div class="gp-feed-header">
+                <div class="gp-user-profile-table">
+                    <div class="gp-user-pic-table-cell"> 
+                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                    </div>
+                    <div class="gp-user-info-table-cell">
+                        <h4 class="gp-user-name">John Doe</h4>
+                        <p>5 Aug, 2016</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gp-feed-content-wrapper">
+
+                <section class="gp-feed-content gp-feed-section">
+                    <p class="feed-full-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                    <div class="gp-feed-actions">   
+                        <ul class="gp-feed-actions-nav clearfix">
+                            <li>
+                                <div class="gp-feed-action">
+                                    <button class="btn-action gp-feed-action-icon like-post-btn" type="button"><i class="fa fa-heart-o"></i></button>
+                                    <button class="btn-action" data-toggle="" data-target="#likedUsersModal" type="button"><span>456</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="gp-feed-action gp-feed-comment-action">
+                                    <button class="btn-action" data-toggle="" data-target="#postCommentsModal" type="button">
+                                        <span class="gp-feed-action-icon"><i class="fa fa-comment-o"></i></span> <span>156</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="gp-feed-action">
+                                    <button class="btn-action gp-feed-action-icon" type="button"><i class="fa fa-share"></i></button>
+                                    <button class="btn-action" data-toggle="" data-target="#sharedUsersModal" type="button"><span>15</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="gp-feed-action dropup">
+                                    <button class="btn-action" data-toggle="dropdown" type="button">
+                                        <div class="gp-ellipsis-v">
+                                            <i class="gp-ellipse-o"></i>
+                                        </div>
+                                    </button>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fa fa-pencil"></i> Edit Feed</a></li>
+                                        <li><a href="#"><i class="fa fa-trash-o"></i> Delete Feed</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                        </ul>   
+                    </div><!-- /.gp-feed-actions -->    
+                </section><!-- /.gp-feed-content section -->
+
+                <section class="gp-feed-likes gp-feed-section hidden">
+
+                    <div class="gp-section-header">
+
+                        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+                        <h3 class="gp-section-heading"><i class="fa fa-heart heading-icon"></i> 25 Like This</h3>
+
+                    </div>
+
+                    <ul class="liked-users-list">
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>    
+
+                </section><!-- /.gp-feed-likes section -->    
+
+
+                <section class="gp-feed-comments gp-feed-section hidden">
+                    <div class="gp-section-header">
+                        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+                        <h3 class="gp-section-heading"><i class="fa fa-comment heading-icon"></i> 25 Comments</h3>
+                    </div>
+
+                    <ul class="liked-users-list">
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br class="clearfix">
+                            <div class="gp-user-comment">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- Post New Comment -->
+                    <div class="post-new-comment">
+                        <form>
+                            <div class="form-group">    
+                                <textarea class="gp-new-comment-control" placeholder="Add New Message"></textarea>
+                                <button class="post-btn"><i class="fa fa-send"></i></button>
+
+                            </div>  
+                        </form>
+                    </div>  
+
+                    <!-- End Post New Comment -->    
+
+                </section><!-- /.gp-feed-comments section --> 
+
+
+                <section class="gp-feed-shares gp-feed-section hidden">
+
+                    <div class="gp-section-header">
+
+                        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+
+                        <h3 class="gp-section-heading"><i class="fa fa-share heading-icon"></i> 15 Share This</h3>
+
+                    </div>
+
+                    <ul class="liked-users-list">
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+                            <div class="gp-user-profile-wrap">
+                                <div class="gp-user-profile-table">
+                                    <div class="gp-user-pic-table-cell"> 
+                                        <img alt="" class="gp-user-pic" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+                                    </div>
+                                    <div class="gp-user-info-table-cell">
+                                        <h4 class="gp-user-name">John Doe</h4>
+                                        <p>Band <strong>Hip Hop</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>    
+
+                </section><!-- /.gp-feed-shares section -->       
+
+                
+
+            </div>    
+
+        </div>    
+
+    </md-dialog-content>
+
+    <nav class="dialog-controls-nav clearfix">
+        <a ng-click="" class="dialog-control dialog-prev-control" href="#"><i class="fa fa-angle-left"></i></a>
+        <a ng-click="" class="dialog-control dialog-next-control" href="#"><i class="fa fa-angle-right"></i></a>
+    </nav>
+
+
+</md-dialog>

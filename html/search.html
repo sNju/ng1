@@ -1,0 +1,199 @@
+<gpca-header date-value="false" search-strip="false" ></gpca-header>
+<div class="container-fluid filter-panel">
+	<section id="search" date-picker search-directive>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 filter-container">
+					<!--Filter Container-->
+					<!--Date Filter-->
+					<div ng-class="{'inactive-content':!checkvisible('date',filterobj)}" class="filter-col">
+						<div class="dropdown">
+							<button class="btn filter-btn dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-calendar-o fa-filter" aria-hidden="true"></i>{{filterobjshow.date}}
+								<i class="fa fa-angle-down filter-icon" aria-hidden="true"></i>
+							</button>
+							<ul  class="dropdown-menu filter-dropdown">
+								<li><a href="#" ng-class="{'active':day==0}"  ng-click="setSearchDate(0)">Today</a></li>
+								<li><a href="#" ng-class="{'active':day==1}"  ng-click="setSearchDate(1)">Tomorrow</a></li>
+								<li><a href="#" ng-class="{'active':day==2}"  ng-click="setSearchDate(2)">Day After</a></li>
+								<li>
+									<div class="form-group fil-date" id="checkdate">
+										<i class="fa fa-calendar fil-cal-icon" aria-hidden="true"></i>
+										<input   name="date" type="text" class="datepicker" ng-model='filterobj.date'  placeholder="OR SELECT DATE"/>							    		
+									</div>
+								</li>
+								<li><a href="" data-ng-click="filterobj.date=undefined" class="clear-filter">Clear Date</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--Price Filter-->
+					<div class="filter-col">
+						<div class="dropdown">
+							<button class="btn filter-btn dropdown-toggle" type="button" data-toggle="dropdown">{{filterobjshow.category}}
+								<i class="fa fa-angle-down filter-icon" aria-hidden="true"></i>
+							</button>
+							<ul class="dropdown-menu filter-dropdown">
+								<li ng-click="changecategory('party')"><a href="#">Party</a></li>
+								<li ng-click="filterbyType('table')" ><a href="#">Book Table</a></li>
+								<li ng-click="filterbyType('guest')"><a href="#">Guest List</a></li>
+								<li ng-click="changecategory('band,dj,artist')"><a href="#">Performers</a></li>
+								<li data-ng-click="filterobj.category=undefined;filterobj.guestlist=undefined;filterobj.tablebooking=undefined" ><a href="#" class="clear-filter">Clear Filter</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--Sort Filter-->
+					<div class="filter-col">
+						<div class="dropdown">
+							<button class="btn filter-btn dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-filter" aria-hidden="true"></i>{{filterobjshow.sortby}}
+								<i class="fa fa-angle-down filter-icon" aria-hidden="true"></i>
+							</button>
+							<ul class="dropdown-menu filter-dropdown">
+								<li><a href="#"  ng-class="{'active':filterobj.sort=='r'}" data-ng-click="filterobj.sort='r'">Recommended</a></li>
+								<li><a href="#"  ng-class="{'active':filterobj.sort=='t'}" data-ng-click="filterobj.sort='t'">Trending</a></li>
+								<li ng-class="{'inactive-content':!checkvisible('near')}"><a href="#"  ng-class="{'active':filterobj.sort=='n'}" data-ng-click="filterobj.sort='n'">Near You</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--Deal Filter-->
+					<div ng-class="{'inactive-content':!checkvisible('deal',filterobj)}"  class="filter-col filter-deal">
+						<input  ng-model="filterobj.deal" type="checkbox" id="parties" class="filter-deal"><label for="parties">With Only Deal</label><br>
+					</div>
+				</div>
+			</div>
+		</div><!--End Container-->
+	</section>
+</div>
+<div class="container">
+	<!--Search Section-->
+	<div class="search-result" fixed-bottom-footer>
+		<!-- Search Results Preloader -->
+		<div ng-show="childloading==true&&loadmore!=true" class="overlay-loader">
+			<div class="preloader-wrap">
+				<img class="preloader" alt="GoParties-Search" src="images/preloader-img.png">
+			</div>
+		</div>
+		<h3 class="text-uppercase main-heading">{{cards.length>0?"We have got "+cards.length+"+ results":"We have got no result"}}</h3>
+		<!--Deal Card-->
+		<ul class="gp-category-search-card-list clearfix">
+			<rdgp-card class-name="card-load-onethird" disable-obj="false" card-obj="{{obj}}" ng-repeat="obj in cards"></rdgp-card>
+		</ul>
+
+		<!--Load More-->
+		<div ng-show="loadshow"  ng-class="{'loading-show':loadmore==true}" class="col-lg-12" >
+			<button ng-click="$parent.next(filterobj,cards.length)" class="btn load-more-btn">load more</button>
+			<div class="cssload-jumping" >
+				<span></span><span></span><span></span><span></span><span></span>
+			</div>
+		</div> <!--End Load More-->
+	</div>
+</div><!--End Wraper-->
+
+
+
+
+
+
+<!--Filter Section-->
+		<!-- <div class="filter-section" id="filter" has-filter-toggle>
+			<button type="button" class="btn btn-default btn-block search-filter-toggle visible-xs">Filters<span ><i class="fa fa-filter" aria-hidden="true"></i></span></button>
+			<h3 class="text-uppercase main-heading">Filters</h3>
+			<div class="section-bg" id="filters" stop-filter>
+				<form class="filter-form">
+					
+					<div class="checkbox-group sorting">						
+						<div class="checkbox">
+							<input  ng-model="filterobj.deal" type="checkbox" id="parties">
+							<label for="parties">
+								<span class="checkbox">Deals</span>
+							</label>
+						</div>
+						<div class="checkbox">
+							<input  ng-model="filterobj.tablebooking" type="checkbox" id="deals">
+							<label for="deals"><span class="checkbox">Book A Table</span></label>
+						</div>
+						<div class="checkbox">
+							<input  ng-model="filterobj.guestlist" type="checkbox" id="partyspot">
+							<label for="partyspot"><span class="checkbox">Get on Guest</span></label>
+						</div>								
+					</div>
+					<hr>
+					
+					<h3 class="text-uppercase filter-section-heading">Select Your Location</h3>
+					<div class="form-group location">
+						<input google-location-autocomplete id="txtlocation" ng-value="filterobj.address" type="text" class="form-control" placeholder="YOUR LOCATION"/>
+						<span><a href="#"><img src="images/location-icon.png" class="brend-tool" data-toggle="tooltip" title="Auto Detect my Location" data-placement="top"></a></span>
+					</div>
+					<hr>
+				
+					<h3 class="text-uppercase filter-section-heading">Select Date</h3><span class="pull-right cancel-result"><a data-ng-click="filterobj.date=undefined" href="">Clear</a></span>
+					<div class="form-group date-section">
+						<ul>
+							<li ng-class="{'active':day==0}"  ng-click="setDate(0)">Today</li>
+							<li ng-class="{'active':day==1}"   ng-click="setDate(1)" >Tomorrow</li>
+							<li ng-class="{'active':day==2}"  ng-click="setDate(2)" >Day After</li>
+						</ul>
+						<div class="date-format">
+							<input  name="date" type="text" class="form-control datepicker" ng-model='filterobj.date'  placeholder="OR SELECT DATE"/>
+							<span><a href="#"><img src="images/icon_image/calender.png"></a></span>
+						</div>
+					</div>
+					<hr>
+					
+					<h3 class="text-uppercase filter-section-heading">Select Category</h3><span class="pull-right cancel-result"><a data-ng-click="filterobj.category=[];selectall=false" href="">Clear</a></span>
+					<div class="form-group catagory-section">
+						<ul>
+							<li ng-class="{'active':selectall==true}" ng-click="selectallcategory('party','spot','band','dj','artist')">Select All</li>
+							<li ng-class="checkcategory('party')" ng-click="changecategory('party')" toggle-class="active">Parties</li>
+							<li ng-class="checkcategory('spot')" ng-click="changecategory('spot')" toggle-class="active">Party Spot</li>
+							<li ng-class="checkcategory('band')" ng-click="changecategory('band')" toggle-class="active">Band</li>
+							<li ng-class="checkcategory('dj')" ng-click="changecategory('dj')" toggle-class="active">DJs</li>
+							<li ng-class="checkcategory('artist')" ng-click="changecategory('artist')" toggle-class="active">Performing Artist</li>
+						</ul>
+					</div>
+					<hr>
+				
+					<h3 class="text-uppercase filter-section-heading">Sort By</h3><span class="pull-right cancel-result"><a data-ng-click="filterobj.sort=undefined" href="">Clear</a></span>
+					<div class="form-group sort-section">
+						<ul>
+							<li ng-class="{'active':filterobj.sort=='r'}" data-ng-click="filterobj.sort='r'">Recommended</li>
+							<li ng-class="{'active':filterobj.sort=='n'}" data-ng-click="filterobj.sort='n'">Near You</li>
+							<li ng-class="{'active':filterobj.sort=='t'}" data-ng-click="filterobj.sort='t'">Trending</li>
+							<li ng-class="{'active':filterobj.sort=='c'}" data-ng-click="filterobj.sort='c'">Crowd Quotient</li>
+						</ul>
+					</div>
+				
+					<hr>
+					<h3 class="text-uppercase filter-section-heading">Genre</h3>
+					<div class="form-group drop-dpwn-select">
+						<md-content class="autocomplete form-control" layout="column">
+							<md-contact-chips
+								ng-model="filterobj.genre"
+								md-contacts="searchGenre($query)"
+								md-contact-name="name"
+								md-contact-image="image"
+								md-contact-email="email"
+								md-require-match="true"
+								md-highlight-flags="i"
+								filter-selected="true" >
+							</md-contact-chips>
+						</md-content>
+					</div>
+					
+					<h3 class="text-uppercase filter-section-heading">Theme</h3>
+					<div class="form-group drop-dpwn-select">
+						<md-content class="autocomplete form-control" layout="column">
+							<md-contact-chips
+							ng-model="filterobj.theme"
+							md-contacts="searchTheme($query)"
+							md-contact-name="name"
+							md-contact-image="image"
+							md-contact-email="email"
+							md-require-match="true"
+							md-highlight-flags="i"
+							filter-selected="true" >
+							</md-contact-chips>
+						</md-content>
+					</div>	
+					<div class="stucktag"></div>
+				</form>
+			</div>
+		</div> -->

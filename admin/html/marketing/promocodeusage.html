@@ -1,0 +1,58 @@
+    <div class="container-fluid" add-user-directive>
+        <div class="block-header">
+            <h2>All the Signup/Registration made with the promo-code : {{promocode.signup_code}}</h2>
+        </div>
+
+        <div class="row clearfix">
+            <!-- Task Info -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Signup/Registration details</h2>
+                        <div class="pull-right">
+                            <div class="switch panel-switch-btn">
+                                <button ng-class="(promocode.status==true) ? 'bg-red':'bg-cyan'" ng-click="togglestatus(promocode)" class="btn bg-red btn-block waves-effect">{{promocode.status==true?'Disable PromoCode':'Enable Promocode'}}</button>
+                                <!-- span class="m-r-10 font-12">REAL TIME</span>
+                                <label>OFF<input type="checkbox" id="realtime" checked=""><span class="lever switch-col-cyan"></span>ON</label> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover dashboard-task-infos">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Signup By</th>
+                                        <th>Usage Date</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Facebook Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-class="{'active':$index%2==0}" ng-repeat="promocodeusage in promocodeusages">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{promocodeusage.name}}</td>
+                                        <td><span ng-class="getclassname(promocodeusage.signupby)" class="label">{{promocodeusage.signupby}}</span></td>
+                                        <td>{{promocodeusage.createdat|timeStamptoProperDate}}</td>
+                                        <td>{{promocodeusage.email}}</td>
+                                        <td>{{promocodeusage.phone}}</td>
+                                        <td><a target="blank" ng-href="{{promocodeusage.link}}">{{promocodeusage.link}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Task Info -->
+        </div>
+    </div>
+    <!-- #END# Task Info -->
+</div>
+</div>
+
+</div>
+

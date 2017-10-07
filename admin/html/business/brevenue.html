@@ -1,0 +1,121 @@
+<form method="POST" add-user-directive>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class=" sec-heading">
+					<h2 class="heading-type"></h2>
+				</div>		
+				<div class="card">
+					<div class="panel-header">
+						<h2 class="header-type">The entire list of bookings for all of your parties, with filters :)</h2>
+						<div class="pull-right">
+							<button type="submit" ng-click="$parent.filterdata(filterobj)" class="btn bg-dark pull-right waves-effect">Apply Filters</button>
+						</div>
+					</div>					
+					<div class="body">
+						<div class="row">
+							<div class="col-sm-2">
+								<div class="form-group">
+									<div class="form-line">
+										<input ng-model="filterobj.keyword" type="text" class="form-control" placeholder="Keyword" />
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="form-group">
+									<div class="form-line">
+										<select ng-model="filterobj.type" class="form-control show-tick">
+											<option value="">Type</option>
+											<option value="all">All</option>
+											<option value="party">Party</option>
+											<option value="Table Booking">Table Booking</option>
+											<option value="Guest List">Guest List</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="form-group">
+									<div class="form-line">
+										<select ng-model="filterobj.status" class="form-control show-tick">
+											<option value="">Status</option>
+											<option value="all">All</option>
+											<option value="confirmed">Confirmed</option>
+											<option value="pending">Pending</option>
+											<option value="cancelled">Cancelled</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">date_range</i>
+									</span>
+									<div class="form-line">
+										<input name="startdate" ng-model="filterobj.startdate" type="text" class="datepicker form-control" placeholder="Start Date ">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">date_range</i>
+									</span>
+									<div class="form-line">
+										<input name="enddate" ng-model="filterobj.enddate" type="text" class="datepicker form-control" placeholder="End Date ">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" ng-controller="parentController">
+							<div class="col-lg-12" ng-init="paginationinit($parent.filterobj)">
+								<div class="pull-right clearfix" style="margin-top: 5px;">
+									<span ng-if="filterobj.since>=$root.paginationcount" ng-click="prev($parent.filterobj)"><button type="button" class="btn">Prev</button> </span>
+									<span ng-if="revenuematrix.length>=$root.paginationcount" ng-click="next($parent.filterobj)" class="m-l-10"><button type="button" class="btn">Next</button></span>
+
+								</div>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-hover dashboard-task-infos">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Partymon</th>
+										<th>Date/Time</th>
+										<th>Type</th>
+										<th>Title</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="animate-repeat" ui-sref="orderdetail({id:revenue._key})" ng-class="{'partyrow':revenue.type=='party'}"  ng-repeat="revenue in revenuematrix" ui-sref="/orderdetail">
+										
+										<td>{{$parent.indexcalculate($index,filterobj.since)}}</td>
+										<td>{{revenue.from.name}}</td>
+										
+										<td>{{revenue.createdat|timeStampToDate|calendarDateTimeFormat:' ':true}}</td>
+										<td>{{revenue.type}}</td>
+
+										<td>{{revenue.type=='party'?revenue.to.title:revenue.to.name|limitTo:10}}</td> 
+										<td><span ng-class="getclassname(revenue.status)" class="label bg-red">{{revenue.status}}</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="row" ng-controller="parentController">
+							<div class="col-lg-12" ng-init="paginationinit($parent.filterobj)">
+								<div class="pull-right clearfix" style="margin-top: 5px;">
+									<span ng-if="filterobj.since>=$root.paginationcount" ng-click="prev($parent.filterobj)"><button type="button" class="btn">Prev</button> </span>
+									<span ng-if="revenuematrix.length>=$root.paginationcount" ng-click="next($parent.filterobj)" class="m-l-10"><button type="button" class="btn">Next</button></span>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</form>

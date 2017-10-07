@@ -1,0 +1,196 @@
+<form add-user-directive booking-directive>
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <!-- Task Info -->
+      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+         <div class="panel-header switch"> 
+           <h2 class="header-type">{{party.title!=undefined?('Title: '+party.title):('Name: '+profile.name)}}</h2>             
+         </div>            
+         <div class="body">
+          <div class="row preference">
+            <div class="col-lg-12">
+              <h5>Select Your Preference</h5>
+            </div>
+            <div class="col-lg-12">
+              <button ng-class="{'active':order.bookingtype=='tablebooking'}" ng-click="selectbookingtype('bookingtype','tablebooking')" class="btn radio-btn" >Book me a table</button>
+              <button ng-class="{'active':order.bookingtype=='guestlist'}" ng-click="selectbookingtype('bookingtype','guestlist')" class="btn radio-btn" >Get me on guest list</button>
+              <span class="date-ranger">
+                <input ng-model="order.selectdate" name="date" type="text" class="datetimepicker form-control" placeholder="Select Date" aria-invalid="false">
+              </span>
+            </div>
+          </div>
+          <!--Male Female Panel-->
+          <div class="row clearfix" >
+            <div class="col-lg-12">
+              <h5>Select Number of People</h5>
+            </div>
+            <div class="col-lg-12">
+              <ul class=" user-ino-container clearfix">
+                <li class="user-info-details">                                
+                  <div class="col-xs-6 col-sm-6 infobg">
+                    <span>Male</span>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 infovalue">
+                    <span>
+                      <button class="btn btn-default btn-value-select" ng-click="decrement('nop_male')">
+                        <i class="fa fa-minus value-icon"></i>
+                      </button>
+
+                      <span class="value-show">{{order.nop_male}}</span>
+
+                      <button class="btn btn-default btn-value-select" ng-click="increment('nop_male')">
+                        <i class="fa fa-plus value-icon"></i>
+                      </button>
+                    </span>
+                  </div>
+
+                </li>
+                <li class="user-info-details">
+
+                  <div class="col-xs-6 col-sm-6 infobg">
+                    <span>Female</span>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 infovalue">
+                    <span>
+                      <button class="btn btn-default btn-value-select" ng-click="decrement('nop_female')">
+                        <i class="fa fa-minus value-icon"></i>
+                      </button>
+
+                      <span class="value-show">{{order.nop_female}}</span>
+
+                      <button class="btn btn-default btn-value-select" ng-click="increment('nop_female')">
+                        <i class="fa fa-plus value-icon"></i>
+                      </button>
+                    </span>
+                  </div>
+
+                </li>
+                <li class="user-info-details">
+                  <div class="col-xs-6 col-sm-6 infobg">
+                    <span>Couple</span>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 infovalue">
+                    <span>
+                      <button class="btn btn-default btn-value-select" ng-click="decrement('nop_couple')">
+                        <i class="fa fa-minus value-icon"></i>
+                      </button>
+
+                      <span class="value-show">{{order.nop_couple}}</span>
+
+                      <button class="btn btn-default btn-value-select" ng-click="increment('nop_couple')">
+                        <i class="fa fa-plus value-icon"></i>
+                      </button>
+                    </span>
+                  </div>                               
+                </li>
+              </ul>
+              <!--Use below panel if male female not target-->
+                          <!-- <div class="col-md-12">
+                            <button class="btn user-short-btn">1</button>
+                            <button class="btn user-short-btn">2</button>
+                            <button class="btn user-short-btn active">3</button>
+                            <button class="btn user-short-btn">4</button>
+                          </div> -->
+                        </div>
+
+                      </div>
+                      <!--Male Female Panel End-->
+                      <div class="row clearfix">
+                        <div class="col-md-12">
+                          <h5>Select Partymon Contact Details</h5>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.details.name!==undefined && order.details.name!=='') ? 'focused' : ''">
+                              <input id="names" ng-model="order.details.name" type="text" class="form-control" />                      
+                              <label class="form-label">Name</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.details.email!==undefined && order.details.email!=='') ? 'focused' : ''">
+                              <input ng-model="order.details.email" type="text" class="form-control"/>
+                              <label class="form-label">Email</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.details.phone!==undefined && order.details.phone!=='') ? 'focused' : ''">
+                              <input ng-model="order.details.phone" type="text" class="form-control" />
+                              <label class="form-label">Phone Number</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>                               
+                      <div class="row clearfix">
+                        <div class="col-md-12">
+                          <h5>About the money :)</h5>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.price!==undefined && order.price!=='') ? 'focused' : ''">
+                              <input ng-model="order.price" type="money" class="form-control" />
+                              <label class="form-label">Price per Head</label>
+                            </div>
+                          </div>
+                        </div>                    
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.amount!==undefined && order.amount!=='') ? 'focused' : ''">
+                              <input ng-model="order.amount" type="money" class="form-control" />
+                              <label class="form-label">Optional</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group form-float">
+                            <div class="form-line" ng-class="(order.mode!==undefined && order.mode!=='') ? 'focused' : ''">
+                              <select ng-model="order.mode" class="form-control show-tick">
+                                <option disabled>Select Payment Option</option>
+                                <option value="poa">At the Venue</option>
+                                <option value="online">Net Banking</option>
+                                <option value="gpcoins">GP Coins</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>             
+                      <div class="row clearfix">
+                        <div class="col-md-12">
+                          <h5>Details of the Booking</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="form-group form-float">                      
+                            <div class="form-line" ng-class="(order.segment!==undefined && order.segment!=='') ? 'focused' : ''">
+                              <input ng-model="order.segment" type="text" class="form-control" />
+                              <label class="form-label">Booking Type - Free Entry till 11:30</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="form-group form-float"> 
+                            <div class="form-line" ng-class="(order.status!==undefined && order.status!=='') ? 'focused' : ''">
+                              <select ng-model="order.status" class="form-control show-tick">
+                                <option disabled="">Booking Status</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="pending">Pending</option>
+                                <option value="cancelled">Cancelled</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <button ng-click="isedit==true?updatebooking(order):savebooking(order)" ng-class="isedit==true?'bg-pink':'bg-green'" class="btn pull-right waves-effect">{{isedit==true?'Update Booking':'Save Booking'}}</button>                
+                        </div>
+                      </div>
+                    </div><!-- End Body -->
+                  </div><!-- End Card -->
+                </div><!-- End Cols -->
+              </div><!-- End Row -->
+            </div><!-- End Container -->
+          </form>
+          

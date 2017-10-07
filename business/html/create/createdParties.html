@@ -1,0 +1,19 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>
+<div ng-hide="show&&!loading">
+	<gp-create-party-header></gp-create-party-header>
+	<div ng-show="parties.length==0" ng-include="getDefaultPage(parties.length)"></div>
+	<div ng-show="parties.length>0">
+		<div class="container-fluid max-width">
+			<ul class="gp-cards-wrapper responsiveColumnLayout clearfix" id="container">
+				<gp-create-party-plus></gp-create-party-plus>
+				<gp-party-card parties-obj="party" ng-repeat="party in parties|filterPartyAndDeal:category|localPartyAndDealFilter:searchText"></gp-party-card>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+

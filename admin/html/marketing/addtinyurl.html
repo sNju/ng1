@@ -1,0 +1,56 @@
+<form id="form_validation" name="addurlobjform" add-user-directive validation-directive>
+
+ <!-- add-urlobj-directive -->
+ <div class="container-fluid">
+  <div class="block-header">
+    <h2>Add Url with modified url</h2>
+  </div>
+  <!-- Input -->
+  <div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="header">
+          <h2>
+           Add url!!
+           <small>Be smart, it means a lot to me</small>
+         </h2>
+       </div>
+       <div class="body">
+        <div class="row clearfix" style="display:flex;justify-content:center;">
+          <div class="col-sm-6 col-xs-12 col-md-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">http://goparties.com/</span>
+                <div class="form-line">
+                  <input ng-model="urlobj.tinyurl" type="text" class="form-control" placeholder="The tiny Part" required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix" style="display:flex;justify-content:center;">
+          <div class="col-sm-6 col-xs-12 col-md-6">
+            <div class="form-group">
+              <div class="form-line">
+                <input name="tinyurl" type="text" ng-model="urlobj.longurl" class="form-control" placeholder="Long Url to be redirected" required/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix" style="display:flex;justify-content:center;">
+          <div class="col-sm-8 col-xs-4 col-md-8">
+          </div>
+          <div class="col-sm-2 col-xs-4 col-md-2">
+            <button ui-sref="/tinyurl" class="btn bg-red btn-block btn-lg waves-effect" formnovalidate>Cancel</button>
+          </div>
+          <div class="col-sm-2 col-xs-4 col-md-2">
+            <button type="submit" ng-click="isedit==true?updateurlobj(urlobj,addurlobjform.$valid):addurlobj(urlobj,addurlobjform.$valid)" class="btn bg-base btn-block btn-lg waves-effect">{{isedit==true?'Update Tiny Url':'Add Tiny Url'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- #END# Input -->
+</div>
+</form>

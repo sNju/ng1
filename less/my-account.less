@@ -1,0 +1,400 @@
+// Variables and Mixins
+@import "variables.less";
+@import "mixins.less";
+.profile-title{
+    padding-left: 0;
+    margin-top: 85px;
+    .my-account-title{
+        color: #9660b8;
+        font-size: 16px;
+    }
+    .edit-profile-title{
+        color: #9660b8;
+        font-size: 16px;
+    }       
+}
+a{
+    -webkit-transition: none !important; 
+    -moz-transition: none !important;
+    transition: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+
+}
+button{
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    transition: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+
+}
+.my-account-container{
+    background-color:#fff;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    .flex-center();
+    border:1px solid #ececec;
+    @media(max-width: 767px){
+        flex-direction: column;
+        margin: 126px 0 30px;
+    }
+    .my-account-Img{
+        padding: 20px;
+        .my-account-header{
+            overflow: hidden;
+            position: relative;         
+            min-height: 150px;
+            border: 1px solid #f5f5f5;
+            @media(min-width: 768px){
+                min-height: 300px;
+               
+            }
+
+            .account-figure{
+                position: absolute;
+                top: -30px;
+                left: -30px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                filter: blur(15px) opacity(.8);
+                .flex-center();             
+                min-height: 150px;
+                width: 100%;
+                @media(min-width: 768px){
+                    min-height: 350px;
+                    min-width: 500px;
+                }
+            }
+            .change-image{
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 255px;
+                z-index: 999;
+                color: #000;
+                font-size: 14px;
+                &:hover{
+                    cursor:pointer;
+                }
+            }
+            .account-img{
+                z-index: 2; 
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;           
+                margin: auto;
+                .flex-center();
+                .center-img{
+                    margin: auto;
+                    width: 170px;
+                    height: 170px;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    position: relative;
+                    .edit-acount-img{
+                            position: absolute;
+                            right: -0px;
+                            top: 70%;
+                            background-color: #fff;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            .flex-center();
+                            .edit-pic-icon{
+                                margin: auto;
+                                font-size: 16px;
+                                color: #9660b8;
+                            }                           
+                    }
+                }
+            }
+         .account-img-overlay{                  
+            background: #000;       
+            height: 100%;       
+            width: 100%;        
+            opacity: .5;        
+            bottom: 0;      
+            left: 0;        
+            position: absolute;     
+            pointer-events: none;       
+            }
+        }
+    }
+    .my-account-details{
+        .edit-profile{
+            color: #6e3d8d;
+            position: absolute;
+            right: 15px;
+            top: -55px;
+        }
+        .edit-close{
+            background-color: #9660b8;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            opacity: 1;
+            border:0; 
+            position: absolute;
+            right: 15px;
+            top: -55px;
+            span{
+                font-size: 25px;
+                font-weight: 700;
+                line-height: 1;
+                color: #fff;
+                opacity: .5;
+            }
+        }
+        .party-text{
+           color: #e89519;
+           font-weight: normal;
+           font-family:@rmedium;
+        }               
+        hr{
+           margin-top: 15px;
+        }
+      .account-details{
+        .user-detail{
+            .form-group{
+                 .flex-center();
+                label{
+                    font-size: 14px;
+                    font-weight: normal;
+                    align-items: center; 
+                    -webkit-align-items: center;
+                    font-family:@rmedium;
+                    margin-top:5px;
+                }
+                input{
+                    width: 65%;
+                    border: 0;
+                    border-radius: 0;
+                    background-color: #fff;
+                    -webkit-box-shadow:none;
+                    box-shadow: none;
+                    -webkit-transition:all linear 0.3s;
+                    transition:all linear 0.3s;
+                }
+                .edit-input{
+                    border-bottom: 1px solid #ddd;
+                    -webkit-transition:all linear 0.3s;
+                    transition:all linear 0.3s;
+                }
+
+                .edit-input-border{        
+                    border-bottom: 1px solid #ff0000 !important;
+                    -webkit-transition:all linear 0.3s;
+                    transition:all linear 0.3s; 
+                }
+
+
+                .edit-btn{
+                    position: absolute;
+                    background-color: transparent;
+                    box-shadow: none;
+                    color: #666;
+                    z-index: 5;
+                    font-size: 14px;
+                    cursor: pointer;
+                    top: 5px;
+                    left: 56%;
+                    border: 1px solid #666;
+                    border-radius: 4px;
+                    padding: 0px 8px;
+                }
+                .add-btn{
+                    position: absolute;
+                    background-color: transparent;
+                    box-shadow: none;
+                    color: #a272c0;
+                    z-index: 5;
+                    font-size: 14px;
+                    cursor: pointer;
+                    top: 5px;
+                    left: 56%;
+                    border: 1px solid #a272c0;
+                    border-radius: 4px;
+                    padding: 0px 8px;
+                }
+                .save-btn{
+                    position: absolute;
+                    background-color: transparent;
+                    box-shadow: none;
+                    color: #a272c0;
+                    z-index: 5;
+                    font-size: 14px;
+                    cursor: pointer;
+                    top: 5px;
+                    left: 55%;
+                    border: 1px solid #a272c0;
+                    border-radius: 4px;
+                    padding: 0px 8px;
+                }
+            }
+            .update-btn{
+                position: absolute;
+                float: right;
+                right: 15px;
+                .btn-proceed{
+                  
+                  padding: 10px 45px;
+                  background-color: @base-color;
+                  font-family: @rmedium;
+                  font-size: 16px;
+                  color: #fff;
+                  border: none;
+                  border-color: #9660b8;
+                  box-shadow: 0;
+                  -webkit-border-radius: 0;
+                  -moz-border-radius: 0;
+                  border-radius: 0;
+                  margin-right: 20px;
+                  transition: all 0.5s;
+                    span {
+                      cursor: pointer;
+                      display: inline-block;
+                      position: relative;
+                      transition: 0.5s;
+                        &:after {
+                          content: '\f0a9';
+                          position: absolute;
+                          opacity: 0;
+                          top: -4px;
+                          right: -20px;
+                          transition: 0.5s;
+                          font-size: 20px;
+                          font-family: FontAwesome;
+                        }
+                    }
+                    &:hover{
+                        background-color: #a272c0;
+                        span {
+                          padding-right: 25px;
+                            &:after {
+                              opacity: 1;
+                              right: 0;
+                            }
+                        }
+                    }       
+                }
+            }
+        }
+      }
+    }
+}
+/*otp modal start*/
+.account-modal-dialog{
+    width: 365px;
+    margin: 60px auto;
+    @media(max-width:400px){
+    width: 280px;
+    }
+    .account-modal-content{
+        border-radius: 0;
+        .modal-header{
+            background-color: #9660b8;
+            color: #fff;
+            text-align: center;
+            position: relative;
+    
+            .modal-title{
+                font-family: @rregular;
+                font-weight: normal;
+                font-size:16px;
+            }
+            button.close{
+                background-color: #fff;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                opacity: 1;
+                position: absolute;
+                right: -15px;
+                top: -15px;
+            }
+        }
+        .modal-body{
+            padding: 30px 40px 30px;
+            text-align: center;
+            position: relative;
+            .resent-otp{
+                position: relative;
+                margin-bottom: 15px;
+            }
+            input{
+                box-shadow: none;
+                border-radius:0;
+                border-color:#ececec;
+                height: 40px;
+            }
+            .otp-text-top{
+                font-size: 1.3em;
+                color: #666;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .otp-text-bottom{
+                font-size: 1.3em;
+                color: #666;
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom:0;
+            }
+            .btn-login-disable{
+                background-color:#ebebeb !important;
+                color:#989898 !important;
+                &:hover{
+                    background-color:#ebebeb !important;
+                    color:#989898 !important;
+                }
+                
+            }
+
+            .btn-login{
+                background-color: @base-color;
+                border-radius: 0;
+                height: 40px;
+                border:1px solid #ececec;
+                &:hover{
+                    background-color:lighten( @base-color, 7%);
+                }
+            }
+            .timer-text{
+                font-size: 1.6em;
+                color: #666;
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom:0;
+            }
+        }
+    }
+}
+/*otp modal end*/
+
+/*image loader*/
+div#preloader {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 99999;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+        .preloaderImg{
+            animation: circularAnimation 1s ease-out infinite;        
+        }
+}

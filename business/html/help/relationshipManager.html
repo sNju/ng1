@@ -1,0 +1,55 @@
+<div ng-show="show&&!loading" class="preloader-wrap" ng-show="loading" >
+	<img class="preloader" src="images/preloader-img.png">
+	<span class="preloader-text"></span>
+</div>	
+<div ng-hide="show&&!loading">
+	<div class="main-content-header page-header support-services-header clearfix">
+		<h1 class="page-heading">Relationship Manager</h1>
+	</div>
+
+
+	<div  class="container-fluid max-width" feedback-accordian>
+
+		<article class="align-center">
+			<h2>24X7 Helpline</h2>
+			<p>Always happy to help. Please contact us via e-mail or phone.</p>
+		</article>
+
+		<div class="send-feedback-panel">
+			
+			<div class="feedback-panel-header">
+				<h3 class="feedback-panel-heading">Send your feedback to Relationship Manager</h3>
+			</div>
+
+			<div class="feedback-panel-body">
+				<figure class="relationship-manager-profile">
+					<img alt="" class="profile-pic" src="images/user-default-pic.jpg">
+
+					<figcaption>
+						<h4 class="name">{{manager.name}}</h4>
+						<ul class="other-details">
+							<li>{{manager.email}}</li>
+							<li>{{manager.phone}}</li>
+						</ul>
+
+					</figcaption>
+				</figure>
+
+				<div class="send-feedback">
+					<form>
+						<div class="form-group">
+							<label class="sr-only">Your Feedback</label>
+							<textarea ng-model="feedbackObj.query" class="send-feedback-control" placeholder="Your Feedback"></textarea>
+						</div>
+
+						<div class="align-center">
+							<button ng-click="postFeedback()" class="btn btn-lg btn-primary call-to-action">Send</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>	
+</div>

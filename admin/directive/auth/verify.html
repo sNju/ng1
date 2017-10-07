@@ -1,0 +1,17 @@
+<form class="form" name="verifyotpform">
+	<h3 class="b-form-heading m-b-10">Your Verification is Going On</h3>
+	<p class="tost-msg b-submsg text-center">OTP sent to <span style="color: #e39219">{{emailsent}}</span></p>
+	<div class="form-group">
+		<div class="form-line">
+			<input name="otp" type="text" ng-model="verifyobj.otp" name="one time password"  ng-minlength="5" ng-maxlength="6" ng-pattern="number" placeholder="Enter OTP (One Time Password)" class="form-control" required>
+			<p ng-show="otpverification==true" class="text-danger error-msg">Wrong Code Try Again</p>
+		</div>
+	</div>
+	<p ng-show="resendotp==true" class="b-sent-msg">OTP Sent Successfully</p>
+
+	<button type="submit" class="btn btn-login btn-block font-bold" ng-click="verify(verifyobj,verifyotpform.$valid)">Submit</button>
+	<p class="m-t-20">
+		<button formnovalidate ng-click="resend()" class="b-otp">Resend <span class="text-uppercase">OTP</span></button>
+	</p>
+	<p class="b-cancel"><a ng-click="notnow()" href="">Not Now</a></p>
+</form>

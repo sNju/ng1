@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* CSS Document
+@font-face {
+	font-family: 'jenna_sueregular';
+	src: url('../fonts/jennasue-webfont.otf');
+	src: url('../fonts/jennasue-webfont.eot');
+	src: url('../fonts/jennasue-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/jennasue-webfont.woff') format('woff'), url('../fonts/jennasue-webfont.ttf') format('truetype'), url('../fonts/jennasue-webfont.svg#jenna_sueregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'misoregular';
+	src: url('../fonts/miso-webfont.otf');
+	src: url('../fonts/miso-webfont.eot');
+	src: url('../fonts/miso-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/miso-webfont.woff') format('woff'), url('../fonts/miso-webfont.ttf') format('truetype'), url('../fonts/miso-webfont.svg#misoregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+ */
+*{margin:0; padding:0;}
+a{color:#333; text-decoration:none;}
+
+body {
+	font-family: 'misoregular';
+	font-size: 16px;
+	font-weight: normal;
+	margin:0;
+	padding:0;
+	background-color:#ececec;
+}
+/*Brend bg and text color*/
+.text-brend{color:#8049ac;}
+.bg-brend{ background-color:#8049ac;}
+
+/*Nav Bar Control*/
+.top-nav{padding:10px 15px; background: rgba(255, 255, 255, 1);}
+.top-nav .container{ padding:0;}
+.navbar-brand{padding:0;}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{ margin-left:0;}
+.logo-img{ float:left;}
+.logo-img>img{width:50px;}
+.logo-text{float:left; margin-left:10px;}
+.logo-text p:first-child{font-size:27px; font-weight:bold; margin:5px 0;}
+.logo-text p:last-child{font-size:24px; color:#6b6b6b; font-family:'jenna_sueregular'; font-weight:bold;}
+
+/*btn classes*/
+.btn.focus, .btn:focus, .btn:hover{color:#fff;}
+.top-btn-control{padding:6px 20px; font-size:16px; margin-left:10px; margin-top:6px;}
+.btn-feed{ background-color:#e89519;}
+.btn-toor{ background-color:#e24740;}
+.btn-app{ background-color:#8c5bb4;}
+.btn-hot{background-color:#dd8117;}
+
+/*For Mobile Nav*/
+.mobile-nav{color:#333;}
+.navbar-header{ margin-bottom:5px;}
+.mobile-nav>.navbar-nav>li{ float:none; padding:5px 10px; font-size:20px; text-align:right;}
+.mobile-nav>.navbar-nav{ margin-top:0;}
+.mobile-nav>.navbar-nav>li:hover a{ background:#F00;}
+
+/*Header*/
+.header-main{position:relative; background-color:#fff; border:1px solid #ddd;}
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+	-webkit-align-self: flex-end;
+    align-self: flex-end;
+    width:100%;
+    bottom:0;
+	position:absolute;
+	z-index:999;
+	pointer-events:none;
+	
+}
+.flex-item {
+    width:100%;
+    height: auto;
+    margin: 10px;
+	text-align:center;
+	color:#fff;
+}
+.flex-item h1{ font-family:'misoregular'; font-weight:bold;}
+.flex-item p{font-size:24px; margin-bottom:30px;}
+.flex-item input{height:50px; padding-right:40px;}
+.flex-item .input-group{width:500px; margin:0 auto; pointer-events:all;}
+.flex-item .location-img{ position:absolute; right:11px; z-index:999; top:12px; }
+.flex-item input{font-size:22px!important; font-weight:normal!important; position:relative;}
+.flex-item .form-control{ font-size:24px; color:#333;}
+
+.flex-item ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #999999;
+  font-size:22px;
+  font-weight:bold;
+}
+.flex-item ::-moz-placeholder { /* Firefox 19+ */
+  color: #999999;
+  font-size:22px;
+  font-weight:bold;
+}
+.flex-item :-ms-input-placeholder { /* IE 10+ */
+  color: #999999;
+  font-size:22px;
+  font-weight:bold;
+}
+.flex-item :-moz-placeholder { /* Firefox 18- */
+  color: #999999;
+  font-size:22px;
+  font-weight:bold;
+}
+<!---->
+
+/*Slider Css*/
+
+/*Overlay css Start*/
+#outerdiv{ position:relative;}
+#outerdiv img{ margin-left:5px;}
+#innerdiv{
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, bottom(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
+	height:200px; width: 100%; opacity:.7; bottom: 0; left:5px; position: absolute; padding: 0; transition: opacity .5s;
+}
+/*Overlay Css End*/
+.slider-val{position:relative; margin:0 auto; overflow: hidden; visibility: hidden;}
+.slider-sub{cursor: default; position: relative; top: 0px; left: 0px; overflow: hidden;}
+/*Aero slider*/
+.aero{background:rgba(0,0,0,0.5); position: absolute; color:#fff; padding:4px 10px; pointer-events:none; }
+.aero .fa{ padding:3px 8px; font-size:14px; cursor:pointer; }
+.aero .fa:hover{padding:3px 8px; background:#8049ac;}
+.aero-left{bottom:0; padding:100px 21px; pointer-events:all;}
+.aero-rgt{bottom:0; right:0; padding:100px 21px; pointer-events:all;}
+.jssorb01{position: absolute;}
+.jssorb01 div, .jssorb01 .av { position: absolute; width:5px; height:5px; border-radius:50%; filter: alpha(opacity=50); opacity: 0.5; overflow: hidden; cursor: pointer; background:#fff;}
+.jssorb01 div, .jssorb01 div:hover, .jssorb01 .av {background:#fff; opacity:1;}
+.jssorb01 div {background-color: gray; }
+/*Tool Tips css*/
+.brend-tool + .tooltip > .tooltip-inner { padding:5px; width:200px;	/*below brend background color if we want */ /*background:#8049ac;*/}
+/*Section Start*/
+
+/*common for box style*/
+.party-heading{ margin-bottom:30px;}
+.container-section section{padding:30px; background:#fff; border-radius:8px; margin-top:30px;}
+.container-section section h3{ font-weight:bold;}
+.common-prty{position:relative;}
+.box-img{position:relative;}
+.p-range{background-color:#000; position:absolute; top:5px; left:15px; border-radius:25px; color:#fff; padding:0px 10px; font-size:13px; opacity:0.5; filter: alpha(opacity=50); z-index:999;}
+.p-rating{background-color:#8049ac;  position:absolute; top:0; right:10px; border-radius: 0px 4px 0px 4px; color:#fff; padding:3px 18px; font-size:13px; z-index:999;}
+.p-rating.rtng-control{right:12px;}
+.common-prty h3{ margin-top:0;}
+.common-prty h4{ margin-bottom:5px;}
+.common-prty img{border-radius:4px;}
+.margin-control{ margin:30px 0;}
+
+.icon-control{ position:absolute; right:26px; top:33px;}
+/*Thumbnail Control*/
+.listing .col-lg-6{ padding-left:10px; padding-right:10px;}
+.listing .col-lg-4{ padding-left:11px; padding-right:11px;}
+.listing h5{margin:0; font-weight:bold; font-size:15px;}
+.listing p{font-size:13px; margin-bottom:5px;}
+.listing .thumbnail{padding:0; margin-bottom:15px; background-color:#ececec; border:none;}
+.listing .btn{padding:0px 59px; font-size:14px; border-radius:25px;}
+.listing .btn.btn-thumb{padding:0px 44px;}
+.listing img{ border-radius:4px 4px 0 0;}
+
+/*Newsletter section*/
+.newsletter-bg{ background-image:url(../images/newsletter.jpg); background-repeat:no-repeat; background-size:100%; min-height:1px; }
+.newsletter-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 500px;
+    height:423px;
+}
+
+.news-item {
+    width:100%;
+    margin: 10px;
+	color:#fff;
+	font-family:'misoregular'; 
+}
+.news-item h1{font-family:'misoregular'; font-weight:bold; line-height:50px; padding-right:50px;}
+.news-item span:first-child{ margin-right:30px;}
+.news-item form{ margin:48px 0;}
+.news-item .input-group .form-control{ height:50px; border:none; font-size:20px; color:#000;}
+.news-item .input-group-btn .btn{padding:10px 35px; font-size:20px;}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #999999;
+  font-size:20px;
+  font-weight:normal;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #999999;
+  font-size:20px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #000;
+  font-size:20px;
+}
+ :-moz-placeholder { /* Firefox 18- */
+  color: #999999;
+  font-size:20px;
+}
+
+
+/*Image Overlay effect*/
+.outer-control{ position:relative;}
+.overlay-control{
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, bottom(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
+	height:100%; width:96%; margin-left:10px; opacity:.6; bottom: 0; left:5px; position: absolute; padding: 0; transition: opacity .5s;
+	}
+
+/*common box css end */
+
+/*trending big image*/
+.bigthumb .col-lg-8{width:68.666667%;}
+.bigthumb .col-lg-4{width:31.33333333%;}
+.content-panel{background: rgba(0, 0, 0, 0.6);  filter:alpha(opacity=50); border-radius:4px; position:absolute; bottom:0; z-index:999; color:#fff; width:95%;padding:30px 20px 5px; padding-bottom:5px;}
+.content-panel .btn{padding:6px 62px; font-size:20px; border-radius:25px;}
+.range{background-color:#000; position:absolute; top:10px; left:25px; border-radius:25px; color:#fff; padding:2px 18px; font-size:18px; opacity:0.5; filter: alpha(opacity=50);}
+.rating{background-color:#8049ac;  position:absolute; top:0; right:18px;border-radius: 0px 4px 0px 4px; color:#fff; padding:6px 30px; font-size:20px;}
+/*trending side panel*/
+
+
+
+@media (max-width:768px) {
+.slider-val{ top:75px;}
+.flex-container {width:90%; bottom:20px; margin-left:5%;}
+.flex-item h1{ font-family:'misoregular'; font-weight:bold; font-size:24px;}
+.flex-item p{font-size:16px; margin-bottom:0px;}
+.flex-item input{height:30px;}
+.flex-item .input-group{ width:50%;}
+}
+@media (max-width:480px) {
+.flex-item .input-group{ width:100%;}
+}

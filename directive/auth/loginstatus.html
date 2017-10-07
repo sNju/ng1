@@ -1,0 +1,10 @@
+<a href="#" data-toggle="dropdown">
+	<img class="user-pic" ng-src="{{userinfo.profile_pic}}"><span class="user-name">{{userinfo.name}}</span><span class="caret caret-down"></span>
+</a>
+
+<ul class="dropdown-menu dropdown-menu-right dropdown-responsive logout-dropdown">
+	<a ui-sref="myAccount"><li>Account</li></a>
+	<a ui-sref="bookingHistory"><li>My Booking</li></a>
+	<a href="#" ng-click="logout()" class="log-out"><li>Logout</li></a>
+
+</ul>

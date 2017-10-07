@@ -1,0 +1,48 @@
+<li>
+	<div class="gp-card gp-party-card">
+		<button class="user-actions-toggle" role="button">
+			<span>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+				<i class="gp gp-slick-line"></i>
+			</span>
+		</button>
+
+		<div class="user-actions">
+			<a class="user-action edit-deal-action" ui-sref="createStandAloneDeal({id:dealObj._key})" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+			<a class="user-action" href="#" share-modal ng-click="shareModal($event,'deal/'+dealObj._key)" data-toggle="tooltip" title="Share"><i class="fa fa-share-alt"></i></a>
+			<a ng-click="enbaleAndDisable(dealObj._key,dealObj.isactive)" class="user-action" href="#" data-toggle="tooltip" title="{{dealObj.isactive==true?'Disable':'Enable'}}"><i ng-class="{'fa fa-ban':dealObj.isactive==true,'fa fa-eye':dealObj.isactive==false||dealObj.isactive==null}"></i>
+				<!-- <span>{{dealObj.isactive=="true"?'Disable':'Enable'}}</span> -->
+			</a>
+		</div>
+		
+		<figure class="gp-card-figure">
+			<a target="_blank" href="http://www.goparties.com/#/deal/{{dealObj._key}}">
+				<span>
+					<div class="img-wrapper">
+						<div class="data-img" style="background-image:url({{dealObj.thumburl.length>0?dealObj.thumburl:'images/wiki-princess-nokia.jpg'}});"></div>
+					</div>
+				</span>
+			</a>
+			<div class="crowd-quotient" ng-class="{'cq-1':dealObj.crowd_quotient>=0&&dealObj.crowd_quotient<1,'cq-2':dealObj.crowd_quotient>=1&&dealObj.crowd_quotient<2,'cq-3':dealObj.crowd_quotient>=2&&dealObj.crowd_quotient<3,'cq-4':dealObj.crowd_quotient>=3&&dealObj.crowd_quotient<4,'cq-5':dealObj.crowd_quotient>=4&&dealObj.crowd_quotient<5}">{{dealObj.crowd_quotient}}</div>
+		</figure>						
+		
+		<div class="details">
+			<h3 class="gp-card-heading">{{dealObj.title}}</h3>
+			<p class="time-left">{{getRemainTime(dealObj.enddate)}}</p>
+
+			<!--
+			<time class="gp-party-date-time">
+				<span class="gp-party-date"><i class="fa fa-calendar-o"></i><strong>{{(dealObj.startdate/1000)|timeStampToDate|dateFormat}}</strong></span>
+				<span class="gp-party-time"><i class="fa fa-clock-o"></i> <strong >{{(dealObj.startdate/1000)|timeStampToDate|timeFormat}}</strong></span>
+			</time>
+
+
+			<div class="gp-card-actions align-center clearfix hidden">
+				<button class="btn btn-lg btn-primary call-to-action" ng-click="book(profiletype,name,profilepic,id)" data-toggle="modal" data-target="#">Promote</button>
+			</div>
+		-->
+	</div>
+
+</div>
+</li>

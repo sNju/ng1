@@ -1,0 +1,113 @@
+<booking-records-header></booking-records-header>
+<div class="container-fluid no-padding-xs max-width">
+	<section class="main-left-content group-conversation-wrapper">
+		<header class="booking-details-header clearfix">
+			<ul class="booking-details hidden-xs">
+				<li>
+					<h3>Party Date Time</h3>
+					<p>12 Jun, 2016 at 7PM Onwards</p>
+				</li>
+			</ul>
+			<div class="booking-for media">
+				<div class="media-left">
+					<img alt="" class="user-pic media-object" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/party-spot-default-pic.jpg">
+				</div>
+				<div class="media-body">
+					<h2 class="media-heading">Wiki + Princess Nokia</h2>
+					<p class="gp-user-type">Party</p>
+				</div>
+			</div>
+		</header>
+
+		<div class="group-conversation-list">
+
+			<ul class="booking-conversation-list">
+				<li class="booking-conversation confirmed">
+					<a  class="btn default-btn"><i class="fa fa-comments-o"></i> Chat</a>
+					<div class="media">
+						<div class="media-left">
+							<img alt="" class="user-pic media-object" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-header">
+								<time datetime="2016-01-05">05-01-2016</time>    
+								<h4 class="media-heading">Akon <span class="gp-user-type">Party Goer</span></h4>
+							</div>
+							<p class="conversation-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utabo</p>
+						</div>
+					</div>
+				</li>
+
+				<li class="booking-conversation">
+					<a  class="btn default-btn"><i class="fa fa-comments-o"></i> Chat</a>
+					<div class="media">
+						<div class="media-left">
+							<img alt="" class="user-pic media-object" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-header">
+								<time datetime="2016-01-05">05-01-2016</time>    
+								<h4 class="media-heading">Arijit Singh <span class="gp-user-type">Party Goer</span></h4>
+							</div>
+							<p class="conversation-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utabo</p>
+						</div>
+					</div>
+				</li>
+
+				<li class="booking-conversation cancelled">
+					<a  class="btn default-btn">View Chat</a>
+					<div class="media">
+						<div class="media-left">
+							<img alt="" class="user-pic media-object" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-header">
+								<time datetime="2016-01-05">05-06-2016</time>    
+								<h4 class="media-heading">Sumit Sethi <span class="gp-user-type">Party Goer</span></h4>
+							</div>
+							<p class="conversation-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utabo</p>
+						</div>
+					</div>
+				</li>
+
+				<li class="booking-conversation">
+					<a  class="btn default-btn"><i class="fa fa-comments-o"></i> Chat</a>
+					<div class="media">
+						<div class="media-left">
+							<img alt="" class="user-pic media-object" src="https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-header">
+								<time datetime="2016-01-05">01-06-2016</time>    
+								<h4 class="media-heading">Sumit Sethi <span class="gp-user-type">Party Goer</span></h4>
+							</div>
+							<p class="conversation-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utabo</p>
+						</div>
+					</div>
+				</li>
+
+
+				<booking-conversation data={{obj}}  ng-repeat="obj in bookingRequest"></booking-conversation>
+
+			</ul>
+
+			<div class="btn-lg-wrap align-center">
+				<button class="btn btn-lg btn-primary call-to-action">Load More</button>
+			</div>
+
+		</div>
+	</section><!-- /.group-conversation-wrapper -->					
+
+	<aside class="main-content-sidebar">
+		<div class="widget article-widget">
+			<h3 class="widget-heading">Broadcast your Message</h3>
+			<p>Lorem ipsum dolor sit amet, consect eturdip iscing sit amet elit</p>
+			<button class="btn btn-block btn-lg btn-primary call-to-action">Broadcast</button>
+		</div>
+
+	</aside>
+
+
+
+
+</div>

@@ -1,0 +1,26 @@
+	<div class="support-service-provider">
+		<div class="service-provider-detail">
+
+			<figure class="clearfix">
+				<div class="figure-wrap hidden-xs">
+					<a  ui-sref="serviceDetail({id:id})">
+						<div class="service-provider-figure" ng-class="{'has-support-services-icon':coverUrl!=''>0}" style="background-image: url('{{coverUrl}}'); background-size: cover">
+							<span ng-show="!coverUrl">
+								<img alt="" class="service-provider-pic" src="images/cocktails-deal.jpg">	
+							</span>
+						</div>
+					</a>
+				</div>
+				<figcaption class="about-service-provider clearfix">
+					<div class="main-details">
+						<a  ui-sref="serviceDetail({id:id})"><h2 class="service-provider-name">{{about|limitString}}</h2></a>
+						<address class="address">{{address|limitString}}</address>
+						<p>{{description|limitString}}</p>
+					</div>
+					<div class="btn-wrap">
+						<button class="btn btn-primary call-to-action" type="button">Enquiry By Email</button>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+	</div>

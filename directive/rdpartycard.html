@@ -1,0 +1,27 @@
+<div class="gp-card" remove-scroll-bar>	
+	<a ng-href="{{$root.getGpUrl(party)}}">
+		<div class="card-zoom">
+			<div class="card-figure removeClass" style="background-image: url('{{party.banner}}');">	
+			</div>
+			<div ng-show="party.hasdeal==true" class="deal">
+				<p  class="text-uppercase">hot deal</p>
+			</div>
+			<div class="overbox">
+				<div class="status" ng-bind-html="party.startdate|getremaintimecalculatecard:party.enddate"></div>
+			</div>	
+		</div>
+	</a>
+	<div class="card-type">		
+		<div class="profileTitle">
+			<a ng-href="{{$root.getGpUrl(party)}}" class="removeClass">
+				<h4 class="card-title">
+					{{party.title}}
+				</h4>
+				<p class="party-location">{{party.address}}</p>
+			</a>			
+		</div>
+		<div class="date-likes-panel" >	
+			<button class="btn btn-book" ng-disabled="checkDate(party)"  ng-click="$root.redirectWithScroll(party)"><span>Book</span></button>	
+		</div>
+	</div>			
+</div>

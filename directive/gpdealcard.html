@@ -1,0 +1,13 @@
+<div class="gp-card gp-profile-card">
+	<a href="#">
+		<div class="card-figure" style="background-image: url('{{deal.banner}}');">
+			<div class="distance text-uppercase">{{distance(deal.latitude,deal.longitude)}}</div>
+			<div class="crowd-rating" ng-class="{'cq-1':party.crowd_quotient>=0&&party.crowd_quotient<1,'cq-2':party.crowd_quotient>=1&&party.crowd_quotient<2,'cq-3':party.crowd_quotient>=2&&party.crowd_quotient<3,'cq-4':party.crowd_quotient>=3&&party.crowd_quotient<4,'cq-5':party.crowd_quotient>=4&&party.crowd_quotient<5}">{{deal.crowd_quotient}}</div>
+		</div>
+	</a>
+	<div class="card-details">
+		<a href="#"><h4 class="card-title">{{deal.title}}</h4></a>
+		<p  class="card-type">{{(status=deal.startdate|getremaintimecalculate:deal.enddate).indexOf('ppen')>=0?'Expired':status}}</p>
+		<button ng-disabled="disableObj=='true'" data-toggle="modal" data-target="#gpAppModal" class="btn call-of-action text-uppercase">SHADOW</button>
+	</div>
+</div>

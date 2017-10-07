@@ -1,0 +1,166 @@
+<div class="main-content-header page-header smm-page-header clearfix">
+	<nav id="secondary-navigation" class="secondary-navigation has-horizontal-scrollbar pull-left" has-custom-horizontal-scrollbar > 
+		<ul class="sub-menu clearfix">
+			<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdPost/all'}" ><a ui-sref="createdPost({network:'all'})">All <span class="badge">{{countObj.allCount}}</span></a></li>
+			<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdPost/goparties'}" ><a ui-sref="createdPost({network:'goparties'})">GoParties <span class="badge">{{countObj.gopartiesCount}}</span></a></li>
+			<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdPost/facebook'}"><a ui-sref="createdPost({network:'facebook'})">Facebook <span class="badge">{{countObj.facebookCount}}</span></a></li>
+			<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdPost/instagram'}"><a ui-sref="createdPost({network:'instagram'})">Instagram <span class="badge">{{countObj.instagramCount}}</span></a></li>
+			<li class="nav-sub-tabs" ng-class="{active: activetab=='/createdPost/twitter'}"><a ui-sref="createdPost({network:'twitter'})">Twitter <span class="badge">{{countObj.twitterCount}}</span></a></li>
+		</ul>
+	</nav>		
+
+	<a ui-sref="createPost" class="pull-right btn btn-lg btn-primary call-to-action" role="button"> 
+		<i class="gp-add-icon visible-xs"></i>
+		<span class="hidden-xs">Create Post</span>
+	</a>
+
+</div>
+
+<div social-media-management>
+	<div class="container-fluid min-width smm-content-container hidden">
+		<article class="connect-to-social-media">
+			<h1 class="article-heading">Twitter Connection</h1>		
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
+			<div class="social-media">
+				<div class="icon-wrap">	
+					<i class="fa fa-twitter social-media-icon"></i>
+				</div>
+				<button class="btn btn-lg call-to-action connect-btn" ng-click="">Connect</button>
+			</div>
+		</article>
+	</div>	
+	<div class="container-fluid max-width smm-content-container">
+		<ul class="gp-feeds-wrapper responsiveColumnLayout clearfix">
+			<social-feeds feed-obj="feed" ng-repeat="feed in feeds|feedCategoryFilter:network"></social-feeds>
+		</ul>	
+	</div>
+
+
+
+	<!-- Liked Users Modal -->
+	<div class="modal gp-small-modal fade" id="likedUsersModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="showInterest"><i class="fa fa-heart"></i> {{likeListUsers.length}} People Like This</h4>
+				</div>
+				<div class="modal-body">
+					<ul class="liked-users-list">
+						<li ng-repeat="user in likeListUsers">
+							<a ng-show="isProfile==true" href="www.goparties.com" class="btn btn-lg btn-primary call-to-action" target="_blank" role="button">View Profile</a>
+
+							<div class="gp-user-profile-wrap">
+								<div class="gp-user-profile-table">
+									<div class="gp-user-pic-table-cell"> 
+										<img alt="" class="gp-user-pic" src="{{user.userimage.length>0?user.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+									</div>
+									<div class="gp-user-info-table-cell">
+										<h4 class="gp-user-name">{{user.user}}</h4>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#likedUsersModal -->
+
+
+
+	<!-- Post Comments Modal -->
+	<div class="modal gp-small-modal post-comments-modal fade" id="postCommentsModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="showInterest"><i class="fa fa-comment"></i> {{comments.length}} People Commented <span class="hidden-xs">on This Post</span></h4>
+				</div>
+
+				<div class="modal-body">
+
+					<ul class="liked-users-list">
+						<li ng-repeat="comment in comments">
+
+							<time datetime="2016-01-05">{{(comment.created_at/1000)|timeStampToDate|dateFormat}},{{(comment.created_at/1000)|timeStampToDate|timeFormat}}</time>
+								<div class="gp-user-profile-wrap">
+									<div class="gp-user-profile-table">
+										<div class="gp-user-pic-table-cell"> 
+											<img alt="" class="gp-user-pic" src="{{comment.userimage.length>0?comment.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+										</div>
+										<div class="gp-user-info-table-cell">
+											<h4 class="gp-user-name">{{comment.user}}</h4>
+										</div>
+									</div>
+								</div>
+								<br class="clearfix">
+								<div class="gp-user-comment">
+									<p>{{comment.comment}}</p>
+								</div>
+							</li>
+
+						</ul>
+
+
+						<!-- Post New Comment -->
+						<div class="post-new-comment">
+							<form>
+								<div class="form-group">	
+									<textarea ng-model="commentText" class="gp-new-comment-control" placeholder="Add New Message"></textarea>
+									<button ng-click="postComment(commentText,comment)" class="post-btn"><i class="fa fa-send"></i></button>
+								</div>	
+							</form>
+						</div>	
+
+						<!-- End Post New Comment -->
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div><!-- /#postCommentsModal -->
+
+
+
+
+	<!-- Shared Users Modal -->
+	<div  class="modal gp-small-modal fade" id="sharedUsersModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="showInterest"><i class="fa fa-share"></i> {{shareUser.length}} People Share This</h4>
+				</div>
+
+				<div class="modal-body">
+
+					<ul class="liked-users-list">
+						<li ng-repeat="shareUser in shareUsers">
+
+
+							<div class="gp-user-profile-wrap">
+								<div class="gp-user-profile-table">
+									<div class="gp-user-pic-table-cell"> 
+										<img alt="" class="gp-user-pic" src="{{shareUser.userimage.length>0?shareUser.userimage:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+									</div>
+									<div class="gp-user-info-table-cell">
+										<h4 class="gp-user-name">{{shareUser.user}}</h4>
+									</div>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div><!-- /#sharedUsersModal -->
+
+</div>

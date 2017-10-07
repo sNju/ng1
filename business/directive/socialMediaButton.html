@@ -1,0 +1,100 @@
+<ul class="social-media-list" has-gp-checkbox >
+    <li class="media-to-post-on clearfix">
+        <div class="social-media facebook">
+            <span class="media-icon"><i class="fa fa-facebook"></i></span>
+            <span class="media-title">Facebook</span>
+        </div>
+        <div class="social-media-status">
+            <div ng-show="socialStatus.facebook.switch" class="gp-checkbox-control"><input ng-change="changeSwitch()" class="gp-checkbox" ng-model="social.facebook" type="checkbox"></div>
+            <button ng-show="socialStatus.facebook.connect" class="btn small-btn connect-btn" ng-click="login('facebook')">Connect</button>
+        </div>
+    </li>
+
+    <li class="media-to-post-on clearfix">
+        <div class="social-media twitter">
+            <span class="media-icon"><i class="fa fa-twitter"></i></span>
+            <span class="media-title">Twitter</span>
+        </div>
+        <div class="social-media-status">
+            <div ng-show="socialStatus.twitter.switch" class="gp-checkbox-control"><input ng-change="changeSwitch()" class="gp-checkbox" ng-model="social.twitter" type="checkbox"></div>
+            <button ng-show="socialStatus.twitter.connect" class="btn small-btn connect-btn" ng-click="login('twitter')">Connect</button>                                                   
+        </div>
+    </li>
+
+
+
+    <li class="media-to-post-on clearfix">
+        <div class="social-media instagram">
+            <span class="media-icon"><i class="fa fa-instagram"></i></span>
+            <span class="media-title">Instagram</span>
+        </div>
+        <div class="social-media-status">
+            <div ng-show="socialStatus.instagram.switch" class="gp-checkbox-control"><input ng-change="changeSwitch()" class="gp-checkbox" ng-model="social.instagram" type="checkbox"></div>    
+            <button ng-show="socialStatus.instagram.connect" class="btn small-btn connect-btn" ng-click="login('instagram')">Connect</button>
+        </div>
+    </li>
+    <li class="media-to-post-on hidden clearfix">
+        <div class="social-media soundCloud">
+            <span class="media-icon"><i class="fa fa-soundcloud"></i></span>
+            <span class="media-title">SoundCloud</span>
+        </div>
+        <div class="social-media-status">
+            <div class="gp-checkbox-control"><input class="gp-checkbox" ng-model="social.soundcloud" type="checkbox"></div>    
+            <button class="btn small-btn connect-btn" ng-click="login('soundcloud')">Connect</button>                                                   
+        </div>
+    </li>
+    <li class="media-to-post-on hidden clearfix">
+        <div class="social-media youtube">
+            <span class="media-icon"><i class="fa fa-youtube"></i></span>
+            <span class="media-title">YouTube</span>
+        </div>
+        <div class="social-media-status">
+            <div class="gp-checkbox-control"><input class="gp-checkbox" ng-model="social.youtube" type="checkbox"></div>    
+            <button class="btn small-btn connect-btn" ng-click="login('youtube')">Connect</button>                                                   
+        </div>
+    </li>
+    <div class="modal gp-small-modal fade" id="socialMediaPagesListModal" tabindex="-1" role="dialog" aria-labelledby="showInterest">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id=""><i class="fa fa-share"></i>Select Facebook Page</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <ul class="liked-users-list">
+                        <li ng-repeat="page in facebookPages.data">
+                            <a href="#" ng-click="facebookPageClick(page)" data-toggle="modal" data-target="#socialMediaPagesListModal">
+                                <div class="gp-user-profile-wrap">
+                                    <div class="gp-user-profile-table">
+                                        <div class="gp-user-pic-table-cell"> 
+                                            <img alt="" class="gp-user-pic" src="{{page.picture.data.url.length>0?page.picture.data.url:'https://s3-ap-southeast-1.amazonaws.com/gopartiesnew/images/gpba-images/user-default-pic.jpg'}}">
+                                        </div>
+                                        <div class="gp-user-info-table-cell">
+                                            <h4 class="gp-user-name">{{page.name}}</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ul>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<div class="container-fluid" add-user-directive>
+    <div class="sec-heading">
+        <h2 class="heading-type">The promotional codes can used by Partymons while they SignUp. And get GpCoins.</h2>
+    </div>
+    <div class="row">
+        <!-- Task Info -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="panel-header promocodeHdr">
+                    <h2 class="header-type">Promotional Codes</h2>
+                    <button ui-sref="/addpromocode" class="btn bg-dark pull-right waves-effect">Add PromoCode</button>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover dashboard-task-infos">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>PromoCode</th>
+                                    <th>Description</th>
+                                    <th>Added On</th>
+                                    <!--  <th>Status</th> -->
+                                    <th>Usage</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="animate-repeat" ng-class="{'active':$index%2==0}" ng-repeat="promocode in promocodes" ui-sref="/promocodeusage({id:promocode._key})">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{promocode.signup_code}}</td>
+                                    <td class="col-md-5"><span class="gp-coin-text">{{promocode.description}}</span></td>
+                                    <td>{{promocode.createdat|timeStamptoProperDate}}</td>
+                                    <!--  <td><span ng-class="(promocode.status==true) ? 'bg-teal':'bg-red'"  class="label bg-gray">{{promocode.status==true?'Active':'Inactive'}}</span></td> -->
+                                    <td>{{promocode.usage}}</td>
+                                    <td>
+                                        <button ng-class="(promocode.status==true) ? 'bg-red':'bg-teal'" class="btn btn-xs  waves-effect" ng-click="togglestatus(promocode,$event)">{{promocode.status==true?'Disable':'Enable'}}</button>
+                                        <!--  <button ng-click="$event.stopPropagation();" ui-sref="/addpromocode({id:promocode._key})" class="btn btn-xs bg-light-blue waves-effect">Edit</button> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- close Card -->
+        </div><!-- close Cols -->
+    </div><!-- close Row -->
+</div><!-- close Container -->

@@ -1,0 +1,20 @@
+ <li>
+    <div class="profile clearfix">
+        <div class="gp-user-profile-wrap">
+            <div class="gp-user-profile-table">
+                <div class="gp-user-pic-table-cell"> 
+                    <img alt="" class="gp-profile-pic" src="{{profileObj.cover}}">
+                </div>
+                <div class="gp-user-info-table-cell">
+                    <h4 class="profile-title">{{profileObj.name}}</h4>
+                    <ul>
+                        <li class="hidden">011 43561845, 011 43561846</li>
+                        <li>{{profileObj.address}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>    
+       
+        <button ng-disabled="profileObj.claimed==true" ng-class="{'claimed':profileObj.claimed==true}" ui-sref="verifyprofile({id:profileObj._key})" class="claim-profile-action">{{profileObj.claimed==true?'Already Claimed':'Claim It'}}</button>
+    </div>    
+</li>

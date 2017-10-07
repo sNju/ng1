@@ -1,0 +1,135 @@
+ <form method="POST" add-user-directive modal-open modal-business>
+  <div class="container-fluid">
+    <div class="sec-heading profileHdr">
+      <h2 class="heading-type">List of profile</h2>
+      <div class="pull-right">
+        <button type="button" class="btn bg-dark waves-effect" data-toggle="modal" ng-click="showgenurl()" stop-flickering>Generate On-Boarding Link</button>
+        <button type="button" ui-sref="/addgpb" class="btn bg-base waves-effect" formnovalidate>Add Profile</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="panel-header profileHdr">
+        <h2 class="header-type">Bookings / profiles / profile</h2>
+        <button type="submit" ng-click="getallprofile(filterobj)" class="btn bg-dark waves-effect hidden-xs">Apply Filters</button>
+        <button type="button" class="btn bg-dark waves-effect visible-xs navbar-toggle filterToggle" data-toggle="collapse" data-target="#filterCollapse">filter<i class="fa fa-filter filter-icon" aria-hidden="true"></i></button>
+      </div>
+      <div class="body">
+        <div class="row collapse navbar-collapse" id="filterCollapse">
+          <div class="col-sm-4 col-xs-12">
+            <div class="form-group">
+              <div class="form-line">
+                <input ng-value="filterobj.address" id="txtlocation" google-location-autocomplete type="text" class="form-control" placeholder="Location" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="form-group">
+              <div class="form-line">
+                <input ng-model="filterobj.keyword"  type="text" class="form-control" placeholder="Keyword" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="form-group">
+              <div class="form-line">
+                <select ng-model="filterobj.profile_type" class="form-control show-tick" selectpicker>
+                  <option value="">Select Profile</option>
+                  <option value="All">All</option>
+                  <option value="Artist">Artist</option>
+                  <option value="Band">Band</option>
+                  <option value="DJ">Dj's</option>
+                  <option value="Party Spot">Party Spot</option>
+                  <option value="Partymon">Partymon</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <button type="submit" ng-click="getallprofile(filterobj)" class="btn bg-dark waves-effect visible-xs">Apply Filters</button>
+          </div>
+        </div>
+        <!--Table Content-->
+        <div class="table-responsive">
+            <table class="table table-hover dashboard-task-infos">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Profile Type</th>
+                  <th>Created Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="animate-repeat" ng-click="redirect(profile)"  ng-repeat="profile in profiles">
+                   <td>{{$index+1}}</td>
+                   <td>{{profile.name|limitTo:15}}</td>
+                   <td>{{profile.location|limitTo:20}}</td>
+                   <td><span ng-class="getclassname(profile.profile_type)" class="label">{{profile.profile_type}}</span></td>
+                   <td>{{profile.createdat|timeStamptoProperDate}}</td>
+                   <td>
+                     <button type="button" ng-if="profile.profile_type!='Partymon'" ui-sref="/editprofile({id:profile._key})" class="btn btn-xs bg-light-blue waves-effect">Edit</button>
+                     <button type="button" ng-class="(profile.active==false) ? 'bg-green':'bg-red'"  ng-click="togglestate(profile,$event)" class="btn btn-xs bg-red waves-effect">{{profile.active==false?'Enable':'Disable'}}</button>
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div><!-- Close Card -->
+ </div><!-- Close Container -->
+</form>
+
+ <!--Business Modal 1st-->
+ <div class="modal fade clicktocall" id="business-modal" role="dialog" >
+   <div class="modal-dialog businessLinkModel">
+     <div class="modal-content">
+       <div class="modal-header businessLinkHeader">
+         <button type="button" class="close closeBtn" data-dismiss="modal">&times;</button>
+         <p class="modal-title text-center">GENERATE BUSINESS LINK</p>
+       </div>
+       <div class="modal-body">
+         <form class="businessLinkForm">
+           <div class="form-group">
+             <input ng-model="userobj.name" type="text" class="form-control businessLinkInput" id="name" placeholder="Enter Name">
+           </div>
+           <div class="form-group">
+             <input ng-model="userobj.email" type="email" class="form-control businessLinkInput" id="email" placeholder="Enter Email Id">
+           </div>
+           <div class="form-group">
+             <input ng-model="userobj.phone" type="tel" class="form-control businessLinkInput" id="phoneNo" placeholder="Enter Your Phone no">
+           </div>
+           <div class="form-group">
+             <button data-toggle="modal" id="generateUrl"  ng-click="submitdetail(userobj)" type="submit" class="btn btn-block submitBtn">GENERATE URL</button>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!--End Business Modal -->
+
+ <!--Ok Modal Window-->
+ <div id="urlconfrm" class="modal fade" role="dialog">
+   <div class="modal-dialog url-modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-body url-body panel-center">
+         <button type="button" class="close url-close" data-dismiss="modal">&times;</button>
+         <div class="url-content">
+           <i class="material-icons url-icon">done</i>
+           <h3 class="url-heading">Awesome!</h3>
+           <p class="url-type">You are ready to proceed using this URL</p>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <div class="url-link" id="copyUrlText">{{onboardinglink}}</div>
+         <div class="panel-center">
+           <button class="btn url-btn" data-dismiss="modal" id="copyUrl" copy-url-link>Copy URL</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!--Modal Window End-->

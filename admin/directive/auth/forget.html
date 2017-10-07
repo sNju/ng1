@@ -1,0 +1,11 @@
+<form class="form" name="forgetform">
+	<h3 class="b-form-heading">Forgot Password: No Worries Mate !!!</h3>
+	<div class="form-group">
+		<div class="form-line">
+			<input title="Email should be valid" type="email" ng-model="forgetobj.value" name="onetimepassword" placeholder="Email Id" class="form-control" autocomplete="false" required>
+			<p ng-show="wrongemail" class="text-danger">{{message}}</p>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-login btn-block font-bold" ng-click="forget(forgetobj,forgetform.$valid)">Submit</button>
+	<p class="b-cancel"><a ng-click="notnow()" href="">Not Now</a></p>
+</form>

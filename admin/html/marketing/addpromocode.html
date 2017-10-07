@@ -1,0 +1,50 @@
+<form id="form_validation" name="addpromoform" validation-directive add-user-directive>
+ <!-- add-user-directive -->
+ <div class="container-fluid">
+  <div class="sec-heading">
+    <h2 class="heading-type">The Promotional Codes are effective the moment you click on "CREATE"</h2>
+  </div>
+  <!-- Input -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="header">
+          <h2 class="header-type">
+            Add Promo-Code..!!
+            <small>You can name the promo-code as per your marketing preference</small>
+          </h2>
+
+        </div>
+        <div class="body">
+          <div class="row clearfix">
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <input maxlength="6" minlength="2" name="promo" ng-model="promoobj.signup_code" type="text" class="form-control promopanel" placeholder="Promotional Code" required/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <div class="form-group">
+                <div class="form-line">
+                  <textarea minlength="5" name="description" ng-model="promoobj.description" type="text" class="form-control" placeholder="Descrition of promocode" required></textarea> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-end">
+            <button ui-sref="/promocodes" class="btn bg-red btn-lg waves-effect">Cancel</button>
+            <!-- <button type="submit" ng-click="addpromocode(promoobj,addpromoform.$valid)" class="btn bg-base btn-lg waves-effect m-l-10">Create</button>
+             <button class="btn bg-red btn-lg waves-effect" ui-sref="/users"  formnovalidate>Cancel</button>
+           -->     
+           <button class="btn bg-base btn-lg m-l-10 waves-effect" type="submit" ng-click="isedit==true?updatepromocode(promoobj,addpromoform.$valid):addpromocode(promoobj,addpromoform.$valid)" >{{isedit==true?'Update Promocode':'Add Promocode'}}</button>
+
+
+
+         </div>
+       </div>
+     </div><!-- Close Card -->
+   </div><!-- Close Cols -->
+ </div><!-- Close Row -->
+</div><!-- Close Container -->
+</form>
